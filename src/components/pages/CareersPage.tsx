@@ -7,6 +7,17 @@ interface CareersPageProps {
 }
 
 const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
+  const [expandedRole, setExpandedRole] = useState<string | null>(null);
+  const [expandedValue, setExpandedValue] = useState<string | null>(null);
+
+  const toggleRole = (roleId: string) => {
+    setExpandedRole(expandedRole === roleId ? null : roleId);
+  };
+
+  const toggleValue = (valueId: string) => {
+    setExpandedValue(expandedValue === valueId ? null : valueId);
+  };
+
   const openRoles = [
     {
       title: 'Frontend Engineer (React/NextJS)',
@@ -22,7 +33,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
         'Understanding of responsive design and accessibility principles'
       ],
       icon: Code,
-      color: 'from-primary-500 to-primary-600'
+      color: 'from-primary-500 to-primary-600',
+      id: 'frontend-engineer'
     },
     {
       title: 'Backend Engineer (Python, Node, API)',
@@ -38,7 +50,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
         'Understanding of AI/ML integration and data processing pipelines'
       ],
       icon: Code,
-      color: 'from-success-500 to-success-600'
+      color: 'from-success-500 to-success-600',
+      id: 'backend-engineer'
     },
     {
       title: 'QA Engineer',
@@ -54,7 +67,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
         'Experience with CI/CD pipelines and quality assurance processes'
       ],
       icon: Shield,
-      color: 'from-warning-500 to-warning-600'
+      color: 'from-warning-500 to-warning-600',
+      id: 'qa-engineer'
     },
     {
       title: 'Customer Support Analyst',
@@ -70,7 +84,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
         'Understanding of SaaS platforms and API integrations'
       ],
       icon: Headphones,
-      color: 'from-accent-500 to-violet-600'
+      color: 'from-accent-500 to-violet-600',
+      id: 'support-analyst'
     },
     {
       title: 'Cloud DevOps Engineer',
@@ -86,7 +101,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
         'Understanding of monitoring, logging, and security best practices'
       ],
       icon: BarChart3,
-      color: 'from-error-500 to-error-600'
+      color: 'from-error-500 to-error-600',
+      id: 'devops-engineer'
     }
   ];
 
@@ -105,22 +121,26 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
     {
       title: 'Innovation First',
       description: 'We push boundaries and embrace new technologies to solve complex problems.',
-      icon: Zap
+      icon: Zap,
+      id: 'innovation'
     },
     {
       title: 'Customer Success',
       description: 'Our customers\' success drives everything we do and build.',
-      icon: Users
+      icon: Users,
+      id: 'customer-success'
     },
     {
       title: 'Quality & Excellence',
       description: 'We maintain high standards in our code, products, and processes.',
-      icon: Shield
+      icon: Shield,
+      id: 'quality'
     },
     {
       title: 'Continuous Learning',
       description: 'We invest in our team\'s growth and encourage experimentation.',
-      icon: BarChart3
+      icon: BarChart3,
+      id: 'learning'
     }
   ];
 
@@ -191,6 +211,106 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
                 <value.icon className="w-8 h-8 text-primary-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold text-white mb-3">{value.title}</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">{value.description}</p>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleValue(value.id)}
+                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedValue === value.id ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedValue === value.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedValue === value.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {value.id === 'innovation' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Innovation Culture</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• 20% time allocation for experimental projects and research</p>
+                          <p className="text-sm text-neutral-300">• Access to latest AI tools and development platforms</p>
+                          <p className="text-sm text-neutral-300">• Regular hackathons and innovation challenges</p>
+                          <p className="text-sm text-neutral-300">• Patent filing support and intellectual property rewards</p>
+                          <p className="text-sm text-neutral-300">• Collaboration with leading AI research institutions</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Join our innovation-driven team at support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'customer-success' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Customer-Centric Approach</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Direct customer feedback integration into development cycles</p>
+                          <p className="text-sm text-neutral-300">• Regular customer advisory board meetings and input sessions</p>
+                          <p className="text-sm text-neutral-300">• Customer success metrics tied to team performance reviews</p>
+                          <p className="text-sm text-neutral-300">• Opportunities to work directly with enterprise customers</p>
+                          <p className="text-sm text-neutral-300">• Customer-first decision making in all product discussions</p>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Be part of our customer success mission
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'quality' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Excellence Standards</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Comprehensive code review process with senior engineers</p>
+                          <p className="text-sm text-neutral-300">• Automated testing with 90%+ code coverage requirements</p>
+                          <p className="text-sm text-neutral-300">• Performance monitoring and optimization as core practices</p>
+                          <p className="text-sm text-neutral-300">• Security-first development with regular audits</p>
+                          <p className="text-sm text-neutral-300">• Documentation standards and knowledge sharing culture</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          High standards drive our 99.9% platform reliability
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'learning' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Learning & Development</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• ₹50,000 annual learning budget for courses and conferences</p>
+                          <p className="text-sm text-neutral-300">• Internal tech talks and knowledge sharing sessions</p>
+                          <p className="text-sm text-neutral-300">• Mentorship programs with senior technical leaders</p>
+                          <p className="text-sm text-neutral-300">• Support for advanced degrees and professional certifications</p>
+                          <p className="text-sm text-neutral-300">• Cross-team collaboration and skill development opportunities</p>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Invest in your growth with our learning programs
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleValue(value.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -267,6 +387,182 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
                   <span>Apply Now</span>
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleRole(role.id)}
+                  className="mt-3 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedRole === role.id ? 'Show Less Details' : 'See Full Details'}
+                  </span>
+                  {expandedRole === role.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedRole === role.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {role.id === 'frontend-engineer' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Frontend Engineering Role</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-primary-400 font-medium mb-2">Key Responsibilities</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Build responsive, accessible interfaces for enterprise analytics dashboards</li>
+                              <li>• Implement real-time data visualization and interactive charts</li>
+                              <li>• Collaborate with UX designers on user experience optimization</li>
+                              <li>• Optimize performance for large-scale data rendering</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-success-400 font-medium mb-2">Growth Opportunities</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Lead frontend architecture decisions for new product features</li>
+                              <li>• Mentor junior developers and contribute to technical standards</li>
+                              <li>• Work directly with enterprise customers on custom implementations</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Apply: support@yoforex.co.in with portfolio and GitHub profile
+                        </p>
+                      </div>
+                    )}
+
+                    {role.id === 'backend-engineer' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Backend Engineering Role</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-success-400 font-medium mb-2">Technical Focus</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Design and implement scalable API architectures</li>
+                              <li>• Build data processing pipelines for AI model orchestration</li>
+                              <li>• Optimize database performance for high-volume analytics</li>
+                              <li>• Implement security best practices and compliance standards</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-warning-400 font-medium mb-2">Impact & Scale</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Systems serving 50,000+ enterprise users globally</li>
+                              <li>• Processing 1M+ analytics operations daily</li>
+                              <li>• 99.9% uptime SLA with multi-region deployment</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Technical interview process includes system design and coding challenges
+                        </p>
+                      </div>
+                    )}
+
+                    {role.id === 'qa-engineer' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Quality Assurance Role</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-warning-400 font-medium mb-2">Testing Responsibilities</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Develop comprehensive test strategies for AI workflow automation</li>
+                              <li>• Implement automated testing for API endpoints and integrations</li>
+                              <li>• Performance testing for enterprise-scale data processing</li>
+                              <li>• Security testing and vulnerability assessment</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-accent-400 font-medium mb-2">Quality Standards</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Maintain 99.9% platform reliability through rigorous testing</li>
+                              <li>• Ensure SOC 2 compliance through security testing protocols</li>
+                              <li>• Collaborate with development teams on quality metrics</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Quality engineering is critical to our enterprise customer success
+                        </p>
+                      </div>
+                    )}
+
+                    {role.id === 'support-analyst' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Customer Support Role</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-accent-400 font-medium mb-2">Support Scope</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Technical support for API integrations and workflow setup</li>
+                              <li>• Enterprise customer onboarding and training</li>
+                              <li>• Troubleshooting complex automation scenarios</li>
+                              <li>• Documentation and knowledge base maintenance</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-primary-400 font-medium mb-2">Career Growth</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Path to technical account management for enterprise clients</li>
+                              <li>• Opportunity to specialize in customer success or technical writing</li>
+                              <li>• Direct impact on product development through customer feedback</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Customer success is at the heart of our business model
+                        </p>
+                      </div>
+                    )}
+
+                    {role.id === 'devops-engineer' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">DevOps Engineering Role</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-error-400 font-medium mb-2">Infrastructure Management</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Manage multi-region cloud infrastructure across AWS, Azure, GCP</li>
+                              <li>• Implement CI/CD pipelines for rapid, reliable deployments</li>
+                              <li>• Monitor and optimize system performance and costs</li>
+                              <li>• Ensure security compliance and disaster recovery procedures</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-success-400 font-medium mb-2">Scale & Impact</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Infrastructure supporting 50,000+ enterprise users</li>
+                              <li>• 99.9% uptime SLA with automatic failover systems</li>
+                              <li>• Cost optimization saving 40% on cloud infrastructure</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-error-400 text-sm">
+                          Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleRole(role.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse Details
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>

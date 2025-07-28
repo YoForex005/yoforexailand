@@ -22,12 +22,19 @@ interface IntegrationsPageProps {
 }
 
 const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) => {
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
   const integrationCategories = [
     {
       title: 'Enterprise SaaS',
       description: 'Connect with popular business platforms',
       icon: Cloud,
       color: 'from-primary-500 to-primary-600',
+      id: 'enterprise-saas',
       integrations: [
         { name: 'Salesforce', description: 'CRM data integration', status: 'available' },
         { name: 'Microsoft 365', description: 'Office suite integration', status: 'available' },
@@ -42,6 +49,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
       description: 'Integrate with data sources and warehouses',
       icon: Database,
       color: 'from-success-500 to-success-600',
+      id: 'data-platforms',
       integrations: [
         { name: 'Snowflake', description: 'Cloud data warehouse', status: 'available' },
         { name: 'Amazon S3', description: 'Object storage', status: 'available' },
@@ -56,6 +64,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
       description: 'Workflow notifications and messaging',
       icon: MessageSquare,
       color: 'from-accent-500 to-violet-600',
+      id: 'communication',
       integrations: [
         { name: 'Slack', description: 'Team messaging', status: 'available' },
         { name: 'Microsoft Teams', description: 'Collaboration platform', status: 'available' },
@@ -70,6 +79,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
       description: 'APIs and development integrations',
       icon: Code,
       color: 'from-warning-500 to-warning-600',
+      id: 'developer-tools',
       integrations: [
         { name: 'REST API', description: 'Full platform API', status: 'available' },
         { name: 'GraphQL', description: 'Query language API', status: 'beta' },
@@ -197,6 +207,106 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
                   </motion.div>
                 ))}
               </div>
+
+              {/* Learn More Button */}
+              <motion.button
+                onClick={() => toggleCategory(category.id)}
+                className="mt-6 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-sm font-medium">
+                  {expandedCategory === category.id ? 'Show Less' : 'Learn More'}
+                </span>
+                {expandedCategory === category.id ? (
+                  <ChevronUp className="w-4 h-4" />
+                ) : (
+                  <ChevronDown className="w-4 h-4" />
+                )}
+              </motion.button>
+
+              {/* Expanded Content */}
+              {expandedCategory === category.id && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                >
+                  {category.id === 'enterprise-saas' && (
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Enterprise SaaS Integrations</h4>
+                      <div className="space-y-2 mb-4">
+                        <p className="text-sm text-neutral-300">• Seamless data synchronization with CRM and productivity platforms</p>
+                        <p className="text-sm text-neutral-300">• Single sign-on (SSO) integration for enterprise authentication</p>
+                        <p className="text-sm text-neutral-300">• Real-time workflow triggers based on business events</p>
+                        <p className="text-sm text-neutral-300">• Custom field mapping and data transformation capabilities</p>
+                        <p className="text-sm text-neutral-300">• Automated reporting and dashboard synchronization</p>
+                      </div>
+                      <p className="text-primary-400 text-sm">
+                        Enterprise SaaS setup: support@yoforex.co.in
+                      </p>
+                    </div>
+                  )}
+
+                  {category.id === 'data-platforms' && (
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Data Platform Connectivity</h4>
+                      <div className="space-y-2 mb-4">
+                        <p className="text-sm text-neutral-300">• High-performance connectors for cloud data warehouses</p>
+                        <p className="text-sm text-neutral-300">• Real-time data streaming and batch processing capabilities</p>
+                        <p className="text-sm text-neutral-300">• Automated data quality validation and cleansing</p>
+                        <p className="text-sm text-neutral-300">• Support for structured and unstructured data sources</p>
+                        <p className="text-sm text-neutral-300">• Enterprise-grade security and encryption for data transfers</p>
+                      </div>
+                      <p className="text-success-400 text-sm">
+                        Data platform integrations support enterprise-scale analytics workflows
+                      </p>
+                    </div>
+                  )}
+
+                  {category.id === 'communication' && (
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Communication & Notifications</h4>
+                      <div className="space-y-2 mb-4">
+                        <p className="text-sm text-neutral-300">• Multi-channel notification delivery with intelligent routing</p>
+                        <p className="text-sm text-neutral-300">• Custom message templates and branding options</p>
+                        <p className="text-sm text-neutral-300">• Escalation procedures and on-call management</p>
+                        <p className="text-sm text-neutral-300">• Rich media support for charts, reports, and attachments</p>
+                        <p className="text-sm text-neutral-300">• Integration with enterprise communication policies</p>
+                      </div>
+                      <p className="text-accent-400 text-sm">
+                        Communication setup ensures your team stays informed of critical workflow events
+                      </p>
+                    </div>
+                  )}
+
+                  {category.id === 'developer-tools' && (
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">Developer Tools & APIs</h4>
+                      <div className="space-y-2 mb-4">
+                        <p className="text-sm text-neutral-300">• Comprehensive RESTful API with OpenAPI documentation</p>
+                        <p className="text-sm text-neutral-300">• SDKs available for Python, Node.js, Java, and .NET</p>
+                        <p className="text-sm text-neutral-300">• Webhook support for real-time event notifications</p>
+                        <p className="text-sm text-neutral-300">• GraphQL endpoint for flexible data querying</p>
+                        <p className="text-sm text-neutral-300">• CI/CD integration for automated deployment workflows</p>
+                      </div>
+                      <p className="text-warning-400 text-sm">
+                        Developer documentation: app.yoforex.co.in/docs | Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                      </p>
+                    </div>
+                  )}
+
+                  <motion.button
+                    onClick={() => toggleCategory(category.id)}
+                    className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Collapse
+                  </motion.button>
+                </motion.div>
+              )}
             </motion.div>
           ))}
         </div>

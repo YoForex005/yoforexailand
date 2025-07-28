@@ -25,6 +25,7 @@ interface SupportPageProps {
 const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedFaq, setExpandedFaq] = useState<string>('setup');
+  const [expandedSupportCard, setExpandedSupportCard] = useState<string | null>(null);
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -33,6 +34,10 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
     priority: 'medium'
   });
 
+  const toggleSupportCard = (cardId: string) => {
+    setExpandedSupportCard(expandedSupportCard === cardId ? null : cardId);
+  };
+
   const supportOptions = [
     {
       icon: MessageCircle,
@@ -40,7 +45,8 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
       description: 'Get instant help from our support team',
       availability: 'Available 24/7',
       color: 'from-primary-500 to-primary-600',
-      action: 'Start Chat'
+      action: 'Start Chat',
+      id: 'live-chat'
     },
     {
       icon: Mail,
@@ -48,7 +54,8 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
       description: 'Send us a detailed message',
       availability: 'Response within 2 hours',
       color: 'from-success-500 to-success-600',
-      action: 'Send Email'
+      action: 'Send Email',
+      id: 'email-support'
     },
     {
       icon: Phone,
@@ -56,7 +63,8 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
       description: 'Speak directly with our experts',
       availability: 'Mon-Fri 9AM-6PM EST',
       color: 'from-warning-500 to-warning-600',
-      action: 'Call Now'
+      action: 'Call Now',
+      id: 'phone-support'
     },
     {
       icon: Video,
@@ -64,7 +72,8 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
       description: 'Get personalized setup assistance',
       availability: 'By appointment',
       color: 'from-accent-500 to-violet-600',
-      action: 'Schedule'
+      action: 'Schedule',
+      id: 'screen-share'
     }
   ];
 
@@ -394,6 +403,106 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                 >
                   Send Message
                 </motion.button>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleSupportCard(option.id)}
+                  className="w-full mt-2 flex items-center justify-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300 opacity-0 group-hover:opacity-100"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedSupportCard === option.id ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedSupportCard === option.id ? (
+                    <ChevronUp className="w-3 h-3" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedSupportCard === option.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {option.id === 'live-chat' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Live Chat Support</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Instant technical assistance for API integration issues</p>
+                          <p className="text-sm text-neutral-300">• Real-time troubleshooting for workflow automation</p>
+                          <p className="text-sm text-neutral-300">• Screen sharing available for complex setup procedures</p>
+                          <p className="text-sm text-neutral-300">• Multi-language support for global enterprise teams</p>
+                          <p className="text-sm text-neutral-300">• Priority queue for Pro and Enterprise customers</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Available 24/7 via app.yoforex.co.in chat widget
+                        </p>
+                      </div>
+                    )}
+
+                    {option.id === 'email-support' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Email Support Details</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Detailed technical documentation and code examples</p>
+                          <p className="text-sm text-neutral-300">• Step-by-step integration guides for enterprise systems</p>
+                          <p className="text-sm text-neutral-300">• Custom workflow configuration assistance</p>
+                          <p className="text-sm text-neutral-300">• API troubleshooting with log analysis</p>
+                          <p className="text-sm text-neutral-300">• Response within 2-4 hours for priority issues</p>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Email: support@yoforex.co.in with detailed issue description
+                        </p>
+                      </div>
+                    )}
+
+                    {option.id === 'phone-support' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Phone Support Services</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Direct consultation with senior technical engineers</p>
+                          <p className="text-sm text-neutral-300">• Enterprise architecture planning and optimization</p>
+                          <p className="text-sm text-neutral-300">• Escalation procedures for critical system issues</p>
+                          <p className="text-sm text-neutral-300">• Custom SLA discussions for enterprise customers</p>
+                          <p className="text-sm text-neutral-300">• Scheduled calls for ongoing project support</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Business hours: Mon-Fri 9AM-6PM IST | Emergency support for Enterprise
+                        </p>
+                      </div>
+                    )}
+
+                    {option.id === 'screen-share' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Screen Share Assistance</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Personalized setup assistance for complex integrations</p>
+                          <p className="text-sm text-neutral-300">• Live debugging sessions with development team</p>
+                          <p className="text-sm text-neutral-300">• Custom workflow design and optimization</p>
+                          <p className="text-sm text-neutral-300">• Team training sessions for enterprise onboarding</p>
+                          <p className="text-sm text-neutral-300">• Secure remote access with enterprise-grade security</p>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Schedule via app.yoforex.co.in/support | Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleSupportCard(option.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
               </form>
                   <span>support@yoforex.co.in</span>
               <div className="mt-6 pt-6 border-t border-neutral-800/50">

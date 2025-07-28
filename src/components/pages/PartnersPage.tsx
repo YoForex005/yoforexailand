@@ -7,12 +7,24 @@ interface PartnersPageProps {
 }
 
 const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [expandedPartnership, setExpandedPartnership] = useState<string | null>(null);
+
+  const toggleCategory = (categoryId: string) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
+  const togglePartnership = (partnershipId: string) => {
+    setExpandedPartnership(expandedPartnership === partnershipId ? null : partnershipId);
+  };
+
   const partnerCategories = [
     {
       title: 'Cloud Infrastructure',
       description: 'Leading cloud providers ensuring scalability and reliability',
       icon: Cloud,
       color: 'from-primary-500 to-primary-600',
+      id: 'cloud-infrastructure',
       partners: [
         { name: 'Amazon Web Services', description: 'Primary cloud infrastructure and AI services' },
         { name: 'Microsoft Azure', description: 'Enterprise cloud solutions and AI capabilities' },
@@ -24,6 +36,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
       description: 'Trusted partners for enterprise security and compliance',
       icon: Shield,
       color: 'from-success-500 to-success-600',
+      id: 'security-compliance',
       partners: [
         { name: 'SOC 2 Auditors', description: 'Independent security and compliance validation' },
         { name: 'Cybersecurity Consultants', description: 'Ongoing security assessment and monitoring' },
@@ -35,6 +48,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
       description: 'Strategic technology partners and integration providers',
       icon: Code,
       color: 'from-accent-500 to-violet-600',
+      id: 'tech-integrations',
       partners: [
         { name: 'API Gateway Providers', description: 'Scalable API management and orchestration' },
         { name: 'Database Partners', description: 'High-performance data storage solutions' },
@@ -46,6 +60,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
       description: 'Leading AI and data processing technology providers',
       icon: Database,
       color: 'from-warning-500 to-warning-600',
+      id: 'data-ai-partners',
       partners: [
         { name: 'OpenAI', description: 'Advanced language models and AI capabilities' },
         { name: 'Anthropic', description: 'Claude AI models for enterprise applications' },
@@ -58,6 +73,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
     {
       title: 'Technology Partners',
       description: 'Integrate your solutions with our platform through APIs and SDKs',
+      id: 'technology',
       benefits: [
         'Access to YoForex AI developer resources',
         'Joint go-to-market opportunities',
@@ -70,6 +86,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
     {
       title: 'Solution Partners',
       description: 'Build and deliver solutions using YoForex AI platform',
+      id: 'solution',
       benefits: [
         'Partner certification programs',
         'Sales and technical training',
@@ -82,6 +99,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
     {
       title: 'Channel Partners',
       description: 'Resell and distribute YoForex AI to your customer base',
+      id: 'channel',
       benefits: [
         'Competitive partner pricing',
         'Sales enablement and training',
@@ -178,6 +196,106 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                   </div>
                 </div>
 
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleCategory(category.id)}
+                  className="mt-6 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedCategory === category.id ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedCategory === category.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedCategory === category.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {category.id === 'cloud-infrastructure' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Cloud Infrastructure Partnership</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Multi-cloud architecture ensuring 99.9% uptime across regions</p>
+                          <p className="text-sm text-neutral-300">• Auto-scaling infrastructure handling 1M+ daily operations</p>
+                          <p className="text-sm text-neutral-300">• Global CDN and edge computing for optimal performance</p>
+                          <p className="text-sm text-neutral-300">• Disaster recovery and backup systems across multiple zones</p>
+                          <p className="text-sm text-neutral-300">• Cost optimization through intelligent resource management</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Enterprise cloud partnerships: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {category.id === 'security-compliance' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Security & Compliance Standards</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• SOC 2 Type II compliance with annual third-party audits</p>
+                          <p className="text-sm text-neutral-300">• GDPR, CCPA, and regional data protection compliance</p>
+                          <p className="text-sm text-neutral-300">• End-to-end encryption for all data transmissions</p>
+                          <p className="text-sm text-neutral-300">• Regular penetration testing and vulnerability assessments</p>
+                          <p className="text-sm text-neutral-300">• Enterprise-grade access controls and audit logging</p>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Security documentation available for enterprise customers
+                        </p>
+                      </div>
+                    )}
+
+                    {category.id === 'tech-integrations' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Technology Integration Ecosystem</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• RESTful APIs with comprehensive documentation and SDKs</p>
+                          <p className="text-sm text-neutral-300">• Webhook support for real-time event notifications</p>
+                          <p className="text-sm text-neutral-300">• Enterprise database connectors (PostgreSQL, MongoDB, etc.)</p>
+                          <p className="text-sm text-neutral-300">• Business intelligence tool integrations (Tableau, Power BI)</p>
+                          <p className="text-sm text-neutral-300">• Custom integration development for enterprise requirements</p>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Integration support: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {category.id === 'data-ai-partners' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">AI & Data Processing Partners</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Access to 392+ AI models from leading providers</p>
+                          <p className="text-sm text-neutral-300">• Real-time model performance monitoring and optimization</p>
+                          <p className="text-sm text-neutral-300">• Intelligent cost optimization reducing API expenses by 60-80%</p>
+                          <p className="text-sm text-neutral-300">• Custom model training and fine-tuning capabilities</p>
+                          <p className="text-sm text-neutral-300">• Enterprise data processing with privacy-first architecture</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleCategory(category.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
+
                 <div className="space-y-4">
                   {category.partners.map((partner, partnerIndex) => (
                     <div key={partner.name} className="p-4 bg-neutral-800/30 rounded-lg">
@@ -235,6 +353,126 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
+
+                {/* Enhanced Learn More Button */}
+                <motion.button
+                  onClick={() => togglePartnership(type.id)}
+                  className="w-full mt-3 flex items-center justify-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedPartnership === type.id ? 'Show Less Details' : 'See Full Details'}
+                  </span>
+                  {expandedPartnership === type.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedPartnership === type.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {type.id === 'technology' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Technology Partnership Program</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-primary-400 font-medium mb-2">Integration Benefits</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Comprehensive API documentation and SDKs</li>
+                              <li>• Dedicated technical support and integration assistance</li>
+                              <li>• Co-marketing opportunities and joint case studies</li>
+                              <li>• Early access to new features and beta releases</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-success-400 font-medium mb-2">Technical Resources</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Sandbox environment for development and testing</li>
+                              <li>• Technical workshops and training sessions</li>
+                              <li>• Direct access to engineering team for complex integrations</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Technology partnerships: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {type.id === 'solution' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Solution Partner Program</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-success-400 font-medium mb-2">Business Development</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Lead sharing and referral programs with revenue sharing</li>
+                              <li>• Joint go-to-market strategies and sales enablement</li>
+                              <li>• Co-branded marketing materials and case studies</li>
+                              <li>• Access to enterprise customer base for solution deployment</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-accent-400 font-medium mb-2">Certification & Training</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Comprehensive certification program for technical teams</li>
+                              <li>• Regular training updates on new features and capabilities</li>
+                              <li>• Best practices workshops and implementation guidance</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Solution partner inquiries: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {type.id === 'channel' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Channel Partner Program</h4>
+                        <div className="space-y-3 mb-4">
+                          <div>
+                            <h5 className="text-accent-400 font-medium mb-2">Revenue Opportunities</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Competitive partner pricing with attractive margins</li>
+                              <li>• Recurring revenue model with long-term customer relationships</li>
+                              <li>• Performance-based incentives and bonus structures</li>
+                              <li>• Exclusive territory rights for qualified partners</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h5 className="text-warning-400 font-medium mb-2">Support & Resources</h5>
+                            <ul className="space-y-1 text-sm text-neutral-300">
+                              <li>• Dedicated partner success manager and technical support</li>
+                              <li>• Marketing development funds and co-marketing opportunities</li>
+                              <li>• Sales training and enablement programs</li>
+                            </ul>
+                          </div>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Channel partnerships: Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => togglePartnership(type.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse Details
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>

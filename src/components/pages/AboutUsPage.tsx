@@ -21,30 +21,45 @@ interface AboutUsPageProps {
 }
 
 const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
+  const [expandedValue, setExpandedValue] = useState<string | null>(null);
+  const [expandedLeader, setExpandedLeader] = useState<string | null>(null);
+
+  const toggleValue = (valueId: string) => {
+    setExpandedValue(expandedValue === valueId ? null : valueId);
+  };
+
+  const toggleLeader = (leaderId: string) => {
+    setExpandedLeader(expandedLeader === leaderId ? null : leaderId);
+  };
+
   const values = [
     {
       icon: Cpu,
       title: 'Innovation First',
       description: 'We push the boundaries of AI technology to deliver cutting-edge solutions for modern businesses.',
-      color: 'from-primary-500 to-primary-600'
+      color: 'from-primary-500 to-primary-600',
+      id: 'innovation'
     },
     {
       icon: Shield,
       title: 'Security & Trust',
       description: 'Enterprise-grade security and compliance are at the core of everything we build.',
-      color: 'from-success-500 to-success-600'
+      color: 'from-success-500 to-success-600',
+      id: 'security'
     },
     {
       icon: Users,
       title: 'Customer Success',
       description: 'Our customers\' success drives our innovation and shapes our product development.',
-      color: 'from-accent-500 to-violet-600'
+      color: 'from-accent-500 to-violet-600',
+      id: 'customer-success'
     },
     {
       icon: Globe,
       title: 'Global Impact',
       description: 'Building solutions that scale globally while maintaining local relevance and compliance.',
-      color: 'from-warning-500 to-warning-600'
+      color: 'from-warning-500 to-warning-600',
+      id: 'global-impact'
     }
   ];
 
@@ -188,6 +203,106 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
                 </motion.div>
                 <h3 className="text-lg font-bold text-white mb-3">{value.title}</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed">{value.description}</p>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleValue(value.id)}
+                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedValue === value.id ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedValue === value.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedValue === value.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {value.id === 'innovation' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Innovation Leadership</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Research and development team of 15+ AI specialists</p>
+                          <p className="text-sm text-neutral-300">• 8 patents filed in workflow automation and AI orchestration</p>
+                          <p className="text-sm text-neutral-300">• Partnerships with leading AI research institutions</p>
+                          <p className="text-sm text-neutral-300">• Continuous integration of latest AI model releases</p>
+                          <p className="text-sm text-neutral-300">• Open-source contributions to enterprise automation tools</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Innovation partnerships: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'security' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Enterprise Security Standards</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• SOC 2 Type II compliance with annual audits</p>
+                          <p className="text-sm text-neutral-300">• End-to-end encryption for all data transmissions</p>
+                          <p className="text-sm text-neutral-300">• Multi-factor authentication and SSO integration</p>
+                          <p className="text-sm text-neutral-300">• Regular penetration testing and vulnerability assessments</p>
+                          <p className="text-sm text-neutral-300">• GDPR and regional compliance frameworks</p>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Security documentation available for enterprise customers
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'customer-success' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Customer-Centric Approach</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Dedicated customer success managers for enterprise accounts</p>
+                          <p className="text-sm text-neutral-300">• Quarterly business reviews and optimization sessions</p>
+                          <p className="text-sm text-neutral-300">• Custom feature development based on customer feedback</p>
+                          <p className="text-sm text-neutral-300">• 24/7 technical support with guaranteed response times</p>
+                          <p className="text-sm text-neutral-300">• Comprehensive onboarding and training programs</p>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Customer success team: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {value.id === 'global-impact' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Global Reach & Impact</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Serving customers across 50+ countries worldwide</p>
+                          <p className="text-sm text-neutral-300">• Multi-region cloud infrastructure for global performance</p>
+                          <p className="text-sm text-neutral-300">• Localized compliance and data residency options</p>
+                          <p className="text-sm text-neutral-300">• 24/7 support across all major time zones</p>
+                          <p className="text-sm text-neutral-300">• Cultural and linguistic adaptation for regional markets</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Global expansion: Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleValue(value.id)}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -230,6 +345,106 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
                 <h3 className="text-lg font-bold text-white mb-1">{leader.name}</h3>
                 <p className="text-primary-400 text-sm mb-3">{leader.role}</p>
                 <p className="text-neutral-400 text-xs leading-relaxed">{leader.bio}</p>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleLeader(leader.name.toLowerCase().replace(' ', '-'))}
+                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedLeader === leader.name.toLowerCase().replace(' ', '-') ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedLeader === leader.name.toLowerCase().replace(' ', '-') ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedLeader === leader.name.toLowerCase().replace(' ', '-') && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {leader.name === 'Rajesh Kumar' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Leadership Experience</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Led engineering teams of 100+ developers at scale</p>
+                          <p className="text-sm text-neutral-300">• Architected platforms serving 10M+ daily active users</p>
+                          <p className="text-sm text-neutral-300">• Expert in enterprise SaaS scaling and infrastructure</p>
+                          <p className="text-sm text-neutral-300">• Published speaker at major technology conferences</p>
+                          <p className="text-sm text-neutral-300">• Advisor to multiple fintech and AI startups</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Connect via LinkedIn or email: support@yoforex.co.in
+                        </p>
+                      </div>
+                    )}
+
+                    {leader.name === 'Priya Sharma' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Technical Expertise</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• 20+ published papers in top-tier AI conferences</p>
+                          <p className="text-sm text-neutral-300">• Former Google Research scientist in ML infrastructure</p>
+                          <p className="text-sm text-neutral-300">• Expert in distributed systems and AI model optimization</p>
+                          <p className="text-sm text-neutral-300">• Holds 8 patents in machine learning algorithms</p>
+                          <p className="text-sm text-neutral-300">• PhD thesis on "Scalable AI for Enterprise Applications"</p>
+                        </div>
+                        <p className="text-success-400 text-sm">
+                          Technical leadership driving our AI innovation roadmap
+                        </p>
+                      </div>
+                    )}
+
+                    {leader.name === 'Amit Patel' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Product Strategy</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Built and launched 5+ enterprise SaaS products</p>
+                          <p className="text-sm text-neutral-300">• Expert in API design and developer experience</p>
+                          <p className="text-sm text-neutral-300">• Led product teams at major cloud infrastructure companies</p>
+                          <p className="text-sm text-neutral-300">• Specializes in enterprise workflow automation</p>
+                          <p className="text-sm text-neutral-300">• Stanford MS in Computer Science with focus on HCI</p>
+                        </div>
+                        <p className="text-accent-400 text-sm">
+                          Product strategy and roadmap leadership
+                        </p>
+                      </div>
+                    )}
+
+                    {leader.name === 'Sneha Gupta' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Operations Excellence</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• 10+ years scaling technology companies from startup to IPO</p>
+                          <p className="text-sm text-neutral-300">• Former McKinsey consultant specializing in tech operations</p>
+                          <p className="text-sm text-neutral-300">• Expert in global expansion and regulatory compliance</p>
+                          <p className="text-sm text-neutral-300">• Led operations for companies serving 50M+ users</p>
+                          <p className="text-sm text-neutral-300">• MBA from Wharton with focus on technology management</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Operations leadership ensuring 99.9% platform reliability
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleLeader(leader.name.toLowerCase().replace(' ', '-'))}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>
