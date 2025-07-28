@@ -226,7 +226,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 {/* Hover Tooltip */}
                 <AnimatePresence>
                 <motion.div className="mt-2 flex items-center justify-center">
-                  {expandedMetric === 'traders' ? (
+                  {hoveredMetric === 'traders' ? (
                     <ChevronUp className="w-3 h-3 text-primary-400" />
                   ) : (
                     <ChevronDown className="w-3 h-3 text-primary-400" />
@@ -264,7 +264,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 {/* Hover Tooltip */}
                 <AnimatePresence>
                 <motion.div className="mt-2 flex items-center justify-center">
-                  {expandedMetric === 'analyses' ? (
+                  {hoveredMetric === 'analyses' ? (
                     <ChevronUp className="w-3 h-3 text-success-400" />
                   ) : (
                     <ChevronDown className="w-3 h-3 text-success-400" />
@@ -302,7 +302,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 {/* Hover Tooltip */}
                 <AnimatePresence>
                 <motion.div className="mt-2 flex items-center justify-center">
-                  {expandedMetric === 'winRate' ? (
+                  {hoveredMetric === 'winRate' ? (
                     <ChevronUp className="w-3 h-3 text-accent-400" />
                   ) : (
                     <ChevronDown className="w-3 h-3 text-accent-400" />
@@ -340,7 +340,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 {/* Hover Tooltip */}
                 <AnimatePresence>
                 <motion.div className="mt-2 flex items-center justify-center">
-                  {expandedMetric === 'uptime' ? (
+                  {hoveredMetric === 'uptime' ? (
                     <ChevronUp className="w-3 h-3 text-primary-400" />
                   ) : (
                     <ChevronDown className="w-3 h-3 text-primary-400" />
