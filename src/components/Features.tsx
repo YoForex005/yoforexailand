@@ -162,6 +162,17 @@ const Features: React.FC = () => {
               <motion.div
                 onHoverStart={() => setHoveredCard(feature.id)}
                 onHoverEnd={() => setHoveredCard(null)}
+                onClick={() => setHoveredCard(hoveredCard === feature.id ? null : feature.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setHoveredCard(hoveredCard === feature.id ? null : feature.id);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-expanded={hoveredCard === feature.id}
+                aria-label={`${feature.title} - Click to view details`}
               >
               <div className="relative bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden">
                 {/* Background Glow */}
@@ -197,7 +208,7 @@ const Features: React.FC = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl"
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl max-w-sm mx-auto"
                   >
                     <div className="space-y-3">
                       {feature.expandedContent.details.map((detail, index) => (
@@ -210,11 +221,21 @@ const Features: React.FC = () => {
                     <div className="mt-3 pt-3 border-t border-neutral-700/50">
                       <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
                     </div>
+                    
+                    {/* Mobile tap indicator */}
+                    <div className="md:hidden mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-neutral-500 text-xs text-center">Tap card to toggle details</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           ))}
+        </div>
+        
+        {/* Mobile accessibility note */}
+        <div className="md:hidden mt-8 text-center">
+          <p className="text-neutral-400 text-sm">Tap any feature card to view technical details</p>
         </div>
 
         {/* Live Demo Teaser */}

@@ -131,6 +131,13 @@ const HowItWorks: React.FC = () => {
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{step.description}</p>
+                
+                {/* Visual indicator for interactivity */}
+                <div className="mt-4 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-primary-400 opacity-50" />
+                  <div className="w-2 h-2 rounded-full bg-primary-400 opacity-30 mx-1" />
+                  <div className="w-2 h-2 rounded-full bg-primary-400 opacity-50" />
+                </div>
               </div>
               </motion.div>
 
@@ -142,7 +149,7 @@ const HowItWorks: React.FC = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl"
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl max-w-sm mx-auto"
                   >
                     <div className="space-y-2">
                       {step.expandedContent.details.map((detail, index) => (
@@ -155,11 +162,21 @@ const HowItWorks: React.FC = () => {
                     <div className="mt-3 pt-3 border-t border-neutral-700/50">
                       <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
                     </div>
+                    
+                    {/* Mobile tap indicator */}
+                    <div className="md:hidden mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-neutral-500 text-xs text-center">Tap card to toggle details</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           ))}
+        </div>
+        
+        {/* Mobile accessibility note */}
+        <div className="md:hidden mt-8 text-center">
+          <p className="text-neutral-400 text-sm">Tap any step to view detailed process information</p>
         </div>
 
         {/* Bottom CTA */}

@@ -219,26 +219,20 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 whileHover={{ scale: 1.02 }}
                 onHoverStart={() => setHoveredMetric('traders')}
                 onHoverEnd={() => setHoveredMetric(null)}
+                onClick={() => setHoveredMetric(hoveredMetric === 'traders' ? null : 'traders')}
               >
                 <div className="text-2xl font-bold text-primary-400">{metrics.traders.toLocaleString()}</div>
                 <div className="text-xs text-neutral-400">Active Users</div>
                 
                 {/* Hover Tooltip */}
                 <AnimatePresence>
-                <motion.div className="mt-2 flex items-center justify-center">
-                  {hoveredMetric === 'traders' ? (
-                    <ChevronUp className="w-3 h-3 text-primary-400" />
-                  ) : (
-                    <ChevronDown className="w-3 h-3 text-primary-400" />
-                  )}
-                </motion.div>
                   {hoveredMetric === 'traders' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64"
+                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64 max-w-sm mx-auto"
                     >
                       <div className="space-y-2">
                         {metricDetails.traders.details.map((detail, index) => (
@@ -251,32 +245,35 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                     </motion.div>
                   )}
                 </AnimatePresence>
+                
+                {/* Visual indicator */}
+                <motion.div className="mt-2 flex items-center justify-center">
+                  {hoveredMetric === 'traders' ? (
+                    <ChevronUp className="w-3 h-3 text-primary-400" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-primary-400" />
+                  )}
+                </motion.div>
               </motion.div>
               <motion.div 
                 className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-lg p-4 text-center cursor-pointer hover:border-neutral-700/50 transition-all duration-300 relative"
                 whileHover={{ scale: 1.02 }}
                 onHoverStart={() => setHoveredMetric('analyses')}
                 onHoverEnd={() => setHoveredMetric(null)}
+                onClick={() => setHoveredMetric(hoveredMetric === 'analyses' ? null : 'analyses')}
               >
                 <div className="text-2xl font-bold text-success-400">{metrics.analyses.toLocaleString()}</div>
                 <div className="text-xs text-neutral-400">Analyses Done</div>
                 
                 {/* Hover Tooltip */}
                 <AnimatePresence>
-                <motion.div className="mt-2 flex items-center justify-center">
-                  {hoveredMetric === 'analyses' ? (
-                    <ChevronUp className="w-3 h-3 text-success-400" />
-                  ) : (
-                    <ChevronDown className="w-3 h-3 text-success-400" />
-                  )}
-                </motion.div>
                   {hoveredMetric === 'analyses' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64"
+                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64 max-w-sm mx-auto"
                     >
                       <div className="space-y-2">
                         {metricDetails.analyses.details.map((detail, index) => (
@@ -289,32 +286,35 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                     </motion.div>
                   )}
                 </AnimatePresence>
+                
+                {/* Visual indicator */}
+                <motion.div className="mt-2 flex items-center justify-center">
+                  {hoveredMetric === 'analyses' ? (
+                    <ChevronUp className="w-3 h-3 text-success-400" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-success-400" />
+                  )}
+                </motion.div>
               </motion.div>
               <motion.div 
                 className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-lg p-4 text-center cursor-pointer hover:border-neutral-700/50 transition-all duration-300 relative"
                 whileHover={{ scale: 1.02 }}
                 onHoverStart={() => setHoveredMetric('winRate')}
                 onHoverEnd={() => setHoveredMetric(null)}
+                onClick={() => setHoveredMetric(hoveredMetric === 'winRate' ? null : 'winRate')}
               >
                 <div className="text-2xl font-bold text-accent-400">{metrics.winRate.toFixed(1)}%</div>
                 <div className="text-xs text-neutral-400">Success Rate</div>
                 
                 {/* Hover Tooltip */}
                 <AnimatePresence>
-                <motion.div className="mt-2 flex items-center justify-center">
-                  {hoveredMetric === 'winRate' ? (
-                    <ChevronUp className="w-3 h-3 text-accent-400" />
-                  ) : (
-                    <ChevronDown className="w-3 h-3 text-accent-400" />
-                  )}
-                </motion.div>
                   {hoveredMetric === 'winRate' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64"
+                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64 max-w-sm mx-auto"
                     >
                       <div className="space-y-2">
                         {metricDetails.winRate.details.map((detail, index) => (
@@ -327,32 +327,35 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                     </motion.div>
                   )}
                 </AnimatePresence>
+                
+                {/* Visual indicator */}
+                <motion.div className="mt-2 flex items-center justify-center">
+                  {hoveredMetric === 'winRate' ? (
+                    <ChevronUp className="w-3 h-3 text-accent-400" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-accent-400" />
+                  )}
+                </motion.div>
               </motion.div>
               <motion.div 
                 className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-lg p-4 text-center cursor-pointer hover:border-neutral-700/50 transition-all duration-300 relative"
                 whileHover={{ scale: 1.02 }}
                 onHoverStart={() => setHoveredMetric('uptime')}
                 onHoverEnd={() => setHoveredMetric(null)}
+                onClick={() => setHoveredMetric(hoveredMetric === 'uptime' ? null : 'uptime')}
               >
                 <div className="text-2xl font-bold text-primary-400">{metrics.uptime.toFixed(2)}%</div>
                 <div className="text-xs text-neutral-400">Uptime</div>
                 
                 {/* Hover Tooltip */}
                 <AnimatePresence>
-                <motion.div className="mt-2 flex items-center justify-center">
-                  {hoveredMetric === 'uptime' ? (
-                    <ChevronUp className="w-3 h-3 text-primary-400" />
-                  ) : (
-                    <ChevronDown className="w-3 h-3 text-primary-400" />
-                  )}
-                </motion.div>
                   {hoveredMetric === 'uptime' && (
                     <motion.div
                       initial={{ opacity: 0, y: 10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64"
+                      className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-3 shadow-2xl min-w-64 max-w-sm mx-auto"
                     >
                       <div className="space-y-2">
                         {metricDetails.uptime.details.map((detail, index) => (
@@ -365,8 +368,22 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                     </motion.div>
                   )}
                 </AnimatePresence>
+                
+                {/* Visual indicator */}
+                <motion.div className="mt-2 flex items-center justify-center">
+                  {hoveredMetric === 'uptime' ? (
+                    <ChevronUp className="w-3 h-3 text-primary-400" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-primary-400" />
+                  )}
+                </motion.div>
               </motion.div>
             </motion.div>
+            
+            {/* Mobile accessibility note */}
+            <div className="md:hidden mt-4 text-center">
+              <p className="text-neutral-400 text-sm">Tap any metric to view detailed information</p>
+            </div>
           </motion.div>
 
           {/* Right Column - 3D Visual */}

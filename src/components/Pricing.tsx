@@ -322,7 +322,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl"
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl max-w-sm mx-auto"
                   >
                     <div className="space-y-2 mb-3">
                       {plan.expandedContent.details.map((detail, index) => (
@@ -335,6 +335,11 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     <div className="pt-3 border-t border-neutral-700/50">
                       <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
                     </div>
+                    
+                    {/* Mobile tap indicator */}
+                    <div className="md:hidden mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-neutral-500 text-xs text-center">Tap card to toggle details</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -344,6 +349,11 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
               </div>
             </motion.div>
           ))}
+        </div>
+        
+        {/* Mobile accessibility note */}
+        <div className="md:hidden mt-8 text-center">
+          <p className="text-neutral-400 text-sm">Tap any pricing card to view detailed features</p>
         </div>
 
         {/* Additional Info */}
