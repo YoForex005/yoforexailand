@@ -15,11 +15,7 @@ import {
 } from 'lucide-react';
 
 const Features: React.FC = () => {
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-
-  const toggleCard = (cardId: string) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId);
-  };
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const features = [
     {
@@ -30,7 +26,6 @@ const Features: React.FC = () => {
       color: 'from-primary-500 to-primary-600',
       delay: 0.1,
       expandedContent: {
-        title: 'Advanced API Management',
         details: [
           'Multi-region cloud infrastructure with automatic failovers',
           'Real-time monitoring and health checks for all API endpoints',
@@ -39,7 +34,6 @@ const Features: React.FC = () => {
           'Cost optimization through smart provider selection',
           'Enterprise-grade security with SOC 2 compliance'
         ],
-        contact: 'For custom API orchestration setup, contact support@yoforex.co.in'
       }
     },
     {
@@ -50,7 +44,6 @@ const Features: React.FC = () => {
       color: 'from-success-500 to-success-600',
       delay: 0.2,
       expandedContent: {
-        title: 'Workflow Automation Engine',
         details: [
           'Real-time data processing with sub-second latency',
           'Smart queue management for high-volume operations',
@@ -59,7 +52,6 @@ const Features: React.FC = () => {
           'Integration with enterprise messaging systems',
           'Comprehensive audit trails for compliance'
         ],
-        contact: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
       }
     },
     {
@@ -70,7 +62,6 @@ const Features: React.FC = () => {
       color: 'from-accent-500 to-violet-600',
       delay: 0.3,
       expandedContent: {
-        title: 'Intelligent Resource Management',
         details: [
           'Dynamic resource allocation based on workload patterns',
           'Automated scaling for peak demand periods',
@@ -79,7 +70,6 @@ const Features: React.FC = () => {
           'Integration with cloud infrastructure providers',
           'Real-time alerts for resource threshold breaches'
         ],
-        contact: 'For enterprise resource management: support@yoforex.co.in'
       }
     },
     {
@@ -90,7 +80,6 @@ const Features: React.FC = () => {
       color: 'from-warning-500 to-warning-600',
       delay: 0.4,
       expandedContent: {
-        title: 'Transparent AI Analytics',
         details: [
           'Detailed reasoning chains for all AI-generated insights',
           'Source attribution and confidence scoring (0-5 scale)',
@@ -99,7 +88,6 @@ const Features: React.FC = () => {
           'Audit-ready documentation for compliance',
           'Custom explainability reports for stakeholders'
         ],
-        contact: 'Learn more about AI transparency: support@yoforex.co.in'
       }
     },
     {
@@ -110,7 +98,6 @@ const Features: React.FC = () => {
       color: 'from-error-500 to-error-600',
       delay: 0.5,
       expandedContent: {
-        title: 'Automated Error Recovery',
         details: [
           'Intelligent error detection and classification',
           'Automated rollback and recovery procedures',
@@ -119,7 +106,6 @@ const Features: React.FC = () => {
           'Comprehensive backup and disaster recovery',
           'Real-time incident response and notification'
         ],
-        contact: 'For disaster recovery planning: support@yoforex.co.in'
       }
     },
     {
@@ -130,7 +116,6 @@ const Features: React.FC = () => {
       color: 'from-neutral-600 to-neutral-700',
       delay: 0.6,
       expandedContent: {
-        title: 'Intelligent Data Enrichment',
         details: [
           'Real-time web scraping from 50+ trusted sources',
           'Natural language processing for content analysis',
@@ -139,7 +124,6 @@ const Features: React.FC = () => {
           'Integration with external APIs and databases',
           'Custom search parameters and filtering'
         ],
-        contact: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
       }
     }
   ];
@@ -175,6 +159,10 @@ const Features: React.FC = () => {
               className="group relative"
             >
               {/* Card */}
+              <motion.div
+                onHoverStart={() => setHoveredCard(feature.id)}
+                onHoverEnd={() => setHoveredCard(null)}
+              >
               <div className="relative bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden">
                 {/* Background Glow */}
                 <motion.div
@@ -198,72 +186,33 @@ const Features: React.FC = () => {
                 <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
                   {feature.description}
                 </p>
+              </div>
+              </motion.div>
 
-                {/* Learn More Button */}
-                <motion.button
-                  onClick={() => toggleCard(feature.id)}
-                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="text-sm font-medium">
-                    {expandedCard === feature.id ? 'Show Less' : 'Learn More'}
-                  </span>
-                  {expandedCard === feature.id ? (
-                    <ChevronUp className="w-4 h-4" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4" />
-                  )}
-                </motion.button>
-
-                {/* Expanded Content */}
-                {expandedCard === feature.id && (
+              {/* Hover Tooltip */}
+              <AnimatePresence>
+                {hoveredCard === feature.id && (
                   <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-4 pt-4 border-t border-neutral-700/50"
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl"
                   >
-                    <h4 className="text-lg font-semibold text-white mb-3">
-                      {feature.expandedContent.title}
-                    </h4>
-                    <ul className="space-y-2 mb-4">
+                    <div className="space-y-3">
                       {feature.expandedContent.details.map((detail, index) => (
-                        <li key={index} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0" />
+                        <div key={index} className="flex items-start space-x-3 p-2 rounded-lg bg-neutral-800/30">
+                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.color} mt-2 flex-shrink-0`} />
                           <span className="text-neutral-300 text-sm leading-relaxed">{detail}</span>
-                        </li>
+                        </div>
                       ))}
-                    </ul>
-                    <p className="text-primary-400 text-sm mb-4">
-                      {feature.expandedContent.contact}
-                    </p>
-                    <motion.button
-                      onClick={() => toggleCard(feature.id)}
-                      className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      Collapse
-                    </motion.button>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
+                    </div>
                   </motion.div>
                 )}
-
-                {/* Animated Border */}
-                <motion.div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
-                  style={{ 
-                    background: `linear-gradient(90deg, transparent, currentColor, transparent)`,
-                    backgroundSize: '200% 2px',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '-100% 0'
-                  }}
-                  whileHover={{
-                    backgroundPosition: '100% 0'
-                  }}
-                  transition={{ duration: 1 }}
-                />
-              </div>
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

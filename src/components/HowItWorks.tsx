@@ -4,11 +4,7 @@ import { Upload, Cpu, TrendingUp, Zap, ChevronDown, ChevronUp } from 'lucide-rea
 import { useState } from 'react';
 
 const HowItWorks: React.FC = () => {
-  const [expandedStep, setExpandedStep] = useState<string | null>(null);
-
-  const toggleStep = (stepId: string) => {
-    setExpandedStep(expandedStep === stepId ? null : stepId);
-  };
+  const [hoveredStep, setHoveredStep] = useState<string | null>(null);
 
   const steps = [
     {
@@ -19,7 +15,6 @@ const HowItWorks: React.FC = () => {
       color: 'from-primary-500 to-primary-600',
       delay: 0.2,
       expandedContent: {
-        title: 'Flexible Operation Modes',
         details: [
           'Automated Mode: Continuous workflow processing with minimal human intervention',
           'Interactive Assistant Mode: Real-time AI chat for on-demand analytics',
@@ -28,7 +23,6 @@ const HowItWorks: React.FC = () => {
           'Role-based access controls for team collaboration',
           'Integration with existing enterprise systems and databases'
         ],
-        contact: 'For mode configuration assistance: support@yoforex.co.in'
       }
     },
     {
@@ -39,7 +33,6 @@ const HowItWorks: React.FC = () => {
       color: 'from-accent-500 to-violet-600',
       delay: 0.4,
       expandedContent: {
-        title: 'Comprehensive AI Model Library',
         details: [
           '67 free AI models including DeepSeek R1, Gemini 2.5 Pro, Llama variants',
           '325 premium models: Grok 4, OpenAI O3, Claude Opus 4, and more',
@@ -48,7 +41,6 @@ const HowItWorks: React.FC = () => {
           'Cost optimization through smart model switching (60-80% savings)',
           'Custom model training for enterprise-specific use cases'
         ],
-        contact: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
       }
     },
     {
@@ -59,7 +51,6 @@ const HowItWorks: React.FC = () => {
       color: 'from-success-500 to-success-600',
       delay: 0.6,
       expandedContent: {
-        title: 'Advanced Workflow Execution',
         details: [
           'Automated workflow execution with intelligent scheduling',
           'Real-time monitoring and performance optimization',
@@ -68,7 +59,6 @@ const HowItWorks: React.FC = () => {
           'Comprehensive audit trails for compliance',
           'Integration with enterprise messaging and monitoring systems'
         ],
-        contact: 'For workflow automation setup: support@yoforex.co.in'
       }
     }
   ];
@@ -104,6 +94,10 @@ const HowItWorks: React.FC = () => {
               className="relative group"
             >
               {/* Connecting Line (Desktop) */}
+              <motion.div
+                onHoverStart={() => setHoveredStep(step.id)}
+                onHoverEnd={() => setHoveredStep(null)}
+              >
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-neutral-700 to-transparent z-0">
                   <motion.div
@@ -137,63 +131,33 @@ const HowItWorks: React.FC = () => {
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{step.description}</p>
+              </div>
+              </motion.div>
 
-                {/* Learn More Button */}
-                <motion.button
-                  onClick={() => toggleStep(step.id)}
-                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="text-sm font-medium">
-                    {expandedStep === step.id ? 'Show Less' : 'Learn More'}
-                  </span>
-                  {expandedStep === step.id ? (
-                    <ChevronUp className="w-4 h-4" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4" />
-                  )}
-                </motion.button>
-
-                {/* Expanded Content */}
-                {expandedStep === step.id && (
+              {/* Hover Tooltip */}
+              <AnimatePresence>
+                {hoveredStep === step.id && (
                   <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl"
                   >
-                    <h4 className="text-lg font-semibold text-white mb-3">
-                      {step.expandedContent.title}
-                    </h4>
-                    <ul className="space-y-2 mb-4">
+                    <div className="space-y-2">
                       {step.expandedContent.details.map((detail, index) => (
-                        <li key={index} className="flex items-start space-x-2">
+                        <div key={index} className="flex items-start space-x-2">
                           <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0" />
                           <span className="text-neutral-300 text-sm leading-relaxed">{detail}</span>
-                        </li>
+                        </div>
                       ))}
-                    </ul>
-                    <p className="text-primary-400 text-sm mb-4">
-                      {step.expandedContent.contact}
-                    </p>
-                    <motion.button
-                      onClick={() => toggleStep(step.id)}
-                      className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      Collapse
-                    </motion.button>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
+                    </div>
                   </motion.div>
                 )}
-
-                {/* Hover Effect */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${step.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                  whileHover={{ scale: 1.02 }}
-                />
-              </div>
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
