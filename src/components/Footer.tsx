@@ -2,32 +2,48 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigateToResources: () => void;
+  onNavigateToUserManual: () => void;
+  onNavigateToBlog: () => void;
+  onNavigateToCommunity: () => void;
+  onNavigateToSupport: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({
+  onNavigateToResources,
+  onNavigateToUserManual,
+  onNavigateToBlog,
+  onNavigateToCommunity,
+  onNavigateToSupport
+}) => {
   const footerSections = [
     {
       title: 'Product',
       links: [
         { name: 'Features', href: '#features' },
         { name: 'Pricing', href: '#pricing' },
-        { name: 'API Documentation', href: '#api' },
+        { name: 'API Documentation', href: '#api', onClick: onNavigateToSupport },
         { name: 'Integrations', href: '#integrations' }
       ]
     },
     {
       title: 'Resources',
       links: [
-        { name: 'Blog', href: '#blog' },
+        { name: 'Blog', href: '#blog', onClick: onNavigateToBlog },
+        { name: 'User Manual', href: '#manual', onClick: onNavigateToUserManual },
         { name: 'Case Studies', href: '#case-studies' },
         { name: 'Whitepapers', href: '#whitepapers' },
-        { name: 'Webinars', href: '#webinars' }
+        { name: 'Webinars', href: '#webinars' },
+        { name: 'All Resources', href: '#resources', onClick: onNavigateToResources }
       ]
     },
     {
       title: 'Support',
       links: [
-        { name: 'Help Center', href: '#help' },
-        { name: 'Community Forum', href: '#forum' },
-        { name: 'Contact Support', href: '#support' },
+        { name: 'Help Center', href: '#help', onClick: onNavigateToSupport },
+        { name: 'Community Forum', href: '#forum', onClick: onNavigateToCommunity },
+        { name: 'Contact Support', href: '#support', onClick: onNavigateToSupport },
         { name: 'Status Page', href: '#status' }
       ]
     },
@@ -114,6 +130,12 @@ const Footer: React.FC = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
+                      onClick={(e) => {
+                        if (link.onClick) {
+                          e.preventDefault();
+                          link.onClick();
+                        }
+                      }}
                       className="text-neutral-400 hover:text-primary-400 transition-colors duration-200"
                     >
                       {link.name}

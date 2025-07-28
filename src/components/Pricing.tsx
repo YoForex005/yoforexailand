@@ -22,9 +22,12 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
         'Single-model AI analysis',
         'Basic TP/SL management',
         '100 chart analyses/month',
+        'Access to 67 free AI models',
+        'API cost reduction mode',
         'Email support',
         'Mobile app access',
-        'Basic risk management'
+        'Basic risk management',
+        'Community access'
       ],
       cta: 'Start Free Trial',
       popular: false
@@ -40,12 +43,16 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
         'Full multi-model consensus',
         'Advanced AI Position Management',
         'Unlimited chart analyses',
+        'Access to all 392 AI models',
+        '60-80% API cost savings',
         'Pending orders & zero slippage',
         'Real-time web search integration',
         'Recovery mode trading',
         'Priority support',
+        'Free setup assistance',
         'API access',
-        'Custom indicators'
+        'Custom indicators',
+        'Private community access'
       ],
       cta: 'Start Pro Trial',
       popular: true
@@ -59,14 +66,16 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
       color: 'from-success-500 to-success-600',
       features: [
         'Everything in Pro',
+        'Dedicated AI model training',
+        'Custom API integrations',
         'White-label solutions',
-        'Custom AI model training',
         'Dedicated account manager',
+        'Free professional setup',
         '99.9% SLA guarantee',
         'Advanced analytics dashboard',
         'Team collaboration tools',
-        'Custom integrations',
-        'Priority feature requests'
+        'Priority feature requests',
+        'VIP community access'
       ],
       cta: 'Contact Sales',
       popular: false

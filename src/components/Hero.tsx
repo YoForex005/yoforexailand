@@ -127,7 +127,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 transition={{ delay: 0.4 }}
                 className="text-xl text-neutral-300 leading-relaxed max-w-2xl"
               >
-                Upload your chart—YoForex AI auto-routes through Grok, OpenAI, Gemini, Claude, Mistral, DeepSeek & more—then delivers actionable trades with a confidence index (1–5).
+                Revolutionary dual-function system combining fully automated AI-powered trading signals with an interactive AI assistant. Access 392+ AI models including dozens of free options from Grok 4, DeepSeek R1, OpenAI O3, Claude Opus 4, and Gemini 2.5 Pro for complete AI trading ecosystem.
               </motion.p>
             </div>
 

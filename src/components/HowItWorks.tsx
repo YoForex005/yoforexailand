@@ -6,22 +6,22 @@ const HowItWorks: React.FC = () => {
   const steps = [
     {
       icon: Upload,
-      title: 'Upload Chart',
-      description: 'Drag & drop or paste screenshot of any trading chart or technical analysis.',
+      title: 'Choose Your Mode',
+      description: 'Select Automated Mode for 24/7 hands-free signals or Interactive Assistant Mode for real-time AI chat and analysis.',
       color: 'from-primary-500 to-primary-600',
       delay: 0.2
     },
     {
       icon: Cpu,
-      title: 'AI Consensus',
-      description: 'Multi-model cross-validation plus MTF major-trend filter across 9 AI engines.',
+      title: 'Multi-AI Processing',
+      description: 'Access 392 AI models with flexible switching between 67 free and 325 premium options. AI Position Management monitors and adjusts in real-time.',
       color: 'from-accent-500 to-violet-600',
       delay: 0.4
     },
     {
       icon: TrendingUp,
-      title: 'Trade Plan',
-      description: 'Entry/exit signals, dynamic TP/SL, and optional recovery orders with confidence scoring.',
+      title: 'Execute & Manage',
+      description: 'Receive automated signals with AI-calculated TP/SL levels, smart recovery options, and dual notifications via MT5 mobile and Telegram.',
       color: 'from-success-500 to-success-600',
       delay: 0.6
     }
@@ -42,7 +42,7 @@ const HowItWorks: React.FC = () => {
             How It <span className="bg-gradient-primary bg-clip-text text-transparent">Works</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Three simple steps to transform any chart into actionable trading signals with AI-powered confidence scoring.
+            Three simple steps to access the world's most comprehensive AI trading ecosystem with automated signals and interactive intelligence.
           </p>
         </motion.div>
 

@@ -6,12 +6,16 @@ interface HeaderProps {
   onNavigateToDashboard: () => void;
   onNavigateToLogin: () => void;
   onNavigateToSignup: () => void;
+  onNavigateToFeatures: () => void;
+  onNavigateToResources: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
   onNavigateToDashboard, 
   onNavigateToLogin, 
-  onNavigateToSignup 
+  onNavigateToSignup,
+  onNavigateToFeatures,
+  onNavigateToResources
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,10 +29,10 @@ const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const navItems = [
-    { name: 'Features', href: '#features' },
+    { name: 'Features', href: '#features', onClick: onNavigateToFeatures },
     { name: 'Dashboard', href: '#dashboard', onClick: onNavigateToDashboard },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'Resources', href: '#resources' },
+    { name: 'Resources', href: '#resources', onClick: onNavigateToResources },
   ];
 
   return (
