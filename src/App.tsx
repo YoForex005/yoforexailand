@@ -18,7 +18,7 @@ import BlogPage from './components/pages/BlogPage';
 import CommunityPage from './components/pages/CommunityPage';
 import SupportPage from './components/pages/SupportPage';
 
-type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support';
+type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
@@ -40,6 +40,22 @@ function App() {
   const handleNavigateToBlog = () => setCurrentView('blog');
   const handleNavigateToCommunity = () => setCurrentView('community');
   const handleNavigateToSupport = () => setCurrentView('support');
+  const handleNavigateToPrivacyPolicy = () => setCurrentView('privacy-policy');
+  const handleNavigateToTermsConditions = () => setCurrentView('terms-conditions');
+  const handleNavigateToReturnPolicy = () => setCurrentView('return-policy');
+  const handleNavigateToAPIDocumentation = () => setCurrentView('api-documentation');
+  const handleNavigateToIntegrations = () => setCurrentView('integrations');
+  const handleNavigateToCaseStudies = () => setCurrentView('case-studies');
+  const handleNavigateToWhitepapers = () => setCurrentView('whitepapers');
+  const handleNavigateToWebinars = () => setCurrentView('webinars');
+  const handleNavigateToHelpCenter = () => setCurrentView('help-center');
+  const handleNavigateToCommunityForum = () => setCurrentView('community-forum');
+  const handleNavigateToContactSupport = () => setCurrentView('contact-support');
+  const handleNavigateToStatusPage = () => setCurrentView('status-page');
+  const handleNavigateToAboutUs = () => setCurrentView('about-us');
+  const handleNavigateToCareers = () => setCurrentView('careers');
+  const handleNavigateToPressKit = () => setCurrentView('press-kit');
+  const handleNavigateToPartners = () => setCurrentView('partners');
 
   // Authentication flow views
   if (currentView === 'login') {
@@ -107,6 +123,70 @@ function App() {
   if (currentView === 'support') {
     return <SupportPage onNavigateBack={handleNavigateToResources} />;
   }
+  
+  if (currentView === 'privacy-policy') {
+    return <PrivacyPolicyPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'terms-conditions') {
+    return <TermsConditionsPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'return-policy') {
+    return <ReturnPolicyPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'api-documentation') {
+    return <APIDocumentationPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'integrations') {
+    return <IntegrationsPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'case-studies') {
+    return <CaseStudiesPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'whitepapers') {
+    return <WhitepapersPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'webinars') {
+    return <WebinarsPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'help-center') {
+    return <HelpCenterPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'community-forum') {
+    return <CommunityForumPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'contact-support') {
+    return <ContactSupportPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'status-page') {
+    return <StatusPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'about-us') {
+    return <AboutUsPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'careers') {
+    return <CareersPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'press-kit') {
+    return <PressKitPage onNavigateBack={handleNavigateToLanding} />;
+  }
+  
+  if (currentView === 'partners') {
+    return <PartnersPage onNavigateBack={handleNavigateToLanding} />;
+  }
 
   // Landing page
   return (
@@ -135,6 +215,22 @@ function App() {
         onNavigateToBlog={handleNavigateToBlog}
         onNavigateToCommunity={handleNavigateToCommunity}
         onNavigateToSupport={handleNavigateToSupport}
+        onNavigateToPrivacyPolicy={handleNavigateToPrivacyPolicy}
+        onNavigateToTermsConditions={handleNavigateToTermsConditions}
+        onNavigateToReturnPolicy={handleNavigateToReturnPolicy}
+        onNavigateToAPIDocumentation={handleNavigateToAPIDocumentation}
+        onNavigateToIntegrations={handleNavigateToIntegrations}
+        onNavigateToCaseStudies={handleNavigateToCaseStudies}
+        onNavigateToWhitepapers={handleNavigateToWhitepapers}
+        onNavigateToWebinars={handleNavigateToWebinars}
+        onNavigateToHelpCenter={handleNavigateToHelpCenter}
+        onNavigateToCommunityForum={handleNavigateToCommunityForum}
+        onNavigateToContactSupport={handleNavigateToContactSupport}
+        onNavigateToStatusPage={handleNavigateToStatusPage}
+        onNavigateToAboutUs={handleNavigateToAboutUs}
+        onNavigateToCareers={handleNavigateToCareers}
+        onNavigateToPressKit={handleNavigateToPressKit}
+        onNavigateToPartners={handleNavigateToPartners}
       />
     </div>
   );

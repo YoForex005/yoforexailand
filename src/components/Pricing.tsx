@@ -216,7 +216,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     ) : (
                       <div>
                         <div className="text-4xl font-bold text-white mb-2">
-                          {typeof plan.monthlyPrice === 'string' ? plan.monthlyPrice : `₹${(isAnnual ? plan.annualPrice : plan.monthlyPrice).toLocaleString('en-IN')}`}
+                          {plan.name === 'Enterprise' ? 'Custom' : `₹${(isAnnual ? plan.annualPrice : plan.monthlyPrice).toLocaleString('en-IN')}`}
                           <span className="text-lg text-neutral-400 font-normal">/mo</span>
                         </div>
                         {isAnnual && (

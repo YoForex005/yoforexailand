@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
   ];
 
   return (
-    <section className="relative min-h-screen bg-neutral-950 overflow-hidden">
+    <section className="relative min-h-screen bg-neutral-950 overflow-hidden pt-20 pb-20">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl animate-float" />
@@ -80,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div

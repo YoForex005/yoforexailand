@@ -8,6 +8,22 @@ interface FooterProps {
   onNavigateToBlog: () => void;
   onNavigateToCommunity: () => void;
   onNavigateToSupport: () => void;
+  onNavigateToPrivacyPolicy: () => void;
+  onNavigateToTermsConditions: () => void;
+  onNavigateToReturnPolicy: () => void;
+  onNavigateToAPIDocumentation: () => void;
+  onNavigateToIntegrations: () => void;
+  onNavigateToCaseStudies: () => void;
+  onNavigateToWhitepapers: () => void;
+  onNavigateToWebinars: () => void;
+  onNavigateToHelpCenter: () => void;
+  onNavigateToCommunityForum: () => void;
+  onNavigateToContactSupport: () => void;
+  onNavigateToStatusPage: () => void;
+  onNavigateToAboutUs: () => void;
+  onNavigateToCareers: () => void;
+  onNavigateToPressKit: () => void;
+  onNavigateToPartners: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({
@@ -16,6 +32,22 @@ const Footer: React.FC<FooterProps> = ({
   onNavigateToBlog,
   onNavigateToCommunity,
   onNavigateToSupport
+  onNavigateToPrivacyPolicy,
+  onNavigateToTermsConditions,
+  onNavigateToReturnPolicy,
+  onNavigateToAPIDocumentation,
+  onNavigateToIntegrations,
+  onNavigateToCaseStudies,
+  onNavigateToWhitepapers,
+  onNavigateToWebinars,
+  onNavigateToHelpCenter,
+  onNavigateToCommunityForum,
+  onNavigateToContactSupport,
+  onNavigateToStatusPage,
+  onNavigateToAboutUs,
+  onNavigateToCareers,
+  onNavigateToPressKit,
+  onNavigateToPartners
 }) => {
   const footerSections = [
     {
@@ -23,8 +55,8 @@ const Footer: React.FC<FooterProps> = ({
       links: [
         { name: 'Features', href: '#features' },
         { name: 'Pricing', href: '#pricing' },
-        { name: 'API Documentation', href: '#api', onClick: onNavigateToSupport },
-        { name: 'Integrations', href: '#integrations' }
+        { name: 'API Documentation', href: '#api', onClick: onNavigateToAPIDocumentation },
+        { name: 'Integrations', href: '#integrations', onClick: onNavigateToIntegrations }
       ]
     },
     {
@@ -32,31 +64,31 @@ const Footer: React.FC<FooterProps> = ({
       links: [
         { name: 'Blog', href: '#blog', onClick: onNavigateToBlog },
         { name: 'User Manual', href: '#manual', onClick: onNavigateToUserManual },
-        { name: 'Case Studies', href: '#case-studies' },
-        { name: 'Whitepapers', href: '#whitepapers' },
-        { name: 'Webinars', href: '#webinars' },
+        { name: 'Case Studies', href: '#case-studies', onClick: onNavigateToCaseStudies },
+        { name: 'Whitepapers', href: '#whitepapers', onClick: onNavigateToWhitepapers },
+        { name: 'Webinars', href: '#webinars', onClick: onNavigateToWebinars },
         { name: 'All Resources', href: '#resources', onClick: onNavigateToResources }
       ]
     },
     {
       title: 'Support',
       links: [
-        { name: 'Help Center', href: '#help', onClick: onNavigateToSupport },
-        { name: 'Community Forum', href: '#forum', onClick: onNavigateToCommunity },
-        { name: 'Contact Support', href: '#support', onClick: onNavigateToSupport },
-        { name: 'Status Page', href: '#status' }
+        { name: 'Help Center', href: '#help', onClick: onNavigateToHelpCenter },
+        { name: 'Community Forum', href: '#forum', onClick: onNavigateToCommunityForum },
+        { name: 'Contact Support', href: '#support', onClick: onNavigateToContactSupport },
+        { name: 'Status Page', href: '#status', onClick: onNavigateToStatusPage }
       ]
     },
     {
       title: 'Company',
       links: [
-        { name: 'About Us', href: '#about' },
-        { name: 'Careers', href: '#careers' },
-        { name: 'Press Kit', href: '#press' },
-        { name: 'Partners', href: '#partners' },
-        { name: 'Privacy Policy', href: '#privacy' },
-        { name: 'Terms and Conditions', href: '#terms' },
-        { name: 'Return Policy', href: '#return' }
+        { name: 'About Us', href: '#about', onClick: onNavigateToAboutUs },
+        { name: 'Careers', href: '#careers', onClick: onNavigateToCareers },
+        { name: 'Press Kit', href: '#press', onClick: onNavigateToPressKit },
+        { name: 'Partners', href: '#partners', onClick: onNavigateToPartners },
+        { name: 'Privacy Policy', href: '#privacy', onClick: onNavigateToPrivacyPolicy },
+        { name: 'Terms and Conditions', href: '#terms', onClick: onNavigateToTermsConditions },
+        { name: 'Return Policy', href: '#return', onClick: onNavigateToReturnPolicy }
       ]
     }
   ];
