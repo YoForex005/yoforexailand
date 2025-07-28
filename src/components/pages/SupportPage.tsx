@@ -401,7 +401,6 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                     <p>💬 Live chat available 24/7</p>
                   <span>28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</span>
                 </div>
-              </div>
             </motion.div>
           </div>
         </div>
