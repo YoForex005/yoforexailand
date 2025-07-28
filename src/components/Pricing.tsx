@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Zap, Crown, Building, ArrowRight } from 'lucide-react';
+import { Check, Zap, Crown, Building, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface PricingProps {
   onNavigateToSignup: () => void;
@@ -9,9 +9,15 @@ interface PricingProps {
 const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [enterpriseSeats, setEnterpriseSeats] = useState(5);
+  const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
+
+  const togglePlan = (planId: string) => {
+    setExpandedPlan(expandedPlan === planId ? null : planId);
+  };
 
   const plans = [
     {
+      id: 'basic',
       name: 'Basic',
       icon: Zap,
       description: 'Perfect for small teams getting started with AI analytics',
@@ -30,9 +36,24 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
         'Community access'
       ],
       cta: 'Start Free Trial',
-      popular: false
+      popular: false,
+      expandedContent: {
+        title: 'Basic Plan Details',
+        details: [
+          'Core access to free AI models including DeepSeek R1, Gemini 2.5 Pro, and Llama variants',
+          'Limited analytics runs (100/month) ideal for small-scale automation',
+          'Basic automation tools for simple workflow orchestration',
+          'Email support with 24-48 hour response time',
+          'Community forum access for peer support',
+          'Mobile app for monitoring workflows on-the-go',
+          'Standard reporting with CSV/PDF export capabilities'
+        ],
+        pricing: 'Billed in INR, exclusive of applicable taxes. Software/IT services only.',
+        contact: 'Upgrades available via app.yoforex.co.in. Inquiries: support@yoforex.co.in'
+      }
     },
     {
+      id: 'pro',
       name: 'Pro',
       icon: Crown,
       description: 'Most popular for growing businesses',
@@ -55,9 +76,26 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
         'Private community access'
       ],
       cta: 'Start Pro Trial',
-      popular: true
+      popular: true,
+      expandedContent: {
+        title: 'Pro Plan Comprehensive Features',
+        details: [
+          'Access to all 392 AI models including premium options (Grok 4, OpenAI O3, Claude Opus 4)',
+          'Unlimited analytics runs for enterprise-scale operations',
+          'Advanced workflow automation with custom triggers and actions',
+          'Real-time web search from 50+ sources for data enrichment',
+          'Priority support with 2-4 hour response time',
+          'Free professional setup assistance and onboarding',
+          'Advanced reporting suite with custom dashboards',
+          'API access for seamless integration with existing systems',
+          'Private community access for exclusive networking'
+        ],
+        pricing: 'Billed monthly in INR. 60-80% API cost savings through intelligent model switching.',
+        contact: 'For enterprise integration: support@yoforex.co.in'
+      }
     },
     {
+      id: 'enterprise',
       name: 'Enterprise',
       icon: Building,
       description: 'For large organizations and institutions',
@@ -78,7 +116,23 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
         'VIP community access'
       ],
       cta: 'Contact Sales',
-      popular: false
+      popular: false,
+      expandedContent: {
+        title: 'Enterprise-Grade Solutions',
+        details: [
+          'Dedicated AI model training for your specific use cases',
+          'Custom API integrations with your existing enterprise systems',
+          'White-label solutions for client-facing implementations',
+          'Dedicated account manager and technical support team',
+          '99.9% SLA with guaranteed uptime and performance',
+          'Advanced analytics dashboard with custom KPIs',
+          'Team collaboration tools with role-based access control',
+          'Priority feature requests and development roadmap input',
+          'VIP community access with direct developer interaction'
+        ],
+        pricing: 'Custom pricing based on team size and requirements.',
+        contact: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
+      }
     }
   ];
 
@@ -262,6 +316,59 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     </span>
                     {plan.popular && (
                       <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    )}
+
+                    {/* Learn More Button */}
+                    <motion.button
+                      onClick={() => togglePlan(plan.id)}
+                      className="w-full mt-3 flex items-center justify-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <span className="text-sm font-medium">
+                        {expandedPlan === plan.id ? 'Show Less Details' : 'See Full Details'}
+                      </span>
+                      {expandedPlan === plan.id ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
+                    </motion.button>
+
+                    {/* Expanded Content */}
+                    {expandedPlan === plan.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                      >
+                        <h4 className="text-lg font-semibold text-white mb-3">
+                          {plan.expandedContent.title}
+                        </h4>
+                        <ul className="space-y-2 mb-4">
+                          {plan.expandedContent.details.map((detail, index) => (
+                            <li key={index} className="flex items-start space-x-2">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0" />
+                              <span className="text-neutral-300 text-sm leading-relaxed">{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="bg-neutral-900/50 rounded-lg p-3 mb-3">
+                          <p className="text-neutral-400 text-sm">{plan.expandedContent.pricing}</p>
+                        </div>
+                        <p className="text-primary-400 text-sm mb-4">
+                          {plan.expandedContent.contact}
+                        </p>
+                        <motion.button
+                          onClick={() => togglePlan(plan.id)}
+                          className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          Collapse Details
+                        </motion.button>
+                      </motion.div>
                     )}
                   </motion.button>
                 </div>

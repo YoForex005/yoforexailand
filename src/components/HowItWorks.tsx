@@ -1,29 +1,75 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Upload, Cpu, TrendingUp, Zap } from 'lucide-react';
+import { Upload, Cpu, TrendingUp, Zap, ChevronDown, ChevronUp } from 'lucide-react';
+import { useState } from 'react';
 
 const HowItWorks: React.FC = () => {
+  const [expandedStep, setExpandedStep] = useState<string | null>(null);
+
+  const toggleStep = (stepId: string) => {
+    setExpandedStep(expandedStep === stepId ? null : stepId);
+  };
+
   const steps = [
     {
+      id: 'choose-mode',
       icon: Upload,
       title: 'Choose Your Mode',
       description: 'Select Automated Mode for 24/7 hands-free signals or Interactive Assistant Mode for real-time AI chat and analysis.',
       color: 'from-primary-500 to-primary-600',
-      delay: 0.2
+      delay: 0.2,
+      expandedContent: {
+        title: 'Flexible Operation Modes',
+        details: [
+          'Automated Mode: Continuous workflow processing with minimal human intervention',
+          'Interactive Assistant Mode: Real-time AI chat for on-demand analytics',
+          'Hybrid Mode: Combine both approaches for maximum flexibility',
+          'Custom configuration for specific business requirements',
+          'Role-based access controls for team collaboration',
+          'Integration with existing enterprise systems and databases'
+        ],
+        contact: 'For mode configuration assistance: support@yoforex.co.in'
+      }
     },
     {
+      id: 'multi-ai',
       icon: Cpu,
       title: 'Multi-AI Processing',
       description: 'Access 392 AI models with flexible switching between 67 free and 325 premium options. AI Position Management monitors and adjusts in real-time.',
       color: 'from-accent-500 to-violet-600',
-      delay: 0.4
+      delay: 0.4,
+      expandedContent: {
+        title: 'Comprehensive AI Model Library',
+        details: [
+          '67 free AI models including DeepSeek R1, Gemini 2.5 Pro, Llama variants',
+          '325 premium models: Grok 4, OpenAI O3, Claude Opus 4, and more',
+          'Intelligent model selection based on task requirements',
+          'Real-time performance monitoring and automatic failover',
+          'Cost optimization through smart model switching (60-80% savings)',
+          'Custom model training for enterprise-specific use cases'
+        ],
+        contact: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
+      }
     },
     {
+      id: 'execute-manage',
       icon: TrendingUp,
       title: 'Execute & Manage',
       description: 'Receive automated signals with AI-calculated TP/SL levels, smart recovery options, and dual notifications via MT5 mobile and Telegram.',
       color: 'from-success-500 to-success-600',
-      delay: 0.6
+      delay: 0.6,
+      expandedContent: {
+        title: 'Advanced Workflow Execution',
+        details: [
+          'Automated workflow execution with intelligent scheduling',
+          'Real-time monitoring and performance optimization',
+          'Smart error recovery and rollback mechanisms',
+          'Multi-channel notifications (email, Slack, webhooks)',
+          'Comprehensive audit trails for compliance',
+          'Integration with enterprise messaging and monitoring systems'
+        ],
+        contact: 'For workflow automation setup: support@yoforex.co.in'
+      }
     }
   ];
 
@@ -91,6 +137,56 @@ const HowItWorks: React.FC = () => {
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{step.description}</p>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleStep(step.id)}
+                  className="mt-4 flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedStep === step.id ? 'Show Less' : 'Learn More'}
+                  </span>
+                  {expandedStep === step.id ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedStep === step.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    <h4 className="text-lg font-semibold text-white mb-3">
+                      {step.expandedContent.title}
+                    </h4>
+                    <ul className="space-y-2 mb-4">
+                      {step.expandedContent.details.map((detail, index) => (
+                        <li key={index} className="flex items-start space-x-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mt-2 flex-shrink-0" />
+                          <span className="text-neutral-300 text-sm leading-relaxed">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-primary-400 text-sm mb-4">
+                      {step.expandedContent.contact}
+                    </p>
+                    <motion.button
+                      onClick={() => toggleStep(step.id)}
+                      className="text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse
+                    </motion.button>
+                  </motion.div>
+                )}
 
                 {/* Hover Effect */}
                 <motion.div
