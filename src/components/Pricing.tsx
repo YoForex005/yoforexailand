@@ -1,0 +1,284 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Check, Zap, Crown, Building, ArrowRight } from 'lucide-react';
+
+interface PricingProps {
+  onNavigateToSignup: () => void;
+}
+
+const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
+  const [isAnnual, setIsAnnual] = useState(false);
+  const [enterpriseSeats, setEnterpriseSeats] = useState(5);
+
+  const plans = [
+    {
+      name: 'Basic',
+      icon: Zap,
+      description: 'Perfect for individual traders getting started',
+      monthlyPrice: 19.99,
+      annualPrice: 15.99,
+      color: 'from-primary-500 to-primary-600',
+      features: [
+        'Single-model AI analysis',
+        'Basic TP/SL management',
+        '100 chart analyses/month',
+        'Email support',
+        'Mobile app access',
+        'Basic risk management'
+      ],
+      cta: 'Start Free Trial',
+      popular: false
+    },
+    {
+      name: 'Pro',
+      icon: Crown,
+      description: 'Most popular for serious traders',
+      monthlyPrice: 59.99,
+      annualPrice: 47.99,
+      color: 'from-accent-500 to-violet-600',
+      features: [
+        'Full multi-model consensus',
+        'Advanced AI Position Management',
+        'Unlimited chart analyses',
+        'Pending orders & zero slippage',
+        'Real-time web search integration',
+        'Recovery mode trading',
+        'Priority support',
+        'API access',
+        'Custom indicators'
+      ],
+      cta: 'Start Pro Trial',
+      popular: true
+    },
+    {
+      name: 'Enterprise',
+      icon: Building,
+      description: 'For prop firms and institutions',
+      monthlyPrice: 199,
+      annualPrice: 159,
+      color: 'from-success-500 to-success-600',
+      features: [
+        'Everything in Pro',
+        'White-label solutions',
+        'Custom AI model training',
+        'Dedicated account manager',
+        '99.9% SLA guarantee',
+        'Advanced analytics dashboard',
+        'Team collaboration tools',
+        'Custom integrations',
+        'Priority feature requests'
+      ],
+      cta: 'Contact Sales',
+      popular: false
+    }
+  ];
+
+  const calculateEnterprisePrice = () => {
+    const basePrice = isAnnual ? 159 : 199;
+    const seatMultiplier = enterpriseSeats > 1 ? enterpriseSeats * 0.8 : 1;
+    return (basePrice * seatMultiplier).toFixed(2);
+  };
+
+  return (
+    <section id="pricing" className="py-24 bg-neutral-900/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+            Simple, <span className="bg-gradient-primary bg-clip-text text-transparent">Transparent</span> Pricing
+          </h2>
+          <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed mb-8">
+            Choose the perfect plan for your trading needs. All plans include a 14-day free trial with full access.
+          </p>
+
+          {/* Billing Toggle */}
+          <div className="inline-flex items-center bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-xl p-1">
+            <button
+              onClick={() => setIsAnnual(false)}
+              className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
+                !isAnnual 
+                  ? 'bg-gradient-primary text-white shadow-lg' 
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsAnnual(true)}
+              className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
+                isAnnual 
+                  ? 'bg-gradient-primary text-white shadow-lg' 
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              Annual
+              <span className="ml-2 text-xs bg-success-500/20 text-success-400 px-2 py-1 rounded-full">
+                Save 20%
+              </span>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Urgency Banner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-gradient-to-r from-warning-500/20 to-error-500/20 border border-warning-500/50 rounded-xl p-4 mb-12 text-center"
+        >
+          <p className="text-warning-400 font-medium">
+            🔥 Lock in your rate—prices increase to $137.73/mo in 48 hours
+          </p>
+        </motion.div>
+
+        {/* Pricing Cards */}
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-6">
+          {plans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`relative group ${plan.popular ? 'lg:-mt-4 lg:mb-4' : ''}`}
+            >
+              {/* Popular Badge */}
+              {plan.popular && (
+                <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${plan.color} text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg z-10`}>
+                  Most Popular
+                </div>
+              )}
+
+              {/* Card */}
+              <div className={`relative bg-gradient-glass backdrop-blur-sm border-2 ${
+                plan.popular ? 'border-accent-500/50' : 'border-neutral-800/50'
+              } rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden`}>
+                
+                {/* Background Glow */}
+                {plan.popular && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-accent-500/10 to-violet-500/10 rounded-2xl"
+                    animate={{ opacity: [0.05, 0.15, 0.05] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                )}
+
+                <div className="relative z-10">
+                  {/* Plan Header */}
+                  <div className="text-center mb-8">
+                    <motion.div
+                      className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${plan.color} rounded-xl mb-4 shadow-lg`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                    >
+                      <plan.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                    <p className="text-neutral-400 text-sm">{plan.description}</p>
+                  </div>
+
+                  {/* Pricing */}
+                  <div className="text-center mb-8">
+                    {plan.name === 'Enterprise' ? (
+                      <div>
+                        <div className="text-4xl font-bold text-white mb-2">
+                          ${calculateEnterprisePrice()}
+                          <span className="text-lg text-neutral-400 font-normal">/mo</span>
+                        </div>
+                        <div className="mb-4">
+                          <label className="block text-sm text-neutral-400 mb-2">Team Size:</label>
+                          <input
+                            type="range"
+                            min="1"
+                            max="50"
+                            value={enterpriseSeats}
+                            onChange={(e) => setEnterpriseSeats(parseInt(e.target.value))}
+                            className="w-full h-2 bg-neutral-700 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <div className="text-center mt-2 text-neutral-400">{enterpriseSeats} seats</div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="text-4xl font-bold text-white mb-2">
+                          ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                          <span className="text-lg text-neutral-400 font-normal">/mo</span>
+                        </div>
+                        {isAnnual && (
+                          <div className="text-sm text-success-400">
+                            Save ${((plan.monthlyPrice - plan.annualPrice) * 12).toFixed(0)}/year
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Features */}
+                  <ul className="space-y-4 mb-8">
+                    {plan.features.map((feature, featureIndex) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + featureIndex * 0.05 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <Check className={`w-5 h-5 text-success-400 mt-0.5 flex-shrink-0`} />
+                        <span className="text-neutral-300 text-sm">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  {/* CTA Button */}
+                  <motion.button
+                    onClick={plan.name === 'Enterprise' ? undefined : onNavigateToSignup}
+                    className={`w-full py-4 rounded-xl font-semibold text-lg relative overflow-hidden group transition-all duration-300 ${
+                      plan.popular
+                        ? 'bg-gradient-primary text-white shadow-lg hover:shadow-xl'
+                        : 'bg-transparent border-2 border-neutral-700 text-neutral-300 hover:border-neutral-600 hover:text-white'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span className="relative z-10 flex items-center justify-center space-x-2">
+                      <span>{plan.cta}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    {plan.popular && (
+                      <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Additional Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16 space-y-4"
+        >
+          <p className="text-neutral-400">
+            All plans include a 14-day free trial. No credit card required to start.
+          </p>
+          <p className="text-sm text-neutral-500">
+            Need a custom solution? <a href="#contact" className="text-primary-400 hover:text-primary-300 transition-colors">Contact our sales team</a> for enterprise pricing.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;
