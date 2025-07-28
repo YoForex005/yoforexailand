@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Zap, Users, MapPin, Clock, Briefcase, Code, Headphones, BarChart3, Shield, ArrowRight } from 'lucide-react';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Zap, Handshake, Cloud, Shield, Code, Database, Globe, Users, Mail, ArrowRight } from 'lucide-react';
 
