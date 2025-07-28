@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({
   onNavigateToUserManual,
   onNavigateToBlog,
   onNavigateToCommunity,
-  onNavigateToSupport: () => void;
+  onNavigateToSupport,
   onNavigateToPrivacyPolicy,
   onNavigateToTermsConditions,
   onNavigateToReturnPolicy,
