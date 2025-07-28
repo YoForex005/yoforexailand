@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Zap, Crown, Building, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface PricingProps {
