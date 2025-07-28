@@ -244,7 +244,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
               </motion.button>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-12">
           {/* FAQ Section */}
