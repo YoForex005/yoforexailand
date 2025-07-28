@@ -30,6 +30,7 @@ import StatusPage from './components/pages/StatusPage';
 import CareersPage from './components/pages/CareersPage';
 import PressKitPage from './components/pages/PressKitPage';
 import PartnersPage from './components/pages/PartnersPage';
+import AboutUsPage from './components/pages/AboutUsPage';
 
 type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners';
 
