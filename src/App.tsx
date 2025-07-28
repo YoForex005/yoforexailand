@@ -17,6 +17,19 @@ import UserManualPage from './components/pages/UserManualPage';
 import BlogPage from './components/pages/BlogPage';
 import CommunityPage from './components/pages/CommunityPage';
 import SupportPage from './components/pages/SupportPage';
+import PrivacyPolicyPage from './components/pages/PrivacyPolicyPage';
+import TermsConditionsPage from './components/pages/TermsConditionsPage';
+import ReturnPolicyPage from './components/pages/ReturnPolicyPage';
+import CaseStudiesPage from './components/pages/CaseStudiesPage';
+import WhitepapersPage from './components/pages/WhitepapersPage';
+import WebinarsPage from './components/pages/WebinarsPage';
+import HelpCenterPage from './components/pages/HelpCenterPage';
+import CommunityForumPage from './components/pages/CommunityForumPage';
+import ContactSupportPage from './components/pages/ContactSupportPage';
+import StatusPage from './components/pages/StatusPage';
+import CareersPage from './components/pages/CareersPage';
+import PressKitPage from './components/pages/PressKitPage';
+import PartnersPage from './components/pages/PartnersPage';
 
 type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners';
 
