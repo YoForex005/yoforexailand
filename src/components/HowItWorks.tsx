@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Cpu, TrendingUp, Zap, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
