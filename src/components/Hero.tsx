@@ -111,13 +111,13 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 <span className="text-white">YoForex AI:</span>
                 <br />
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  Consensus-Driven
+                  AI-Powered Analytics
                 </span>
                 <br />
-                <span className="text-white">Signals from</span>
+                <span className="text-white">Platform for</span>
                 <br />
                 <span className="bg-gradient-primary bg-clip-text text-transparent">
-                  9 Elite Engines
+                  Workflow Automation
                 </span>
               </motion.h1>
 
@@ -127,7 +127,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
                 transition={{ delay: 0.4 }}
                 className="text-xl text-neutral-300 leading-relaxed max-w-2xl"
               >
-                Revolutionary dual-function system combining fully automated AI-powered trading signals with an interactive AI assistant. Access 392+ AI models including dozens of free options from Grok 4, DeepSeek R1, OpenAI O3, Claude Opus 4, and Gemini 2.5 Pro for complete AI trading ecosystem.
+                Revolutionary B2B2C SaaS platform combining advanced AI analytics with workflow automation. Access 392+ AI models for comprehensive market intelligence, data processing, and business automation - no trading advice provided, only professional software tools.
               </motion.p>
             </div>
 

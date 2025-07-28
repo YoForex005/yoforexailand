@@ -174,10 +174,10 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({ onNavigateBack }) => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Advanced <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
+            Platform <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Explore the comprehensive capabilities of YoForex AI's dual-function trading system with automated signals and interactive intelligence.
+            Explore the comprehensive capabilities of YoForex AI's B2B2C SaaS platform with advanced AI analytics and workflow automation tools.
           </p>
         </motion.div>
 

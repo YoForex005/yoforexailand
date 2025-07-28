@@ -24,9 +24,9 @@ function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
   const [otpData, setOtpData] = useState<{ phone?: string; email?: string } | null>(null);
 
-  const handleNavigateToLogin = () => setCurrentView('login');
-  const handleNavigateToSignup = () => setCurrentView('signup');
-  const handleNavigateToDashboard = () => setCurrentView('dashboard');
+  const handleNavigateToLogin = () => window.open('https://app.yoforex.co.in', '_blank');
+  const handleNavigateToSignup = () => window.open('https://app.yoforex.co.in', '_blank');
+  const handleNavigateToDashboard = () => window.open('https://app.yoforex.co.in', '_blank');
   const handleNavigateToLanding = () => setCurrentView('landing');
   
   const handleNavigateToOTP = (data: { phone?: string; email?: string }) => {

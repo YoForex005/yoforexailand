@@ -53,7 +53,10 @@ const Footer: React.FC<FooterProps> = ({
         { name: 'About Us', href: '#about' },
         { name: 'Careers', href: '#careers' },
         { name: 'Press Kit', href: '#press' },
-        { name: 'Partners', href: '#partners' }
+        { name: 'Partners', href: '#partners' },
+        { name: 'Privacy Policy', href: '#privacy' },
+        { name: 'Terms and Conditions', href: '#terms' },
+        { name: 'Return Policy', href: '#return' }
       ]
     }
   ];
@@ -94,22 +97,18 @@ const Footer: React.FC<FooterProps> = ({
 
               {/* Description */}
               <p className="text-neutral-400 mb-8 leading-relaxed">
-                The world's most advanced multi-model AI trading platform. Get consensus-driven signals from 9 elite AI engines with enterprise-grade reliability.
+                Advanced B2B2C SaaS platform for AI-powered analytics and workflow automation. Professional software tools with enterprise-grade reliability - no trading advice provided.
               </p>
 
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-neutral-400">
                   <Mail className="w-4 h-4" />
-                  <span>support@yoforexai.com</span>
-                </div>
-                <div className="flex items-center space-x-3 text-neutral-400">
-                  <Phone className="w-4 h-4" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>support@yoforex.co.in</span>
                 </div>
                 <div className="flex items-center space-x-3 text-neutral-400">
                   <MapPin className="w-4 h-4" />
-                  <span>San Francisco, CA</span>
+                  <span>28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</span>
                 </div>
               </div>
             </motion.div>

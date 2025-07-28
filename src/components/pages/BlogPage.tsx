@@ -21,29 +21,29 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
   const blogPosts = [
     {
       id: 1,
-      title: 'The Future of AI-Powered Trading: Multi-Model Consensus',
-      excerpt: 'Discover how combining multiple AI models creates more reliable trading signals and reduces false positives in volatile markets.',
+      title: 'The Future of AI-Powered Analytics: Multi-Model Architecture',
+      excerpt: 'Discover how combining multiple AI models creates more reliable business intelligence and reduces false positives in data analysis.',
       author: 'YoForex AI Team',
       date: '2025-01-15',
       readTime: '8 min read',
-      category: 'AI Trading',
+      category: 'AI Analytics',
       image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?w=400&h=250&fit=crop',
       featured: true
     },
     {
       id: 2,
-      title: 'Maximizing Profits with AI Position Management',
-      excerpt: 'Learn advanced techniques for using AI to manage your trading positions, including smart recovery strategies and dynamic TP/SL adjustments.',
-      author: 'Trading Strategist',
+      title: 'Maximizing Efficiency with AI Workflow Automation',
+      excerpt: 'Learn advanced techniques for using AI to automate business workflows, including smart data processing and dynamic reporting systems.',
+      author: 'Workflow Strategist',
       date: '2025-01-12',
       readTime: '6 min read',
-      category: 'Strategy',
+      category: 'Automation',
       image: 'https://images.pexels.com/photos/7567486/pexels-photo-7567486.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 3,
-      title: 'Cost-Effective AI Trading: Reducing API Expenses by 80%',
-      excerpt: 'Practical tips for optimizing your AI trading costs while maintaining signal quality through smart model selection and usage patterns.',
+      title: 'Cost-Effective AI Analytics: Reducing API Expenses by 80%',
+      excerpt: 'Practical tips for optimizing your AI analytics costs while maintaining data quality through smart model selection and usage patterns.',
       author: 'Technical Team',
       date: '2025-01-10',
       readTime: '5 min read',
@@ -52,18 +52,18 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
     },
     {
       id: 4,
-      title: 'Understanding Market Sentiment with AI Web Search',
-      excerpt: 'How real-time web search integration enhances trading decisions by incorporating news sentiment and market events.',
+      title: 'Understanding Business Intelligence with AI Web Search',
+      excerpt: 'How real-time web search integration enhances business decisions by incorporating news sentiment and market intelligence.',
       author: 'Market Analyst',
       date: '2025-01-08',
       readTime: '7 min read',
-      category: 'Market Analysis',
+      category: 'Business Intelligence',
       image: 'https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 5,
-      title: 'Prop Firm Trading with YoForex AI: Compliance Guide',
-      excerpt: 'Essential guidelines for using AI trading signals while maintaining compliance with prop firm rules and risk management requirements.',
+      title: 'Enterprise Compliance with YoForex AI: Security Guide',
+      excerpt: 'Essential guidelines for using AI analytics platforms while maintaining compliance with enterprise security and data management requirements.',
       author: 'Compliance Expert',
       date: '2025-01-05',
       readTime: '9 min read',
@@ -72,8 +72,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
     },
     {
       id: 6,
-      title: 'Interactive vs Automated: Choosing Your Trading Mode',
-      excerpt: 'Compare the benefits of automated signals versus interactive AI assistance to find the perfect trading approach for your style.',
+      title: 'Interactive vs Automated: Choosing Your Analytics Mode',
+      excerpt: 'Compare the benefits of automated analytics versus interactive AI assistance to find the perfect workflow approach for your business.',
       author: 'Product Manager',
       date: '2025-01-03',
       readTime: '6 min read',
@@ -82,7 +82,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
     }
   ];
 
-  const categories = ['All', 'AI Trading', 'Strategy', 'Market Analysis', 'Getting Started', 'Cost Optimization', 'Compliance'];
+  const categories = ['All', 'AI Analytics', 'Automation', 'Business Intelligence', 'Getting Started', 'Cost Optimization', 'Compliance'];
   const [selectedCategory, setSelectedCategory] = React.useState('All');
 
   const filteredPosts = selectedCategory === 'All' 

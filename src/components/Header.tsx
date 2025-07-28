@@ -30,7 +30,6 @@ const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { name: 'Features', href: '#features', onClick: onNavigateToFeatures },
-    { name: 'Dashboard', href: '#dashboard', onClick: onNavigateToDashboard },
     { name: 'Pricing', href: '#pricing' },
     { name: 'Resources', href: '#resources', onClick: onNavigateToResources },
   ];

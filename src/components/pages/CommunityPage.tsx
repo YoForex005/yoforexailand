@@ -164,10 +164,10 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Community</span>
+            Professional <span className="bg-gradient-primary bg-clip-text text-transparent">Community</span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of successful traders sharing strategies, insights, and experiences in our exclusive community.
+            Join thousands of professionals sharing analytics insights, workflow strategies, and experiences in our exclusive community.
           </p>
         </motion.div>
 

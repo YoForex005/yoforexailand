@@ -395,15 +395,11 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                   Send Message
                 </motion.button>
               </form>
-
+                  <span>support@yoforex.co.in</span>
               <div className="mt-6 pt-6 border-t border-neutral-800/50">
-                <div className="text-center text-sm text-neutral-400">
-                  <p className="mb-2">Need immediate help?</p>
-                  <div className="space-y-1">
-                    <p>📧 support@yoforexai.com</p>
                     <p>📞 +1 (555) 123-4567</p>
                     <p>💬 Live chat available 24/7</p>
-                  </div>
+                  <span>28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</span>
                 </div>
               </div>
             </motion.div>

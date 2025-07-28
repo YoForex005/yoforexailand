@@ -14,19 +14,19 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
     {
       name: 'Basic',
       icon: Zap,
-      description: 'Perfect for individual traders getting started',
-      monthlyPrice: 19.99,
-      annualPrice: 15.99,
+      description: 'Perfect for small teams getting started with AI analytics',
+      monthlyPrice: 12800,
+      annualPrice: 10240,
       color: 'from-primary-500 to-primary-600',
       features: [
-        'Single-model AI analysis',
-        'Basic TP/SL management',
-        '100 chart analyses/month',
+        'Single-model AI analytics',
+        'Basic workflow automation',
+        '100 data analyses/month',
         'Access to 67 free AI models',
         'API cost reduction mode',
         'Email support',
         'Mobile app access',
-        'Basic risk management',
+        'Basic reporting tools',
         'Community access'
       ],
       cta: 'Start Free Trial',
@@ -35,19 +35,19 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
     {
       name: 'Pro',
       icon: Crown,
-      description: 'Most popular for serious traders',
-      monthlyPrice: 59.99,
-      annualPrice: 47.99,
+      description: 'Most popular for growing businesses',
+      monthlyPrice: 55000,
+      annualPrice: 44000,
       color: 'from-accent-500 to-violet-600',
       features: [
-        'Full multi-model consensus',
-        'Advanced AI Position Management',
-        'Unlimited chart analyses',
+        'Full multi-model analytics',
+        'Advanced workflow automation',
+        'Unlimited data analyses',
         'Access to all 392 AI models',
         '60-80% API cost savings',
-        'Pending orders & zero slippage',
+        'Real-time data processing',
         'Real-time web search integration',
-        'Recovery mode trading',
+        'Advanced reporting suite',
         'Priority support',
         'Free setup assistance',
         'API access',
@@ -60,9 +60,9 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
     {
       name: 'Enterprise',
       icon: Building,
-      description: 'For prop firms and institutions',
-      monthlyPrice: 199,
-      annualPrice: 159,
+      description: 'For large organizations and institutions',
+      monthlyPrice: 'Custom',
+      annualPrice: 'Custom',
       color: 'from-success-500 to-success-600',
       features: [
         'Everything in Pro',
@@ -216,12 +216,12 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     ) : (
                       <div>
                         <div className="text-4xl font-bold text-white mb-2">
-                          ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                          {typeof plan.monthlyPrice === 'string' ? plan.monthlyPrice : `₹${(isAnnual ? plan.annualPrice : plan.monthlyPrice).toLocaleString('en-IN')}`}
                           <span className="text-lg text-neutral-400 font-normal">/mo</span>
                         </div>
                         {isAnnual && (
                           <div className="text-sm text-success-400">
-                            Save ${((plan.monthlyPrice - plan.annualPrice) * 12).toFixed(0)}/year
+                            Save ₹{((plan.monthlyPrice as number - plan.annualPrice as number) * 12).toLocaleString('en-IN')}/year
                           </div>
                         )}
                       </div>
@@ -266,6 +266,10 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                   </motion.button>
                 </div>
               </div>
+              
+              <div className="text-center mt-4 text-xs text-neutral-500">
+                All prices exclusive of applicable taxes. INR pricing for Indian customers.
+              </div>
             </motion.div>
           ))}
         </div>
@@ -279,7 +283,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
           className="text-center mt-16 space-y-4"
         >
           <p className="text-neutral-400">
-            All plans include a 14-day free trial. No credit card required to start.
+            All plans include a 14-day free trial. SaaS & IT software service subscriptions only—no trading tips or personalized investment advice provided.
           </p>
           <p className="text-sm text-neutral-500">
             Need a custom solution? <a href="#contact" className="text-primary-400 hover:text-primary-300 transition-colors">Contact our sales team</a> for enterprise pricing.
