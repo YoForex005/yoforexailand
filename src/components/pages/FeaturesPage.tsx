@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { 
   ArrowLeft, 
@@ -455,6 +455,28 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                         ? 'border-primary-500/50 bg-primary-500/10 hover:bg-primary-500/20' 
                         : 'border-neutral-700/50 bg-neutral-800/20 hover:bg-neutral-800/40'
                     }`}
+                    onClick={(e) => {
+                      if (resource.onClick) {
+                        resource.onClick();
+                      } else {
+                        e.stopPropagation();
+                        toggleCard(resource.id);
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        if (resource.onClick) {
+                          resource.onClick();
+                        } else {
+                          toggleCard(resource.id);
+                        }
+                      }
+                    }}
+                    tabIndex={0}
+                    role="button"
+                    aria-expanded={expandedCard === resource.id}
+                    aria-label={`${resource.name} - Click to ${resource.onClick ? 'navigate' : 'view details'}`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -474,29 +496,27 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                         </div>
                         <p className="text-neutral-400 text-sm mt-1">{resource.description}</p>
                         
-                        {/* Learn More Button */}
+                        {/* Interactive indicator */}
+                        <div className="mt-2 flex items-center space-x-1">
+                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-50" />
+                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-30" />
+                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-50" />
+                          <span className="text-xs text-neutral-500 ml-2">
+                            {resource.onClick ? 'Click to navigate' : 'Click for details'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center space-y-1">
+                        <ArrowRight className="w-4 h-4 text-neutral-500" />
                         {resource.expandedContent && (
-                          <motion.button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleCard(resource.id);
-                            }}
-                            className="mt-2 flex items-center space-x-1 text-primary-400 hover:text-primary-300 transition-colors duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                          <motion.div
+                            animate={{ rotate: expandedCard === resource.id ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
                           >
-                            <span className="text-xs font-medium">
-                              {expandedCard === resource.id ? 'Show Less' : 'Expand Details'}
-                            </span>
-                            {expandedCard === resource.id ? (
-                              <ChevronUp className="w-3 h-3" />
-                            ) : (
-                              <ChevronDown className="w-3 h-3" />
-                            )}
-                          </motion.button>
+                            <ChevronDown className="w-3 h-3 text-primary-400" />
+                          </motion.div>
                         )}
                       </div>
-                      <ArrowRight className="w-4 h-4 text-neutral-500" />
                     </div>
                     
                     {/* Expanded Content */}
@@ -533,11 +553,15 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                               e.stopPropagation();
                               toggleCard(resource.id);
                             }}
-                            className="text-neutral-400 hover:text-white text-xs transition-colors duration-300"
+                            className="text-neutral-400 hover:text-white text-xs transition-colors duration-300 flex items-center space-x-1"
                             whileHover={{ scale: 1.05 }}
                           >
-                            Collapse
+                            <ChevronUp className="w-3 h-3" />
+                            <span>Collapse</span>
                           </motion.button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 ))}
               </div>
@@ -587,6 +611,14 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
             </div>
           </div>
         </motion.div>
+
+        {/* Mobile accessibility note */}
+        <div className="mt-8 text-center">
+          <p className="text-neutral-400 text-sm">
+            💡 <span className="md:hidden">Tap any resource card to view detailed information</span>
+            <span className="hidden md:inline">Hover over resource cards to view detailed information</span>
+          </p>
+        </div>
       </main>
     </div>
   );
