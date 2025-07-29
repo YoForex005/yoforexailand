@@ -242,7 +242,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     {plan.name === 'Enterprise' ? (
                       <div>
                         <div className="text-4xl font-bold text-white mb-2">
-                          ${calculateEnterprisePrice()}
+                          Custom
                           <span className="text-lg text-neutral-400 font-normal">/mo</span>
                         </div>
                         <div className="mb-4">
@@ -261,7 +261,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                     ) : (
                       <div>
                         <div className="text-4xl font-bold text-white mb-2">
-                          {plan.name === 'Enterprise' ? 'Custom' : `₹${(isAnnual ? plan.annualPrice : plan.monthlyPrice).toLocaleString('en-IN')}`}
+                          ₹{(isAnnual ? plan.annualPrice : plan.monthlyPrice).toLocaleString('en-IN')}
                           <span className="text-lg text-neutral-400 font-normal">/mo</span>
                         </div>
                         {isAnnual && (
