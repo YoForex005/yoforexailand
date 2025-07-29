@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Zap, Users, MapPin, Clock, Briefcase, Code, Headphones, BarChart3, Shield, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Zap, Users, MapPin, Clock, Briefcase, Code, Headphones, BarChart3, Shield, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface CareersPageProps {
   onNavigateBack: () => void;
