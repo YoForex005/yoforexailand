@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Zap, Globe, BarChart3 } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 interface HeaderProps {
   onNavigateToDashboard: () => void;
@@ -19,7 +17,6 @@ const Header: React.FC<HeaderProps> = ({
   onNavigateToFeatures,
   onNavigateToResources
 }) => {
-  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -70,21 +67,20 @@ const Header: React.FC<HeaderProps> = ({
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => {
+                  if (item.onClick) {
+                    e.preventDefault();
+                    item.onClick();
+                  }
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
               >
-                <motion.a
-                  onClick={item.onClick}
-                  className="text-neutral-300 hover:text-primary-400 transition-colors duration-200 relative group cursor-pointer"
-                  whileHover={{ y: -2 }}
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
-                </motion.a>
-              </Link>
-            ))}
-          </div>
+                {item.name}
+              </a>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
