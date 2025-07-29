@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Zap, Globe, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   onNavigateToDashboard: () => void;
@@ -17,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   onNavigateToFeatures,
   onNavigateToResources
 }) => {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -29,9 +32,9 @@ const Header: React.FC<HeaderProps> = ({
   }, []);
 
   const navItems = [
-    { name: 'Features', href: '/features', onClick: onNavigateToFeatures },
+    { name: 'Features', href: '/features' },
     { name: 'Pricing', href: '/#pricing' },
-    { name: 'Resources', href: '/resources', onClick: onNavigateToResources },
+    { name: 'Resources', href: '/resources' },
   ];
 
   return (
@@ -67,27 +70,20 @@ const Header: React.FC<HeaderProps> = ({
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                onClick={(e) => {
-                  if (item.onClick) {
-                    e.preventDefault();
-                    item.onClick();
-                  }
-                  setIsMobileMenuOpen(false);
-                }}
-                className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                className="text-neutral-300 hover:text-primary-400 transition-colors duration-200"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <motion.button
-              onClick={onNavigateToLogin}
+              onClick={() => router.push('/login')}
               className="text-neutral-300 hover:text-white transition-colors duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -95,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({
               Sign In
             </motion.button>
             <motion.button
-              onClick={onNavigateToSignup}
+              onClick={() => router.push('/signup')}
               className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -125,25 +121,19 @@ const Header: React.FC<HeaderProps> = ({
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => {
-                    if (item.onClick) {
-                      e.preventDefault();
-                      item.onClick();
-                    }
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                  className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <div className="pt-4 space-y-2">
                 <button 
                   onClick={() => {
-                    onNavigateToLogin();
+                    router.push('/login');
                     setIsMobileMenuOpen(false);
                   }}
                   className="w-full text-left text-neutral-300 hover:text-white transition-colors duration-200"
@@ -152,7 +142,7 @@ const Header: React.FC<HeaderProps> = ({
                 </button>
                 <button 
                   onClick={() => {
-                    onNavigateToSignup();
+                    router.push('/signup');
                     setIsMobileMenuOpen(false);
                   }}
                   className="w-full bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
