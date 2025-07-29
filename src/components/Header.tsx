@@ -81,6 +81,8 @@ const Header: React.FC<HeaderProps> = ({
               >
                 {item.name}
               </a>
+            ))}
+          </div>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
@@ -123,23 +125,20 @@ const Header: React.FC<HeaderProps> = ({
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => {
+                    if (item.onClick) {
+                      e.preventDefault();
+                      item.onClick();
+                    }
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
                 >
-                  <a
-                    onClick={(e) => {
-                      if (item.onClick) {
-                        e.preventDefault();
-                        item.onClick();
-                      }
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
-                  >
-                    {item.name}
-                  </a>
-                </Link>
+                  {item.name}
+                </a>
               ))}
               <div className="pt-4 space-y-2">
                 <button 
