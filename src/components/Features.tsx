@@ -263,7 +263,7 @@ const Features: React.FC = () => {
               <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
                 Try our live demo sandbox with real market data and see how our AI consensus system works in action.
               </p>
-              <motion.button
+              {/* <motion.button
                 className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -271,7 +271,7 @@ const Features: React.FC = () => {
                 <Cpu className="w-5 h-5" />
                 <span>Launch Live Demo</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </motion.button>
+              </motion.button> */}
             </div>
           </div>
         </motion.div>

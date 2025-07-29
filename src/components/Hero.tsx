@@ -180,7 +180,7 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.button
+              {/* <motion.button
                 // onClick={onNavigateToContactSupport}
                 className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.05 }}
@@ -190,16 +190,16 @@ const Hero = () => {
                 <span>Start Free Trial</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </motion.button>
+              </motion.button> */}
 
-              <motion.button
+              {/* <motion.button
                 className="bg-transparent border-2 border-primary-500/50 text-primary-400 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-500/10 transition-colors duration-300 inline-flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Play className="w-5 h-5" />
                 <span>Watch Demo</span>
-              </motion.button>
+              </motion.button> */}
             </motion.div>
 
             {/* Live Metrics */}
