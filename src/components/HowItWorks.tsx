@@ -10,54 +10,54 @@ const HowItWorks: React.FC = () => {
     {
       id: 'choose-mode',
       icon: Upload,
-      title: 'Choose Your Mode',
-      description: 'Select Automated Mode for 24/7 hands-free signals or Interactive Assistant Mode for real-time AI chat and analysis.',
+      title: 'Choose Your AI Models',
+      description: 'Select from 392+ AI models including free options (Mistral, Claude Haiku, DeepSeek) or premium models (Grok, OpenAI O3, Gemini Ultra) for your trading analysis.',
       color: 'from-primary-500 to-primary-600',
       delay: 0.2,
       expandedContent: {
         details: [
-          'Automated Mode: Continuous workflow processing with minimal human intervention',
-          'Interactive Assistant Mode: Real-time AI chat for on-demand analytics',
-          'Hybrid Mode: Combine both approaches for maximum flexibility',
-          'Custom configuration for specific business requirements',
-          'Role-based access controls for team collaboration',
-          'Integration with existing enterprise systems and databases'
+          'Free Models: Access Mistral, Claude Haiku, DeepSeek, and other free AI models',
+          'Premium Models: Grok, OpenAI O3, Claude Opus 4, Gemini Ultra for advanced analysis',
+          'Multi-Model Consensus: Run same analysis across multiple AIs for stronger signals',
+          'Custom Model Selection: Choose specific models for different trading strategies',
+          'Flexible API Usage: Switch between free and premium based on your needs',
+          'Model Performance Tracking: See which AIs perform best for your trading style'
         ],
       }
     },
     {
       id: 'multi-ai',
       icon: Cpu,
-      title: 'Multi-AI Processing',
-      description: 'Access 392 AI models with flexible switching between 67 free and 325 premium options. AI Position Management monitors and adjusts in real-time.',
+      title: 'AI Trading Analysis',
+      description: 'Upload charts, select strategies (breakout, trend following, SMC, ICT, Fibonacci), and get comprehensive trade analysis with entry/exit points, SL/TP levels, and detailed reasoning.',
       color: 'from-accent-500 to-violet-600',
       delay: 0.4,
       expandedContent: {
         details: [
-          '67 free AI models including DeepSeek R1, Gemini 2.5 Pro, Llama variants',
-          '325 premium models: Grok 4, OpenAI O3, Claude Opus 4, and more',
-          'Intelligent model selection based on task requirements',
-          'Real-time performance monitoring and automatic failover',
-          'Cost optimization through smart model switching (60-80% savings)',
-          'Custom model training for enterprise-specific use cases'
+          '10+ Built-in Strategies: Breakout, Trend Following, Mean Reversion, SMC, ICT Logic',
+          'Multi-Timeframe Analysis: Hourly, 4H, daily, and weekly chart analysis combined',
+          'Custom Strategy Upload: Import your own trading strategies in PDF or prompt format',
+          'Image + Text Analysis: Upload charts, screenshots, and text for comprehensive review',
+          'AI Confidence Scoring: Get confidence levels (1-5) for every trade recommendation',
+          'Detailed Trade Rationale: Understand why the AI recommends each trade setup'
         ],
       }
     },
     {
       id: 'execute-manage',
       icon: TrendingUp,
-      title: 'Execute & Manage',
-      description: 'Receive automated signals with AI-calculated TP/SL levels, smart recovery options, and dual notifications via MT5 mobile and Telegram.',
+      title: 'Get Actionable Signals',
+      description: 'Receive detailed trade recommendations with precise entry points, stop loss, take profit levels, and comprehensive reasoning. Join premium Discord/Telegram communities for discussion.',
       color: 'from-success-500 to-success-600',
       delay: 0.6,
       expandedContent: {
         details: [
-          'Automated workflow execution with intelligent scheduling',
-          'Real-time monitoring and performance optimization',
-          'Smart error recovery and rollback mechanisms',
-          'Multi-channel notifications (email, Slack, webhooks)',
-          'Comprehensive audit trails for compliance',
-          'Integration with enterprise messaging and monitoring systems'
+          'Precise Entry/Exit Points: Get exact price levels for trade execution',
+          'Stop Loss & Take Profit: AI-calculated risk management levels for every trade',
+          'Multi-Model Consensus: See how different AIs "debate" and agree on trades',
+          'Trade Reasoning: Detailed explanations of technical and fundamental factors',
+          'Community Access: Join Discord/Telegram groups with other AI-powered traders',
+          'Educational Content: Learn from AI explanations and improve your trading skills'
         ],
       }
     }
@@ -78,7 +78,7 @@ const HowItWorks: React.FC = () => {
             How It <span className="bg-gradient-primary bg-clip-text text-transparent">Works</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Three simple steps to access the world's most comprehensive AI trading ecosystem with automated signals and interactive intelligence.
+            Three simple steps to access the world's most comprehensive AI trading analysis platform with multi-model consensus and detailed trade recommendations.
           </p>
         </motion.div>
 
@@ -193,7 +193,7 @@ const HowItWorks: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Zap className="w-5 h-5" />
-            <span>Try It Now - Upload Your First Chart</span>
+            <span>Start Free - Get 5 Daily AI Analyses</span>
             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
           </motion.button>
         </motion.div>

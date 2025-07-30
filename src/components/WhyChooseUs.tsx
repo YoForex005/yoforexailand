@@ -19,104 +19,104 @@ const WhyChooseUs: React.FC = () => {
 
   const benefits = [
     {
-      id: 'complete-ai',
+      id: 'universal-ai-access',
       icon: Cpu,
-      title: 'Complete AI Solution',
-      description: 'Extensive library of 392 AI models with both automated signals and interactive assistant capabilities.',
+      title: 'Universal AI Access',
+      description: 'Access 392+ AI models including free options (Mistral, Claude Haiku, DeepSeek) and premium models (Grok, OpenAI O3, Gemini Ultra) for comprehensive trading analysis.',
       color: 'from-primary-500 to-primary-600',
       expandedContent: {
         details: [
-          'Access 392+ AI models for workflow automation and analytics',
-          '67 free options including DeepSeek R1, Gemini 2.5 Pro, Llama variants',
-          '325 premium models: Grok 4, OpenAI O3, Claude Opus 4 for advanced tasks',
-          'Seamless switching between models for optimal cost-efficiency',
-          'Real-time model performance monitoring and selection',
-          'Custom model training for enterprise-specific requirements'
+          'Free AI Models: Mistral, Claude Haiku, DeepSeek, and other free APIs',
+          'Premium Models: Grok, OpenAI O3, Claude Opus 4, Gemini Ultra for advanced analysis',
+          'Multi-Model Consensus: Run same analysis across multiple AIs for stronger signals',
+          'Flexible Model Selection: Choose specific AIs for different trading strategies',
+          'Performance Tracking: Monitor which models work best for your trading style',
+          'Regular Updates: New AI models added as they become available'
         ],
       }
     },
     {
-      id: 'user-friendly',
+      id: 'strategy-library',
       icon: Users,
-      title: 'User-Friendly Interface',
-      description: 'Intuitive on-screen controls with keyboard shortcuts and visual trading buttons for seamless operation.',
+      title: '10+ Trading Strategies',
+      description: 'Built-in professional strategies including Breakout, Trend Following, SMC, ICT Logic, Fibonacci analysis, plus ability to upload your own custom strategies.',
       color: 'from-accent-500 to-violet-600',
       expandedContent: {
         details: [
-          'Drag-and-drop workflow builder for easy automation setup',
-          'Customizable dashboards with role-based access controls',
-          'Keyboard shortcuts for power users and efficiency',
-          'Mobile-responsive design for on-the-go management',
-          'Real-time collaboration tools for team workflows',
-          'Comprehensive onboarding and training resources'
+          'Breakout Strategy: Identify and trade breakout patterns with AI confirmation',
+          'Trend Following: Multi-timeframe trend analysis with entry/exit optimization',
+          'Smart Money Concepts: Advanced market structure and liquidity analysis',
+          'ICT Logic: Inner Circle Trader methodologies and market maker moves',
+          'Fibonacci Analysis: Retracement, extension, and confluence trading',
+          'Custom Strategy Upload: Import your own strategies in PDF or prompt format'
         ],
       }
     },
     {
-      id: 'proven-strategies',
+      id: 'personalized-ai',
       icon: TrendingUp,
-      title: 'Proven Strategies',
-      description: 'Advanced features including trend following, mean reversion, breakout detection, and smart recovery options.',
+      title: 'Personalized AI Training',
+      description: 'Upload your trading history, journal, or custom strategies to train your personal AI agent for more accurate and personalized recommendations.',
       color: 'from-success-500 to-success-600',
       expandedContent: {
         details: [
-          'Trend analysis algorithms for data pattern recognition',
-          'Anomaly detection for proactive issue identification',
-          'Predictive analytics for capacity planning',
-          'Smart recovery mechanisms for system resilience',
-          'Multi-dimensional data correlation analysis',
-          'Custom strategy development for specific use cases'
+          'Trading History Analysis: Upload past trades for AI to learn your patterns',
+          'Journal Integration: Import trading journals for personalized insights',
+          'Custom Strategy Training: Train AI on your specific methodologies',
+          'Performance Learning: AI adapts based on your SL/TP results and feedback',
+          'Pattern Recognition: AI identifies your most successful setups',
+          'Continuous Improvement: AI refines recommendations based on your trading results'
         ],
       }
     },
     {
-      id: 'cost-efficiency',
+      id: 'flexible-pricing',
       icon: BarChart3,
-      title: 'Cost Efficiency',
-      description: 'API cost reduction mode saves 60-80% on expenses with flexible switching between free and premium models.',
+      title: 'Flexible Pricing Plans',
+      description: 'Choose from Free (5 analyses/day), Pro ($69/mo, 20 analyses), or Max ($140/mo, unlimited) plans with access to different AI models and features.',
       color: 'from-warning-500 to-warning-600',
       expandedContent: {
         details: [
-          '60-80% API cost savings through smart model selection',
-          'Automated switching between free and premium models',
-          'Usage analytics and cost forecasting tools',
-          'Resource pooling for enterprise-wide efficiency',
-          'Transparent pricing with no hidden fees',
-          'ROI tracking and optimization recommendations'
+          'Free Plan: 5 daily analyses using free AI models like Mistral and Claude Haiku',
+          'Pro Plan: 20 daily analyses with premium models and advanced features',
+          'Max Plan: Unlimited analyses with all AI models including pay-as-you-go options',
+          'Transparent Pricing: No hidden fees, clear usage limits and model access',
+          'Flexible Upgrades: Change plans anytime based on your trading needs',
+          'Community Access: Pro/Max users get Discord and Telegram community access'
         ],
       }
     },
     {
-      id: 'professional-support',
+      id: 'community-support',
       icon: Shield,
-      title: 'Professional Support',
-      description: 'Free setup assistance, dedicated community access, and comprehensive documentation for all users.',
+      title: 'Community & Support',
+      description: 'Join premium Discord/Telegram communities, get 24/7 support, and access comprehensive trading education and AI model training resources.',
       color: 'from-error-500 to-error-600',
       expandedContent: {
         details: [
-          'Free professional setup assistance and onboarding',
-          'Dedicated support team with 2-4 hour response time',
-          'Comprehensive documentation and API references',
-          'Private community access for enterprise users',
-          'Regular training webinars and best practice sessions',
-          'Priority feature requests and development input'
+          'Premium Communities: Discord and Telegram access for Pro/Max users',
+          'Educational Resources: Trading courses, AI model guides, and strategy tutorials',
+          '24/7 Support: Priority support for Pro/Max users, standard for free users',
+          'Strategy Sharing: Learn from other traders and share successful AI setups',
+          'Regular Updates: New AI models, strategies, and features added regularly',
+          'Transparent Platform: See AI reasoning and model performance for every trade'
         ],
       }
     },
     {
-      id: 'multi-platform',
+      id: 'risk-transparency',
       icon: Globe,
-      title: 'Multi-Platform Integration',
-      description: 'Seamless MT5 integration with dual notifications, web search capabilities, and prop firm compliance.',
+      title: 'Risk & Transparency',
+      description: 'Non-custodial platform that never touches your funds. All AI outputs are for educational purposes only - you maintain full control over your trading decisions.',
       color: 'from-neutral-600 to-neutral-700',
       expandedContent: {
         details: [
-          'RESTful APIs for seamless system integration',
-          'Webhook support for real-time notifications',
-          'Enterprise SSO and authentication integration',
-          'Cloud platform compatibility (AWS, Azure, GCP)',
-          'Database connectors for popular systems',
-          'Custom integration development services'
+          'Non-Custodial: Platform never handles or touches your trading funds',
+          'Educational Purpose: All AI outputs are for informational and educational use',
+          'Full Control: You make all final trading decisions and execute trades yourself',
+          'Transparent AI: See detailed reasoning and confidence scores for every analysis',
+          'Risk Disclosure: Clear communication that trading involves risk of loss',
+          'No Guarantees: Platform provides analysis tools, not investment advice'
         ],
       }
     }
@@ -133,7 +133,7 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          The world's most comprehensive AI trading analysis platform combining multiple AI models with professional trading strategies for individual and professional traders.
             Why Choose <span className="bg-gradient-primary bg-clip-text text-transparent">YoForex AI</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">

@@ -118,8 +118,8 @@ const Footer: React.FC<FooterProps> = ({
                 </span>
               </div>
               <p className="text-neutral-400 leading-relaxed mb-6">
-                Leading B2B2C SaaS platform for AI-powered analytics and workflow automation. 
-                Empowering businesses with intelligent data processing and automated insights.
+                The world's first universal AI-powered trading analysis platform. 
+                Empowering traders with intelligent market analysis and AI-backed trade recommendations.
               </p>
             </motion.div>
 
@@ -171,10 +171,10 @@ const Footer: React.FC<FooterProps> = ({
         <div className="border-t border-neutral-800/50 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-neutral-400 text-sm mb-4 md:mb-0">
-              © 2025 YoForex AI. All rights reserved. Professional SaaS platform for analytics and workflow automation.
+              © 2025 YoForex AI. All rights reserved. AI-powered trading analysis and strategies for global traders. No trading advice or execution provided.
             </div>
             <div className="text-neutral-500 text-xs">
-              No trading advice provided. Software services only.
+              Educational and informational purposes only. Trading involves risk.
             </div>
           </div>
         </div>

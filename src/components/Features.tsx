@@ -19,110 +19,110 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      id: 'api-orchestration',
+      id: 'ai-model-marketplace',
       icon: Zap,
-      title: 'API Orchestration',
-      description: 'Intelligent failover system automatically switches between primary and backup API keys for 99.9% uptime.',
+      title: 'AI Model Marketplace',
+      description: 'Choose from 392+ AI models including free options (Mistral, Claude Haiku, DeepSeek) and premium models (Grok, OpenAI O3, Gemini Ultra) for your trading analysis.',
       color: 'from-primary-500 to-primary-600',
       delay: 0.1,
       expandedContent: {
         details: [
-          'Multi-region cloud infrastructure with automatic failovers',
-          'Real-time monitoring and health checks for all API endpoints',
-          'Load balancing across multiple AI model providers',
-          'Intelligent routing based on response times and availability',
-          'Cost optimization through smart provider selection',
-          'Enterprise-grade security with SOC 2 compliance'
+          'Free Models: Access to Mistral, Claude Haiku, DeepSeek, and other free AI APIs',
+          'Premium Models: Grok, OpenAI O3, Claude Opus 4, Gemini Ultra for advanced analysis',
+          'Flexible Selection: Choose specific models for different trading strategies',
+          'Performance Tracking: Monitor which AIs work best for your trading style',
+          'Cost Control: Switch between free and premium models based on your budget',
+          'Regular Updates: New AI models added as they become available'
         ],
       }
     },
     {
-      id: 'pending-orders',
+      id: 'multi-ai-consensus',
       icon: Target,
-      title: 'Pending Orders',
-      description: 'Zero-slippage execution with real-time order modifications and smart entry positioning.',
+      title: 'Multi-AI Consensus',
+      description: 'Run the same analysis across multiple AI models to get consensus signals with confidence scoring and detailed reasoning from each AI.',
       color: 'from-success-500 to-success-600',
       delay: 0.2,
       expandedContent: {
         details: [
-          'Real-time data processing with sub-second latency',
-          'Smart queue management for high-volume operations',
-          'Automated retry logic with exponential backoff',
-          'Priority-based task scheduling and execution',
-          'Integration with enterprise messaging systems',
-          'Comprehensive audit trails for compliance'
+          'Multi-Model Analysis: Same prompt runs across multiple selected AI models',
+          'Consensus Scoring: See how different AIs agree or disagree on trade setups',
+          'AI Debate Visualization: Watch AIs "discuss" and validate trade ideas',
+          'Confidence Levels: Get 1-5 confidence scores for every trade recommendation',
+          'Transparent Results: See individual AI outputs and reasoning',
+          'Signal Strength: Stronger signals when multiple AIs agree on direction'
         ],
       }
     },
     {
-      id: 'ai-position',
+      id: 'strategy-library',
       icon: BarChart3,
-      title: 'AI Position Management',
-      description: 'Dynamic TP/SL adjustments with conditional recovery nets and risk optimization.',
+      title: 'Strategy Library',
+      description: '10+ professional trading strategies including Breakout, Trend Following, SMC, ICT Logic, Fibonacci analysis, and custom strategy uploads.',
       color: 'from-accent-500 to-violet-600',
       delay: 0.3,
       expandedContent: {
         details: [
-          'Dynamic resource allocation based on workload patterns',
-          'Automated scaling for peak demand periods',
-          'Cost optimization through intelligent resource pooling',
-          'Performance monitoring with predictive analytics',
-          'Integration with cloud infrastructure providers',
-          'Real-time alerts for resource threshold breaches'
+          'Built-in Strategies: Breakout, Trend Following, Mean Reversion, Smart Money Concepts',
+          'ICT Logic: Inner Circle Trader methodologies and market structure analysis',
+          'Fibonacci Tools: Retracement, extension, and confluence analysis',
+          'Multi-Timeframe: Combine signals from multiple timeframes for stronger setups',
+          'Custom Uploads: Import your own strategies in PDF or prompt format',
+          'Strategy Blending: Combine built-in strategies with your custom approaches'
         ],
       }
     },
     {
-      id: 'explainable-ai',
+      id: 'personalized-training',
       icon: Brain,
-      title: 'Explainable AI',
-      description: 'Chain-of-thought insights with model reasoning, source citations, and confidence scoring.',
+      title: 'Personalized AI Training',
+      description: 'Upload your trading history, journal, or custom strategies to train your personal AI agent for more accurate and personalized trade recommendations.',
       color: 'from-warning-500 to-warning-600',
       delay: 0.4,
       expandedContent: {
         details: [
-          'Detailed reasoning chains for all AI-generated insights',
-          'Source attribution and confidence scoring (0-5 scale)',
-          'Model performance tracking and comparison',
-          'Bias detection and mitigation strategies',
-          'Audit-ready documentation for compliance',
-          'Custom explainability reports for stakeholders'
+          'Trading History Upload: Import past trades to help AI learn your patterns',
+          'Journal Integration: Upload trading journals for personalized insights',
+          'Custom Strategy Training: Train AI on your specific trading methodologies',
+          'Performance Learning: AI adapts based on your SL/TP hit rates and feedback',
+          'Pattern Recognition: AI identifies your most successful trade setups',
+          'Continuous Improvement: AI refines recommendations based on your results'
         ],
       }
     },
     {
-      id: 'recovery-mode',
+      id: 'sl-tp-reasoning',
       icon: RefreshCw,
-      title: 'Recovery Mode',
-      description: 'Automated position recovery with averaging strategies and dynamic lot sizing.',
+      title: 'SL/TP & Reasoning',
+      description: 'Get precise stop loss and take profit levels with comprehensive trade rationale explaining technical analysis, market structure, and risk factors.',
       color: 'from-error-500 to-error-600',
       delay: 0.5,
       expandedContent: {
         details: [
-          'Intelligent error detection and classification',
-          'Automated rollback and recovery procedures',
-          'Data integrity validation and restoration',
-          'Graceful degradation during system failures',
-          'Comprehensive backup and disaster recovery',
-          'Real-time incident response and notification'
+          'Precise Risk Management: AI-calculated stop loss levels based on market structure',
+          'Profit Targets: Multiple take profit levels with probability analysis',
+          'Risk-Reward Ratios: Optimal risk-reward calculations for each trade setup',
+          'Technical Reasoning: Detailed explanation of support/resistance levels',
+          'Market Context: Analysis of current market conditions and volatility',
+          'Entry Timing: Optimal entry points based on technical confluence'
         ],
       }
     },
     {
-      id: 'web-search',
+      id: 'community-access',
       icon: Globe,
-      title: 'Real-Time Web Search',
-      description: 'Live news and market sentiment analysis integrated into trading decisions.',
+      title: 'Premium Community',
+      description: 'Join exclusive Discord and Telegram communities with Pro/Max users to share AI-backed trades, discuss strategies, and learn from global traders.',
       color: 'from-neutral-600 to-neutral-700',
       delay: 0.6,
       expandedContent: {
         details: [
-          'Real-time web scraping from 50+ trusted sources',
-          'Natural language processing for content analysis',
-          'Sentiment analysis and trend detection',
-          'Automated data validation and quality checks',
-          'Integration with external APIs and databases',
-          'Custom search parameters and filtering'
+          'Discord Community: Real-time chat with AI-powered traders worldwide',
+          'Telegram Groups: Mobile-friendly trading discussions and signal sharing',
+          'Educational Content: Learn from experienced traders and AI insights',
+          'Strategy Sharing: Share and discover profitable AI-backed trading approaches',
+          'Market Discussions: Daily market analysis and AI consensus discussions',
+          'Moderated Environment: Professional, educational trading community'
         ],
       }
     }
@@ -143,7 +143,7 @@ const Features: React.FC = () => {
             Advanced <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Professional-grade trading tools powered by cutting-edge AI technology and enterprise-level infrastructure.
+            Advanced AI trading analysis features powered by 392+ AI models and multi-timeframe technical analysis.
           </p>
         </motion.div>
 
@@ -258,10 +258,10 @@ const Features: React.FC = () => {
 
             <div className="relative z-10">
               <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI-Powered Trading?</span>
+                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading Analysis?</span>
               </h3>
               <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
-                Try our live demo sandbox with real market data and see how our AI consensus system works in action.
+                Try our platform with real market data and see how our multi-AI consensus system analyzes trades in real-time.
               </p>
               <motion.button
                 className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
@@ -269,7 +269,7 @@ const Features: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Cpu className="w-5 h-5" />
-                <span>Launch Live Demo</span>
+                <span>Start Free Trial</span>
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </motion.button>
             </div>

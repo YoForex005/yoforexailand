@@ -13,26 +13,26 @@ const StartTrading: React.FC = () => {
   const steps = [
     {
       icon: Download,
-      title: 'Install on MT5',
-      description: 'Download and install YoForex AI on your MetaTrader 5 chart',
+      title: 'Sign Up Free',
+      description: 'Create your account and get instant access to 5 daily AI analyses using free models',
       color: 'from-primary-500 to-primary-600'
     },
     {
       icon: Key,
-      title: 'Configure API Keys',
-      description: 'Set up your API keys for access to premium AI models and features',
+      title: 'Choose AI Models',
+      description: 'Select from free models (Mistral, Claude Haiku) or upgrade for premium models (Grok, OpenAI O3)',
       color: 'from-accent-500 to-violet-600'
     },
     {
       icon: Settings,
-      title: 'Choose Your Mode',
-      description: 'Select automated signals, interactive assistant, or both modes',
+      title: 'Select Strategy',
+      description: 'Choose from 10+ built-in strategies or upload your own custom trading strategies',
       color: 'from-success-500 to-success-600'
     },
     {
       icon: Play,
-      title: 'Start Trading',
-      description: 'Set your parameters and begin receiving AI-powered trading signals',
+      title: 'Get AI Analysis',
+      description: 'Upload charts and receive detailed trade analysis with SL/TP levels and reasoning',
       color: 'from-warning-500 to-warning-600'
     }
   ];
@@ -52,7 +52,7 @@ const StartTrading: React.FC = () => {
             Start Trading in <span className="bg-gradient-primary bg-clip-text text-transparent">Minutes</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Get up and running with YoForex AI in just four simple steps. Our free setup assistance ensures you're ready to trade.
+            Get up and running with YoForex AI in just four simple steps. Start with 5 free daily analyses and upgrade as needed.
           </p>
         </motion.div>
 
@@ -132,10 +132,10 @@ const StartTrading: React.FC = () => {
 
             <div className="relative z-10">
               <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI-Powered Trading?</span>
+                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading Analysis?</span>
               </h3>
               <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
-                Join thousands of traders already using YoForex AI. Free setup assistance and community access included.
+                Join thousands of traders already using YoForex AI. Start free with 5 daily analyses and upgrade for more features.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -145,7 +145,7 @@ const StartTrading: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <CheckCircle className="w-5 h-5" />
-                  <span>Start Free Trial</span>
+                  <span>Try Free - 5 Daily Analyses</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </motion.button>
@@ -156,7 +156,7 @@ const StartTrading: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Download className="w-5 h-5" />
-                  <span>Download Demo</span>
+                  <span>View Sample Analysis</span>
                 </motion.button>
               </div>
             </div>
