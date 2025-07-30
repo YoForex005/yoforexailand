@@ -133,7 +133,10 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          The world's most comprehensive AI trading analysis platform combining multiple AI models with professional trading strategies for individual and professional traders.
+          <p className="text-lg text-neutral-400 max-w-4xl mx-auto leading-relaxed mb-4">
+            The world's most comprehensive AI trading analysis platform combining multiple AI models with professional trading strategies for individual and professional traders.
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Why Choose <span className="bg-gradient-primary bg-clip-text text-transparent">YoForex AI</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
