@@ -13,7 +13,9 @@ import {
   ArrowRight,
   UserPlus,
   Calendar,
-  BarChart3
+  BarChart3,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 interface CommunityPageProps {
