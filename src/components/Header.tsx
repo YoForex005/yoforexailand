@@ -8,6 +8,7 @@ interface HeaderProps {
   onNavigateToSignup: () => void;
   onNavigateToFeatures: () => void;
   onNavigateToResources: () => void;
+  onNavigateToLiveDemo: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
@@ -15,7 +16,8 @@ const Header: React.FC<HeaderProps> = ({
   onNavigateToLogin, 
   onNavigateToSignup,
   onNavigateToFeatures,
-  onNavigateToResources
+  onNavigateToResources,
+  onNavigateToLiveDemo
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,6 +32,7 @@ const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { name: 'Features', href: '/features' },
+    { name: 'Live Demo', href: '/live-demo' },
     { name: 'Pricing', href: '/#pricing' },
     { name: 'Resources', href: '/resources' },
   ];
@@ -75,6 +78,8 @@ const Header: React.FC<HeaderProps> = ({
                   e.preventDefault();
                   if (item.name === 'Features') {
                     onNavigateToFeatures();
+                  } else if (item.name === 'Live Demo') {
+                    onNavigateToLiveDemo();
                   } else if (item.name === 'Resources') {
                     onNavigateToResources();
                   }
@@ -135,6 +140,8 @@ const Header: React.FC<HeaderProps> = ({
                     setIsMobileMenuOpen(false);
                     if (item.name === 'Features') {
                       onNavigateToFeatures();
+                    } else if (item.name === 'Live Demo') {
+                      onNavigateToLiveDemo();
                     } else if (item.name === 'Resources') {
                       onNavigateToResources();
                     }

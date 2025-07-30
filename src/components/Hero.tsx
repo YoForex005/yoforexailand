@@ -5,9 +5,10 @@ import { ArrowRight, TrendingUp, Brain, Users } from 'lucide-react';
 interface HeroProps {
   onNavigateToDashboard: () => void;
   onNavigateToSignup: () => void;
+  onNavigateToLiveDemo: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }) => {
+const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, onNavigateToLiveDemo }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
       {/* Background Effects */}
@@ -120,7 +121,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup }
             </button>
             
             <button
-              onClick={onNavigateToDashboard}
+              onClick={onNavigateToLiveDemo}
               className="px-8 py-4 border border-neutral-600 text-white font-semibold rounded-xl hover:bg-neutral-800 transition-all duration-300 flex items-center space-x-2"
             >
               <span>View Live Demo</span>

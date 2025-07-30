@@ -25,6 +25,12 @@ interface ResourcesPageProps {
   onNavigateToBlog: () => void;
   onNavigateToCommunity: () => void;
   onNavigateToSupport: () => void;
+  onNavigateToStrategyBuilder?: () => void;
+  onNavigateToBacktestingTools?: () => void;
+  onNavigateToRiskCalculator?: () => void;
+  onNavigateToMarketScanner?: () => void;
+  onNavigateToIntegrationGuide?: () => void;
+  onNavigateToTroubleshooting?: () => void;
 }
 
 const ResourcesPage: React.FC<ResourcesPageProps> = ({
@@ -32,7 +38,13 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
   onNavigateToUserManual,
   onNavigateToBlog,
   onNavigateToCommunity,
-  onNavigateToSupport
+  onNavigateToSupport,
+  onNavigateToStrategyBuilder,
+  onNavigateToBacktestingTools,
+  onNavigateToRiskCalculator,
+  onNavigateToMarketScanner,
+  onNavigateToIntegrationGuide,
+  onNavigateToTroubleshooting
 }) => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
@@ -90,37 +102,39 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
         { 
           id: 'integration-guide',
           name: 'Integration Guide', 
-          description: 'Enterprise system integration and configuration',
+          description: 'Connect YoForex AI with brokers and trading platforms',
+          onClick: onNavigateToIntegrationGuide,
           expandedContent: {
-            title: 'Enterprise Integration Guide',
+            title: 'Trading Platform Integration Guide',
             details: [
-              'Step-by-step instructions for connecting to AWS S3, databases, Slack',
-              'Secure data orchestration with enterprise-grade security',
-              'Real-time notifications and webhook configuration',
-              'API cost reduction mode setup (60-80% savings)',
-              'Multi-AI model workflows for scalable automation',
-              'Custom integration examples and best practices'
+              'Step-by-step instructions for connecting to MetaTrader, TradingView, and major brokers',
+              'Telegram and Discord notification setup for trade alerts',
+              'API integration for automated analysis requests',
+              'Webhook configuration for real-time signal delivery',
+              'Mobile app integration and push notifications',
+              'Custom integration examples and troubleshooting'
             ],
             contact: 'Custom setup assistance: support@yoforex.co.in',
-            address: 'Professional setup included with Pro and Enterprise plans'
+            address: 'Integration support included with Pro and Max plans'
           }
         },
         { 
           id: 'troubleshooting',
           name: 'Troubleshooting', 
-          description: 'Common issues and solutions',
+          description: 'Common trading platform issues and solutions',
+          onClick: onNavigateToTroubleshooting,
           expandedContent: {
-            title: 'Comprehensive Troubleshooting',
+            title: 'Trading Platform Troubleshooting',
             details: [
-              'Common solutions for API errors and connectivity issues',
-              'Workflow failure diagnosis and resolution steps',
-              'Performance optimization tips and best practices',
-              'Log analysis and debugging techniques',
-              'Uptime-related problem resolution (99.9% SLA backed)',
-              'Escalation procedures for complex technical issues'
+              'Common solutions for AI model connection issues',
+              'Chart upload and analysis failure troubleshooting',
+              'Broker integration and notification setup problems',
+              'Account and subscription management issues',
+              'Performance optimization for faster analysis',
+              'Contact support for unresolved technical issues'
             ],
             contact: 'Unresolved issues: support@yoforex.co.in with account details',
-            address: 'Emergency support available for Enterprise customers'
+            address: 'Priority support available for Pro and Max subscribers'
           }
         }
       ]
@@ -135,75 +149,75 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
         { 
           id: 'blog',
           name: 'Blog', 
-          description: 'Latest AI analytics insights and automation trends',
+          description: 'Latest AI trading insights and market analysis',
           onClick: onNavigateToBlog,
           featured: true,
           expandedContent: {
-            title: 'Technical Insights Blog',
+            title: 'AI Trading Insights Blog',
             details: [
-              'Insights on AI-driven automation trends and SaaS scalability',
-              'IT best practices and enterprise workflow optimization',
-              'Recent posts: "Optimizing Multi-AI Workflows for Enterprise Efficiency"',
-              '"Securing Analytics Platforms in the Cloud" and infrastructure guides',
-              'Technical deep-dives on platform architecture and performance',
-              'Industry trends and emerging technologies in workflow automation'
+              'Deep dives into AI trading strategies and market analysis techniques',
+              'Trading psychology and AI-assisted decision making',
+              'Recent posts: "How Multi-AI Consensus Improves Trading Accuracy"',
+              '"Mastering Fibonacci with AI" and advanced strategy guides',
+              'Market regime analysis and AI model performance reviews',
+              'Success stories and case studies from the trading community'
             ],
-            contact: 'Subscribe for updates—purely technical content, no advisory material',
-            address: 'Editorial team: support@yoforex.co.in'
+            contact: 'Subscribe for updates—educational content for traders',
+            address: 'Trading insights team: support@yoforex.co.in'
           }
         },
         { 
           id: 'case-studies',
           name: 'Case Studies', 
-          description: 'Real-world automation success stories',
+          description: 'Real trader success stories and results',
           expandedContent: {
-            title: 'Enterprise Success Stories',
+            title: 'Trader Success Stories',
             details: [
-              'Real-world examples of YoForex AI boosting IT operations',
-              'Case study: Firm reducing workflow processing time by 70%',
-              'Technical outcomes and scalability improvements',
-              'ROI analysis and performance metrics',
-              'Implementation timelines and best practices',
-              'Industry-specific use cases and solutions'
+              'Real examples of traders improving win rates with AI analysis',
+              'Case study: "How I Doubled My Win Rate Using Multi-AI Consensus"',
+              'Performance improvements and risk management success',
+              'Before/after trading results and strategy optimization',
+              'Community member spotlights and learning journeys',
+              'Different trading styles and AI model preferences'
             ],
             contact: 'Request full case studies: support@yoforex.co.in',
-            address: 'Custom case study development available for Enterprise clients'
+            address: 'Share your success story with the community'
           }
         },
         { 
           id: 'whitepapers',
           name: 'Whitepapers', 
-          description: 'In-depth research and methodology',
+          description: 'In-depth AI trading research and methodology',
           expandedContent: {
-            title: 'Technical Research Papers',
+            title: 'AI Trading Research Papers',
             details: [
-              'In-depth papers: "AI Orchestration for Workflow Automation"',
-              '20-page technical analysis on architectures and benchmarks',
-              '"Enterprise Compliance in SaaS Analytics" compliance guide',
-              'Research on multi-AI model performance and optimization',
-              'Industry best practices and emerging technology trends',
-              'Peer-reviewed technical methodologies and frameworks'
+              'In-depth papers: "Multi-AI Consensus in Trading Analysis"',
+              '20-page research on AI model performance in different market conditions',
+              '"Risk Management with AI: A Quantitative Approach" methodology guide',
+              'Research on AI trading psychology and behavioral analysis',
+              'Market regime detection using artificial intelligence',
+              'Peer-reviewed trading methodologies and backtesting frameworks'
             ],
-            contact: 'Download via app.yoforex.co.in/resources',
-            address: 'Research team: support@yoforex.co.in'
+            contact: 'Download research papers via app.yoforex.co.in/resources',
+            address: 'Trading research team: support@yoforex.co.in'
           }
         },
         { 
           id: 'webinars',
           name: 'Webinars', 
-          description: 'Live and recorded training sessions',
+          description: 'Live and recorded trading education sessions',
           expandedContent: {
-            title: 'Technical Training Sessions',
+            title: 'AI Trading Education Sessions',
             details: [
-              'Live sessions: "Building Resilient API Integrations"',
-              'Upcoming webinar: July 30, 2025 - Advanced Workflow Design',
-              'On-demand library of technical training content',
-              'Expert-led sessions on platform optimization',
-              'Q&A sessions with development team',
-              'Industry best practices and case study reviews'
+              'Live sessions: "Mastering Multi-AI Trading Strategies"',
+              'Upcoming webinar: "Advanced Fibonacci Analysis with AI"',
+              'On-demand library of trading education content',
+              'Expert-led sessions on AI model selection and optimization',
+              'Q&A sessions with successful community traders',
+              'Strategy deep-dives and live market analysis'
             ],
-            contact: 'Register at app.yoforex.co.in/webinars for technical training',
-            address: 'Live support during webinars via chat'
+            contact: 'Register at app.yoforex.co.in/webinars for trading education',
+            address: 'Live Q&A during webinars via chat and Discord'
           }
         }
       ]
@@ -218,56 +232,56 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
         { 
           id: 'community-forum',
           name: 'Community Forum', 
-          description: 'Connect with other YoForex AI users',
+          description: 'Connect with other AI-powered traders',
           onClick: onNavigateToCommunity,
           featured: true,
           expandedContent: {
-            title: 'Professional Community Forum',
+            title: 'AI Trading Community Forum',
             details: [
-              'Technical discussions on integrations and workflow optimization',
-              'Platform feedback and feature requests from enterprise users',
-              'Categories: API tips, automation best practices, troubleshooting',
-              'Moderated for professional, SaaS-focused conversations only',
-              'Direct access to development team for technical questions',
-              'Peer-to-peer support and knowledge sharing'
+              'Trading discussions on strategies and AI model performance',
+              'Platform feedback and feature requests from active traders',
+              'Categories: Strategy sharing, AI tips, market analysis, troubleshooting',
+              'Moderated for educational trading discussions only',
+              'Direct access to trading experts and development team',
+              'Peer-to-peer learning and strategy optimization'
             ],
             contact: 'Access via app.yoforex.co.in/forum',
-            address: 'Community guidelines enforce professional IT discussions only'
+            address: 'Community guidelines enforce educational trading discussions only'
           }
         },
         { 
           id: 'help-center',
           name: 'Help Center', 
-          description: 'Frequently asked questions and guides',
+          description: 'Trading platform FAQ and setup guides',
           onClick: onNavigateToSupport,
           expandedContent: {
-            title: 'Self-Service Support Center',
+            title: 'Trading Platform Help Center',
             details: [
-              'Self-service articles on account management and billing',
-              'Pricing information in ₹ (e.g., ₹12,800/month for Basic)',
-              'API troubleshooting guides and common solutions',
-              'Security features documentation (SOC 2 compliance)',
-              'Searchable FAQ database for quick issue resolution',
-              'Video tutorials and step-by-step guides'
+              'Self-service articles on account setup and subscription management',
+              'Pricing information and plan comparison guides',
+              'AI model selection and strategy setup tutorials',
+              'Broker integration and notification configuration',
+              'Searchable FAQ database for common trading platform questions',
+              'Video tutorials and step-by-step trading guides'
             ],
             contact: 'Personalized help: support@yoforex.co.in',
-            address: 'Self-service available 24/7 via app.yoforex.co.in'
+            address: 'Trading support available 24/7 via app.yoforex.co.in'
           }
         },
         { 
           id: 'contact-support',
           name: 'Contact Support', 
-          description: 'Get direct help from our team',
+          description: 'Get direct help from our trading support team',
           onClick: onNavigateToSupport,
           expandedContent: {
-            title: 'Direct Technical Support',
+            title: 'Direct Trading Platform Support',
             details: [
-              'Email support@yoforex.co.in for technical inquiries',
-              'Ticket submission via app.yoforex.co.in for tracking',
+              'Email support@yoforex.co.in for platform and trading inquiries',
+              'Support ticket system via app.yoforex.co.in for issue tracking',
               'Business hours: 9 AM - 6 PM IST, Monday to Friday',
-              'Priority support for Pro and Enterprise customers',
-              'Screen sharing and remote assistance available',
-              'Escalation to senior engineers for complex issues'
+              'Priority support for Pro and Max subscribers',
+              'Live chat and screen sharing for complex setup issues',
+              'Discord community support for peer-to-peer assistance'
             ],
             contact: 'Response time: 2-4 hours for priority support',
             address: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
@@ -276,19 +290,19 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
         { 
           id: 'status-page',
           name: 'Status Page', 
-          description: 'System status and uptime monitoring',
+          description: 'Platform status and AI model availability',
           expandedContent: {
-            title: 'Real-Time System Monitoring',
+            title: 'Real-Time Platform Status',
             details: [
-              'Real-time platform uptime monitoring (99.9% SLA)',
-              'Incident history and maintenance schedule transparency',
-              'Performance metrics and response time tracking',
-              'Subscription alerts for service disruptions',
-              'Regional status updates for global infrastructure',
-              'Planned maintenance notifications and impact assessments'
+              'Real-time platform uptime and AI model availability (99.9% SLA)',
+              'AI model status and performance metrics',
+              'Analysis response time tracking and optimization',
+              'Subscription alerts for service disruptions or model outages',
+              'Maintenance notifications and scheduled updates',
+              'Historical uptime data and incident reports'
             ],
-            contact: 'Current status: All systems operational as of latest update',
-            address: 'Subscribe for alerts on workflow disruptions'
+            contact: 'Current status: All AI models operational',
+            address: 'Subscribe for alerts on platform or model disruptions'
           }
         }
       ]
@@ -303,73 +317,77 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
         { 
           id: 'strategy-builder',
           name: 'Strategy Builder', 
-          description: 'Create custom automation strategies',
+          description: 'Create custom AI trading strategies',
+          onClick: onNavigateToStrategyBuilder,
           expandedContent: {
-            title: 'Custom Workflow Strategy Builder',
+            title: 'Custom AI Trading Strategy Builder',
             details: [
-              'Visual workflow designer for automation strategies',
-              'Configure parameters like confidence levels (0-5) and data filters',
-              'Drag-and-drop interface for complex workflow creation',
-              'Template library for common enterprise use cases',
-              'Testing and validation tools for strategy optimization',
-              'Integration with all 392 AI models for enhanced capabilities'
+              'Visual strategy designer for custom trading approaches',
+              'Configure parameters like confidence levels, timeframes, and risk settings',
+              'Drag-and-drop interface for combining multiple strategies',
+              'Template library for popular trading strategies (SMC, ICT, Fibonacci)',
+              'Backtesting and validation tools for strategy optimization',
+              'Integration with all 392+ AI models for enhanced analysis'
             ],
-            contact: 'Accessible via app.yoforex.co.in/tools—software only for IT automation',
-            address: 'Training available for enterprise strategy development'
+            contact: 'Accessible via app.yoforex.co.in/tools for Pro and Max users',
+            address: 'Strategy building tutorials available in learning center'
           }
         },
         { 
           id: 'backtesting',
           name: 'Backtesting Tools', 
-          description: 'Test strategies with historical data',
+          description: 'Test trading strategies with historical market data',
+          onClick: onNavigateToBacktestingTools,
           expandedContent: {
-            title: 'Historical Data Analysis Tools',
+            title: 'Trading Strategy Backtesting Tools',
             details: [
-              'Simulate workflows with historical data for performance testing',
-              'Multi-model consensus testing and validation',
-              'Web search integration testing with historical events',
-              'Performance metrics and optimization recommendations',
-              'Results exportable for enterprise reporting and analysis',
-              'Custom date ranges and data source selection'
+              'Simulate trading strategies with years of historical market data',
+              'Multi-AI model backtesting and performance comparison',
+              'Test strategy performance across different market conditions',
+              'Detailed performance metrics: win rate, drawdown, Sharpe ratio',
+              'Export results for further analysis and strategy refinement',
+              'Custom date ranges and currency pair selection'
             ],
-            contact: 'Advanced backtesting features available in Pro and Enterprise plans',
-            address: 'Historical data retention: 2 years for Enterprise customers'
+            contact: 'Advanced backtesting features available in Pro and Max plans',
+            address: 'Historical data: 5+ years for major currency pairs and crypto'
           }
         },
         { 
           id: 'risk-calculator',
           name: 'Risk Calculator', 
-          description: 'Calculate resource allocation and limits',
+          description: 'Calculate position sizing and risk management',
+          onClick: onNavigateToRiskCalculator,
           expandedContent: {
-            title: 'Resource Allocation Calculator',
+            title: 'Trading Risk Management Calculator',
             details: [
-              'Calculate resource allocation and limits for workflows',
-              'API call optimization and cost estimation tools',
-              'Data volume planning and capacity management',
-              'Integration with drawdown controls for efficient SaaS usage',
-              'Performance impact analysis and optimization suggestions',
-              'Budget planning tools for enterprise resource management'
+              'Calculate optimal position sizes based on account balance and risk tolerance',
+              'Risk-reward ratio analysis and trade expectancy calculations',
+              'Portfolio risk assessment across multiple open positions',
+              'Drawdown protection and maximum risk exposure limits',
+              'Kelly Criterion and other position sizing methodologies',
+              'Risk management templates for different trading styles'
             ],
-            contact: 'No financial implications—purely technical resource planning',
-            address: 'Enterprise resource planning: support@yoforex.co.in'
+            contact: 'Educational risk management tools—not financial advice',
+            address: 'Risk management education: support@yoforex.co.in'
           }
         },
         { 
           id: 'market-scanner',
           name: 'Market Scanner', 
-          description: 'Scan data sources for automation opportunities',
+          description: 'Scan markets for AI-identified trading opportunities',
+          onClick: onNavigateToMarketScanner,
           expandedContent: {
-            title: 'Intelligent Data Source Scanner',
+            title: 'AI-Powered Market Opportunity Scanner',
             details: [
-              'Scan data sources for automation opportunities using real-time web search',
-              'Monitor 50+ data terms and sources for workflow triggers',
-              'Automated notification system for workflow updates',
-              'Custom scanning parameters and filtering options',
-              'Integration with enterprise data lakes and warehouses',
-              'Scheduled scanning with configurable frequency'
+              'Scan 50+ currency pairs and crypto markets for trading opportunities',
+              'AI-powered pattern recognition and setup identification',
+              'Real-time alerts for high-probability trade setups',
+              'Custom scanning parameters and strategy filters',
+              'Multi-timeframe scanning with confluence detection',
+              'Scheduled scans with customizable notification preferences'
             ],
-            contact: 'Configure via app.yoforex.co.in/scanner',
-            address: 'Custom scanning rules available for Enterprise customers'
+            contact: 'Configure market scanning via app.yoforex.co.in/scanner',
+            address: 'Advanced scanning features available for Pro and Max users'
           }
         }
       ]

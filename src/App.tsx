@@ -33,8 +33,16 @@ import PartnersPage from './components/pages/PartnersPage';
 import AboutUsPage from './components/pages/AboutUsPage';
 import IntegrationsPage from './components/pages/IntegrationsPage';
 import APIDocumentationPage from './components/pages/APIDocumentationPage';
+import LiveDemoPage from './components/pages/LiveDemoPage';
+import SampleAnalysisPage from './components/pages/SampleAnalysisPage';
+import StrategyBuilderPage from './components/pages/StrategyBuilderPage';
+import BacktestingToolsPage from './components/pages/BacktestingToolsPage';
+import RiskCalculatorPage from './components/pages/RiskCalculatorPage';
+import MarketScannerPage from './components/pages/MarketScannerPage';
+import IntegrationGuidePage from './components/pages/IntegrationGuidePage';
+import TroubleshootingPage from './components/pages/TroubleshootingPage';
 
-type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners';
+type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners' | 'live-demo' | 'sample-analysis' | 'strategy-builder' | 'backtesting-tools' | 'risk-calculator' | 'market-scanner' | 'integration-guide' | 'troubleshooting';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
@@ -72,6 +80,14 @@ function App() {
   const handleNavigateToCareers = () => setCurrentView('careers');
   const handleNavigateToPressKit = () => setCurrentView('press-kit');
   const handleNavigateToPartners = () => setCurrentView('partners');
+  const handleNavigateToLiveDemo = () => setCurrentView('live-demo');
+  const handleNavigateToSampleAnalysis = () => setCurrentView('sample-analysis');
+  const handleNavigateToStrategyBuilder = () => setCurrentView('strategy-builder');
+  const handleNavigateToBacktestingTools = () => setCurrentView('backtesting-tools');
+  const handleNavigateToRiskCalculator = () => setCurrentView('risk-calculator');
+  const handleNavigateToMarketScanner = () => setCurrentView('market-scanner');
+  const handleNavigateToIntegrationGuide = () => setCurrentView('integration-guide');
+  const handleNavigateToTroubleshooting = () => setCurrentView('troubleshooting');
 
   // Authentication flow views
   if (currentView === 'login') {
@@ -203,6 +219,42 @@ function App() {
   if (currentView === 'partners') {
     return <PartnersPage onNavigateBack={handleNavigateToLanding} />;
   }
+  
+  if (currentView === 'live-demo') {
+    return <LiveDemoPage 
+      onNavigateBack={handleNavigateToLanding}
+      onNavigateToSignup={handleNavigateToSignup}
+      onNavigateToSampleAnalysis={handleNavigateToSampleAnalysis}
+    />;
+  }
+  
+  if (currentView === 'sample-analysis') {
+    return <SampleAnalysisPage onNavigateBack={() => setCurrentView('live-demo')} />;
+  }
+  
+  if (currentView === 'strategy-builder') {
+    return <StrategyBuilderPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'backtesting-tools') {
+    return <BacktestingToolsPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'risk-calculator') {
+    return <RiskCalculatorPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'market-scanner') {
+    return <MarketScannerPage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'integration-guide') {
+    return <IntegrationGuidePage onNavigateBack={handleNavigateToResources} />;
+  }
+  
+  if (currentView === 'troubleshooting') {
+    return <TroubleshootingPage onNavigateBack={handleNavigateToResources} />;
+  }
 
   // Landing page
   return (
@@ -213,11 +265,13 @@ function App() {
         onNavigateToSignup={handleNavigateToSignup}
         onNavigateToFeatures={handleNavigateToFeatures}
         onNavigateToResources={handleNavigateToResources}
+        onNavigateToLiveDemo={handleNavigateToLiveDemo}
       />
       <main>
         <Hero 
           onNavigateToDashboard={handleNavigateToSignup} // Start Free Trial goes to signup
           onNavigateToSignup={handleNavigateToSignup}
+          onNavigateToLiveDemo={handleNavigateToLiveDemo}
         />
         <HowItWorks />
         <Features />
@@ -247,6 +301,12 @@ function App() {
         onNavigateToCareers={handleNavigateToCareers}
         onNavigateToPressKit={handleNavigateToPressKit}
         onNavigateToPartners={handleNavigateToPartners}
+        onNavigateToStrategyBuilder={handleNavigateToStrategyBuilder}
+        onNavigateToBacktestingTools={handleNavigateToBacktestingTools}
+        onNavigateToRiskCalculator={handleNavigateToRiskCalculator}
+        onNavigateToMarketScanner={handleNavigateToMarketScanner}
+        onNavigateToIntegrationGuide={handleNavigateToIntegrationGuide}
+        onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
       />
     </div>
   );

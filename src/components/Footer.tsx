@@ -24,6 +24,12 @@ interface FooterProps {
   onNavigateToCareers: () => void;
   onNavigateToPressKit: () => void;
   onNavigateToPartners: () => void;
+  onNavigateToStrategyBuilder: () => void;
+  onNavigateToBacktestingTools: () => void;
+  onNavigateToRiskCalculator: () => void;
+  onNavigateToMarketScanner: () => void;
+  onNavigateToIntegrationGuide: () => void;
+  onNavigateToTroubleshooting: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({
@@ -47,7 +53,13 @@ const Footer: React.FC<FooterProps> = ({
   onNavigateToAboutUs,
   onNavigateToCareers,
   onNavigateToPressKit,
-  onNavigateToPartners
+  onNavigateToPartners,
+  onNavigateToStrategyBuilder,
+  onNavigateToBacktestingTools,
+  onNavigateToRiskCalculator,
+  onNavigateToMarketScanner,
+  onNavigateToIntegrationGuide,
+  onNavigateToTroubleshooting
 }) => {
   const footerSections = [
     {
@@ -67,7 +79,18 @@ const Footer: React.FC<FooterProps> = ({
         { name: 'Blog', onClick: onNavigateToBlog },
         { name: 'Case Studies', onClick: onNavigateToCaseStudies },
         { name: 'Whitepapers', onClick: onNavigateToWhitepapers },
-        { name: 'Webinars', onClick: onNavigateToWebinars }
+        { name: 'Webinars', onClick: onNavigateToWebinars },
+        { name: 'Integration Guide', onClick: onNavigateToIntegrationGuide },
+        { name: 'Troubleshooting', onClick: onNavigateToTroubleshooting }
+      ]
+    },
+    {
+      title: 'Tools',
+      links: [
+        { name: 'Strategy Builder', onClick: onNavigateToStrategyBuilder },
+        { name: 'Backtesting Tools', onClick: onNavigateToBacktestingTools },
+        { name: 'Risk Calculator', onClick: onNavigateToRiskCalculator },
+        { name: 'Market Scanner', onClick: onNavigateToMarketScanner }
       ]
     },
     {
