@@ -491,19 +491,13 @@ const SignupPage: React.FC<SignupPageProps> = ({
                   message: 'Password must be at least 8 characters'
                 },
                 validate: (value) => {
-                 if (!value || value.trim() === '') {
-                   return 'Password is required';
-                 }
                   const strength = getPasswordStrength(value);
-                 return strength.score >= 40 || 'Password must be medium strength or higher';
+                  return strength.score >= 40 || 'Password must be medium strength or higher';
                 }
               })}
               error={!!errors.password}
               helperText={errors.password?.message}
-             onChange={(e) => {
-               // Trigger validation after a short delay to avoid excessive re-renders
-               setTimeout(() => trigger('password'), 100);
-             }}
+              onChange={() => trigger('password')}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -537,7 +531,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
             />
 
             {/* Password Strength Indicator */}
-           {watchedPassword && watchedPassword.trim() !== '' && (
+            {watchedPassword && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
@@ -601,12 +595,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
               margin="normal"
               {...register('confirmPassword', {
                 required: 'Please confirm your password',
-               validate: (value) => {
-                 if (!value || value.trim() === '') {
-                   return 'Please confirm your password';
-                 }
-                 return value === watchedPassword || 'Passwords do not match';
-               }
+                validate: (value) => value === watchedPassword || 'Passwords do not match'
               })}
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
