@@ -66,7 +66,8 @@ const LoginPage: React.FC<LoginPageProps> = ({
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Mock validation - accept demo credentials
-      if (data.email === 'demo@yoforex.ai' && data.password === 'Demo123!') {
+      if ((data.email === 'demo@yoforex.ai' || data.email === 'demo@yoforexai.com') && 
+          (data.password === 'Demo123!' || data.password === 'Demo123' || data.password === 'demo123')) {
         toast.success('Welcome back to YoForex AI!');
         
         // Store login state
@@ -80,7 +81,7 @@ const LoginPage: React.FC<LoginPageProps> = ({
         // Show beta modal after successful login
         onShowBetaModal();
       } else {
-        setError('Invalid email or password. Try demo@yoforex.ai / Demo123!');
+        setError('Invalid email or password. Try: demo@yoforex.ai / Demo123!');
       }
     } catch (err) {
       setError('Login failed. Please try again.');
@@ -478,7 +479,7 @@ const LoginPage: React.FC<LoginPageProps> = ({
               Email: demo@yoforex.ai
             </Typography>
             <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.6)', display: 'block' }}>
-              Password: Demo123!
+              Password: Demo123! (or Demo123)
             </Typography>
           </Box>
 

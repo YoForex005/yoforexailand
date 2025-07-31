@@ -43,7 +43,6 @@ interface SignupPageProps {
   onNavigateToOTP: (data: { phone?: string; email?: string }) => void;
   onNavigateBack: () => void;
   onNavigateToWelcome: () => void;
-  onNavigateToWelcome: () => void;
 }
 
 interface SignupForm {
@@ -84,6 +83,10 @@ const SignupPage: React.FC<SignupPageProps> = ({
   ];
 
   const getPasswordStrength = (password: string): { score: number; text: string; color: string } => {
+    if (!password || password.length === 0) {
+      return { score: 0, text: '', color: '' };
+    }
+    
     let score = 0;
     const checks = {
       length: password.length >= 8,
@@ -95,7 +98,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
 
     score = Object.values(checks).filter(Boolean).length;
 
-    if (score < 3) return { score: score * 20, text: 'Weak', color: '#f44336' };
+    if (score < 2) return { score: score * 20, text: 'Weak', color: '#f44336' };
     if (score < 4) return { score: score * 20, text: 'Medium', color: '#ff9800' };
     if (score >= 4) return { score: score * 20, text: 'Strong', color: '#4caf50' };
     return { score: 100, text: 'Very Strong', color: '#2e7d32' };
@@ -493,13 +496,18 @@ const SignupPage: React.FC<SignupPageProps> = ({
                   message: 'Password must be at least 8 characters'
                 },
                 validate: (value) => {
+                  if (!value || value.length === 0) {
+                    return 'Password is required';
+                  }
+                  if (value.length < 8) {
+                    return 'Password must be at least 8 characters';
+                  }
                   const strength = getPasswordStrength(value);
-                  return strength.score >= 40 || 'Password must be medium strength or higher';
+                  return strength.score >= 20 || 'Password must be at least weak strength';
                 }
               })}
               error={!!errors.password}
               helperText={errors.password?.message}
-              onChange={() => trigger('password')}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -597,7 +605,12 @@ const SignupPage: React.FC<SignupPageProps> = ({
               margin="normal"
               {...register('confirmPassword', {
                 required: 'Please confirm your password',
-                validate: (value) => value === watchedPassword || 'Passwords do not match'
+                validate: (value) => {
+                  if (!value || value.length === 0) {
+                    return 'Please confirm your password';
+                  }
+                  return value === watchedPassword || 'Passwords do not match';
+                }
               })}
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
