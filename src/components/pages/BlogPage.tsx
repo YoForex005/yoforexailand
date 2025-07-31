@@ -253,7 +253,8 @@ Stop Loss: 1.0800
 Take Profit: 1.0920
 Confidence: 87%
 AI Models: 5/6 Agree
-Risk-Reward: 1:1.4`}</code>
+Risk-Reward: 1:1.4`}
+                  </code>
                   </pre>
                 </div>
 ### Execution Best Practices:
