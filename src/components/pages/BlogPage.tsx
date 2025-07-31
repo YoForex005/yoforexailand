@@ -246,7 +246,7 @@ AI combines all factors to generate trading recommendations:
                 <h4 className="text-lg font-semibold text-white mb-3">Signal Format Example</h4>
                 <div className="bg-neutral-800/30 rounded-lg p-4">
                   <pre className="text-sm text-neutral-300">
-                    <code>{`Pair: EUR/USD
+                    <code>{\`Pair: EUR/USD
 Direction: BUY
 Entry: 1.0850
 Stop Loss: 1.0800
