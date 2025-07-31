@@ -11,3 +11,4 @@ export default function App({ Component, pageProps }: AppProps) {
       <StructuredData type="website" />
       <Component {...pageProps} />
     </>
+}
