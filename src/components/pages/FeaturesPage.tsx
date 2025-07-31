@@ -19,8 +19,13 @@ interface FeaturesPageProps {
   onNavigateBack: () => void;
   onNavigateToSignup: () => void;
 }
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
 const FeaturesPage: React.FC<FeaturesPageProps> = ({
+  onNavigateBack,
+  onNavigateToSignup
+}) => {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  
   const features = [
     {
       id: 'ai-model-marketplace',
@@ -126,6 +131,11 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({
           'Educational Content: Learn from experienced traders and AI insights',
           'Strategy Sharing: Share and discover profitable AI-backed trading approaches',
           'Market Discussions: Daily market analysis and AI consensus discussions',
+          'Expert Access: Direct interaction with professional traders and AI specialists'
+        ],
+      }
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
@@ -188,28 +198,6 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({
               transition={{ duration: 0.6, delay: feature.delay }}
               className="group relative"
             >
-              {/* Category Header */}
-              <div className="flex items-center space-x-4 mb-6">
-                <div className={`p-3 bg-gradient-to-r ${category.color} rounded-xl`}>
-                  <category.icon className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white">{category.title}</h3>
-                  <p className="text-neutral-400">{category.description}</p>
-                </div>
-              </div>
-
-              {/* Resources List */}
-              <div className="space-y-4">
-                {category.resources.map((resource, resourceIndex) => (
-                  <motion.div
-                    key={resource.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: resourceIndex * 0.05 }}
-                    className={`p-4 rounded-lg border transition-all duration-200 cursor-pointer ${
-                      resource.featured 
-                        ? 'border-primary-500/50 bg-primary-500/10 hover:bg-primary-500/20' 
               {/* Card */}
               <motion.div
                 onHoverStart={() => setHoveredCard(feature.id)}
@@ -331,3 +319,5 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({
     </div>
   );
 };
+
+export default FeaturesPage;
