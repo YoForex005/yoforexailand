@@ -70,7 +70,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
     },
     {
       name: 'Max (Premium)',
-      price: '$140',
+      price: '$139',
       period: '/month',
       description: 'Unlimited AI power for professional traders',
       features: [
