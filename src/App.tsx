@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard';
 import LoginPage from './components/auth/LoginPage';
 import SignupPage from './components/auth/SignupPage';
 import OTPVerificationPage from './components/auth/OTPVerificationPage';
+import WelcomePage from './components/auth/WelcomePage';
 import FeaturesPage from './components/pages/FeaturesPage';
 import ResourcesPage from './components/pages/ResourcesPage';
 import UserManualPage from './components/pages/UserManualPage';
@@ -42,7 +43,7 @@ import MarketScannerPage from './components/pages/MarketScannerPage';
 import IntegrationGuidePage from './components/pages/IntegrationGuidePage';
 import TroubleshootingPage from './components/pages/TroubleshootingPage';
 
-type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners' | 'live-demo' | 'sample-analysis' | 'strategy-builder' | 'backtesting-tools' | 'risk-calculator' | 'market-scanner' | 'integration-guide' | 'troubleshooting';
+type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'welcome' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners' | 'live-demo' | 'sample-analysis' | 'strategy-builder' | 'backtesting-tools' | 'risk-calculator' | 'market-scanner' | 'integration-guide' | 'troubleshooting';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
@@ -51,11 +52,12 @@ function App() {
   const handleNavigateToLogin = () => window.open('https://app.yoforex.co.in', '_blank');
   const handleNavigateToSignup = () => window.open('https://app.yoforex.co.in', '_blank');
   const handleNavigateToDashboard = () => window.open('https://app.yoforex.co.in', '_blank');
+  const handleNavigateToWelcome = () => setCurrentView('welcome');
   const handleNavigateToLanding = () => setCurrentView('landing');
   
   const handleNavigateToOTP = (data: { phone?: string; email?: string }) => {
     setOtpData(data);
-    setCurrentView('otp-verification');
+    setCurrentView('welcome');
   };
   
   const handleNavigateToFeatures = () => setCurrentView('features');
@@ -107,6 +109,16 @@ function App() {
         onNavigateToLogin={handleNavigateToLogin}
         onNavigateToOTP={handleNavigateToOTP}
         onNavigateBack={handleNavigateToLanding}
+      />
+    );
+  }
+
+  if (currentView === 'welcome') {
+    return (
+      <WelcomePage 
+        onNavigateToDashboard={handleNavigateToDashboard}
+        onNavigateToFeatures={handleNavigateToFeatures}
+        userEmail={otpData?.email}
       />
     );
   }

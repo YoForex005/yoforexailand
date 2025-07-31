@@ -9,7 +9,11 @@ import {
   Lock,
   ArrowLeft,
   CheckCircle,
-  Zap
+  Zap,
+  AlertTriangle,
+  Globe,
+  Check,
+  X
 } from 'lucide-react';
 import {
   Box,
@@ -22,7 +26,13 @@ import {
   Alert,
   CircularProgress,
   Link,
-  LinearProgress
+  LinearProgress,
+  Checkbox,
+  FormControlLabel,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { parsePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js';
@@ -35,11 +45,13 @@ interface SignupPageProps {
 }
 
 interface SignupForm {
-  name: string;
+  fullName: string;
   email: string;
-  phone: string;
+  whatsappNumber: string;
+  countryCode: string;
   password: string;
   confirmPassword: string;
+  agreeToTerms: boolean;
 }
 
 const SignupPage: React.FC<SignupPageProps> = ({
@@ -51,30 +63,51 @@ const SignupPage: React.FC<SignupPageProps> = ({
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [signupSuccess, setSignupSuccess] = useState(false);
+  const [countdown, setCountdown] = useState(3);
 
   const { register, handleSubmit, formState: { errors }, watch, trigger } = useForm<SignupForm>();
   const watchedPassword = watch('password');
 
-  const getPasswordStrength = (password: string): number => {
-    let strength = 0;
-    if (password.length >= 8) strength += 25;
-    if (/[A-Z]/.test(password)) strength += 25;
-    if (/[0-9]/.test(password)) strength += 25;
-    if (/[^A-Za-z0-9]/.test(password)) strength += 25;
-    return strength;
+  const countryCodes = [
+    { code: '+1', country: 'US', flag: '🇺🇸' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+91', country: 'IN', flag: '🇮🇳' },
+    { code: '+49', country: 'DE', flag: '🇩🇪' },
+    { code: '+33', country: 'FR', flag: '🇫🇷' },
+    { code: '+81', country: 'JP', flag: '🇯🇵' },
+    { code: '+86', country: 'CN', flag: '🇨🇳' },
+    { code: '+61', country: 'AU', flag: '🇦🇺' }
+  ];
+
+  const getPasswordStrength = (password: string): { score: number; text: string; color: string } => {
+    let score = 0;
+    const checks = {
+      length: password.length >= 8,
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /[0-9]/.test(password),
+      special: /[^A-Za-z0-9]/.test(password)
+    };
+
+    score = Object.values(checks).filter(Boolean).length;
+
+    if (score < 3) return { score: score * 20, text: 'Weak', color: '#f44336' };
+    if (score < 4) return { score: score * 20, text: 'Medium', color: '#ff9800' };
+    if (score < 5) return { score: score * 20, text: 'Strong', color: '#4caf50' };
+    return { score: 100, text: 'Very Strong', color: '#2e7d32' };
   };
 
-  const getPasswordStrengthColor = (strength: number): string => {
-    if (strength < 50) return '#f44336';
-    if (strength < 75) return '#ff9800';
-    return '#4caf50';
+  const passwordStrength = watchedPassword ? getPasswordStrength(watchedPassword) : { score: 0, text: '', color: '' };
+
+  const validateName = (name: string): boolean => {
+    const nameRegex = /^[a-zA-Z\s\-']+$/;
+    return nameRegex.test(name) && name.length >= 2;
   };
 
-  const getPasswordStrengthText = (strength: number): string => {
-    if (strength < 25) return 'Very Weak';
-    if (strength < 50) return 'Weak';
-    if (strength < 75) return 'Good';
-    return 'Strong';
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
   };
 
   const onSubmit = async (data: SignupForm) => {
@@ -82,20 +115,35 @@ const SignupPage: React.FC<SignupPageProps> = ({
     setError('');
     
     try {
-      // Validate phone number
-      if (!isValidPhoneNumber(data.phone)) {
-        setError('Please enter a valid phone number');
+      // Validate phone number with country code
+      const fullPhoneNumber = `${data.countryCode}${data.whatsappNumber}`;
+      if (!isValidPhoneNumber(fullPhoneNumber)) {
+        setError('Please enter a valid WhatsApp number');
         return;
       }
 
-      const phoneNumber = parsePhoneNumber(data.phone);
+      const phoneNumber = parsePhoneNumber(fullPhoneNumber);
       const formattedPhone = phoneNumber.formatInternational();
 
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      toast.success(`Verification code sent to ${formattedPhone}`);
-      onNavigateToOTP({ phone: formattedPhone, email: data.email });
+      // Show success state
+      setSignupSuccess(true);
+      toast.success('Account created successfully!');
+      
+      // Start countdown
+      const timer = setInterval(() => {
+        setCountdown(prev => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            onNavigateToLogin();
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
     } catch (err) {
       setError('Registration failed. Please try again.');
     } finally {
@@ -103,7 +151,86 @@ const SignupPage: React.FC<SignupPageProps> = ({
     }
   };
 
-  const passwordStrength = watchedPassword ? getPasswordStrength(watchedPassword) : 0;
+  if (signupSuccess) {
+    return (
+      <Box
+        sx={{
+          minHeight: '100vh',
+          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          p: 2
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Paper
+            elevation={24}
+            sx={{
+              p: 6,
+              maxWidth: 480,
+              width: '100%',
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: 3,
+              textAlign: 'center'
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: 'spring' }}
+            >
+              <CheckCircle size={64} color="#4caf50" style={{ marginBottom: 24 }} />
+            </motion.div>
+            
+            <Typography variant="h4" sx={{ color: 'white', fontWeight: 600, mb: 2 }}>
+              Welcome to YoForex AI!
+            </Typography>
+            
+            <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 4 }}>
+              Your account has been created successfully. You'll receive a confirmation email shortly.
+            </Typography>
+            
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)', mb: 2 }}>
+                Redirecting to sign in page in {countdown} seconds...
+              </Typography>
+              <LinearProgress 
+                variant="determinate" 
+                value={(3 - countdown) * 33.33} 
+                sx={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  '& .MuiLinearProgress-bar': {
+                    backgroundColor: '#4caf50'
+                  }
+                }}
+              />
+            </Box>
+            
+            <Button
+              onClick={onNavigateToLogin}
+              variant="contained"
+              sx={{
+                background: 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%)',
+                fontWeight: 600,
+                textTransform: 'none',
+                px: 4,
+                py: 1.5
+              }}
+            >
+              Continue to Sign In
+            </Button>
+          </Paper>
+        </motion.div>
+      </Box>
+    );
+  }
 
   return (
     <Box
@@ -159,7 +286,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
           elevation={24}
           sx={{
             p: 4,
-            maxWidth: 480,
+            maxWidth: 520,
             width: '100%',
             background: 'rgba(255, 255, 255, 0.05)',
             backdropFilter: 'blur(20px)',
@@ -193,10 +320,10 @@ const SignupPage: React.FC<SignupPageProps> = ({
               </Box>
             </motion.div>
             <Typography variant="h5" sx={{ color: 'white', fontWeight: 600, mb: 1 }}>
-              Create Your Account
+              Start Your AI Trading Journey
             </Typography>
             <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
-              Start your AI-powered trading journey today
+              Join thousands of traders using AI-powered market analysis
             </Typography>
           </Box>
 
@@ -218,19 +345,21 @@ const SignupPage: React.FC<SignupPageProps> = ({
 
           {/* Signup Form */}
           <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mb: 3 }}>
+            {/* Full Name */}
             <TextField
               fullWidth
-              label="Full Name"
+              label="Full Name *"
               margin="normal"
-              {...register('name', {
-                required: 'Name is required',
+              {...register('fullName', {
+                required: 'Full name is required',
                 minLength: {
                   value: 2,
                   message: 'Name must be at least 2 characters'
-                }
+                },
+                validate: (value) => validateName(value) || 'Please enter a valid name (letters, spaces, hyphens, apostrophes only)'
               })}
-              error={!!errors.name}
-              helperText={errors.name?.message}
+              error={!!errors.fullName}
+              helperText={errors.fullName?.message}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -241,36 +370,26 @@ const SignupPage: React.FC<SignupPageProps> = ({
               sx={{
                 '& .MuiOutlinedInput-root': {
                   color: 'white',
-                  '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.5)'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#0ea5e9'
-                  }
+                  '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                  '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#0ea5e9' }
                 },
                 '& .MuiInputLabel-root': {
                   color: 'rgba(255, 255, 255, 0.7)',
-                  '&.Mui-focused': {
-                    color: '#0ea5e9'
-                  }
+                  '&.Mui-focused': { color: '#0ea5e9' }
                 }
               }}
             />
 
+            {/* Email */}
             <TextField
               fullWidth
-              label="Email Address"
+              label="Email Address *"
               type="email"
               margin="normal"
               {...register('email', {
                 required: 'Email is required',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Invalid email address'
-                }
+                validate: (value) => validateEmail(value) || 'Please enter a valid email address'
               })}
               error={!!errors.email}
               helperText={errors.email?.message}
@@ -284,78 +403,84 @@ const SignupPage: React.FC<SignupPageProps> = ({
               sx={{
                 '& .MuiOutlinedInput-root': {
                   color: 'white',
-                  '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.5)'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#0ea5e9'
-                  }
+                  '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                  '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#0ea5e9' }
                 },
                 '& .MuiInputLabel-root': {
                   color: 'rgba(255, 255, 255, 0.7)',
-                  '&.Mui-focused': {
-                    color: '#0ea5e9'
-                  }
+                  '&.Mui-focused': { color: '#0ea5e9' }
                 }
               }}
             />
 
-            <TextField
-              fullWidth
-              label="Phone Number"
-              type="tel"
-              margin="normal"
-              placeholder="+1 234 567 8900"
-              {...register('phone', {
-                required: 'Phone number is required',
-                validate: (value) => {
-                  try {
-                    return isValidPhoneNumber(value) || 'Please enter a valid phone number with country code';
-                  } catch {
-                    return 'Please enter a valid phone number with country code';
-                  }
-                }
-              })}
-              error={!!errors.phone}
-              helperText={errors.phone?.message || 'Include country code (e.g., +1 for US)'}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Phone size={20} color="rgba(255, 255, 255, 0.5)" />
-                  </InputAdornment>
-                )
-              }}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: 'white',
-                  '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.5)'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#0ea5e9'
-                  }
-                },
-                '& .MuiInputLabel-root': {
-                  color: 'rgba(255, 255, 255, 0.7)',
-                  '&.Mui-focused': {
-                    color: '#0ea5e9'
-                  }
-                },
-                '& .MuiFormHelperText-root': {
-                  color: 'rgba(255, 255, 255, 0.6)'
-                }
-              }}
-            />
+            {/* WhatsApp Number with Country Code */}
+            <Box sx={{ display: 'flex', gap: 1, mt: 2, mb: 1 }}>
+              <FormControl sx={{ minWidth: 120 }}>
+                <InputLabel sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>Country</InputLabel>
+                <Select
+                  {...register('countryCode', { required: 'Country code is required' })}
+                  defaultValue="+1"
+                  label="Country"
+                  sx={{
+                    color: 'white',
+                    '& .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                    '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#0ea5e9' }
+                  }}
+                >
+                  {countryCodes.map((country) => (
+                    <MenuItem key={country.code} value={country.code}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <span>{country.flag}</span>
+                        <span>{country.code}</span>
+                      </Box>
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
+              <TextField
+                fullWidth
+                label="WhatsApp Number *"
+                type="tel"
+                placeholder="1234567890"
+                {...register('whatsappNumber', {
+                  required: 'WhatsApp number is required',
+                  pattern: {
+                    value: /^[0-9]{7,15}$/,
+                    message: 'Please enter a valid phone number (7-15 digits)'
+                  }
+                })}
+                error={!!errors.whatsappNumber}
+                helperText={errors.whatsappNumber?.message || 'Enter number without country code'}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Phone size={20} color="rgba(255, 255, 255, 0.5)" />
+                    </InputAdornment>
+                  )
+                }}
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    color: 'white',
+                    '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                    '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                    '&.Mui-focused fieldset': { borderColor: '#0ea5e9' }
+                  },
+                  '& .MuiInputLabel-root': {
+                    color: 'rgba(255, 255, 255, 0.7)',
+                    '&.Mui-focused': { color: '#0ea5e9' }
+                  },
+                  '& .MuiFormHelperText-root': { color: 'rgba(255, 255, 255, 0.6)' }
+                }}
+              />
+            </Box>
+
+            {/* Password */}
             <TextField
               fullWidth
-              label="Password"
+              label="Password *"
               type={showPassword ? 'text' : 'password'}
               margin="normal"
               {...register('password', {
@@ -364,9 +489,9 @@ const SignupPage: React.FC<SignupPageProps> = ({
                   value: 8,
                   message: 'Password must be at least 8 characters'
                 },
-                pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-                  message: 'Password must contain uppercase, lowercase, number and special character'
+                validate: (value) => {
+                  const strength = getPasswordStrength(value);
+                  return strength.score >= 60 || 'Password must be medium strength or higher';
                 }
               })}
               error={!!errors.password}
@@ -393,21 +518,13 @@ const SignupPage: React.FC<SignupPageProps> = ({
               sx={{
                 '& .MuiOutlinedInput-root': {
                   color: 'white',
-                  '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.5)'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#0ea5e9'
-                  }
+                  '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                  '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#0ea5e9' }
                 },
                 '& .MuiInputLabel-root': {
                   color: 'rgba(255, 255, 255, 0.7)',
-                  '&.Mui-focused': {
-                    color: '#0ea5e9'
-                  }
+                  '&.Mui-focused': { color: '#0ea5e9' }
                 }
               }}
             />
@@ -426,32 +543,53 @@ const SignupPage: React.FC<SignupPageProps> = ({
                   <Typography 
                     variant="caption" 
                     sx={{ 
-                      color: getPasswordStrengthColor(passwordStrength),
+                      color: passwordStrength.color,
                       fontWeight: 600
                     }}
                   >
-                    {getPasswordStrengthText(passwordStrength)}
+                    {passwordStrength.text}
                   </Typography>
                 </Box>
                 <LinearProgress
                   variant="determinate"
-                  value={passwordStrength}
+                  value={passwordStrength.score}
                   sx={{
                     height: 4,
                     borderRadius: 2,
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     '& .MuiLinearProgress-bar': {
-                      backgroundColor: getPasswordStrengthColor(passwordStrength),
+                      backgroundColor: passwordStrength.color,
                       borderRadius: 2
                     }
                   }}
                 />
+                <Box sx={{ display: 'flex', gap: 2, mt: 1, flexWrap: 'wrap' }}>
+                  {[
+                    { check: watchedPassword.length >= 8, text: '8+ chars' },
+                    { check: /[A-Z]/.test(watchedPassword), text: 'Uppercase' },
+                    { check: /[a-z]/.test(watchedPassword), text: 'Lowercase' },
+                    { check: /[0-9]/.test(watchedPassword), text: 'Number' },
+                    { check: /[^A-Za-z0-9]/.test(watchedPassword), text: 'Special' }
+                  ].map((item, index) => (
+                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                      {item.check ? (
+                        <Check size={12} color="#4caf50" />
+                      ) : (
+                        <X size={12} color="#f44336" />
+                      )}
+                      <Typography variant="caption" sx={{ color: item.check ? '#4caf50' : '#f44336' }}>
+                        {item.text}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
               </motion.div>
             )}
 
+            {/* Confirm Password */}
             <TextField
               fullWidth
-              label="Confirm Password"
+              label="Confirm Password *"
               type={showConfirmPassword ? 'text' : 'password'}
               margin="normal"
               {...register('confirmPassword', {
@@ -481,25 +619,51 @@ const SignupPage: React.FC<SignupPageProps> = ({
               sx={{
                 '& .MuiOutlinedInput-root': {
                   color: 'white',
-                  '& fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  },
-                  '&:hover fieldset': {
-                    borderColor: 'rgba(255, 255, 255, 0.5)'
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#0ea5e9'
-                  }
+                  '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
+                  '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#0ea5e9' }
                 },
                 '& .MuiInputLabel-root': {
                   color: 'rgba(255, 255, 255, 0.7)',
-                  '&.Mui-focused': {
-                    color: '#0ea5e9'
-                  }
+                  '&.Mui-focused': { color: '#0ea5e9' }
                 }
               }}
             />
 
+            {/* Terms & Conditions */}
+            <FormControlLabel
+              control={
+                <Checkbox
+                  {...register('agreeToTerms', {
+                    required: 'You must agree to the terms and conditions'
+                  })}
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.5)',
+                    '&.Mui-checked': { color: '#0ea5e9' }
+                  }}
+                />
+              }
+              label={
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                  I agree to the{' '}
+                  <Link href="#" sx={{ color: '#0ea5e9', textDecoration: 'none' }}>
+                    Terms & Conditions
+                  </Link>
+                  {' '}and{' '}
+                  <Link href="#" sx={{ color: '#0ea5e9', textDecoration: 'none' }}>
+                    Privacy Policy
+                  </Link>
+                </Typography>
+              }
+              sx={{ mt: 2, mb: 1 }}
+            />
+            {errors.agreeToTerms && (
+              <Typography variant="caption" sx={{ color: '#f44336', display: 'block', mt: 1 }}>
+                {errors.agreeToTerms.message}
+              </Typography>
+            )}
+
+            {/* Submit Button */}
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Button
                 type="submit"
@@ -525,7 +689,14 @@ const SignupPage: React.FC<SignupPageProps> = ({
                   }
                 }}
               >
-                {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Create Account'}
+                {isLoading ? (
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <CircularProgress size={20} color="inherit" />
+                    <span>Creating Account...</span>
+                  </Box>
+                ) : (
+                  'Create Free Account'
+                )}
               </Button>
             </motion.div>
           </Box>
@@ -552,14 +723,27 @@ const SignupPage: React.FC<SignupPageProps> = ({
             </Typography>
           </Box>
 
-          {/* Terms */}
-          <Box sx={{ mt: 3, textAlign: 'center' }}>
-            <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.5)' }}>
-              By creating an account, you agree to our{' '}
-              <Link href="#" sx={{ color: '#0ea5e9' }}>Terms of Service</Link>
-              {' '}and{' '}
-              <Link href="#" sx={{ color: '#0ea5e9' }}>Privacy Policy</Link>
+          {/* Benefits Preview */}
+          <Box sx={{ mt: 4, p: 3, backgroundColor: 'rgba(14, 165, 233, 0.1)', borderRadius: 2 }}>
+            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)', fontWeight: 600, mb: 2 }}>
+              What you get with your free account:
             </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              {[
+                '5 AI analyses per day using top free models',
+                'Access to 10+ professional trading strategies',
+                'Basic SL/TP recommendations',
+                'Community forum access',
+                'Email support'
+              ].map((benefit, index) => (
+                <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <CheckCircle size={14} color="#4caf50" />
+                  <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                    {benefit}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
           </Box>
         </Paper>
       </motion.div>
