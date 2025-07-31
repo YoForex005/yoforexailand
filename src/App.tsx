@@ -42,12 +42,15 @@ import RiskCalculatorPage from './components/pages/RiskCalculatorPage';
 import MarketScannerPage from './components/pages/MarketScannerPage';
 import IntegrationGuidePage from './components/pages/IntegrationGuidePage';
 import TroubleshootingPage from './components/pages/TroubleshootingPage';
+import BetaWelcomeModal from './components/auth/BetaWelcomeModal';
 
 type ViewType = 'landing' | 'dashboard' | 'login' | 'signup' | 'otp-verification' | 'welcome' | 'features' | 'resources' | 'user-manual' | 'blog' | 'community' | 'support' | 'privacy-policy' | 'terms-conditions' | 'return-policy' | 'api-documentation' | 'integrations' | 'case-studies' | 'whitepapers' | 'webinars' | 'help-center' | 'community-forum' | 'contact-support' | 'status-page' | 'about-us' | 'careers' | 'press-kit' | 'partners' | 'live-demo' | 'sample-analysis' | 'strategy-builder' | 'backtesting-tools' | 'risk-calculator' | 'market-scanner' | 'integration-guide' | 'troubleshooting';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
   const [otpData, setOtpData] = useState<{ phone?: string; email?: string } | null>(null);
+  const [showBetaModal, setShowBetaModal] = useState(false);
+  const [userEmail, setUserEmail] = useState<string>('');
 
   const handleNavigateToLogin = () => setCurrentView('login');
   const handleNavigateToSignup = () => setCurrentView('signup');
@@ -90,6 +93,19 @@ function App() {
   const handleNavigateToMarketScanner = () => setCurrentView('market-scanner');
   const handleNavigateToIntegrationGuide = () => setCurrentView('integration-guide');
   const handleNavigateToTroubleshooting = () => setCurrentView('troubleshooting');
+  
+  const handleShowBetaModal = () => {
+    setShowBetaModal(true);
+  };
+  
+  const handleCloseBetaModal = () => {
+    setShowBetaModal(false);
+  };
+  
+  const handleBetaModalToDashboard = () => {
+    setShowBetaModal(false);
+    handleNavigateToDashboard();
+  };
 
   // Authentication flow views
   if (currentView === 'login') {
@@ -100,6 +116,7 @@ function App() {
         onNavigateToOTP={handleNavigateToOTP}
         onNavigateBack={handleNavigateToLanding}
         onNavigateToWelcome={handleNavigateToWelcome}
+        onShowBetaModal={handleShowBetaModal}
       />
     );
   }
@@ -276,6 +293,7 @@ function App() {
 
   // Landing page
   return (
+    <>
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       <Header 
         onNavigateToDashboard={handleNavigateToDashboard}
@@ -327,6 +345,15 @@ function App() {
         onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
       />
     </div>
+    
+    {/* Beta Welcome Modal */}
+    <BetaWelcomeModal
+      isOpen={showBetaModal}
+      onClose={handleCloseBetaModal}
+      onContinueToDashboard={handleBetaModalToDashboard}
+      userEmail={userEmail}
+    />
+    </>
   );
 }
 

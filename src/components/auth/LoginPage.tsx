@@ -33,6 +33,7 @@ interface LoginPageProps {
   onNavigateToOTP: (data: { phone?: string; email?: string }) => void;
   onNavigateBack: () => void;
   onNavigateToWelcome: () => void;
+  onShowBetaModal: () => void;
 }
 
 interface LoginForm {
@@ -45,7 +46,8 @@ const LoginPage: React.FC<LoginPageProps> = ({
   onNavigateToSignup,
   onNavigateToDashboard,
   onNavigateToOTP,
-  onNavigateBack
+  onNavigateBack,
+  onShowBetaModal
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,7 +77,8 @@ const LoginPage: React.FC<LoginPageProps> = ({
           }
         }
         
-        onNavigateToWelcome();
+        // Show beta modal after successful login
+        onShowBetaModal();
       } else {
         setError('Invalid email or password. Try demo@yoforex.ai / Demo123!');
       }
