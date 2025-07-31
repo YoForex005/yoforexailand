@@ -379,7 +379,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             </motion.button>
             
             <div className="mt-4 text-sm text-neutral-400">
-              Response time: 2-4 hours for priority support • 24/7 for Pro and Max users
+              Response time: 2-4 hours for priority support • UK: London Office | Dubai: Business Bay Operations
             </div>
           </div>
         </motion.div>

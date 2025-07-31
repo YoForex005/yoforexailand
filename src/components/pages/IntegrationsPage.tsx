@@ -295,7 +295,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
                         <p className="text-sm text-neutral-300">• CI/CD integration for automated deployment workflows</p>
                       </div>
                       <p className="text-warning-400 text-sm">
-                        Developer documentation: app.yoforex.co.in/docs | Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        Developer documentation: app.yoforex.co.in/docs | UK: London Office | Dubai: Business Bay Operations Center
                       </p>
                     </div>
                   )}
