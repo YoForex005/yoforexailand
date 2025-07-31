@@ -140,10 +140,13 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigateBack })
               If you have any questions about this Privacy Policy or our data practices, please contact us.
             </p>
             <div className="text-primary-400 font-medium">
-              Email: support@yoforex.co.in
+              Email: support@yoforexai.com
             </div>
             <div className="text-neutral-400 text-sm mt-2">
-              Address: UK: London Office | Dubai: Business Bay Operations Center
+              Address: B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE
+            </div>
+            <div className="text-neutral-500 text-xs mt-2">
+              Legal Entity: YoForex, registered in Cyprus (HE 442382)
             </div>
           </div>
         </motion.div>

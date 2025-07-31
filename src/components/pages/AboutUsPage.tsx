@@ -291,7 +291,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
                           <p className="text-sm text-neutral-300">• Cultural and linguistic adaptation for regional markets</p>
                         </div>
                         <p className="text-warning-400 text-sm">
-                          Global expansion: Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                          Global expansion: Registered in Cyprus (HE 442382), Operations in Dubai-UAE
                         </p>
                       </div>
                     )}
@@ -510,11 +510,11 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="flex items-center justify-center space-x-3">
                 <Mail className="w-6 h-6 text-primary-400" />
-                <span className="text-neutral-300">support@yoforex.co.in</span>
+                <span className="text-neutral-300">support@yoforexai.com</span>
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <MapPin className="w-6 h-6 text-success-400" />
-                <span className="text-neutral-300">UK: London Office | Dubai: Business Bay Operations Center</span>
+                <span className="text-neutral-300">B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE</span>
               </div>
             </div>
 

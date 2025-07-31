@@ -255,7 +255,7 @@ const WhitepapersPage: React.FC<WhitepapersPageProps> = ({ onNavigateBack }) => 
               Our research team can create custom whitepapers and technical documentation for your specific use cases.
             </p>
             <div className="text-primary-400 font-medium">
-              Email: support@yoforex.co.in
+              Email: support@yoforexai.com
             </div>
           </div>
         </motion.div>

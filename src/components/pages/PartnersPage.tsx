@@ -281,7 +281,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           <p className="text-sm text-neutral-300">• Enterprise data processing with privacy-first architecture</p>
                         </div>
                         <p className="text-warning-400 text-sm">
-                          Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                          Dubai Operations: B2007-127, 33rd floor, Latifa Tower, Dubai-UAE
                         </p>
                       </div>
                     )}
@@ -403,7 +403,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-primary-400 text-sm">
-                          Technology partnerships: support@yoforex.co.in
+                          Technology partnerships: support@yoforexai.com
                         </p>
                       </div>
                     )}
@@ -431,7 +431,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-success-400 text-sm">
-                          Solution partner inquiries: support@yoforex.co.in
+                          Solution partner inquiries: support@yoforexai.com
                         </p>
                       </div>
                     )}
@@ -459,7 +459,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-accent-400 text-sm">
-                          Channel partnerships: UK: London Office | Dubai: Business Bay Operations Center
+                          Channel partnerships: Dubai Operations Center
                         </p>
                       </div>
                     )}
@@ -550,7 +550,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                 </motion.button>
               </div>
               <div className="mt-6 text-sm text-neutral-500">
-                Email: support@yoforex.co.in | Partnership response within 48 hours
+                Email: support@yoforexai.com | Partnership response within 48 hours
               </div>
             </div>
           </div>

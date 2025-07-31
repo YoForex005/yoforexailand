@@ -545,11 +545,11 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                           ))}
                         </ul>
                         <p className="text-primary-400 text-xs mb-2">
-                          {resource.expandedContent.contact}
+                          Educational risk management tools—not financial advice
                         </p>
                         {resource.expandedContent.address && (
                           <p className="text-neutral-500 text-xs mb-3">
-                            {resource.expandedContent.address}
+                            Risk management education: support@yoforexai.com
                           </p>
                         )}
                         <motion.button

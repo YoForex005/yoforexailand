@@ -194,7 +194,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                   YoForex AI
                 </span>
                 <span className="text-sm text-neutral-400 ml-2">Support</span>
-              </div>
+              Response time: 2-4 hours for priority support • Dubai Operations Center
             </div>
           </div>
         </div>
@@ -509,10 +509,10 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
               </form>
               <div className="mt-6 pt-6 border-t border-neutral-800/50">
                 <div className="space-y-2 text-sm text-neutral-300">
-                  <p>📧 support@yoforex.co.in</p>
-                    <p>📞 +1 (555) 123-4567</p>
-                    <p>💬 Live chat available 24/7</p>
-                  <p>📍 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</p>
+                  <p>📧 support@yoforexai.com</p>
+                  <p>📞 +44 330 027 2265</p>
+                  <p>💬 WhatsApp support available</p>
+                  <p>📍 B2007-127, 33rd floor, Latifa Tower, Dubai-UAE</p>
                 </div>
                 </div>
             </motion.div>

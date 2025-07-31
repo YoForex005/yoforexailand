@@ -296,14 +296,14 @@ Founded in 2020, YoForex AI is headquartered in Kolkata, West Bengal, India, and
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center space-x-2 text-primary-400">
                 <Mail className="w-5 h-5" />
-                <span className="font-medium">support@yoforex.co.in</span>
+                <span className="font-medium">support@yoforexai.com</span>
               </div>
               <div className="text-neutral-400">
                 Response within 24 hours
               </div>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              UK: London Office | Dubai: Business Bay Operations Center
+              B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE
             </div>
           </div>
         </motion.div>

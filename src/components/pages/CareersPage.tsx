@@ -249,7 +249,7 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
                           <p className="text-sm text-neutral-300">• Collaboration with leading AI research institutions</p>
                         </div>
                         <p className="text-primary-400 text-sm">
-                          Join our innovation-driven team at support@yoforex.co.in
+                          Join our innovation-driven team at support@yoforexai.com
                         </p>
                       </div>
                     )}
@@ -625,8 +625,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
               </div>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Remote and on-site roles available at our London and Dubai offices:<br />
-              UK: London Office | Dubai: Business Bay Operations Center
+              Remote and on-site roles available at our Dubai operations center:<br />
+              B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE
             </div>
           </div>
         </motion.div>

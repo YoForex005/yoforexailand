@@ -270,7 +270,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   </div>
                   <div>
                     <h4 className="font-semibold text-white mb-1">Email</h4>
-                    <p className="text-neutral-400 text-sm">support@yoforex.co.in</p>
+                    <p className="text-neutral-400 text-sm">support@yoforexai.com</p>
                     <p className="text-neutral-500 text-xs mt-1">Response within 2-4 hours</p>
                   </div>
                 </div>
@@ -282,9 +282,9 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <div>
                     <h4 className="font-semibold text-white mb-1">Address</h4>
                     <p className="text-neutral-400 text-sm leading-relaxed">
-                      UK: London Office<br />
-                      Dubai: Business Bay<br />
-                      Operations Center
+                      B2007-127, 33rd floor<br />
+                      Latifa Tower, Trade Center first<br />
+                      Sheikh Zayed Road, Dubai-UAE
                     </p>
                   </div>
                 </div>
@@ -296,7 +296,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <div>
                     <h4 className="font-semibold text-white mb-1">Business Hours</h4>
                     <p className="text-neutral-400 text-sm">
-                      Monday - Friday: 9:00 AM - 6:00 PM IST<br />
+                      Monday - Friday: 9:00 AM - 6:00 PM GST<br />
                       Saturday - Sunday: Limited support
                     </p>
                   </div>

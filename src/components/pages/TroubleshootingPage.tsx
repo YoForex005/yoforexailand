@@ -352,6 +352,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
                 <h4 className="font-semibold text-white mb-2">Email Support</h4>
                 <p className="text-neutral-400 text-sm mb-3">Get detailed help via email</p>
                 <div className="text-primary-400 text-sm">support@yoforex.co.in</div>
+                <div className="text-primary-400 text-sm">support@yoforexai.com</div>
               </div>
               
               <div className="bg-neutral-800/30 rounded-lg p-4">
@@ -379,7 +380,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             </motion.button>
             
             <div className="mt-4 text-sm text-neutral-400">
-              Response time: 2-4 hours for priority support • UK: London Office | Dubai: Business Bay Operations
+              Response time: 2-4 hours for priority support • Dubai Operations Center
             </div>
           </div>
         </motion.div>

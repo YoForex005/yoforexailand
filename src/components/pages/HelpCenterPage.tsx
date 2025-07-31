@@ -244,7 +244,7 @@ const HelpCenterPage: React.FC<HelpCenterPageProps> = ({ onNavigateBack }) => {
               </motion.button>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Email: support@yoforex.co.in | UK: London Office | Dubai: Business Bay Operations
+              Email: support@yoforexai.com | WhatsApp: +44 330 027 2265 | Dubai Operations Center
             </div>
           </div>
         </motion.div>

@@ -226,7 +226,7 @@ const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigateBack }) => 
               </motion.button>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Email: support@yoforex.co.in
+              Email: support@yoforexai.com
             </div>
           </div>
         </motion.div>
