@@ -194,6 +194,9 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                   YoForex AI
                 </span>
                 <span className="text-sm text-neutral-400 ml-2">Support</span>
+              </div>
+            </div>
+            <div className="text-sm text-neutral-400">
               Response time: 2-4 hours for priority support • Dubai Operations Center
             </div>
           </div>
@@ -514,7 +517,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                   <p>💬 WhatsApp support available</p>
                   <p>📍 B2007-127, 33rd floor, Latifa Tower, Dubai-UAE</p>
                 </div>
-                </div>
+              </div>
             </motion.div>
           </div>
         </div>
