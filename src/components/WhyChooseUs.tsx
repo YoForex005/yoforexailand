@@ -133,6 +133,14 @@ const WhyChooseUs: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Why Choose <span className="text-transparent bg-gradient-primary bg-clip-text">YoForex AI</span>
+          </h2>
+          <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
+            Experience the future of trading with our comprehensive AI-powered platform
+          </p>
+        </motion.div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
@@ -159,30 +167,30 @@ const WhyChooseUs: React.FC = () => {
                 aria-expanded={hoveredBenefit === benefit.id}
                 aria-label={`${benefit.title} - Click to view details`}
               >
-              <div className="relative bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden">
-                {/* Background Glow */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                  whileHover={{ scale: 1.02 }}
-                />
+                <div className="relative bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden">
+                  {/* Background Glow */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                    whileHover={{ scale: 1.02 }}
+                  />
 
-                {/* Icon */}
-                <motion.div
-                  className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-xl mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <benefit.icon className="w-7 h-7 text-white" />
-                </motion.div>
+                  {/* Icon */}
+                  <motion.div
+                    className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r ${benefit.color} rounded-xl mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <benefit.icon className="w-7 h-7 text-white" />
+                  </motion.div>
 
-                {/* Content */}
-                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-primary group-hover:bg-clip-text transition-all duration-300">
-                  {benefit.title}
-                </h3>
-                <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
-                  {benefit.description}
-                </p>
-              </div>
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-primary group-hover:bg-clip-text transition-all duration-300">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+                    {benefit.description}
+                  </p>
+                </div>
               </motion.div>
 
               {/* Hover Tooltip */}
