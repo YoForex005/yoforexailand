@@ -404,6 +404,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                     <AnimatePresence>
                       {expandedFaq === section.id && (
                         <motion.div
+                         key={section.id}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
