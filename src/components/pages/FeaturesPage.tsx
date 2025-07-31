@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { 
@@ -378,6 +379,12 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
+      <SEOHead
+        title="AI Forex Trading Features | 392+ AI Models | YoForex AI"
+        description="Discover advanced forex trading features: 392+ AI models, multi-AI consensus, professional strategies (SMC, ICT, Fibonacci), personalized training, and premium community access."
+        keywords="AI forex trading features, forex AI models, multi-AI consensus, forex trading strategies, SMC trading, ICT logic, fibonacci trading, automated forex analysis"
+        canonical="https://yoforex.co.in/features"
+      />
       {/* Header */}
       <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

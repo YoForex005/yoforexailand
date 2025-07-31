@@ -144,10 +144,10 @@ const Features: React.FC<FeaturesProps> = ({ onNavigateToSignup }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Advanced <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
+            Advanced AI Forex Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Advanced AI trading analysis features powered by 392+ AI models and multi-timeframe technical analysis.
+            Advanced AI forex trading analysis features powered by 392+ AI models and multi-timeframe technical analysis for professional currency trading.
           </p>
         </motion.div>
 

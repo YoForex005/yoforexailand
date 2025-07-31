@@ -1,4 +1,5 @@
 import React from 'react';
+import SEOHead from '../src/components/SEOHead';
 import Header from '../src/components/Header';
 import Hero from '../src/components/Hero';
 import HowItWorks from '../src/components/HowItWorks';
@@ -20,6 +21,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
+      <SEOHead
+        title="YoForex AI | World's Most Advanced AI Forex Trading Platform"
+        description="Access 392+ AI models for forex trading analysis. Get precise SL/TP levels, multi-AI consensus signals, and professional trading strategies. Start with 5 free daily analyses."
+        keywords="forex trading, AI forex, trading course, YoForex AI, AI trading chart, forex signals, automated trading, currency trading, forex education, trading algorithms"
+      />
       <Header 
         onNavigateToDashboard={handleNavigateToDashboard}
         onNavigateToLogin={handleNavigateToLogin}

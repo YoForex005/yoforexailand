@@ -79,10 +79,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ onNavigateToSignup }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            How It <span className="bg-gradient-primary bg-clip-text text-transparent">Works</span>
+            How AI Forex Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Works</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Three simple steps to access the world's most comprehensive AI trading analysis platform with multi-model consensus and detailed trade recommendations.
+            Three simple steps to access the world's most comprehensive AI forex trading analysis platform with multi-model consensus and detailed forex signals for currency trading success.
           </p>
         </motion.div>
 
