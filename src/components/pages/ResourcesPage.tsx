@@ -246,13 +246,13 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
             details: [
               'Trading discussions on strategies and AI model performance',
               'Platform feedback and feature requests from active traders',
-              'Categories: Strategy sharing, AI tips, market analysis, troubleshooting',
+              'Categories: Forex strategies, trading signals, market analysis, risk management',
               'Moderated for educational trading discussions only',
-              'Direct access to trading experts and development team',
+              'Direct access to forex experts and professional traders',
               'Peer-to-peer learning and strategy optimization'
             ],
-            contact: 'Access via app.yoforex.co.in/forum',
-            address: 'Community guidelines enforce educational trading discussions only'
+            contact: 'Join Telegram: https://t.me/+yIHojfgMyNU4YTY1',
+            address: 'YouTube channel: https://www.youtube.com/@YoForexPremium1'
           }
         },
         { 
