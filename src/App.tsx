@@ -128,7 +128,6 @@ function App() {
         onNavigateToOTP={handleNavigateToOTP}
         onNavigateBack={handleNavigateToLanding}
         onNavigateToWelcome={handleNavigateToWelcome}
-        onNavigateToWelcome={handleNavigateToWelcome}
       />
     );
   }

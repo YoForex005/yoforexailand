@@ -43,6 +43,7 @@ interface SignupPageProps {
   onNavigateToOTP: (data: { phone?: string; email?: string }) => void;
   onNavigateBack: () => void;
   onNavigateToWelcome: () => void;
+  onNavigateToWelcome: () => void;
 }
 
 interface SignupForm {
@@ -58,7 +59,8 @@ interface SignupForm {
 const SignupPage: React.FC<SignupPageProps> = ({
   onNavigateToLogin,
   onNavigateToOTP,
-  onNavigateBack
+  onNavigateBack,
+  onNavigateToWelcome
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
