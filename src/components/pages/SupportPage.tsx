@@ -419,6 +419,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                             ))}
                           </div>
                         </motion.div>
+                      )}
                     </AnimatePresence>
                   </div>
                 ))}
