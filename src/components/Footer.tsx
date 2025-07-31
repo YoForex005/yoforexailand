@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Mail, MapPin, Phone } from 'lucide-react';
+import { Zap, Mail, MapPin, Phone, MessageCircle } from 'lucide-react';
 
 interface FooterProps {
   onNavigateToResources: () => void;
@@ -146,11 +146,34 @@ const Footer: React.FC<FooterProps> = ({
               </p>
             </motion.div>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
+            {/* Primary WhatsApp Contact */}
+            <div className="space-y-4">
+              <div className="bg-gradient-to-r from-success-500/20 to-success-600/20 border border-success-500/30 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-2">
+                  <MessageCircle className="w-5 h-5 text-success-400" />
+                  <span className="text-success-400 font-semibold">WhatsApp Support</span>
+                </div>
+                <a
+                  href="https://wa.me/443300272265"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-white font-medium hover:text-success-400 transition-colors"
+                >
+                  +44 330 027 2265
+                </a>
+                <p className="text-neutral-400 text-sm mt-1">
+                  Click to start WhatsApp conversation
+                </p>
+              </div>
+              
+              {/* Additional Contact Methods */}
               <div className="flex items-center space-x-3 text-neutral-400">
                 <Mail className="w-4 h-4 text-primary-400" />
                 <span>support@yoforex.co.in</span>
+              </div>
+              <div className="flex items-center space-x-3 text-neutral-400">
+                <Phone className="w-4 h-4 text-accent-400" />
+                <span>+44 330 027 2265</span>
               </div>
               <div className="flex items-start space-x-3 text-neutral-400">
                 <MapPin className="w-4 h-4 text-primary-400 mt-1 flex-shrink-0" />
@@ -192,11 +215,39 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Bar */}
         <div className="border-t border-neutral-800/50 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            {/* WhatsApp CTA */}
+            <div className="flex items-center space-x-4">
+              <a
+                href="https://wa.me/443300272265?text=Hello%2C%20I%27m%20interested%20in%20YoForex%20AI%20trading%20platform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-success-500/20 hover:bg-success-500/30 border border-success-500/50 text-success-400 px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Contact via WhatsApp</span>
+              </a>
+            </div>
+            
+            {/* Legal & Copyright */}
             <div className="text-neutral-400 text-sm mb-4 md:mb-0">
               © 2025 YoForex AI. All rights reserved. AI-powered trading analysis and strategies for global traders. No trading advice or execution provided.
             </div>
-            <div className="text-neutral-500 text-xs">
+          </div>
+          
+          {/* Regulatory Compliance Notice */}
+          <div className="mt-6 pt-6 border-t border-neutral-800/30">
+            <div className="bg-warning-500/10 border border-warning-500/20 rounded-lg p-4 mb-4">
+              <div className="flex items-start space-x-2">
+                <div className="w-2 h-2 rounded-full bg-warning-400 mt-2 flex-shrink-0" />
+                <div className="text-warning-400 text-xs leading-relaxed">
+                  <strong>Risk Disclosure:</strong> Trading involves substantial risk of loss and may not be suitable for all investors. 
+                  YoForex AI provides educational analysis tools only - not investment advice. All AI outputs are for informational purposes. 
+                  Past performance does not guarantee future results. Please consider your risk tolerance before trading.
+                </div>
+              </div>
+            </div>
+            <div className="text-neutral-500 text-xs text-center">
               Educational and informational purposes only. Trading involves risk.
             </div>
           </div>
