@@ -169,7 +169,7 @@ const Footer: React.FC<FooterProps> = ({
               {/* Additional Contact Methods */}
               <div className="flex items-center space-x-3 text-neutral-400">
                 <Mail className="w-4 h-4 text-primary-400" />
-                <span>support@yoforex.co.in</span>
+                <span>support@yoforexai.com</span>
               </div>
               <div className="flex items-center space-x-3 text-neutral-400">
                 <Phone className="w-4 h-4 text-accent-400" />
@@ -177,7 +177,7 @@ const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-start space-x-3 text-neutral-400">
                 <MapPin className="w-4 h-4 text-primary-400 mt-1 flex-shrink-0" />
-                <span>UK: London Office | Dubai: Business Bay Operations Center</span>
+                <span>B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE</span>
               </div>
             </div>
           </div>
@@ -231,12 +231,17 @@ const Footer: React.FC<FooterProps> = ({
             
             {/* Legal & Copyright */}
             <div className="text-neutral-400 text-sm mb-4 md:mb-0">
-              © 2025 YoForex AI. All rights reserved. AI-powered trading analysis and strategies for global traders. No trading advice or execution provided.
+              © 2025 YoForex AI. All rights reserved. This website is operated by YoForex, an entity registered under the laws of the Republic of Cyprus, with registration number HE 442382.
             </div>
           </div>
           
           {/* Regulatory Compliance Notice */}
           <div className="mt-6 pt-6 border-t border-neutral-800/30">
+            <div className="bg-neutral-800/30 border border-neutral-700/50 rounded-lg p-4 mb-4">
+              <div className="text-neutral-300 text-xs leading-relaxed">
+                <strong>Legal Entity:</strong> This website is operated by YoForex, an entity registered under the laws of the Republic of Cyprus, with registration number HE 442382, having its registered address at B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE.
+              </div>
+            </div>
             <div className="bg-warning-500/10 border border-warning-500/20 rounded-lg p-4 mb-4">
               <div className="flex items-start space-x-2">
                 <div className="w-2 h-2 rounded-full bg-warning-400 mt-2 flex-shrink-0" />
@@ -248,7 +253,7 @@ const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
             <div className="text-neutral-500 text-xs text-center">
-              Educational and informational purposes only. Trading involves risk.
+              Educational and informational purposes only. Trading involves risk. Registered in Cyprus: HE 442382.
             </div>
           </div>
         </div>
