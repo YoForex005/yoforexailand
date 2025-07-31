@@ -10,7 +10,9 @@ import {
   Brain,
   BarChart3,
   Target,
-  ArrowRight
+  ArrowRight,
+  Shield,
+  BookOpen
 } from 'lucide-react';
 
 interface BlogPageProps {
