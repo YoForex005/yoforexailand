@@ -371,6 +371,10 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             </div>
 
             <motion.button
+              onClick={() => {
+                // Open contact support modal or navigate to support page
+                window.location.href = 'mailto:support@yoforexai.com?subject=Technical Support Request';
+              }}
               className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

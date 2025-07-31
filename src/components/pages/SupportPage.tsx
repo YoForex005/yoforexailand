@@ -233,6 +233,10 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              onClick={() => {
+                // Open contact support functionality
+                window.location.href = 'mailto:support@yoforexai.com?subject=Support Request';
+              }}
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-6 text-center hover:border-neutral-700/50 transition-all duration-300 group cursor-pointer"
               whileHover={{ scale: 1.05 }}
             >

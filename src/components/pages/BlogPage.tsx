@@ -21,68 +21,68 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
   const blogPosts = [
     {
       id: 1,
-      title: 'The Future of AI-Powered Analytics: Multi-Model Architecture',
-      excerpt: 'Discover how combining multiple AI models creates more reliable business intelligence and reduces false positives in data analysis.',
-      author: 'YoForex AI Team',
+      title: 'Advanced Forex Trading Strategies: Multi-Timeframe Analysis for Currency Pairs',
+      excerpt: 'Master professional forex trading strategies using multi-timeframe analysis. Learn how to combine H1, H4, and daily charts for higher probability EUR/USD, GBP/USD setups.',
+      author: 'Forex Trading Team',
       date: '2025-01-15',
       readTime: '8 min read',
-      category: 'AI Analytics',
+      category: 'Trading Strategies',
       image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?w=400&h=250&fit=crop',
       featured: true
     },
     {
       id: 2,
-      title: 'Maximizing Efficiency with AI Workflow Automation',
-      excerpt: 'Learn advanced techniques for using AI to automate business workflows, including smart data processing and dynamic reporting systems.',
-      author: 'Workflow Strategist',
+      title: 'Forex Trading Signals: How to Identify High-Probability Currency Trading Opportunities',
+      excerpt: 'Learn to identify high-probability forex signals using technical analysis, market structure, and risk management. Includes EUR/USD, GBP/USD, and USD/JPY examples.',
+      author: 'Market Analyst',
       date: '2025-01-12',
       readTime: '6 min read',
-      category: 'Automation',
+      category: 'Trading Signals',
       image: 'https://images.pexels.com/photos/7567486/pexels-photo-7567486.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 3,
-      title: 'Cost-Effective AI Analytics: Reducing API Expenses by 80%',
-      excerpt: 'Practical tips for optimizing your AI analytics costs while maintaining data quality through smart model selection and usage patterns.',
-      author: 'Technical Team',
+      title: 'Forex Risk Management: Position Sizing and Stop Loss Strategies for Currency Trading',
+      excerpt: 'Essential forex risk management techniques including position sizing, stop loss placement, and portfolio risk for EUR/USD, GBP/USD, and major currency pairs.',
+      author: 'Risk Management Expert',
       date: '2025-01-10',
       readTime: '5 min read',
-      category: 'Cost Optimization',
+      category: 'Risk Management',
       image: 'https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 4,
-      title: 'Understanding Business Intelligence with AI Web Search',
-      excerpt: 'How real-time web search integration enhances business decisions by incorporating news sentiment and market intelligence.',
-      author: 'Market Analyst',
+      title: 'Technical Analysis for Forex: Support, Resistance, and Chart Patterns in Currency Markets',
+      excerpt: 'Complete guide to forex technical analysis including support/resistance levels, chart patterns, and trend analysis for major currency pairs like EUR/USD and GBP/USD.',
+      author: 'Technical Analyst',
       date: '2025-01-08',
       readTime: '7 min read',
-      category: 'Business Intelligence',
+      category: 'Technical Analysis',
       image: 'https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 5,
-      title: 'Enterprise Compliance with YoForex AI: Security Guide',
-      excerpt: 'Essential guidelines for using AI analytics platforms while maintaining compliance with enterprise security and data management requirements.',
-      author: 'Compliance Expert',
+      title: 'Forex Market Psychology: Mastering Emotions and Discipline in Currency Trading',
+      excerpt: 'Develop winning forex trading psychology. Learn emotional control, discipline, and mental strategies for consistent profitability in EUR/USD, GBP/USD trading.',
+      author: 'Trading Psychology Expert',
       date: '2025-01-05',
       readTime: '9 min read',
-      category: 'Compliance',
+      category: 'Trading Psychology',
       image: 'https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg?w=400&h=250&fit=crop'
     },
     {
       id: 6,
-      title: 'Interactive vs Automated: Choosing Your Analytics Mode',
-      excerpt: 'Compare the benefits of automated analytics versus interactive AI assistance to find the perfect workflow approach for your business.',
-      author: 'Product Manager',
+      title: 'Forex Trading for Beginners: Complete Guide to Currency Market Fundamentals',
+      excerpt: 'Start your forex trading journey with this comprehensive beginner guide. Learn currency pairs, market hours, basic analysis, and first trade execution.',
+      author: 'Forex Education Team',
       date: '2025-01-03',
       readTime: '6 min read',
-      category: 'Getting Started',
+      category: 'Forex Basics',
       image: 'https://images.pexels.com/photos/6802045/pexels-photo-6802045.jpeg?w=400&h=250&fit=crop'
     }
   ];
 
-  const categories = ['All', 'AI Analytics', 'Automation', 'Business Intelligence', 'Getting Started', 'Cost Optimization', 'Compliance'];
+  const categories = ['All', 'Trading Strategies', 'Trading Signals', 'Technical Analysis', 'Risk Management', 'Trading Psychology', 'Forex Basics'];
   const [selectedCategory, setSelectedCategory] = React.useState('All');
 
   const filteredPosts = selectedCategory === 'All' 
@@ -91,10 +91,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'AI Trading': return Brain;
-      case 'Strategy': return Target;
-      case 'Market Analysis': return BarChart3;
-      case 'Getting Started': return TrendingUp;
+      case 'Trading Strategies': return Target;
+      case 'Trading Signals': return TrendingUp;
+      case 'Technical Analysis': return BarChart3;
+      case 'Risk Management': return Shield;
+      case 'Trading Psychology': return Brain;
+      case 'Forex Basics': return BookOpen;
       default: return BarChart3;
     }
   };
@@ -137,10 +139,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Insights</span>
+            Forex Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Insights</span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Latest insights, strategies, and updates from the world of AI-powered trading.
+            Latest forex trading strategies, market analysis, and currency trading insights for EUR/USD, GBP/USD, and major forex pairs.
           </p>
         </motion.div>
 
@@ -298,15 +300,15 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
         >
           <div className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 lg:p-12 text-center">
             <h3 className="text-3xl font-bold text-white mb-4">
-              Stay Updated with <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading</span>
+              Stay Updated with <span className="bg-gradient-primary bg-clip-text text-transparent">Forex Trading</span>
             </h3>
             <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
-              Get the latest insights, strategies, and updates delivered to your inbox weekly.
+              Get the latest forex trading strategies, market analysis, and currency trading insights delivered weekly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Enter your email for forex insights"
                 className="flex-1 bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
               />
               <motion.button
@@ -314,7 +316,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ onNavigateBack }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Subscribe
+                Get Forex Updates
               </motion.button>
             </div>
           </div>

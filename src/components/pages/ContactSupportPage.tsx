@@ -74,6 +74,16 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                 <ArrowLeft className="w-5 h-5" />
               </motion.button>
               
+              <motion.a
+                href="https://t.me/+yIHojfgMyNU4YTY1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-primary-400"
+                whileHover={{ scale: 1.05 }}
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span className="font-medium">Join Telegram Group</span>
+              </motion.a>
               <div className="flex items-center space-x-2">
                 <Zap className="w-8 h-8 text-primary-400" />
                 <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
