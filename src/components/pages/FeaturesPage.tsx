@@ -24,7 +24,6 @@ const FeaturesPage: React.FC<FeaturesPageProps> = ({
   onNavigateBack,
   onNavigateToSignup
 }) => {
-  const features = [
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   
   const features = [

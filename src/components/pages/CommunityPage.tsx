@@ -164,9 +164,10 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
                 <Users className="w-5 h-5 text-primary-400" />
                 <span className="text-sm text-neutral-400">12,400+ Members Online</span>
               </div>
-        'Community support',
-        'Weekly newsletters'
-      ],
+            </div>
+          </div>
+        </div>
+      </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
