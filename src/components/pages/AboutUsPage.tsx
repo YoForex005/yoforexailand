@@ -514,7 +514,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <MapPin className="w-6 h-6 text-success-400" />
-                <span className="text-neutral-300">28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</span>
+                <span className="text-neutral-300">UK: London Office | Dubai: Business Bay Operations Center</span>
               </div>
             </div>
 

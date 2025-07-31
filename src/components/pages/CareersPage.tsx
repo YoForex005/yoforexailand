@@ -625,8 +625,8 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
               </div>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Remote and on-site roles available at our Kolkata office:<br />
-              28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+              Remote and on-site roles available at our London and Dubai offices:<br />
+              UK: London Office | Dubai: Business Bay Operations Center
             </div>
           </div>
         </motion.div>

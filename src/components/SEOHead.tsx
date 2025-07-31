@@ -89,11 +89,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             },
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "28, Gopi Bose Lane",
-              "addressLocality": "Kolkata",
-              "addressRegion": "West Bengal",
-              "postalCode": "700012",
-              "addressCountry": "IN"
+              "streetAddress": "London Office, Business Bay Operations",
+              "addressLocality": "London",
+              "addressRegion": "England",
+              "postalCode": "SW1A 1AA",
+              "addressCountry": "GB"
             },
             "sameAs": [
               "https://wa.me/443300272265"

@@ -177,7 +177,7 @@ const Footer: React.FC<FooterProps> = ({
               </div>
               <div className="flex items-start space-x-3 text-neutral-400">
                 <MapPin className="w-4 h-4 text-primary-400 mt-1 flex-shrink-0" />
-                <span>28, Gopi Bose Lane, Kolkata 700012, West Bengal, India</span>
+                <span>UK: London Office | Dubai: Business Bay Operations Center</span>
               </div>
             </div>
           </div>

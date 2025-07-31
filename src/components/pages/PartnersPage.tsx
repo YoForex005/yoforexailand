@@ -459,7 +459,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-accent-400 text-sm">
-                          Channel partnerships: Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                          Channel partnerships: UK: London Office | Dubai: Business Bay Operations Center
                         </p>
                       </div>
                     )}

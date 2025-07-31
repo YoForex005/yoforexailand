@@ -303,7 +303,7 @@ Founded in 2020, YoForex AI is headquartered in Kolkata, West Bengal, India, and
               </div>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+              UK: London Office | Dubai: Business Bay Operations Center
             </div>
           </div>
         </motion.div>

@@ -244,7 +244,7 @@ const HelpCenterPage: React.FC<HelpCenterPageProps> = ({ onNavigateBack }) => {
               </motion.button>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Email: support@yoforex.co.in | Response time: 2-4 hours
+              Email: support@yoforex.co.in | UK: London Office | Dubai: Business Bay Operations
             </div>
           </div>
         </motion.div>

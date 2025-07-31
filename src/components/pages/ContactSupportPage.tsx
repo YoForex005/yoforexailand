@@ -282,9 +282,9 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <div>
                     <h4 className="font-semibold text-white mb-1">Address</h4>
                     <p className="text-neutral-400 text-sm leading-relaxed">
-                      28, Gopi Bose Lane<br />
-                      Kolkata 700012<br />
-                      West Bengal, India
+                      UK: London Office<br />
+                      Dubai: Business Bay<br />
+                      Operations Center
                     </p>
                   </div>
                 </div>

@@ -417,9 +417,9 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                                 <p className="text-neutral-400 text-sm leading-relaxed">{faq.answer}</p>
                               </div>
                             ))}
-                          </div>
-                        </motion.div>
-                      )}
+                      UK: London Office<br />
+                      Dubai: Business Bay<br />
+                      Operations Center
                     </AnimatePresence>
                   </div>
                 ))}

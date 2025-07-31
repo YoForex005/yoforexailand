@@ -152,7 +152,7 @@ const ReturnPolicyPage: React.FC<ReturnPolicyPageProps> = ({ onNavigateBack }) =
               Email: support@yoforex.co.in
             </div>
             <div className="text-neutral-400 text-sm mt-2">
-              Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+              Address: UK: London Office | Dubai: Business Bay Operations Center
             </div>
           </div>
         </motion.div>
