@@ -80,6 +80,90 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
       features: [
         'General trading discussions',
         'Basic market updates',
+        'Community support',
+        'Weekly newsletters'
+      ],
+      color: 'border-neutral-700/50',
+      buttonColor: 'bg-neutral-700 hover:bg-neutral-600'
+    },
+    {
+      name: 'Pro Community',
+      price: '$29/month',
+      description: 'Advanced features and priority support',
+      features: [
+        'All Basic features',
+        'Expert-led webinars',
+        'Priority support',
+        'Advanced analytics',
+        'Strategy templates',
+        'Direct expert access'
+      ],
+      color: 'border-primary-500/50',
+      buttonColor: 'bg-gradient-primary hover:opacity-90',
+      popular: true
+    },
+    {
+      name: 'VIP Community',
+      price: '$99/month',
+      description: 'Exclusive access and personalized guidance',
+      features: [
+        'All Pro features',
+        '1-on-1 mentoring',
+        'Custom strategies',
+        'VIP-only channels',
+        'Early feature access',
+        'Personal account manager'
+      ],
+      color: 'border-warning-500/50',
+      buttonColor: 'bg-gradient-to-r from-warning-500 to-warning-600 hover:opacity-90'
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      role: 'Professional Trader',
+      avatar: '/api/placeholder/48/48',
+      rating: 5,
+      content: 'The community has been invaluable for my trading journey. The expert insights and strategy sharing have significantly improved my performance.'
+    },
+    {
+      name: 'Michael Chen',
+      role: 'Quantitative Analyst',
+      avatar: '/api/placeholder/48/48',
+      rating: 5,
+      content: 'Amazing platform with genuine professionals. The analytics tools and community discussions provide real value for serious traders.'
+    },
+    {
+      name: 'Emma Rodriguez',
+      role: 'Portfolio Manager',
+      avatar: '/api/placeholder/48/48',
+      rating: 5,
+      content: 'The VIP tier mentoring program transformed my approach to trading. The personalized guidance is worth every penny.'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-dark text-white">
+      {/* Header */}
+      <header className="relative border-b border-neutral-800/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <motion.button
+              onClick={onNavigateBack}
+              className="flex items-center space-x-2 text-neutral-400 hover:text-white transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ArrowLeft className="w-5 h-5" />
+              <span>Back to Dashboard</span>
+            </motion.button>
+            
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <Users className="w-5 h-5 text-primary-400" />
+                <span className="text-sm text-neutral-400">12,400+ Members Online</span>
+              </div>
             </div>
           </div>
         </div>
@@ -180,92 +264,6 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
                   >
                     {feature.id === 'expert-discussions' && (
                       <div>
-
-                  {/* Learn More Button */}
-                  <motion.button
-                    onClick={() => toggleTier(tier.name.toLowerCase().replace(' ', '-'))}
-                    className="w-full mt-3 flex items-center justify-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="text-sm font-medium">
-                      {expandedTier === tier.name.toLowerCase().replace(' ', '-') ? 'Show Less Details' : 'See Full Details'}
-                    </span>
-                    {expandedTier === tier.name.toLowerCase().replace(' ', '-') ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )}
-                  </motion.button>
-
-                  {/* Expanded Content */}
-                  {expandedTier === tier.name.toLowerCase().replace(' ', '-') && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
-                    >
-                      {tier.name === 'Basic Community' && (
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Basic Community Access</h4>
-                          <div className="space-y-2 mb-4">
-                            <p className="text-sm text-neutral-300">• Access to general technical discussion forums</p>
-                            <p className="text-sm text-neutral-300">• Weekly platform updates and feature announcements</p>
-                            <p className="text-sm text-neutral-300">• Basic troubleshooting guides and documentation</p>
-                            <p className="text-sm text-neutral-300">• Community-driven FAQ and knowledge base</p>
-                            <p className="text-sm text-neutral-300">• Monthly virtual meetups and networking events</p>
-                          </div>
-                          <p className="text-neutral-400 text-sm">
-                            Perfect for individual developers and small teams getting started
-                          </p>
-                        </div>
-                      )}
-
-                      {tier.name === 'Pro Community' && (
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">Pro Community Benefits</h4>
-                          <div className="space-y-2 mb-4">
-                            <p className="text-sm text-neutral-300">• Priority access to technical experts and architects</p>
-                            <p className="text-sm text-neutral-300">• Advanced integration workshops and training sessions</p>
-                            <p className="text-sm text-neutral-300">• Direct feedback channel to product development team</p>
-                            <p className="text-sm text-neutral-300">• Early access to beta features and new releases</p>
-                            <p className="text-sm text-neutral-300">• Dedicated Slack channels for real-time collaboration</p>
-                            <p className="text-sm text-neutral-300">• Monthly 1:1 consultation sessions with technical leads</p>
-                          </div>
-                          <p className="text-primary-400 text-sm">
-                            Ideal for growing businesses and development teams
-                          </p>
-                        </div>
-                      )}
-
-                      {tier.name === 'VIP Community' && (
-                        <div>
-                          <h4 className="text-lg font-semibold text-white mb-3">VIP Community Exclusive Access</h4>
-                          <div className="space-y-2 mb-4">
-                            <p className="text-sm text-neutral-300">• Personal technical advisor assigned to your account</p>
-                            <p className="text-sm text-neutral-300">• Custom integration development and optimization</p>
-                            <p className="text-sm text-neutral-300">• Quarterly business reviews and strategy sessions</p>
-                            <p className="text-sm text-neutral-300">• Influence on product roadmap and feature prioritization</p>
-                            <p className="text-sm text-neutral-300">• White-glove onboarding and training programs</p>
-                            <p className="text-sm text-neutral-300">• Exclusive access to executive team and founders</p>
-                          </div>
-                          <p className="text-warning-400 text-sm">
-                            Enterprise-grade support: support@yoforex.co.in | Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
-                          </p>
-                        </div>
-                      )}
-
-                      <motion.button
-                        onClick={() => toggleTier(tier.name.toLowerCase().replace(' ', '-'))}
-                        className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        Collapse Details
-                      </motion.button>
-                    </motion.div>
-                  )}
                         <h4 className="text-lg font-semibold text-white mb-3">Professional Technical Discussions</h4>
                         <div className="space-y-2 mb-4">
                           <p className="text-sm text-neutral-300">• Daily technical discussions on API integrations and workflow optimization</p>
@@ -393,6 +391,92 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
                 >
                   Join {tier.name}
                 </motion.button>
+
+                {/* Learn More Button */}
+                <motion.button
+                  onClick={() => toggleTier(tier.name.toLowerCase().replace(' ', '-'))}
+                  className="w-full mt-3 flex items-center justify-center space-x-2 text-primary-400 hover:text-primary-300 transition-colors duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="text-sm font-medium">
+                    {expandedTier === tier.name.toLowerCase().replace(' ', '-') ? 'Show Less Details' : 'See Full Details'}
+                  </span>
+                  {expandedTier === tier.name.toLowerCase().replace(' ', '-') ? (
+                    <ChevronUp className="w-4 h-4" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4" />
+                  )}
+                </motion.button>
+
+                {/* Expanded Content */}
+                {expandedTier === tier.name.toLowerCase().replace(' ', '-') && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-800/20 rounded-lg p-4"
+                  >
+                    {tier.name === 'Basic Community' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Basic Community Access</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Access to general technical discussion forums</p>
+                          <p className="text-sm text-neutral-300">• Weekly platform updates and feature announcements</p>
+                          <p className="text-sm text-neutral-300">• Basic troubleshooting guides and documentation</p>
+                          <p className="text-sm text-neutral-300">• Community-driven FAQ and knowledge base</p>
+                          <p className="text-sm text-neutral-300">• Monthly virtual meetups and networking events</p>
+                        </div>
+                        <p className="text-neutral-400 text-sm">
+                          Perfect for individual developers and small teams getting started
+                        </p>
+                      </div>
+                    )}
+
+                    {tier.name === 'Pro Community' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">Pro Community Benefits</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Priority access to technical experts and architects</p>
+                          <p className="text-sm text-neutral-300">• Advanced integration workshops and training sessions</p>
+                          <p className="text-sm text-neutral-300">• Direct feedback channel to product development team</p>
+                          <p className="text-sm text-neutral-300">• Early access to beta features and new releases</p>
+                          <p className="text-sm text-neutral-300">• Dedicated Slack channels for real-time collaboration</p>
+                          <p className="text-sm text-neutral-300">• Monthly 1:1 consultation sessions with technical leads</p>
+                        </div>
+                        <p className="text-primary-400 text-sm">
+                          Ideal for growing businesses and development teams
+                        </p>
+                      </div>
+                    )}
+
+                    {tier.name === 'VIP Community' && (
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-3">VIP Community Exclusive Access</h4>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-neutral-300">• Personal technical advisor assigned to your account</p>
+                          <p className="text-sm text-neutral-300">• Custom integration development and optimization</p>
+                          <p className="text-sm text-neutral-300">• Quarterly business reviews and strategy sessions</p>
+                          <p className="text-sm text-neutral-300">• Influence on product roadmap and feature prioritization</p>
+                          <p className="text-sm text-neutral-300">• White-glove onboarding and training programs</p>
+                          <p className="text-sm text-neutral-300">• Exclusive access to executive team and founders</p>
+                        </div>
+                        <p className="text-warning-400 text-sm">
+                          Enterprise-grade support: support@yoforex.co.in | Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India
+                        </p>
+                      </div>
+                    )}
+
+                    <motion.button
+                      onClick={() => toggleTier(tier.name.toLowerCase().replace(' ', '-'))}
+                      className="mt-4 text-neutral-400 hover:text-white text-sm transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      Collapse Details
+                    </motion.button>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
           </div>
