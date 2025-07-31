@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Zap, Handshake, Cloud, Shield, Code, Database, Globe, Users, Mail, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Zap, Handshake, Cloud, Shield, Code, Database, Globe, Users, Mail, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface PartnersPageProps {
   onNavigateBack: () => void;

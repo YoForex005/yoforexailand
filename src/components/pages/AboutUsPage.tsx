@@ -13,7 +13,9 @@ import {
   Heart,
   MapPin,
   Mail,
-  Linkedin
+  Linkedin,
+  ChevronUp,
+  ChevronDown
 } from 'lucide-react';
 
 interface AboutUsPageProps {

@@ -9,6 +9,7 @@ import {
   Phone,
   Search,
   ChevronDown,
+  ChevronUp,
   ChevronRight,
   Book,
   Video,

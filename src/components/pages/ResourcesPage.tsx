@@ -31,6 +31,12 @@ interface ResourcesPageProps {
   onNavigateToMarketScanner?: () => void;
   onNavigateToIntegrationGuide?: () => void;
   onNavigateToTroubleshooting?: () => void;
+  onNavigateToStrategyBuilder?: () => void;
+  onNavigateToBacktestingTools?: () => void;
+  onNavigateToRiskCalculator?: () => void;
+  onNavigateToMarketScanner?: () => void;
+  onNavigateToIntegrationGuide?: () => void;
+  onNavigateToTroubleshooting?: () => void;
 }
 
 const ResourcesPage: React.FC<ResourcesPageProps> = ({

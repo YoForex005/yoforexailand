@@ -1,381 +1,131 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SEOHead from '../SEOHead';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
 import { 
   ArrowLeft, 
   Zap, 
-  BookOpen, 
-  Users, 
-  MessageCircle, 
-  FileText,
-  Video,
-  Code,
-  HelpCircle,
-  Activity,
-  Newspaper,
-  GraduationCap,
-  ArrowRight,
+  Cpu,
+  Shield,
+  BarChart3,
+  Globe,
+  RefreshCw,
+  Brain,
+  Target,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
 
-interface ResourcesPageProps {
+interface FeaturesPageProps {
   onNavigateBack: () => void;
-  onNavigateToUserManual: () => void;
-  onNavigateToBlog: () => void;
-  onNavigateToCommunity: () => void;
-  onNavigateToSupport: () => void;
+  onNavigateToSignup: () => void;
 }
-
-const ResourcesPage: React.FC<ResourcesPageProps> = ({
-  onNavigateBack,
-  onNavigateToUserManual,
-  onNavigateToBlog,
-  onNavigateToCommunity,
-  onNavigateToSupport
-}) => {
-  const [expandedCard, setExpandedCard] = useState<string | null>(null);
-
-  const toggleCard = (cardId: string) => {
-    setExpandedCard(expandedCard === cardId ? null : cardId);
-  };
-
-  const resourceCategories = [
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+const FeaturesPage: React.FC<FeaturesPageProps> = ({
+  const features = [
     {
-      id: 'documentation',
-      title: 'Documentation',
-      description: 'Comprehensive guides and technical documentation',
-      icon: BookOpen,
+      id: 'ai-model-marketplace',
+      icon: Cpu,
+      title: 'AI Model Marketplace',
+      description: 'Choose from 392+ AI models including free options (Mistral, Claude Haiku, DeepSeek) and premium models (Grok, OpenAI O3, Gemini Ultra) for your trading analysis.',
       color: 'from-primary-500 to-primary-600',
-      resources: [
-        { 
-          id: 'user-manual',
-          name: 'User Manual', 
-          description: 'Complete setup and usage guide',
-          onClick: onNavigateToUserManual,
-          featured: true,
-          expandedContent: {
-            title: 'Comprehensive User Manual',
-            details: [
-              'Complete guide covers setup, configuration, and best practices for workflow automation',
-              'Topics include API key integration, model selection for analytics jobs',
-              'Notification setups (MT5/Telegram) and custom workflow creation',
-              'Step-by-step tutorials with screenshots and code examples',
-              'Troubleshooting section with common issues and solutions',
-              'Best practices for enterprise deployment and scaling'
-            ],
-            contact: 'Download full PDF or access online via app.yoforex.co.in. Questions: support@yoforex.co.in',
-            address: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
-          }
-        },
-        { 
-          id: 'api-docs',
-          name: 'API Documentation', 
-          description: 'Technical API reference and examples',
-          onClick: onNavigateToSupport,
-          expandedContent: {
-            title: 'Technical API Reference',
-            details: [
-              'Detailed RESTful API documentation with authentication (Bearer tokens)',
-              'Endpoints for workflow initiation (/v1/workflows/run) and results retrieval',
-              'Webhook configuration and real-time notification setup',
-              'Pseudocode examples in multiple programming languages',
-              'Rate limits (100/min for Pro plans) and error handling',
-              'Integration examples for popular enterprise systems'
-            ],
-            contact: 'Full documentation available at app.yoforex.co.in/api-docs',
-            address: 'Technical support: support@yoforex.co.in'
-          }
-        },
-        { 
-          id: 'integration-guide',
-          name: 'Integration Guide', 
-          description: 'Enterprise system integration and configuration',
-          expandedContent: {
-            title: 'Enterprise Integration Guide',
-            details: [
-              'Step-by-step instructions for connecting to AWS S3, databases, Slack',
-              'Secure data orchestration with enterprise-grade security',
-              'Real-time notifications and webhook configuration',
-              'API cost reduction mode setup (60-80% savings)',
-              'Multi-AI model workflows for scalable automation',
-              'Custom integration examples and best practices'
-            ],
-            contact: 'Custom setup assistance: support@yoforex.co.in',
-            address: 'Professional setup included with Pro and Enterprise plans'
-          }
-        },
-        { 
-          id: 'troubleshooting',
-          name: 'Troubleshooting', 
-          description: 'Common issues and solutions',
-          expandedContent: {
-            title: 'Comprehensive Troubleshooting',
-            details: [
-              'Common solutions for API errors and connectivity issues',
-              'Workflow failure diagnosis and resolution steps',
-              'Performance optimization tips and best practices',
-              'Log analysis and debugging techniques',
-              'Uptime-related problem resolution (99.9% SLA backed)',
-              'Escalation procedures for complex technical issues'
-            ],
-            contact: 'Unresolved issues: support@yoforex.co.in with account details',
-            address: 'Emergency support available for Enterprise customers'
-          }
-        }
-      ]
+      delay: 0.1,
+      expandedContent: {
+        details: [
+          'Free Models: Access to Mistral, Claude Haiku, DeepSeek, and other free AI APIs',
+          'Premium Models: Grok, OpenAI O3, Claude Opus 4, Gemini Ultra for advanced analysis',
+          'Flexible Selection: Choose specific models for different trading strategies',
+          'Performance Tracking: Monitor which AIs work best for your trading style',
+          'Cost Control: Switch between free and premium models based on your budget',
+          'Regular Updates: New AI models added as they become available'
+        ],
+      }
     },
     {
-      id: 'learning',
-      title: 'Learning Center',
-      description: 'Educational content and trading insights',
-      icon: GraduationCap,
-      color: 'from-accent-500 to-violet-600',
-      resources: [
-        { 
-          id: 'blog',
-          name: 'Blog', 
-          description: 'Latest AI analytics insights and automation trends',
-          onClick: onNavigateToBlog,
-          featured: true,
-          expandedContent: {
-            title: 'Technical Insights Blog',
-            details: [
-              'Insights on AI-driven automation trends and SaaS scalability',
-              'IT best practices and enterprise workflow optimization',
-              'Recent posts: "Optimizing Multi-AI Workflows for Enterprise Efficiency"',
-              '"Securing Analytics Platforms in the Cloud" and infrastructure guides',
-              'Technical deep-dives on platform architecture and performance',
-              'Industry trends and emerging technologies in workflow automation'
-            ],
-            contact: 'Subscribe for updates—purely technical content, no advisory material',
-            address: 'Editorial team: support@yoforex.co.in'
-          }
-        },
-        { 
-          id: 'case-studies',
-          name: 'Case Studies', 
-          description: 'Real-world automation success stories',
-          expandedContent: {
-            title: 'Enterprise Success Stories',
-            details: [
-              'Real-world examples of YoForex AI boosting IT operations',
-              'Case study: Firm reducing workflow processing time by 70%',
-              'Technical outcomes and scalability improvements',
-              'ROI analysis and performance metrics',
-              'Implementation timelines and best practices',
-              'Industry-specific use cases and solutions'
-            ],
-            contact: 'Request full case studies: support@yoforex.co.in',
-            address: 'Custom case study development available for Enterprise clients'
-          }
-        },
-        { 
-          id: 'whitepapers',
-          name: 'Whitepapers', 
-          description: 'In-depth research and methodology',
-          expandedContent: {
-            title: 'Technical Research Papers',
-            details: [
-              'In-depth papers: "AI Orchestration for Workflow Automation"',
-              '20-page technical analysis on architectures and benchmarks',
-              '"Enterprise Compliance in SaaS Analytics" compliance guide',
-              'Research on multi-AI model performance and optimization',
-              'Industry best practices and emerging technology trends',
-              'Peer-reviewed technical methodologies and frameworks'
-            ],
-            contact: 'Download via app.yoforex.co.in/resources',
-            address: 'Research team: support@yoforex.co.in'
-          }
-        },
-        { 
-          id: 'webinars',
-          name: 'Webinars', 
-          description: 'Live and recorded training sessions',
-          expandedContent: {
-            title: 'Technical Training Sessions',
-            details: [
-              'Live sessions: "Building Resilient API Integrations"',
-              'Upcoming webinar: July 30, 2025 - Advanced Workflow Design',
-              'On-demand library of technical training content',
-              'Expert-led sessions on platform optimization',
-              'Q&A sessions with development team',
-              'Industry best practices and case study reviews'
-            ],
-            contact: 'Register at app.yoforex.co.in/webinars for technical training',
-            address: 'Live support during webinars via chat'
-          }
-        }
-      ]
-    },
-    {
-      id: 'community',
-      title: 'Community & Support',
-      description: 'Connect with traders and get help',
-      icon: Users,
+      id: 'multi-ai-consensus',
+      icon: Target,
+      title: 'Multi-AI Consensus',
+      description: 'Run the same analysis across multiple AI models to get consensus signals with confidence scoring and detailed reasoning from each AI.',
       color: 'from-success-500 to-success-600',
-      resources: [
-        { 
-          id: 'community-forum',
-          name: 'Community Forum', 
-          description: 'Connect with other YoForex AI users',
-          onClick: onNavigateToCommunity,
-          featured: true,
-          expandedContent: {
-            title: 'Professional Community Forum',
-            details: [
-              'Technical discussions on integrations and workflow optimization',
-              'Platform feedback and feature requests from enterprise users',
-              'Categories: API tips, automation best practices, troubleshooting',
-              'Moderated for professional, SaaS-focused conversations only',
-              'Direct access to development team for technical questions',
-              'Peer-to-peer support and knowledge sharing'
-            ],
-            contact: 'Access via app.yoforex.co.in/forum',
-            address: 'Community guidelines enforce professional IT discussions only'
-          }
-        },
-        { 
-          id: 'help-center',
-          name: 'Help Center', 
-          description: 'Frequently asked questions and guides',
-          onClick: onNavigateToSupport,
-          expandedContent: {
-            title: 'Self-Service Support Center',
-            details: [
-              'Self-service articles on account management and billing',
-              'Pricing information in ₹ (e.g., ₹12,800/month for Basic)',
-              'API troubleshooting guides and common solutions',
-              'Security features documentation (SOC 2 compliance)',
-              'Searchable FAQ database for quick issue resolution',
-              'Video tutorials and step-by-step guides'
-            ],
-            contact: 'Personalized help: support@yoforex.co.in',
-            address: 'Self-service available 24/7 via app.yoforex.co.in'
-          }
-        },
-        { 
-          id: 'contact-support',
-          name: 'Contact Support', 
-          description: 'Get direct help from our team',
-          onClick: onNavigateToSupport,
-          expandedContent: {
-            title: 'Direct Technical Support',
-            details: [
-              'Email support@yoforex.co.in for technical inquiries',
-              'Ticket submission via app.yoforex.co.in for tracking',
-              'Business hours: 9 AM - 6 PM IST, Monday to Friday',
-              'Priority support for Pro and Enterprise customers',
-              'Screen sharing and remote assistance available',
-              'Escalation to senior engineers for complex issues'
-            ],
-            contact: 'Response time: 2-4 hours for priority support',
-            address: 'Address: 28, Gopi Bose Lane, Kolkata 700012, West Bengal, India'
-          }
-        },
-        { 
-          id: 'status-page',
-          name: 'Status Page', 
-          description: 'System status and uptime monitoring',
-          expandedContent: {
-            title: 'Real-Time System Monitoring',
-            details: [
-              'Real-time platform uptime monitoring (99.9% SLA)',
-              'Incident history and maintenance schedule transparency',
-              'Performance metrics and response time tracking',
-              'Subscription alerts for service disruptions',
-              'Regional status updates for global infrastructure',
-              'Planned maintenance notifications and impact assessments'
-            ],
-            contact: 'Current status: All systems operational as of latest update',
-            address: 'Subscribe for alerts on workflow disruptions'
-          }
-        }
-      ]
+      delay: 0.2,
+      expandedContent: {
+        details: [
+          'Multi-Model Analysis: Same prompt runs across multiple selected AI models',
+          'Consensus Scoring: See how different AIs agree or disagree on trade setups',
+          'AI Debate Visualization: Watch AIs "discuss" and validate trade ideas',
+          'Confidence Levels: Get 1-5 confidence scores for every trade recommendation',
+          'Transparent Results: See individual AI outputs and reasoning',
+          'Signal Strength: Stronger signals when multiple AIs agree on direction'
+        ],
+      }
     },
     {
-      id: 'tools',
-      title: 'Tools & Utilities',
-      description: 'Additional tools and resources',
-      icon: Code,
+      id: 'strategy-library',
+      icon: BarChart3,
+      title: 'Strategy Library',
+      description: '10+ professional trading strategies including Breakout, Trend Following, SMC, ICT Logic, Fibonacci analysis, and custom strategy uploads.',
+      color: 'from-accent-500 to-violet-600',
+      delay: 0.3,
+      expandedContent: {
+        details: [
+          'Built-in Strategies: Breakout, Trend Following, Mean Reversion, Smart Money Concepts',
+          'ICT Logic: Inner Circle Trader methodologies and market structure analysis',
+          'Fibonacci Tools: Retracement, extension, and confluence analysis',
+          'Multi-Timeframe: Combine signals from multiple timeframes for stronger setups',
+          'Custom Uploads: Import your own strategies in PDF or prompt format',
+          'Strategy Blending: Combine built-in strategies with your custom approaches'
+        ],
+      }
+    },
+    {
+      id: 'personalized-training',
+      icon: Brain,
+      title: 'Personalized AI Training',
+      description: 'Upload your trading history, journal, or custom strategies to train your personal AI agent for more accurate and personalized trade recommendations.',
       color: 'from-warning-500 to-warning-600',
-      resources: [
-        { 
-          id: 'strategy-builder',
-          name: 'Strategy Builder', 
-          description: 'Create custom automation strategies',
-          expandedContent: {
-            title: 'Custom Workflow Strategy Builder',
-            details: [
-              'Visual workflow designer for automation strategies',
-              'Configure parameters like confidence levels (0-5) and data filters',
-              'Drag-and-drop interface for complex workflow creation',
-              'Template library for common enterprise use cases',
-              'Testing and validation tools for strategy optimization',
-              'Integration with all 392 AI models for enhanced capabilities'
-            ],
-            contact: 'Accessible via app.yoforex.co.in/tools—software only for IT automation',
-            address: 'Training available for enterprise strategy development'
-          }
-        },
-        { 
-          id: 'backtesting',
-          name: 'Backtesting Tools', 
-          description: 'Test strategies with historical data',
-          expandedContent: {
-            title: 'Historical Data Analysis Tools',
-            details: [
-              'Simulate workflows with historical data for performance testing',
-              'Multi-model consensus testing and validation',
-              'Web search integration testing with historical events',
-              'Performance metrics and optimization recommendations',
-              'Results exportable for enterprise reporting and analysis',
-              'Custom date ranges and data source selection'
-            ],
-            contact: 'Advanced backtesting features available in Pro and Enterprise plans',
-            address: 'Historical data retention: 2 years for Enterprise customers'
-          }
-        },
-        { 
-          id: 'risk-calculator',
-          name: 'Risk Calculator', 
-          description: 'Calculate resource allocation and limits',
-          expandedContent: {
-            title: 'Resource Allocation Calculator',
-            details: [
-              'Calculate resource allocation and limits for workflows',
-              'API call optimization and cost estimation tools',
-              'Data volume planning and capacity management',
-              'Integration with drawdown controls for efficient SaaS usage',
-              'Performance impact analysis and optimization suggestions',
-              'Budget planning tools for enterprise resource management'
-            ],
-            contact: 'No financial implications—purely technical resource planning',
-            address: 'Enterprise resource planning: support@yoforex.co.in'
-          }
-        },
-        { 
-          id: 'market-scanner',
-          name: 'Market Scanner', 
-          description: 'Scan data sources for automation opportunities',
-          expandedContent: {
-            title: 'Intelligent Data Source Scanner',
-            details: [
-              'Scan data sources for automation opportunities using real-time web search',
-              'Monitor 50+ data terms and sources for workflow triggers',
-              'Automated notification system for workflow updates',
-              'Custom scanning parameters and filtering options',
-              'Integration with enterprise data lakes and warehouses',
-              'Scheduled scanning with configurable frequency'
-            ],
-            contact: 'Configure via app.yoforex.co.in/scanner',
-            address: 'Custom scanning rules available for Enterprise customers'
-          }
-        }
-      ]
-    }
-  ];
+      delay: 0.4,
+      expandedContent: {
+        details: [
+          'Trading History Upload: Import past trades to help AI learn your patterns',
+          'Journal Integration: Upload trading journals for personalized insights',
+          'Custom Strategy Training: Train AI on your specific trading methodologies',
+          'Performance Learning: AI adapts based on your SL/TP hit rates and feedback',
+          'Pattern Recognition: AI identifies your most successful trade setups',
+          'Continuous Improvement: AI refines recommendations based on your results'
+        ],
+      }
+    },
+    {
+      id: 'sl-tp-reasoning',
+      icon: RefreshCw,
+      title: 'SL/TP & Reasoning',
+      description: 'Get precise stop loss and take profit levels with comprehensive trade rationale explaining technical analysis, market structure, and risk factors.',
+      color: 'from-error-500 to-error-600',
+      delay: 0.5,
+      expandedContent: {
+        details: [
+          'Precise Risk Management: AI-calculated stop loss levels based on market structure',
+          'Profit Targets: Multiple take profit levels with probability analysis',
+          'Risk-Reward Ratios: Optimal risk-reward calculations for each trade setup',
+          'Technical Reasoning: Detailed explanation of support/resistance levels',
+          'Market Context: Analysis of current market conditions and volatility',
+          'Entry Timing: Optimal entry points based on technical confluence'
+        ],
+      }
+    },
+    {
+      id: 'community-access',
+      icon: Globe,
+      title: 'Premium Community',
+      description: 'Join exclusive Discord and Telegram communities with Pro/Max users to share AI-backed trades, discuss strategies, and learn from global traders.',
+      color: 'from-neutral-600 to-neutral-700',
+      delay: 0.6,
+      expandedContent: {
+        details: [
+          'Discord Community: Real-time chat with AI-powered traders worldwide',
+          'Telegram Groups: Mobile-friendly trading discussions and signal sharing',
+          'Educational Content: Learn from experienced traders and AI insights',
+          'Strategy Sharing: Share and discover profitable AI-backed trading approaches',
+          'Market Discussions: Daily market analysis and AI consensus discussions',
 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
@@ -404,7 +154,7 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                 <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                   YoForex AI
                 </span>
-                <span className="text-sm text-neutral-400 ml-2">Resources</span>
+                <span className="text-sm text-neutral-400 ml-2">Features</span>
               </div>
             </div>
           </div>
@@ -421,22 +171,22 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
           className="text-center mb-16"
         >
           <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-            Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Resources</span>
+            Advanced AI Forex Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
           </h1>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Everything you need to master YoForex AI and become a successful AI-powered trader.
+            Advanced AI forex trading analysis features powered by 392+ AI models and multi-timeframe technical analysis for professional currency trading.
           </p>
         </motion.div>
 
-        {/* Resource Categories */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {resourceCategories.map((category, index) => (
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
             <motion.div
-              key={category.title}
+              key={feature.title}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 hover:border-neutral-700/50 transition-all duration-300"
+              transition={{ duration: 0.6, delay: feature.delay }}
+              className="group relative"
             >
               {/* Category Header */}
               <div className="flex items-center space-x-4 mb-6">
@@ -460,175 +210,124 @@ const ResourcesPage: React.FC<ResourcesPageProps> = ({
                     className={`p-4 rounded-lg border transition-all duration-200 cursor-pointer ${
                       resource.featured 
                         ? 'border-primary-500/50 bg-primary-500/10 hover:bg-primary-500/20' 
-                        : 'border-neutral-700/50 bg-neutral-800/20 hover:bg-neutral-800/40'
-                    }`}
-                    onClick={(e) => {
-                      if (resource.onClick) {
-                        resource.onClick();
-                      } else {
-                        e.stopPropagation();
-                        toggleCard(resource.id);
-                      }
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        if (resource.onClick) {
-                          resource.onClick();
-                        } else {
-                          toggleCard(resource.id);
-                        }
-                      }
-                    }}
-                    tabIndex={0}
-                    role="button"
-                    aria-expanded={expandedCard === resource.id}
-                    aria-label={`${resource.name} - Click to ${resource.onClick ? 'navigate' : 'view details'}`}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+              {/* Card */}
+              <motion.div
+                onHoverStart={() => setHoveredCard(feature.id)}
+                onHoverEnd={() => setHoveredCard(null)}
+                onClick={() => setHoveredCard(hoveredCard === feature.id ? null : feature.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setHoveredCard(hoveredCard === feature.id ? null : feature.id);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-expanded={hoveredCard === feature.id}
+                aria-label={`${feature.title} - Click to view details`}
+              >
+              <div className="relative bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 h-full hover:border-neutral-700/50 transition-all duration-300 overflow-hidden">
+                {/* Background Glow */}
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-r ${feature.color} rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                  whileHover={{ scale: 1.02 }}
+                />
+
+                {/* Icon */}
+                <motion.div
+                  className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-r ${feature.color} rounded-xl mb-6 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <feature.icon className="w-7 h-7 text-white" />
+                </motion.div>
+
+                {/* Content */}
+                <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-primary group-hover:bg-clip-text transition-all duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+                  {feature.description}
+                </p>
+              </div>
+              </motion.div>
+
+              {/* Hover Tooltip */}
+              <AnimatePresence>
+                {hoveredCard === feature.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute z-50 top-full left-0 right-0 mt-2 bg-neutral-900/95 backdrop-blur-sm border border-neutral-700/50 rounded-xl p-4 shadow-2xl max-w-sm mx-auto"
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-2">
-                          <h4 className={`font-semibold ${
-                            resource.featured ? 'text-primary-400' : 'text-white'
-                          }`}>
-                            {resource.name}
-                          </h4>
-                          {resource.featured && (
-                            <span className="px-2 py-1 bg-primary-500/20 text-primary-400 text-xs rounded-full">
-                              Featured
-                            </span>
-                          )}
+                    <div className="space-y-3">
+                      {feature.expandedContent.details.map((detail, index) => (
+                        <div key={index} className="flex items-start space-x-3 p-2 rounded-lg bg-neutral-800/30">
+                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.color} mt-2 flex-shrink-0`} />
+                          <span className="text-neutral-300 text-sm leading-relaxed">{detail}</span>
                         </div>
-                        <p className="text-neutral-400 text-sm mt-1">{resource.description}</p>
-                        
-                        {/* Interactive indicator */}
-                        <div className="mt-2 flex items-center space-x-1">
-                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-50" />
-                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-30" />
-                          <div className="w-1 h-1 rounded-full bg-primary-400 opacity-50" />
-                          <span className="text-xs text-neutral-500 ml-2">
-                            {resource.onClick ? 'Click to navigate' : 'Click for details'}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex flex-col items-center space-y-1">
-                        <ArrowRight className="w-4 h-4 text-neutral-500" />
-                        {resource.expandedContent && (
-                          <motion.div
-                            animate={{ rotate: expandedCard === resource.id ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <ChevronDown className="w-3 h-3 text-primary-400" />
-                          </motion.div>
-                        )}
-                      </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-primary-400 text-xs">support@yoforex.co.in</p>
                     </div>
                     
-                    {/* Expanded Content */}
-                    <AnimatePresence>
-                      {resource.expandedContent && expandedCard === resource.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-4 pt-4 border-t border-neutral-700/50 bg-neutral-900/30 rounded-lg p-4"
-                        >
-                          <h5 className="text-sm font-semibold text-white mb-3">
-                            {resource.expandedContent.title}
-                          </h5>
-                          <ul className="space-y-2 mb-3">
-                            {resource.expandedContent.details.map((detail, index) => (
-                              <li key={index} className="flex items-start space-x-2">
-                                <div className="w-1 h-1 rounded-full bg-primary-400 mt-2 flex-shrink-0" />
-                                <span className="text-neutral-300 text-xs leading-relaxed">{detail}</span>
-                              </li>
-                            ))}
-                          </ul>
-                          <p className="text-primary-400 text-xs mb-2">
-                            {resource.expandedContent.contact}
-                          </p>
-                          {resource.expandedContent.address && (
-                            <p className="text-neutral-500 text-xs mb-3">
-                              {resource.expandedContent.address}
-                            </p>
-                          )}
-                          <motion.button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleCard(resource.id);
-                            }}
-                            className="text-neutral-400 hover:text-white text-xs transition-colors duration-300 flex items-center space-x-1"
-                            whileHover={{ scale: 1.05 }}
-                          >
-                            <ChevronUp className="w-3 h-3" />
-                            <span>Collapse</span>
-                          </motion.button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {/* Mobile tap indicator */}
+                    <div className="md:hidden mt-3 pt-3 border-t border-neutral-700/50">
+                      <p className="text-neutral-500 text-xs text-center">Tap card to toggle details</p>
+                    </div>
                   </motion.div>
-                ))}
-              </div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
 
-        {/* Quick Links Section */}
+        {/* Mobile accessibility note */}
+        <div className="md:hidden mt-8 text-center">
+          <p className="text-neutral-400 text-sm">Tap any feature card to view technical details</p>
+        </div>
+
+        {/* Live Demo Teaser */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16"
+          className="mt-20"
         >
-          <div className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">Quick Access</h3>
-            <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 lg:p-12 text-center relative overflow-hidden">
+            {/* Background Animation */}
+            <div className="absolute inset-0 opacity-10">
+              <motion.div
+                className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+
+            <div className="relative z-10">
+              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading Analysis?</span>
+              </h3>
+              <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
+                Try our platform with real market data and see how our multi-AI consensus system analyzes trades in real-time.
+              </p>
               <motion.button
-                onClick={onNavigateToUserManual}
-                className="p-4 bg-primary-500/20 border border-primary-500/50 rounded-lg text-primary-400 hover:bg-primary-500/30 transition-colors duration-200 flex items-center space-x-3"
+                onClick={onNavigateToSignup}
+                className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <BookOpen className="w-5 h-5" />
-                <span className="font-medium">User Manual</span>
-              </motion.button>
-              
-              <motion.button
-                onClick={onNavigateToBlog}
-                className="p-4 bg-accent-500/20 border border-accent-500/50 rounded-lg text-accent-400 hover:bg-accent-500/30 transition-colors duration-200 flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Newspaper className="w-5 h-5" />
-                <span className="font-medium">Latest Blog</span>
-              </motion.button>
-              
-              <motion.button
-                onClick={onNavigateToSupport}
-                className="p-4 bg-success-500/20 border border-success-500/50 rounded-lg text-success-400 hover:bg-success-500/30 transition-colors duration-200 flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <HelpCircle className="w-5 h-5" />
-                <span className="font-medium">Get Support</span>
+                <Cpu className="w-5 h-5" />
+                <span>Start Free Trial</span>
+                <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </motion.button>
             </div>
           </div>
         </motion.div>
-
-        {/* Mobile accessibility note */}
-        <div className="mt-8 text-center">
-          <p className="text-neutral-400 text-sm">
-            💡 <span className="md:hidden">Tap any resource card to view detailed information</span>
-            <span className="hidden md:inline">Hover over resource cards to view detailed information</span>
-          </p>
-        </div>
       </main>
     </div>
   );
 };
-
-export default ResourcesPage;
