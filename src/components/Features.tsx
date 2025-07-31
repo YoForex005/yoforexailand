@@ -14,7 +14,11 @@ import {
   ChevronUp
 } from 'lucide-react';
 
-const Features: React.FC = () => {
+interface FeaturesProps {
+  onNavigateToSignup: () => void;
+}
+
+const Features: React.FC<FeaturesProps> = ({ onNavigateToSignup }) => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const features = [
@@ -264,6 +268,7 @@ const Features: React.FC = () => {
                 Try our platform with real market data and see how our multi-AI consensus system analyzes trades in real-time.
               </p>
               <motion.button
+                onClick={onNavigateToSignup}
                 className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

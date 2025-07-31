@@ -32,6 +32,7 @@ interface LoginPageProps {
   onNavigateToDashboard: () => void;
   onNavigateToOTP: (data: { phone?: string; email?: string }) => void;
   onNavigateBack: () => void;
+  onNavigateToWelcome: () => void;
 }
 
 interface LoginForm {
@@ -74,7 +75,7 @@ const LoginPage: React.FC<LoginPageProps> = ({
           }
         }
         
-        onNavigateToDashboard();
+        onNavigateToWelcome();
       } else {
         setError('Invalid email or password. Try demo@yoforex.ai / Demo123!');
       }

@@ -72,7 +72,7 @@ const Header: React.FC<HeaderProps> = ({
             {navItems.map((item) => (
               <a
                 key={item.name}
-                href={item.href}
+                href="#"
                 className="text-neutral-300 hover:text-primary-400 transition-colors duration-200"
                 onClick={(e) => {
                   e.preventDefault();
@@ -80,6 +80,12 @@ const Header: React.FC<HeaderProps> = ({
                     onNavigateToFeatures();
                   } else if (item.name === 'Live Demo') {
                     onNavigateToLiveDemo();
+                  } else if (item.name === 'Pricing') {
+                    // Scroll to pricing section
+                    const pricingSection = document.getElementById('pricing');
+                    if (pricingSection) {
+                      pricingSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                   } else if (item.name === 'Resources') {
                     onNavigateToResources();
                   }
@@ -133,7 +139,7 @@ const Header: React.FC<HeaderProps> = ({
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href="#"
                   className="block text-neutral-300 hover:text-primary-400 transition-colors duration-200"
                   onClick={(e) => {
                     e.preventDefault();
@@ -142,6 +148,11 @@ const Header: React.FC<HeaderProps> = ({
                       onNavigateToFeatures();
                     } else if (item.name === 'Live Demo') {
                       onNavigateToLiveDemo();
+                    } else if (item.name === 'Pricing') {
+                      const pricingSection = document.getElementById('pricing');
+                      if (pricingSection) {
+                        pricingSection.scrollIntoView({ behavior: 'smooth' });
+                      }
                     } else if (item.name === 'Resources') {
                       onNavigateToResources();
                     }

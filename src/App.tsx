@@ -49,9 +49,9 @@ function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
   const [otpData, setOtpData] = useState<{ phone?: string; email?: string } | null>(null);
 
-  const handleNavigateToLogin = () => window.open('https://app.yoforex.co.in', '_blank');
-  const handleNavigateToSignup = () => window.open('https://app.yoforex.co.in', '_blank');
-  const handleNavigateToDashboard = () => window.open('https://app.yoforex.co.in', '_blank');
+  const handleNavigateToLogin = () => setCurrentView('login');
+  const handleNavigateToSignup = () => setCurrentView('signup');
+  const handleNavigateToDashboard = () => setCurrentView('dashboard');
   const handleNavigateToWelcome = () => setCurrentView('welcome');
   const handleNavigateToLanding = () => setCurrentView('landing');
   
@@ -99,6 +99,7 @@ function App() {
         onNavigateToDashboard={handleNavigateToDashboard}
         onNavigateToOTP={handleNavigateToOTP}
         onNavigateBack={handleNavigateToLanding}
+        onNavigateToWelcome={handleNavigateToWelcome}
       />
     );
   }
@@ -109,6 +110,7 @@ function App() {
         onNavigateToLogin={handleNavigateToLogin}
         onNavigateToOTP={handleNavigateToOTP}
         onNavigateBack={handleNavigateToLanding}
+        onNavigateToWelcome={handleNavigateToWelcome}
       />
     );
   }
@@ -241,7 +243,10 @@ function App() {
   }
   
   if (currentView === 'sample-analysis') {
-    return <SampleAnalysisPage onNavigateBack={() => setCurrentView('live-demo')} />;
+    return <SampleAnalysisPage 
+      onNavigateBack={() => setCurrentView('live-demo')}
+      onNavigateToSignup={handleNavigateToSignup}
+    />;
   }
   
   if (currentView === 'strategy-builder') {
@@ -285,10 +290,10 @@ function App() {
           onNavigateToSignup={handleNavigateToSignup}
           onNavigateToLiveDemo={handleNavigateToLiveDemo}
         />
-        <HowItWorks />
-        <Features />
+        <HowItWorks onNavigateToSignup={handleNavigateToSignup} />
+        <Features onNavigateToSignup={handleNavigateToSignup} />
         <WhyChooseUs />
-        <StartTrading />
+        <StartTrading onNavigateToSignup={handleNavigateToSignup} />
         <Pricing onNavigateToSignup={handleNavigateToSignup} />
       </main>
       <Footer 

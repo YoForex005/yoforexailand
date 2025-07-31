@@ -42,6 +42,7 @@ interface SignupPageProps {
   onNavigateToLogin: () => void;
   onNavigateToOTP: (data: { phone?: string; email?: string }) => void;
   onNavigateBack: () => void;
+  onNavigateToWelcome: () => void;
 }
 
 interface SignupForm {
@@ -137,7 +138,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
         setCountdown(prev => {
           if (prev <= 1) {
             clearInterval(timer);
-            onNavigateToLogin();
+            onNavigateToWelcome();
             return 0;
           }
           return prev - 1;
@@ -214,7 +215,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
             </Box>
             
             <Button
-              onClick={onNavigateToLogin}
+              onClick={onNavigateToWelcome}
               variant="contained"
               sx={{
                 background: 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%)',
@@ -224,7 +225,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
                 py: 1.5
               }}
             >
-              Continue to Sign In
+              Continue to Welcome
             </Button>
           </Paper>
         </motion.div>

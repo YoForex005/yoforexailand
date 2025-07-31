@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, Cpu, TrendingUp, Zap, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
-const HowItWorks: React.FC = () => {
+interface HowItWorksProps {
+  onNavigateToSignup: () => void;
+}
+
+const HowItWorks: React.FC<HowItWorksProps> = ({ onNavigateToSignup }) => {
   const [hoveredStep, setHoveredStep] = useState<string | null>(null);
 
   const steps = [
@@ -188,6 +192,7 @@ const HowItWorks: React.FC = () => {
           className="text-center mt-16"
         >
           <motion.button
+            onClick={onNavigateToSignup}
             className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

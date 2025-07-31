@@ -9,7 +9,11 @@ import {
   CheckCircle
 } from 'lucide-react';
 
-const StartTrading: React.FC = () => {
+interface StartTradingProps {
+  onNavigateToSignup: () => void;
+}
+
+const StartTrading: React.FC<StartTradingProps> = ({ onNavigateToSignup }) => {
   const steps = [
     {
       icon: Download,
@@ -140,6 +144,7 @@ const StartTrading: React.FC = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <motion.button
+                  onClick={onNavigateToSignup}
                   className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
