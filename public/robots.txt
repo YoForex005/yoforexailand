@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /verify-otp
+Disallow: /admin
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://yoforex.co.in/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

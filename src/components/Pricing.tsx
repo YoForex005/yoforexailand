@@ -135,11 +135,11 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading</span> Plan
+            Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">AI Forex Trading</span> Plan
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            From free AI analysis to unlimited professional trading intelligence. 
-            Scale your trading with the power of multiple AI models and credit-based usage.
+            From free AI forex analysis to unlimited professional forex trading intelligence. 
+            Scale your currency trading with the power of multiple AI models and credit-based usage for automated trading success.
           </p>
         </motion.div>
 
