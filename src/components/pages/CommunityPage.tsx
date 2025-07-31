@@ -275,6 +275,22 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
                         <p className="text-primary-400 text-sm">
                           Join professional discussions at app.yoforex.co.in/community
                         </p>
+                        <div className="bg-neutral-800/30 rounded-lg p-4">
+                          <div className="flex items-center space-x-3 mb-2">
+                            <MessageCircle className="w-5 h-5 text-success-400" />
+                            <span className="font-semibold text-white">Telegram Community</span>
+                          </div>
+                          <p className="text-neutral-400 text-sm">Join our active Telegram group for real-time forex discussions</p>
+                          <a
+                            href="https://t.me/+yIHojfgMyNU4YTY1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center space-x-1 text-success-400 hover:text-success-300 text-sm mt-2"
+                          >
+                            <span>Join Group</span>
+                            <ArrowRight className="w-3 h-3" />
+                          </a>
+                        </div>
                       </div>
                     )}
 

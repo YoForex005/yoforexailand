@@ -360,8 +360,8 @@ const UserManualPage: React.FC<UserManualPageProps> = ({ onNavigateBack }) => {
                 <h4 className="text-lg font-semibold text-success-400 mb-4">Support Contacts</h4>
                 <div className="space-y-2 text-sm text-neutral-300">
                   <div>📧 support@yoforexai.com</div>
-                  <div>💬 Community Forum</div>
-                  <div>📱 Telegram Support Bot</div>
+                  <div>💬 <a href="https://t.me/+yIHojfgMyNU4YTY1" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300">Telegram Community</a></div>
+                  <div>📺 <a href="https://www.youtube.com/@YoForexPremium1" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300">YouTube Channel</a></div>
                   <div>🔧 Free Setup Assistance</div>
                 </div>
               </div>
