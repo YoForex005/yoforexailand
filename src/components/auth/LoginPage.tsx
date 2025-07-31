@@ -26,6 +26,7 @@ import {
 } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import BetaNotificationModal from './BetaNotificationModal';
 
 interface LoginPageProps {
   onNavigateToSignup: () => void;
@@ -54,6 +55,8 @@ const LoginPage: React.FC<LoginPageProps> = ({
   const [error, setError] = useState('');
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
+  const [showBetaModal, setShowBetaModal] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>();
 
@@ -68,7 +71,10 @@ const LoginPage: React.FC<LoginPageProps> = ({
       // Mock validation - accept demo credentials
       if ((data.email === 'demo@yoforex.ai' || data.email === 'demo@yoforexai.com') && 
           (data.password === 'Demo123!' || data.password === 'Demo123' || data.password === 'demo123')) {
-        toast.success('Welcome back to YoForex AI!');
+        
+        // Store user email and show beta modal
+        setUserEmail(data.email);
+        setShowBetaModal(true);
         
         // Store login state
         if (typeof window !== 'undefined') {
@@ -77,9 +83,6 @@ const LoginPage: React.FC<LoginPageProps> = ({
             localStorage.setItem('rememberMe', 'true');
           }
         }
-        
-        // Show beta modal after successful login
-        onShowBetaModal();
       } else {
         setError('Invalid email or password. Try: demo@yoforex.ai / Demo123!');
       }
@@ -88,6 +91,13 @@ const LoginPage: React.FC<LoginPageProps> = ({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleBetaModalClose = () => {
+    setShowBetaModal(false);
+    toast.success('Welcome! You\'ll be notified when beta access is available.');
+    // Redirect back to landing page
+    onNavigateBack();
   };
 
   const handleForgotPassword = async () => {
@@ -499,6 +509,13 @@ const LoginPage: React.FC<LoginPageProps> = ({
           </Box>
         </Paper>
       </motion.div>
+
+      {/* Beta Notification Modal */}
+      <BetaNotificationModal
+        isOpen={showBetaModal}
+        onClose={handleBetaModalClose}
+        userEmail={userEmail}
+      />
     </Box>
   );
 };

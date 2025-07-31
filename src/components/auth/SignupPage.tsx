@@ -37,6 +37,7 @@ import {
 import { useForm } from 'react-hook-form';
 import { parsePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js';
 import toast from 'react-hot-toast';
+import BetaNotificationModal from './BetaNotificationModal';
 
 interface SignupPageProps {
   onNavigateToLogin: () => void;
@@ -67,6 +68,8 @@ const SignupPage: React.FC<SignupPageProps> = ({
   const [error, setError] = useState('');
   const [signupSuccess, setSignupSuccess] = useState(false);
   const [countdown, setCountdown] = useState(3);
+  const [showBetaModal, setShowBetaModal] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   const { register, handleSubmit, formState: { errors }, watch, trigger } = useForm<SignupForm>();
   const watchedPassword = watch('password');
@@ -138,12 +141,17 @@ const SignupPage: React.FC<SignupPageProps> = ({
       setSignupSuccess(true);
       toast.success('Account created successfully!');
       
+      // Store user email for beta modal
+      setUserEmail(data.email);
+      
       // Start countdown
       const timer = setInterval(() => {
         setCountdown(prev => {
           if (prev <= 1) {
             clearInterval(timer);
-            onNavigateToWelcome();
+            // Show beta modal instead of going to welcome
+            setSignupSuccess(false);
+            setShowBetaModal(true);
             return 0;
           }
           return prev - 1;
@@ -155,6 +163,13 @@ const SignupPage: React.FC<SignupPageProps> = ({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleBetaModalClose = () => {
+    setShowBetaModal(false);
+    toast.success('Thank you! You\'ll be notified when beta access is available.');
+    // Redirect back to landing page
+    onNavigateBack();
   };
 
   if (signupSuccess) {
@@ -230,7 +245,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
                 py: 1.5
               }}
             >
-              Continue to Welcome
+              Continue
             </Button>
           </Paper>
         </motion.div>
@@ -763,6 +778,13 @@ const SignupPage: React.FC<SignupPageProps> = ({
           </Box>
         </Paper>
       </motion.div>
+
+      {/* Beta Notification Modal */}
+      <BetaNotificationModal
+        isOpen={showBetaModal}
+        onClose={handleBetaModalClose}
+        userEmail={userEmail}
+      />
     </Box>
   );
 };
