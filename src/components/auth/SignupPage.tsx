@@ -95,7 +95,7 @@ const SignupPage: React.FC<SignupPageProps> = ({
 
     if (score < 3) return { score: score * 20, text: 'Weak', color: '#f44336' };
     if (score < 4) return { score: score * 20, text: 'Medium', color: '#ff9800' };
-    if (score < 5) return { score: score * 20, text: 'Strong', color: '#4caf50' };
+    if (score >= 4) return { score: score * 20, text: 'Strong', color: '#4caf50' };
     return { score: 100, text: 'Very Strong', color: '#2e7d32' };
   };
 
