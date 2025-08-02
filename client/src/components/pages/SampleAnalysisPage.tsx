@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLocation } from 'wouter';
 import { 
   ArrowLeft, 
   Zap, 
@@ -14,13 +15,10 @@ import {
   Star,
   Activity
 } from 'lucide-react';
+import SEOHead from '../SEOHead';
 
-interface SampleAnalysisPageProps {
-  onNavigateBack: () => void;
-  onNavigateToSignup: () => void;
-}
-
-const SampleAnalysisPage: React.FC<SampleAnalysisPageProps> = ({ onNavigateBack }) => {
+const SampleAnalysisPage: React.FC = () => {
+  const [, setLocation] = useLocation();
   const [selectedExample, setSelectedExample] = useState(0);
 
   const analysisExamples = [
@@ -390,7 +388,7 @@ const SampleAnalysisPage: React.FC<SampleAnalysisPageProps> = ({ onNavigateBack 
                 Start with 5 free daily analyses using top AI models. No credit card required—see the power of AI trading analysis for yourself.
               </p>
               <motion.button
-                onClick={onNavigateToSignup}
+                onClick={() => setLocation('/signup')}
                 className="bg-gradient-primary text-white px-12 py-6 rounded-2xl font-bold text-xl relative overflow-hidden group inline-flex items-center space-x-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

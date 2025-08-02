@@ -1,155 +1,97 @@
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'wouter';
 
 interface SEOHeadProps {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   keywords?: string;
-  image?: string;
-  article?: boolean;
+  canonicalUrl?: string;
+  ogImage?: string;
   noindex?: boolean;
-  canonical?: string;
+  schema?: object;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "YoForex AI | World's Most Advanced AI Forex Trading Platform",
-  description = "Access 392+ AI models for forex trading analysis. Get precise SL/TP levels, multi-AI consensus signals, and professional trading strategies. Start with 5 free daily analyses.",
-  keywords = "forex trading, AI forex, trading course, YoForex AI, AI trading chart, forex signals, automated trading, currency trading, forex education, trading algorithms",
-  image = "/og-image.jpg",
-  article = false,
+  title,
+  description,
+  keywords,
+  canonicalUrl,
+  ogImage = '/og-image.jpg',
   noindex = false,
-  canonical
+  schema
 }) => {
-  const [location] = useLocation();
-  const siteUrl = 'https://yoforex.co.in';
-  const fullUrl = `${siteUrl}${location}`;
-  const canonicalUrl = canonical || fullUrl;
-
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const fullTitle = title.includes('YoForex AI') ? title : `${title} | YoForex AI`;
+  
   return (
     <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{title}</title>
-      <meta name="title" content={title} />
+      {/* Basic Meta Tags */}
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
       {/* Robots */}
-      {noindex ? (
-        <meta name="robots" content="noindex, nofollow" />
-      ) : (
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      )}
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       
       {/* Open Graph / Facebook */}
-      <meta property="og:type" content={article ? "article" : "website"} />
-      <meta property="og:url" content={fullUrl} />
-      <meta property="og:title" content={title} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={currentUrl} />
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${siteUrl}${image}`} />
+      <meta property="og:image" content={ogImage} />
       <meta property="og:site_name" content="YoForex AI" />
-      <meta property="og:locale" content="en_US" />
       
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={fullUrl} />
-      <meta property="twitter:title" content={title} />
+      <meta property="twitter:url" content={currentUrl} />
+      <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={`${siteUrl}${image}`} />
-      <meta property="twitter:creator" content="@YoForexAI" />
+      <meta property="twitter:image" content={ogImage} />
       
       {/* Additional Meta Tags */}
       <meta name="author" content="YoForex AI" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta httpEquiv="Content-Language" content="en" />
-      <meta name="geo.region" content="IN-WB" />
-      <meta name="geo.placename" content="Kolkata" />
-      <meta name="geo.position" content="22.5726;88.3639" />
-      <meta name="ICBM" content="22.5726, 88.3639" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
       
-      {/* Structured Data for Organization */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
+      {/* Favicon */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      )}
+      
+      {/* Default Schema for Website */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "YoForex AI",
+          "description": "World's Most Advanced AI Forex Trading Platform with 392+ AI Models",
+          "url": "https://yoforex.co.in",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yoforex.co.in/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "publisher": {
             "@type": "Organization",
             "name": "YoForex AI",
-            "description": "Advanced AI-powered forex trading analysis platform with 392+ AI models",
-            "url": siteUrl,
-            "logo": `${siteUrl}/logo.png`,
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+44-330-027-2265",
-              "contactType": "customer service",
-              "availableLanguage": ["English"],
-              "contactOption": "TollFree"
-            },
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road",
-              "addressLocality": "Dubai",
-              "addressRegion": "Dubai",
-              "postalCode": "",
-              "addressCountry": "AE"
-            },
-            "sameAs": [
-              "https://wa.me/443300272265"
-            ]
-          })
-        }}
-      />
-      
-      {/* Structured Data for Website */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "YoForex AI",
-            "url": siteUrl,
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": `${siteUrl}/search?q={search_term_string}`
-              },
-              "query-input": "required name=search_term_string"
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://yoforex.co.in/logo.png"
             }
-          })
-        }}
-      />
-      
-      {/* Structured Data for Course/Educational Content */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "AI Forex Trading Analysis Course",
-            "description": "Learn forex trading with AI-powered analysis using 392+ AI models and professional strategies",
-            "provider": {
-              "@type": "Organization",
-              "name": "YoForex AI",
-              "sameAs": siteUrl
-            },
-            "educationalLevel": "Beginner to Advanced",
-            "courseMode": "Online",
-            "hasCourseInstance": {
-              "@type": "CourseInstance",
-              "courseMode": "Online",
-              "instructor": {
-                "@type": "Organization",
-                "name": "YoForex AI"
-              }
-            }
-          })
-        }}
-      />
+          }
+        })}
+      </script>
     </Helmet>
   );
 };
