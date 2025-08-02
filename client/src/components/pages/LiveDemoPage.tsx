@@ -53,7 +53,7 @@ const LiveDemoPage: React.FC = () => {
       
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
         {/* Header */}
-        <div className="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-md border-b border-neutral-800">
+        {/* <div className="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-md border-b border-neutral-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <motion.button
@@ -79,10 +79,10 @@ const LiveDemoPage: React.FC = () => {
               </motion.button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Hero Section */}
-        <div className="py-16 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
+        <div className="py-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

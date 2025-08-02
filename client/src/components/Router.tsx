@@ -21,6 +21,10 @@ import BlogPage from './pages/BlogPage';
 
 // 404 Page
 import NotFoundPage from './pages/NotFoundPage';
+import Header from './Header';
+import Footer from './Footer';
+import Pricing from './Pricing';
+import GoToTop from './GoToTop';
 
 // Redirect component helper
 const Redirect: React.FC<{ to: string }> = ({ to }) => {
@@ -32,29 +36,78 @@ const Redirect: React.FC<{ to: string }> = ({ to }) => {
 };
 
 const AppRouter: React.FC = () => {
+
+  const [, setLocation] = useLocation();
+
+  const handleNavigateToSignup = () => setLocation('/signup');
+  const handleNavigateToLogin = () => setLocation('/login');
+  const handleNavigateToDashboard = () => setLocation('/dashboard');
+  const handleNavigateToFeatures = () => setLocation('/features');
+  const handleNavigateToResources = () => setLocation('/resources');
+  const handleNavigateToLiveDemo = () => setLocation('/live-demo');
+  const handleNavigateToPricing = () => setLocation('/pricing');
+  const handleNavigateToUserManual = () => setLocation('/docs/user-manual');
+  const handleNavigateToBlog = () => setLocation('/blog');
+  const handleNavigateToCommunity = () => setLocation('/community');
+  const handleNavigateToSupport = () => setLocation('/support');
+  const handleNavigateToPrivacyPolicy = () => setLocation('/legal/privacy');
+  const handleNavigateToTermsConditions = () => setLocation('/legal/terms');
+  const handleNavigateToReturnPolicy = () => setLocation('/legal/returns');
+  const handleNavigateToAPIDocumentation = () => setLocation('/docs/api');
+  const handleNavigateToIntegrations = () => setLocation('/integrations');
+  const handleNavigateToCaseStudies = () => setLocation('/resources/case-studies');
+  const handleNavigateToWhitepapers = () => setLocation('/resources/whitepapers');
+  const handleNavigateToWebinars = () => setLocation('/resources/webinars');
+  const handleNavigateToHelpCenter = () => setLocation('/help');
+  const handleNavigateToCommunityForum = () => setLocation('/community/forum');
+  const handleNavigateToContactSupport = () => setLocation('/contact');
+  const handleNavigateToStatusPage = () => setLocation('/status');
+  const handleNavigateToAboutUs = () => setLocation('/about');
+  const handleNavigateToCareers = () => setLocation('/careers');
+  const handleNavigateToPressKit = () => setLocation('/press');
+  const handleNavigateToPartners = () => setLocation('/partners');
+  const handleNavigateToStrategyBuilder = () => setLocation('/tools/strategy-builder');
+  const handleNavigateToBacktestingTools = () => setLocation('/tools/backtesting');
+  const handleNavigateToRiskCalculator = () => setLocation('/tools/risk-calculator');
+  const handleNavigateToMarketScanner = () => setLocation('/tools/market-scanner');
+  const handleNavigateToIntegrationGuide = () => setLocation('/docs/integration-guide');
+  const handleNavigateToTroubleshooting = () => setLocation('/docs/troubleshooting');
+
   return (
     <HelmetProvider>
+      <GoToTop />
+      <Header
+        onNavigateToDashboard={handleNavigateToDashboard}
+        onNavigateToLogin={handleNavigateToLogin}
+        onNavigateToSignup={handleNavigateToSignup}
+        onNavigateToFeatures={handleNavigateToFeatures}
+        onNavigateToResources={handleNavigateToResources}
+        onNavigateToLiveDemo={handleNavigateToLiveDemo}
+        onNavigateToPricing={handleNavigateToPricing}
+      />
       <Router>
+        {/* <Header /> */}
         <Switch>
           {/* Main Routes */}
           <Route path="/" component={LandingPage} />
           <Route path="/dashboard" component={Dashboard} />
-          
+
           {/* Authentication Routes */}
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
           <Route path="/auth/verify" component={OTPVerificationPage} />
           <Route path="/welcome" component={WelcomePage} />
-          
+
           {/* Feature Routes */}
           <Route path="/features" component={FeaturesPage} />
           <Route path="/live-demo" component={LiveDemoPage} />
+          <Route path="/pricing" component={Pricing} />
           <Route path="/demo/sample-analysis" component={SampleAnalysisPage} />
-          
+
           {/* Resource Routes */}
           <Route path="/resources" component={ResourcesPage} />
           <Route path="/blog" component={BlogPage} />
-          
+
           {/* Redirect routes - will redirect to relevant pages */}
           <Route path="/docs/user-manual" component={() => <Redirect to="/resources" />} />
           <Route path="/community" component={() => <Redirect to="/resources" />} />
@@ -81,14 +134,46 @@ const AppRouter: React.FC = () => {
           <Route path="/community/forum" component={() => <Redirect to="/resources" />} />
           <Route path="/contact" component={() => <Redirect to="/resources" />} />
           <Route path="/status" component={() => <Redirect to="/" />} />
-          
+
           {/* Blog Post Routes */}
           <Route path="/blog/:id" component={() => <Redirect to="/blog" />} />
-          
+
           {/* 404 - Must be last */}
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
+      {/* <Footer /> */}
+      <Footer
+        onNavigateToResources={handleNavigateToResources}
+        onNavigateToUserManual={handleNavigateToUserManual}
+        onNavigateToBlog={handleNavigateToBlog}
+        onNavigateToCommunity={handleNavigateToCommunity}
+        onNavigateToSupport={handleNavigateToSupport}
+        onNavigateToPrivacyPolicy={handleNavigateToPrivacyPolicy}
+        onNavigateToTermsConditions={handleNavigateToTermsConditions}
+        onNavigateToReturnPolicy={handleNavigateToReturnPolicy}
+        onNavigateToAPIDocumentation={handleNavigateToAPIDocumentation}
+        onNavigateToIntegrations={handleNavigateToIntegrations}
+        onNavigateToCaseStudies={handleNavigateToCaseStudies}
+        onNavigateToWhitepapers={handleNavigateToWhitepapers}
+        onNavigateToWebinars={handleNavigateToWebinars}
+        onNavigateToHelpCenter={handleNavigateToHelpCenter}
+        onNavigateToCommunityForum={handleNavigateToCommunityForum}
+        onNavigateToContactSupport={handleNavigateToContactSupport}
+        onNavigateToStatusPage={handleNavigateToStatusPage}
+        onNavigateToAboutUs={handleNavigateToAboutUs}
+        onNavigateToCareers={handleNavigateToCareers}
+        onNavigateToPressKit={handleNavigateToPressKit}
+        onNavigateToPartners={handleNavigateToPartners}
+        onNavigateToStrategyBuilder={handleNavigateToStrategyBuilder}
+        onNavigateToBacktestingTools={handleNavigateToBacktestingTools}
+        onNavigateToRiskCalculator={handleNavigateToRiskCalculator}
+        onNavigateToMarketScanner={handleNavigateToMarketScanner}
+        onNavigateToIntegrationGuide={handleNavigateToIntegrationGuide}
+        onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
+        onNavigateToPricing={handleNavigateToPricing}
+        onNavigateToFeatures={handleNavigateToFeatures}
+      />
     </HelmetProvider>
   );
 };

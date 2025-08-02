@@ -9,15 +9,17 @@ interface HeaderProps {
   onNavigateToFeatures: () => void;
   onNavigateToResources: () => void;
   onNavigateToLiveDemo: () => void;
+  onNavigateToPricing: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({ 
-  onNavigateToDashboard, 
-  onNavigateToLogin, 
+const Header: React.FC<HeaderProps> = ({
+  onNavigateToDashboard,
+  onNavigateToLogin,
   onNavigateToSignup,
   onNavigateToFeatures,
   onNavigateToResources,
-  onNavigateToLiveDemo
+  onNavigateToLiveDemo,
+  onNavigateToPricing
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({
   const navItems = [
     { name: 'Features', href: '/features' },
     { name: 'Live Demo', href: '/live-demo' },
-    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'Resources', href: '/resources' },
   ];
 
@@ -41,16 +43,15 @@ const Header: React.FC<HeaderProps> = ({
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800/50' 
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800/50'
+        : 'bg-transparent'
+        }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
@@ -81,11 +82,12 @@ const Header: React.FC<HeaderProps> = ({
                   } else if (item.name === 'Live Demo') {
                     onNavigateToLiveDemo();
                   } else if (item.name === 'Pricing') {
+                    onNavigateToPricing();
                     // Scroll to pricing section
-                    const pricingSection = document.getElementById('pricing');
-                    if (pricingSection) {
-                      pricingSection.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    // const pricingSection = document.getElementById('pricing');
+                    // if (pricingSection) {
+                    //   pricingSection.scrollIntoView({ behavior: 'smooth' });
+                    // }
                   } else if (item.name === 'Resources') {
                     onNavigateToResources();
                   }
@@ -162,7 +164,7 @@ const Header: React.FC<HeaderProps> = ({
                 </a>
               ))}
               <div className="pt-4 space-y-2">
-                <button 
+                <button
                   onClick={() => {
                     onNavigateToLogin();
                     setIsMobileMenuOpen(false);
@@ -171,7 +173,7 @@ const Header: React.FC<HeaderProps> = ({
                 >
                   Sign In
                 </button>
-                <button 
+                <button
                   onClick={() => {
                     onNavigateToSignup();
                     setIsMobileMenuOpen(false);

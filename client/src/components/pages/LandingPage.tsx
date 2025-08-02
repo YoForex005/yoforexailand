@@ -55,14 +55,14 @@ const LandingPage: React.FC = () => {
       />
       
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
-        <Header 
+        {/* <Header 
           onNavigateToDashboard={handleNavigateToDashboard}
           onNavigateToLogin={handleNavigateToLogin}
           onNavigateToSignup={handleNavigateToSignup}
           onNavigateToFeatures={handleNavigateToFeatures}
           onNavigateToResources={handleNavigateToResources}
           onNavigateToLiveDemo={handleNavigateToLiveDemo}
-        />
+        /> */}
         <main>
           <Hero 
             onNavigateToDashboard={handleNavigateToSignup}
@@ -75,7 +75,7 @@ const LandingPage: React.FC = () => {
           <StartTrading onNavigateToSignup={handleNavigateToSignup} />
           <Pricing onNavigateToSignup={handleNavigateToSignup} />
         </main>
-        <Footer 
+        {/* <Footer 
           onNavigateToResources={handleNavigateToResources}
           onNavigateToUserManual={handleNavigateToUserManual}
           onNavigateToBlog={handleNavigateToBlog}
@@ -103,7 +103,7 @@ const LandingPage: React.FC = () => {
           onNavigateToMarketScanner={handleNavigateToMarketScanner}
           onNavigateToIntegrationGuide={handleNavigateToIntegrationGuide}
           onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
-        />
+        /> */}
       </div>
     </>
   );

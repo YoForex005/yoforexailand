@@ -72,7 +72,7 @@ const SignupPage: React.FC = () => {
         keywords="forex signup, free trading account, YoForex AI registration, forex trading platform signup, AI trading signup"
       />
       
-      <div className="min-h-screen bg-neutral-950 text-white font-inter flex items-center justify-center px-4 py-8">
+      <div className="min-h-screen bg-neutral-950 text-white font-inter flex items-center justify-center px-4 py-20">
         {/* Background Effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl" />
@@ -81,7 +81,7 @@ const SignupPage: React.FC = () => {
 
         <div className="relative z-10 w-full max-w-md">
           {/* Back Button */}
-          <motion.button
+          {/* <motion.button
             onClick={() => setLocation('/')}
             className="flex items-center space-x-2 text-neutral-400 hover:text-white mb-8 transition-colors"
             initial={{ opacity: 0, x: -20 }}
@@ -90,7 +90,7 @@ const SignupPage: React.FC = () => {
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Home</span>
-          </motion.button>
+          </motion.button> */}
 
           {/* Signup Card */}
           <motion.div

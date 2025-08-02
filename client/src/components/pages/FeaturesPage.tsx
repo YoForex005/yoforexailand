@@ -212,10 +212,10 @@ const FeaturesPage: React.FC = () => {
       
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
         {/* Header */}
-        <div className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 py-16">
+        <div className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Back Button */}
-            <motion.button
+            {/* <motion.button
               onClick={() => setLocation('/')}
               className="flex items-center space-x-2 text-neutral-400 hover:text-white mb-8 transition-colors"
               initial={{ opacity: 0, x: -20 }}
@@ -224,7 +224,7 @@ const FeaturesPage: React.FC = () => {
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Home</span>
-            </motion.button>
+            </motion.button> */}
 
             {/* Hero Section */}
             <motion.div
