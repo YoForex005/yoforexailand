@@ -158,7 +158,10 @@ function App() {
   }
   
   if (currentView === 'features') {
-    return <FeaturesPage onNavigateBack={handleNavigateToLanding} />;
+    return <FeaturesPage 
+      onNavigateBack={handleNavigateToLanding} 
+      onNavigateToSignup={handleNavigateToSignup}
+    />;
   }
   
   if (currentView === 'resources') {

@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'wouter';
 
 interface SEOHeadProps {
   title?: string;
@@ -20,13 +20,13 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   noindex = false,
   canonical
 }) => {
-  const router = useRouter();
+  const [location] = useLocation();
   const siteUrl = 'https://yoforex.co.in';
-  const fullUrl = `${siteUrl}${router.asPath}`;
+  const fullUrl = `${siteUrl}${location}`;
   const canonicalUrl = canonical || fullUrl;
 
   return (
-    <Head>
+    <Helmet>
       {/* Primary Meta Tags */}
       <title>{title}</title>
       <meta name="title" content={title} />
@@ -150,7 +150,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
           })
         }}
       />
-    </Head>
+    </Helmet>
   );
 };
 
