@@ -1,3 +1,249 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Professional Trading Platform Theme */
+:root {
+  /* Base Colors */
+  --background: 220 22% 3%;           /* Deep dark background */
+  --foreground: 210 20% 95%;          /* Light text */
+  
+  /* Card Colors */
+  --card: 220 20% 8%;                 /* Dark card background */
+  --card-foreground: 210 20% 95%;     /* Card text */
+  
+  /* Primary Colors - Blue to Purple Gradient System */
+  --primary: 218 87% 60%;             /* Primary blue */
+  --primary-foreground: 210 20% 98%;  /* Primary text */
+  
+  /* Secondary Colors */
+  --secondary: 220 14% 10%;           /* Dark secondary */
+  --secondary-foreground: 210 20% 95%; /* Secondary text */
+  
+  /* Muted Colors */ 
+  --muted: 220 14% 10%;               /* Muted background */
+  --muted-foreground: 215 20% 65%;    /* Muted text */
+  
+  /* Accent Colors */
+  --accent: 220 14% 10%;              /* Accent background */
+  --accent-foreground: 210 20% 95%;   /* Accent text */
+  
+  /* Destructive Colors */
+  --destructive: 0 84% 60%;           /* Error red */
+  --destructive-foreground: 210 20% 98%; /* Error text */
+  
+  /* Border and Input */
+  --border: 220 13% 18%;              /* Border color */
+  --input: 220 13% 18%;               /* Input background */
+  --ring: 218 87% 60%;                /* Focus ring */
+  
+  /* Chart Colors */
+  --chart-1: 218 87% 60%;             /* Chart blue */
+  --chart-2: 270 95% 75%;             /* Chart purple */
+  --chart-3: 142 76% 36%;             /* Chart green */
+  --chart-4: 47 96% 89%;              /* Chart yellow */
+  --chart-5: 10 79% 66%;              /* Chart red */
+  
+  /* Sidebar Colors */
+  --sidebar-background: 220 22% 3%;   /* Sidebar background */
+  --sidebar-foreground: 210 20% 95%;  /* Sidebar text */
+  --sidebar-primary: 218 87% 60%;     /* Sidebar primary */
+  --sidebar-primary-foreground: 210 20% 98%; /* Sidebar primary text */
+  --sidebar-accent: 220 14% 10%;      /* Sidebar accent */
+  --sidebar-accent-foreground: 210 20% 95%; /* Sidebar accent text */
+  --sidebar-border: 220 13% 18%;      /* Sidebar border */
+  --sidebar-ring: 218 87% 60%;        /* Sidebar ring */
+  
+  /* Custom Trading Platform Colors */
+  --trading-bg-primary: 220 22% 3%;   /* Main background */
+  --trading-bg-secondary: 220 20% 8%; /* Secondary background */
+  --trading-bg-tertiary: 220 18% 12%; /* Tertiary background */
+  
+  /* Gradient Definitions */
+  --gradient-primary: linear-gradient(135deg, hsl(218, 87%, 60%) 0%, hsl(270, 95%, 75%) 100%);
+  --gradient-secondary: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(218, 87%, 60%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(270, 95%, 75%) 0%, hsl(310, 85%, 70%) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+  
+  /* Success/Error Colors */
+  --success: 142 76% 36%;             /* Success green */
+  --success-foreground: 210 20% 98%;  /* Success text */
+  --error: 10 79% 66%;                /* Error red */
+  --error-foreground: 210 20% 98%;    /* Error text */
+  --warning: 47 96% 60%;              /* Warning yellow */
+  --warning-foreground: 220 22% 3%;   /* Warning text */
+  
+  /* Border Radius */
+  --radius: 0.75rem;
+}
+
+/* Dark theme overrides */
+.dark {
+  --background: 220 22% 3%;
+  --foreground: 210 20% 95%;
+}
+
+/* Base layer styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: hsl(var(--trading-bg-primary));
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--trading-bg-secondary));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+/* Component layer styles */
+@layer components {
+  /* Glass morphism effect */
+  .bg-gradient-glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Primary gradient */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  /* Secondary gradient */
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  /* Accent gradient */
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  /* Trading card styling */
+  .trading-card {
+    @apply bg-gradient-glass backdrop-blur-sm border border-white/10 rounded-2xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+  }
+  
+  /* Professional button styling */
+  .btn-primary {
+    @apply bg-gradient-primary text-white font-semibold px-6 py-3 rounded-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+    @apply border border-blue-500/20 hover:border-blue-400/40;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-glass backdrop-blur-sm border border-white/20 text-white font-semibold px-6 py-3 rounded-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:border-white/40;
+  }
+  
+  /* Grid patterns */
+  .bg-grid-white\/\[0\.02\] {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  /* Custom color utilities */
+  .text-primary-400 {
+    color: hsl(218, 87%, 70%);
+  }
+  
+  .text-success-400 {
+    color: hsl(142, 76%, 46%);
+  }
+  
+  .text-warning-400 {
+    color: hsl(47, 96%, 70%);
+  }
+  
+  .text-error-400 {
+    color: hsl(10, 79%, 76%);
+  }
+  
+  .bg-success-500 {
+    background-color: hsl(142, 76%, 36%);
+  }
+  
+  .bg-error-500 {
+    background-color: hsl(10, 79%, 66%);
+  }
+  
+  .bg-warning-500 {
+    background-color: hsl(47, 96%, 60%);
+  }
+}
+
+/* Utility layer styles */
+@layer utilities {
+  /* Gradient text utilities */
+  .text-gradient-primary {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-secondary {
+    @apply bg-gradient-secondary bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-accent {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(218, 87%, 60%, 0.3);
+  }
+  
+  .glow-success {
+    box-shadow: 0 0 20px hsl(142, 76%, 36%, 0.3);
+  }
+  
+  .glow-error {
+    box-shadow: 0 0 20px hsl(10, 79%, 66%, 0.3);
+  }
+  
+  /* Animation utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Professional focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* High contrast text for accessibility */
+.high-contrast {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
