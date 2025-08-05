@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Zap, 
-  Shield, 
+import {
+  ArrowLeft,
+  Zap,
+  Shield,
   Calculator,
   DollarSign,
   Percent,
@@ -52,7 +52,7 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       {/* Header */}
-      <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
+      {/* <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -75,10 +75,10 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -107,7 +107,7 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
                 <Calculator className="w-6 h-6 text-primary-400" />
                 <h2 className="text-xl font-bold text-white">Trade Parameters</h2>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-neutral-300 mb-2">
@@ -207,7 +207,7 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8"
             >
               <h2 className="text-2xl font-bold text-white mb-6">Calculation Results</h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="text-center p-6 bg-neutral-800/30 rounded-lg">
@@ -283,22 +283,20 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8"
             >
               <h3 className="text-xl font-bold text-white mb-6">Risk Assessment</h3>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
-                <div className={`text-center p-4 rounded-lg ${
-                  riskPercentage <= 2 ? 'bg-success-500/20 border border-success-500/50' :
+                <div className={`text-center p-4 rounded-lg ${riskPercentage <= 2 ? 'bg-success-500/20 border border-success-500/50' :
                   riskPercentage <= 3 ? 'bg-warning-500/20 border border-warning-500/50' :
-                  'bg-error-500/20 border border-error-500/50'
-                }`}>
-                  <Shield className={`w-8 h-8 mx-auto mb-2 ${
-                    riskPercentage <= 2 ? 'text-success-400' :
+                    'bg-error-500/20 border border-error-500/50'
+                  }`}>
+                  <Shield className={`w-8 h-8 mx-auto mb-2 ${riskPercentage <= 2 ? 'text-success-400' :
                     riskPercentage <= 3 ? 'text-warning-400' :
-                    'text-error-400'
-                  }`} />
+                      'text-error-400'
+                    }`} />
                   <div className="font-semibold text-white mb-1">
                     {riskPercentage <= 2 ? 'Low Risk' :
-                     riskPercentage <= 3 ? 'Moderate Risk' :
-                     'High Risk'}
+                      riskPercentage <= 3 ? 'Moderate Risk' :
+                        'High Risk'}
                   </div>
                   <div className="text-xs text-neutral-400">Current risk level</div>
                 </div>
@@ -307,8 +305,8 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
                   <Percent className="w-8 h-8 text-primary-400 mx-auto mb-2" />
                   <div className="font-semibold text-white mb-1">
                     {calculations.riskRewardRatio >= 2 ? 'Excellent' :
-                     calculations.riskRewardRatio >= 1.5 ? 'Good' :
-                     'Poor'}
+                      calculations.riskRewardRatio >= 1.5 ? 'Good' :
+                        'Poor'}
                   </div>
                   <div className="text-xs text-neutral-400">Risk:Reward rating</div>
                 </div>
@@ -317,8 +315,8 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
                   <AlertTriangle className="w-8 h-8 text-warning-400 mx-auto mb-2" />
                   <div className="font-semibold text-white mb-1">
                     {calculations.positionSize <= 1 ? 'Safe' :
-                     calculations.positionSize <= 2 ? 'Moderate' :
-                     'Large'}
+                      calculations.positionSize <= 2 ? 'Moderate' :
+                        'Large'}
                   </div>
                   <div className="text-xs text-neutral-400">Position size</div>
                 </div>
@@ -330,7 +328,7 @@ const RiskCalculatorPage: React.FC<RiskCalculatorPageProps> = ({ onNavigateBack 
                   <div>
                     <div className="text-sm font-medium text-warning-400">Risk Disclaimer</div>
                     <div className="text-xs text-neutral-300 mt-1">
-                      This calculator is for educational purposes only. Past performance does not guarantee future results. 
+                      This calculator is for educational purposes only. Past performance does not guarantee future results.
                       Always consider your risk tolerance and never risk more than you can afford to lose.
                     </div>
                   </div>

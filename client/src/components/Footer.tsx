@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({
       title: 'Product',
       links: [
         { name: 'Features', onClick: onNavigateToFeatures },
-        { name: 'Pricing', onclick: onNavigateToPricing },
+        { name: 'Pricing', onClick: onNavigateToPricing },
         { name: 'API Documentation', onClick: onNavigateToAPIDocumentation },
         { name: 'Integrations', onClick: onNavigateToIntegrations },
         { name: 'Status Page', onClick: onNavigateToStatusPage }
@@ -254,7 +254,7 @@ const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Bar */}
         <div className="border-t border-neutral-800/50 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          <div className="flex flex-col justify-between gap-5">
             {/* WhatsApp CTA */}
             <div className="flex items-center space-x-4">
               <motion.a
@@ -265,7 +265,6 @@ const Footer: React.FC<FooterProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <MessageCircle className="w-4 h-4" />
                 <MessageCircle className="w-4 h-4" />
                 <span>+44 330 027 2265</span>
               </motion.a>

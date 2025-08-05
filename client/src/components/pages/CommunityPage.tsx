@@ -146,7 +146,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
   return (
     <div className="min-h-screen bg-gradient-dark text-white">
       {/* Header */}
-      <header className="relative border-b border-neutral-800/50 backdrop-blur-sm">
+      {/* <header className="relative border-b border-neutral-800/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <motion.button
@@ -167,10 +167,10 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigateBack }) => {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

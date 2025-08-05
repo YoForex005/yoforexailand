@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Zap, Globe, BarChart3 } from 'lucide-react';
+import { Link } from 'wouter';
 
 interface HeaderProps {
   onNavigateToDashboard: () => void;
@@ -51,22 +52,24 @@ const Header: React.FC<HeaderProps> = ({
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            className="flex items-center space-x-2"
-            whileHover={{ scale: 1.05 }}
-          >
-            <div className="relative">
-              <Zap className="w-8 h-8 text-primary-400" />
-              <motion.div
-                className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 blur-sm"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              YoForex AI
-            </span>
-          </motion.div>
+          <Link to='/'>
+            <motion.div
+              className="flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative">
+                <Zap className="w-8 h-8 text-primary-400" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 blur-sm"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </div>
+              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                YoForex AI
+              </span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

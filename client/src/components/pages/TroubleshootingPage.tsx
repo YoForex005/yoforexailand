@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Zap, 
-  AlertTriangle, 
+import {
+  ArrowLeft,
+  Zap,
+  AlertTriangle,
   CheckCircle,
   HelpCircle,
   Search,
@@ -180,9 +180,9 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
   const filteredSections = troubleshootingSections.map(section => ({
     ...section,
     problems: section.problems.filter(
-      problem => searchQuery === '' || 
-      problem.issue.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      problem.solution.toLowerCase().includes(searchQuery.toLowerCase())
+      problem => searchQuery === '' ||
+        problem.issue.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        problem.solution.toLowerCase().includes(searchQuery.toLowerCase())
     )
   })).filter(section => section.problems.length > 0);
 
@@ -193,7 +193,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       {/* Header */}
-      <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
+      {/* <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -216,10 +216,10 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -302,7 +302,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
                             <AlertTriangle className="w-5 h-5 text-warning-400 mt-0.5 flex-shrink-0" />
                             <span>{problem.issue}</span>
                           </h3>
-                          
+
                           <div className="mb-4">
                             <h4 className="font-medium text-success-400 mb-2">Solution:</h4>
                             <p className="text-neutral-300 leading-relaxed">{problem.solution}</p>
@@ -345,7 +345,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             <p className="text-neutral-400 mb-6">
               Can't find a solution? Our support team is here to help with any technical issues or questions about YoForex AI.
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-neutral-800/30 rounded-lg p-4">
                 <Mail className="w-8 h-8 text-primary-400 mx-auto mb-3" />
@@ -354,14 +354,14 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
                 <div className="text-primary-400 text-sm">support@yoforex.co.in</div>
                 <div className="text-primary-400 text-sm">support@yoforexai.com</div>
               </div>
-              
+
               <div className="bg-neutral-800/30 rounded-lg p-4">
                 <MessageCircle className="w-8 h-8 text-success-400 mx-auto mb-3" />
                 <h4 className="font-semibold text-white mb-2">Live Chat</h4>
                 <p className="text-neutral-400 text-sm mb-3">Instant help from our team</p>
                 <div className="text-success-400 text-sm">Available 24/7</div>
               </div>
-              
+
               <div className="bg-neutral-800/30 rounded-lg p-4">
                 <ExternalLink className="w-8 h-8 text-accent-400 mx-auto mb-3" />
                 <h4 className="font-semibold text-white mb-2">Community</h4>
@@ -382,7 +382,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
               <MessageCircle className="w-5 h-5" />
               <span>Contact Support</span>
             </motion.button>
-            
+
             <div className="mt-4 text-sm text-neutral-400">
               Response time: 2-4 hours for priority support • Dubai Operations Center
             </div>

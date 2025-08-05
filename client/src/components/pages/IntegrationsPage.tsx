@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Zap, 
-  Plug, 
-  Database, 
-  Cloud, 
+import {
+  ArrowLeft,
+  Zap,
+  Plug,
+  Database,
+  Cloud,
   Shield,
   Webhook,
   MessageSquare,
@@ -114,7 +114,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       {/* Header */}
-      <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
+      {/* <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -137,10 +137,10 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -396,7 +396,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
                   <span>Contact Integration Team</span>
                   <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </motion.button>
-                
+
                 <motion.button
                   className="bg-transparent border-2 border-primary-500/50 text-primary-400 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary-500/10 transition-colors duration-300 inline-flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}

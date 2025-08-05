@@ -83,7 +83,7 @@ Founded in 2020, YoForex AI is headquartered in Kolkata, West Bengal, India, and
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       {/* Header */}
-      <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
+      {/* <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -106,10 +106,10 @@ Founded in 2020, YoForex AI is headquartered in Kolkata, West Bengal, India, and
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

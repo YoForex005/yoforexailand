@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'wouter';
-import { 
+import {
   ArrowLeft,
   Calendar,
   Clock,
@@ -119,8 +119,8 @@ const BlogPage: React.FC = () => {
     }
   ];
 
-  const filteredPosts = selectedCategory === 'all' 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === 'all'
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
 
   const getCategoryIcon = (category: string) => {
@@ -150,13 +150,13 @@ const BlogPage: React.FC = () => {
         description="Stay updated with the latest AI forex trading insights, market analysis, tutorials, and platform updates. Expert trading knowledge and AI technology insights."
         keywords="forex blog, AI trading blog, market analysis, trading tutorials, forex insights, YoForex news, trading education"
       />
-      
+
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
         {/* Header */}
-        <div className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 py-16">
+        <div className="bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Back Button */}
-            <motion.button
+            {/* <motion.button
               onClick={() => setLocation('/resources')}
               className="flex items-center space-x-2 text-neutral-400 hover:text-white mb-8 transition-colors"
               initial={{ opacity: 0, x: -20 }}
@@ -165,7 +165,7 @@ const BlogPage: React.FC = () => {
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Resources</span>
-            </motion.button>
+            </motion.button> */}
 
             {/* Hero Section */}
             <motion.div
@@ -180,7 +180,7 @@ const BlogPage: React.FC = () => {
               <p className="text-xl text-neutral-300 max-w-3xl mx-auto mb-8">
                 Expert insights on AI forex trading, market analysis, platform updates, and educational content from our team of trading professionals.
               </p>
-              
+
               {/* Search Bar */}
               <div className="max-w-md mx-auto">
                 <div className="relative">
@@ -204,18 +204,16 @@ const BlogPage: React.FC = () => {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg whitespace-nowrap transition-all ${
-                    selectedCategory === category.id
+                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg whitespace-nowrap transition-all ${selectedCategory === category.id
                       ? 'bg-gradient-primary text-white'
                       : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
-                  }`}
+                    }`}
                 >
                   <span className="font-medium">{category.name}</span>
-                  <span className={`text-xs px-2 py-1 rounded-full ${
-                    selectedCategory === category.id
+                  <span className={`text-xs px-2 py-1 rounded-full ${selectedCategory === category.id
                       ? 'bg-white/20'
                       : 'bg-neutral-700'
-                  }`}>
+                    }`}>
                     {category.count}
                   </span>
                 </button>
@@ -415,7 +413,7 @@ const BlogPage: React.FC = () => {
                 <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
                   Get the latest trading insights and AI analysis delivered to your inbox weekly.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
                   <input
                     type="email"
@@ -430,7 +428,7 @@ const BlogPage: React.FC = () => {
                     Subscribe
                   </motion.button>
                 </div>
-                
+
                 <p className="text-sm text-neutral-400 mt-4">
                   No spam, unsubscribe anytime. Join 10,000+ traders.
                 </p>

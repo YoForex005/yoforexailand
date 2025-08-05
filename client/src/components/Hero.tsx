@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]"></div>
-      
+
       {/* Floating Elements */}
       <motion.div
         className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"
@@ -47,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-8 py-24"
         >
           {/* Badge */}
           <motion.div
@@ -80,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl md:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed"
           >
-            Access 392+ AI models for forex market intelligence, AI trading chart analysis, and professional trading course strategies. 
+            Access 392+ AI models for forex market intelligence, AI trading chart analysis, and professional trading course strategies.
             Get AI-powered forex signals with precise SL/TP levels and multi-timeframe consensus for currency trading success.
           </motion.p>
 
@@ -119,7 +119,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
               <span>Try Free - 5 Daily Analyses</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            
+
             <button
               onClick={onNavigateToLiveDemo}
               className="px-8 py-4 border border-neutral-600 text-white font-semibold rounded-xl hover:bg-neutral-800 transition-all duration-300 flex items-center space-x-2"

@@ -61,7 +61,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
   return (
     <div className="min-h-screen bg-neutral-950 text-white font-inter">
       {/* Header */}
-      <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
+      {/* <header className="bg-gradient-glass backdrop-blur-sm border-b border-neutral-800/50 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-4">
@@ -94,10 +94,10 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -162,7 +162,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8"
             >
               <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -170,7 +170,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                     <input
                       type="text"
                       value={contactForm.name}
-                      onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
+                      onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                       className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
                       required
                     />
@@ -180,7 +180,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                     <input
                       type="email"
                       value={contactForm.email}
-                      onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                      onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                       className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
                       required
                     />
@@ -192,7 +192,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <input
                     type="text"
                     value={contactForm.company}
-                    onChange={(e) => setContactForm({...contactForm, company: e.target.value})}
+                    onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
                     className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
                   />
                 </div>
@@ -202,7 +202,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                     <label className="block text-sm font-medium text-neutral-300 mb-2">Category</label>
                     <select
                       value={contactForm.category}
-                      onChange={(e) => setContactForm({...contactForm, category: e.target.value})}
+                      onChange={(e) => setContactForm({ ...contactForm, category: e.target.value })}
                       className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-colors"
                     >
                       <option value="general">General Support</option>
@@ -216,7 +216,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                     <label className="block text-sm font-medium text-neutral-300 mb-2">Priority</label>
                     <select
                       value={contactForm.priority}
-                      onChange={(e) => setContactForm({...contactForm, priority: e.target.value})}
+                      onChange={(e) => setContactForm({ ...contactForm, priority: e.target.value })}
                       className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary-500 transition-colors"
                     >
                       <option value="low">Low</option>
@@ -232,7 +232,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <input
                     type="text"
                     value={contactForm.subject}
-                    onChange={(e) => setContactForm({...contactForm, subject: e.target.value})}
+                    onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
                     className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors"
                     required
                   />
@@ -242,7 +242,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   <label className="block text-sm font-medium text-neutral-300 mb-2">Message *</label>
                   <textarea
                     value={contactForm.message}
-                    onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                    onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                     rows={6}
                     className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder-neutral-400 focus:outline-none focus:border-primary-500 transition-colors resize-none"
                     placeholder="Please describe your issue or question in detail..."
@@ -272,7 +272,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-8 sticky top-24"
             >
               <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="p-3 bg-primary-500/20 rounded-xl">

@@ -25,6 +25,31 @@ import Header from './Header';
 import Footer from './Footer';
 import Pricing from './Pricing';
 import GoToTop from './GoToTop';
+import APIDocumentationPage from './pages/APIDocumentationPage';
+import IntegrationsPage from './pages/IntegrationsPage';
+import StatusPage from './pages/StatusPage';
+import UserManualPage from './pages/UserManualPage';
+import CaseStudiesPage from './pages/CaseStudiesPage';
+import WhitepapersPage from './pages/WhitepapersPage';
+import WebinarsPage from './pages/WebinarsPage';
+import IntegrationGuidePage from './pages/IntegrationGuidePage';
+import TroubleshootingPage from './pages/TroubleshootingPage';
+import StrategyBuilderPage from './pages/StrategyBuilderPage';
+import BacktestingToolsPage from './pages/BacktestingToolsPage';
+import RiskCalculatorPage from './pages/RiskCalculatorPage';
+import MarketScannerPage from './pages/MarketScannerPage';
+import HelpCenterPage from './pages/HelpCenterPage';
+import CommunityForumPage from './pages/CommunityForumPage';
+import ContactSupportPage from './pages/ContactSupportPage';
+import CommunityPage from './pages/CommunityPage';
+import AboutUsPage from './pages/AboutUsPage';
+import CareersPage from './pages/CareersPage';
+import PressKitPage from './pages/PressKitPage';
+import PartnersPage from './pages/PartnersPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsConditionsPage from './pages/TermsConditionsPage';
+import ReturnPolicyPage from './pages/ReturnPolicyPage';
+import SupportPage from './pages/SupportPage';
 
 // Redirect component helper
 const Redirect: React.FC<{ to: string }> = ({ to }) => {
@@ -107,36 +132,62 @@ const AppRouter: React.FC = () => {
           {/* Resource Routes */}
           <Route path="/resources" component={ResourcesPage} />
           <Route path="/blog" component={BlogPage} />
+          <Route path="/docs/api" component={APIDocumentationPage} />
+          <Route path="/integrations" component={IntegrationsPage} />
+          <Route path="/status" component={StatusPage} />
+          <Route path="/docs/user-manual" component={UserManualPage} />
+          <Route path="/blog" component={BlogPage} />
+          <Route path="/resources/case-studies" component={CaseStudiesPage} />
+          <Route path="/resources/whitepapers" component={WhitepapersPage} />
+          <Route path="/resources/webinars" component={WebinarsPage} />
+          <Route path="/docs/integration-guide" component={IntegrationGuidePage} />
+          <Route path="/docs/troubleshooting" component={TroubleshootingPage} />
+          <Route path="/tools/strategy-builder" component={StrategyBuilderPage} />
+          <Route path="/tools/backtesting" component={BacktestingToolsPage} />
+          <Route path="/tools/risk-calculator" component={RiskCalculatorPage} />
+          <Route path="/tools/market-scanner" component={MarketScannerPage} />
+          <Route path="/help" component={HelpCenterPage} />
+          <Route path="/community/forum" component={CommunityForumPage} />
+          <Route path="/contact" component={ContactSupportPage} />
+          <Route path="/community" component={CommunityPage} />
+          <Route path="/about" component={AboutUsPage} />
+          <Route path="/careers" component={CareersPage} />
+          <Route path="/press" component={PressKitPage} />
+          <Route path="/partners" component={PartnersPage} />
+          <Route path="/legal/privacy" component={PrivacyPolicyPage} />
+          <Route path="/legal/terms" component={TermsConditionsPage} />
+          <Route path="/legal/returns" component={ReturnPolicyPage} />
+          <Route path="/support" component={SupportPage} />
 
           {/* Redirect routes - will redirect to relevant pages */}
-          <Route path="/docs/user-manual" component={() => <Redirect to="/resources" />} />
-          <Route path="/community" component={() => <Redirect to="/resources" />} />
-          <Route path="/support" component={() => <Redirect to="/resources" />} />
-          <Route path="/tools/strategy-builder" component={() => <Redirect to="/resources" />} />
-          <Route path="/tools/backtesting" component={() => <Redirect to="/resources" />} />
-          <Route path="/tools/risk-calculator" component={() => <Redirect to="/resources" />} />
-          <Route path="/tools/market-scanner" component={() => <Redirect to="/resources" />} />
-          <Route path="/docs/api" component={() => <Redirect to="/resources" />} />
-          <Route path="/integrations" component={() => <Redirect to="/resources" />} />
-          <Route path="/docs/integration-guide" component={() => <Redirect to="/resources" />} />
-          <Route path="/docs/troubleshooting" component={() => <Redirect to="/resources" />} />
-          <Route path="/about" component={() => <Redirect to="/" />} />
-          <Route path="/careers" component={() => <Redirect to="/" />} />
-          <Route path="/press" component={() => <Redirect to="/" />} />
-          <Route path="/partners" component={() => <Redirect to="/" />} />
-          <Route path="/legal/privacy" component={() => <Redirect to="/" />} />
-          <Route path="/legal/terms" component={() => <Redirect to="/" />} />
-          <Route path="/legal/returns" component={() => <Redirect to="/" />} />
-          <Route path="/resources/case-studies" component={() => <Redirect to="/resources" />} />
-          <Route path="/resources/whitepapers" component={() => <Redirect to="/resources" />} />
-          <Route path="/resources/webinars" component={() => <Redirect to="/resources" />} />
-          <Route path="/help" component={() => <Redirect to="/resources" />} />
-          <Route path="/community/forum" component={() => <Redirect to="/resources" />} />
-          <Route path="/contact" component={() => <Redirect to="/resources" />} />
-          <Route path="/status" component={() => <Redirect to="/" />} />
+          {/* <Route path="/docs/user-manual" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/community" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/support" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/tools/strategy-builder" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/tools/backtesting" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/tools/risk-calculator" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/tools/market-scanner" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/docs/api" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/integrations" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/docs/integration-guide" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/docs/troubleshooting" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/about" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/careers" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/press" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/partners" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/legal/privacy" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/legal/terms" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/legal/returns" component={() => <Redirect to="/" />} /> */}
+          {/* <Route path="/resources/case-studies" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/resources/whitepapers" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/resources/webinars" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/help" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/community/forum" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/contact" component={() => <Redirect to="/resources" />} /> */}
+          {/* <Route path="/status" component={() => <Redirect to="/" />} /> */}
 
           {/* Blog Post Routes */}
-          <Route path="/blog/:id" component={() => <Redirect to="/blog" />} />
+          {/* <Route path="/blog/:id" component={() => <Redirect to="/blog" />} /> */}
 
           {/* 404 - Must be last */}
           <Route component={NotFoundPage} />
