@@ -103,6 +103,8 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            {/** Sign In temporarily disabled during beta testing */}
+            {/**
             <motion.button
               onClick={onNavigateToLogin}
               className="text-neutral-300 hover:text-white transition-colors duration-200"
@@ -111,6 +113,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               Sign In
             </motion.button>
+            */}
             <motion.button
               onClick={onNavigateToSignup}
               className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium relative overflow-hidden group"
@@ -167,6 +170,8 @@ const Header: React.FC<HeaderProps> = ({
                 </a>
               ))}
               <div className="pt-4 space-y-2">
+                {/** Sign In temporarily disabled during beta testing */}
+                {/**
                 <button
                   onClick={() => {
                     onNavigateToLogin();
@@ -176,6 +181,7 @@ const Header: React.FC<HeaderProps> = ({
                 >
                   Sign In
                 </button>
+                */}
                 <button
                   onClick={() => {
                     onNavigateToSignup();

@@ -30,6 +30,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
   userEmail
 }) => {
   const [animationStep, setAnimationStep] = useState(0);
+  // no countdown: direct link
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,6 +39,8 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
 
     return () => clearTimeout(timer);
   }, []);
+
+  // no countdown cleanup required
 
   const features = [
     {
@@ -60,6 +63,17 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
       title: 'Community Access',
       description: 'Join our Discord and Telegram trading communities'
     }
+    ,
+    {
+      icon: MessageCircle,
+      title: '24/7 Support',
+      description: 'Round-the-clock support on Telegram for priority help and troubleshooting.'
+    },
+    {
+      icon: Star,
+      title: 'New AI Models',
+      description: 'We add new AI models continuously — you get instant access as they go live.'
+    }
   ];
 
   return (
@@ -69,8 +83,10 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
         background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        p: 2,
+  justifyContent: 'center',
+  p: 2,
+  // ensure content sits below the fixed header (header height ~64px)
+  pt: { xs: '4rem', md: '5rem' },
         position: 'relative',
         overflow: 'hidden'
       }}
@@ -149,10 +165,27 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
               Thank you for your interest!
             </Typography>
             
-            <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 4, lineHeight: 1.6 }}>
-              We will notify you via WhatsApp and email. This is currently in beta testing phase - 
-              please show your interest in this advanced trading solution.
-            </Typography>
+            <Box sx={{ mb: 4, display: 'flex', justifyContent: 'center' }}>
+              <Paper elevation={6} sx={{ p: 3, maxWidth: 520, background: 'linear-gradient(180deg, rgba(14,165,233,0.06), rgba(139,92,246,0.03))', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 2 }}>
+                <Typography variant="body1" sx={{ color: 'white', fontWeight: 700, mb: 1.5, lineHeight: 1.5, fontSize: { xs: '0.975rem', md: '1.05rem' } }}>
+                  If you need immediate (priority) access, contact us directly on Telegram.
+                </Typography>
+                {/* minimal: no extra instruction shown here per request */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+                  <Button
+                    component="a"
+                    href="https://t.me/YoForexLLC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="contained"
+                    startIcon={<MessageCircle />}
+                    sx={{ background: 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%)', px: 3, py: 0.8, fontWeight: 700, textTransform: 'none' }}
+                  >
+                    Join Telegram (Priority Access)
+                  </Button>
+                </Box>
+              </Paper>
+            </Box>
 
             {userEmail && (
               <Box sx={{ mb: 4, p: 2, backgroundColor: 'rgba(14, 165, 233, 0.1)', borderRadius: 2 }}>
@@ -208,56 +241,40 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
             transition={{ delay: 1.5, duration: 0.6 }}
           >
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center' }}>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  onClick={onNavigateToDashboard}
-                  variant="contained"
-                  size="large"
-                  endIcon={<ArrowRight size={20} />}
-                  sx={{
-                    px: 4,
-                    py: 1.5,
-                    background: 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%, #d946ef 100%)',
-                    fontWeight: 600,
-                    fontSize: '1.1rem',
-                    textTransform: 'none',
-                    borderRadius: 2,
-                    '&:hover': {
-                      background: 'linear-gradient(135deg, #0284c7 0%, #7c3aed 50%, #c026d3 100%)',
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 8px 25px rgba(14, 165, 233, 0.3)'
-                    }
-                  }}
-                >
-                  Continue to Dashboard
-                </Button>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  onClick={onNavigateToFeatures}
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    px: 4,
-                    py: 1.5,
-                    borderColor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'rgba(255, 255, 255, 0.8)',
-                    fontWeight: 600,
-                    textTransform: 'none',
-                    borderRadius: 2,
-                    '&:hover': {
-                      borderColor: 'rgba(255, 255, 255, 0.5)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      color: 'white'
-                    }
-                  }}
-                >
-                  Explore Features
-                </Button>
-              </motion.div>
+              {/* Primary dashboard button removed during beta - users should join Telegram for priority access */}
             </Box>
           </motion.div>
+
+          {/* Telegram CTA for fast access/support */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.9, duration: 0.5 }}
+          >
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
+              <Button
+                component="a"
+                href="https://t.me/YoForexLLC"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                startIcon={<MessageCircle />}
+                sx={{
+                  background: 'linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 50%)',
+                  px: 3,
+                  py: 1,
+                  textTransform: 'none',
+                  fontWeight: 700,
+                  borderRadius: 2
+                }}
+              >
+                Join Telegram (Priority Access)
+              </Button>
+            </Box>
+          </motion.div>
+
+          {/* Countdown overlay */}
+          {/* no countdown overlay */}
 
           {/* Beta Badge */}
           <motion.div

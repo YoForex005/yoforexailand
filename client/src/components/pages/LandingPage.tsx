@@ -14,7 +14,7 @@ import StructuredData from '../StructuredData';
 const LandingPage: React.FC = () => {
   const [, setLocation] = useLocation();
 
-  const handleNavigateToSignup = () => setLocation('/signup');
+  const handleNavigateToSignup = () => setLocation('/welcome');
   const handleNavigateToLogin = () => setLocation('/login');
   const handleNavigateToDashboard = () => setLocation('/dashboard');
   const handleNavigateToFeatures = () => setLocation('/features');
