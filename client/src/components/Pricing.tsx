@@ -155,10 +155,12 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative bg-neutral-800/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-300 hover:scale-105 ${
+                className={`relative bg-neutral-800/50 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:scale-105 group ${
                   plan.popular 
-                    ? 'border-blue-500/50 shadow-2xl shadow-blue-500/20' 
-                    : 'border-neutral-700/50 hover:border-neutral-600/50'
+                    ? 'border-blue-500/50 shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:border-blue-400/70' 
+                    : plan.name === 'Free (Basics)'
+                      ? 'border-neutral-700/50 hover:border-green-500/70 hover:shadow-2xl hover:shadow-green-500/30'
+                      : 'border-neutral-700/50 hover:border-purple-500/70 hover:shadow-2xl hover:shadow-purple-500/30'
                 }`}
               >
                 {plan.popular && (
@@ -191,7 +193,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                       <div>• Mix & match: {calculator.mixedExample}</div>
                     </div>
                     <div className="mt-2 text-xs text-neutral-400">
-                      Additional credits: ${plan.creditSystem.additionalCreditPrice}/1,000 credits
+                      Additional credits: ${plan.creditSystem?.additionalCreditPrice}/1,000 credits
                     </div>
                   </div>
                 )}

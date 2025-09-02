@@ -7,7 +7,7 @@ interface StructuredDataProps {
 
 const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
   const getStructuredData = () => {
-    const baseUrl = 'https://yoforex.co.in';
+  const baseUrl = 'https://yoforexai.com';
     
     switch (type) {
       case 'organization':

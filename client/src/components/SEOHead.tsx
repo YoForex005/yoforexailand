@@ -20,7 +20,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   noindex = false,
   schema
 }) => {
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  // Prefer explicit canonicalUrl prop, otherwise use client URL when available, else fallback to site root.
+  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://yoforexai.com/');
   const fullTitle = title.includes('YoForex AI') ? title : `${title} | YoForex AI`;
   
   return (
@@ -39,7 +40,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+  {/* Ensure ogImage is an absolute URL for social previews */}
+  <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `https://yoforexai.com${ogImage}`} />
       <meta property="og:site_name" content="YoForex AI" />
       
       {/* Twitter */}
@@ -47,7 +49,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="twitter:url" content={currentUrl} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={ogImage} />
+  <meta property="twitter:image" content={ogImage.startsWith('http') ? ogImage : `https://yoforexai.com${ogImage}`} />
       
       {/* Additional Meta Tags */}
       <meta name="author" content="YoForex AI" />
@@ -57,10 +59,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="revisit-after" content="7 days" />
       
       {/* Favicon */}
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       
       {/* Schema.org JSON-LD */}
       {schema && (
@@ -69,17 +71,17 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         </script>
       )}
       
-      {/* Default Schema for Website */}
+      {/* Default Website JSON-LD using the correct domain */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "YoForex AI",
-          "description": "World's Most Advanced AI Forex Trading Platform with 392+ AI Models",
-          "url": "https://yoforex.co.in",
+          "description": "AI Forex trading platform with multiple AI models, strategy backtesting and risk analytics.",
+          "url": "https://yoforexai.com",
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://yoforex.co.in/search?q={search_term_string}",
+            "target": "https://yoforexai.com/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
           },
           "publisher": {
@@ -87,7 +89,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             "name": "YoForex AI",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://yoforex.co.in/logo.png"
+              "url": "https://yoforexai.com/logo.png"
             }
           }
         })}

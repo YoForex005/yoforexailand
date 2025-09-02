@@ -9,6 +9,7 @@ import StartTrading from '../StartTrading';
 import Pricing from '../Pricing';
 import Footer from '../Footer';
 import SEOHead from '../SEOHead';
+import StructuredData from '../StructuredData';
 
 const LandingPage: React.FC = () => {
   const [, setLocation] = useLocation();
@@ -45,27 +46,36 @@ const LandingPage: React.FC = () => {
   const handleNavigateToMarketScanner = () => setLocation('/tools/market-scanner');
   const handleNavigateToIntegrationGuide = () => setLocation('/docs/integration-guide');
   const handleNavigateToTroubleshooting = () => setLocation('/docs/troubleshooting');
+  const handleNavigateToPricing = () => setLocation('/pricing');
 
   return (
     <>
       <SEOHead
-        title="YoForex AI | World's Most Advanced AI Forex Trading Platform"
-        description="Access 392+ AI models for forex trading analysis. Get precise SL/TP levels, multi-AI consensus signals, and professional trading strategies. Start with 5 free daily analyses."
-        keywords="forex trading, AI forex, trading platform, YoForex AI, AI trading signals, forex analysis, automated trading, currency trading, forex education, trading algorithms"
+        title="World's Most Advanced AI Forex Trading Platform"
+        description="Access 392+ AI models for forex trading analysis. Get precise SL/TP levels, multi-AI consensus signals, and professional trading strategies. Start with free daily analyses."
+        keywords="forex trading, AI forex, trading platform, YoForex AI, AI trading signals, forex analysis, automated trading"
+        canonicalUrl="https://yoforexai.com/"
+        ogImage="https://yoforexai.com/og-image.png"
       />
+
+      {/* Structured data for Organization, Website and FAQ (adds JSON-LD scripts) */}
+      <StructuredData type="organization" />
+      <StructuredData type="website" />
+      <StructuredData type="faq" />
       
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
-        {/* <Header 
+        <Header 
           onNavigateToDashboard={handleNavigateToDashboard}
           onNavigateToLogin={handleNavigateToLogin}
           onNavigateToSignup={handleNavigateToSignup}
           onNavigateToFeatures={handleNavigateToFeatures}
           onNavigateToResources={handleNavigateToResources}
           onNavigateToLiveDemo={handleNavigateToLiveDemo}
-        /> */}
+          onNavigateToPricing={handleNavigateToPricing}
+        />
         <main>
           <Hero 
-            onNavigateToDashboard={handleNavigateToSignup}
+            onNavigateToDashboard={handleNavigateToDashboard}
             onNavigateToSignup={handleNavigateToSignup}
             onNavigateToLiveDemo={handleNavigateToLiveDemo}
           />
@@ -75,7 +85,7 @@ const LandingPage: React.FC = () => {
           <StartTrading onNavigateToSignup={handleNavigateToSignup} />
           <Pricing onNavigateToSignup={handleNavigateToSignup} />
         </main>
-        {/* <Footer 
+  <Footer 
           onNavigateToResources={handleNavigateToResources}
           onNavigateToUserManual={handleNavigateToUserManual}
           onNavigateToBlog={handleNavigateToBlog}
@@ -97,13 +107,15 @@ const LandingPage: React.FC = () => {
           onNavigateToCareers={handleNavigateToCareers}
           onNavigateToPressKit={handleNavigateToPressKit}
           onNavigateToPartners={handleNavigateToPartners}
+          onNavigateToPricing={handleNavigateToPricing}
+          onNavigateToFeatures={handleNavigateToFeatures}
           onNavigateToStrategyBuilder={handleNavigateToStrategyBuilder}
           onNavigateToBacktestingTools={handleNavigateToBacktestingTools}
           onNavigateToRiskCalculator={handleNavigateToRiskCalculator}
           onNavigateToMarketScanner={handleNavigateToMarketScanner}
           onNavigateToIntegrationGuide={handleNavigateToIntegrationGuide}
           onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
-        /> */}
+        />
       </div>
     </>
   );

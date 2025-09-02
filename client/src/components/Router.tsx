@@ -136,7 +136,7 @@ const AppRouter: React.FC = () => {
           <Route path="/integrations" component={IntegrationsPage} />
           <Route path="/status" component={StatusPage} />
           <Route path="/docs/user-manual" component={UserManualPage} />
-          <Route path="/blog" component={BlogPage} />
+          
           <Route path="/resources/case-studies" component={CaseStudiesPage} />
           <Route path="/resources/whitepapers" component={WhitepapersPage} />
           <Route path="/resources/webinars" component={WebinarsPage} />
