@@ -12,10 +12,11 @@ import {
   Star
 } from 'lucide-react';
 import SEOHead from '../SEOHead';
+import DemoVideo from '../DemoVideo';
+import { navigate } from 'wouter/use-browser-location';
 
 const LiveDemoPage: React.FC = () => {
   const [, setLocation] = useLocation();
-
   const demoFeatures = [
     {
       icon: Brain,
@@ -52,35 +53,6 @@ const LiveDemoPage: React.FC = () => {
       />
       
       <div className="min-h-screen bg-neutral-950 text-white font-inter">
-        {/* Header */}
-        {/* <div className="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur-md border-b border-neutral-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center justify-between">
-              <motion.button
-                onClick={() => setLocation('/')}
-                className="flex items-center space-x-2 text-neutral-400 hover:text-white transition-colors"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <ArrowLeft className="w-5 h-5" />
-                <span>Back to Home</span>
-              </motion.button>
-              
-              <motion.button
-                onClick={() => setLocation('/signup')}
-                className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-semibold flex items-center space-x-2 hover:scale-105 transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <TrendingUp className="w-4 h-4" />
-                <span>Start Free Trial</span>
-              </motion.button>
-            </div>
-          </div>
-        </div> */}
-
         {/* Hero Section */}
         <div className="py-20 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -98,7 +70,7 @@ const LiveDemoPage: React.FC = () => {
             </motion.div>
           </div>
         </div>
-
+        
         {/* Demo Features */}
         <div className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +91,7 @@ const LiveDemoPage: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-
+            
             {/* Main Demo Section */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -135,17 +107,18 @@ const LiveDemoPage: React.FC = () => {
                   Click below to see a sample analysis with real market data
                 </p>
               </div>
-
-              {/* Demo Video/Chart Placeholder */}
-              <div className="bg-neutral-900/50 rounded-2xl p-8 mb-8 text-center">
-                <div className="w-full h-96 bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-xl flex items-center justify-center mb-6">
-                  <div className="text-center">
-                    <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Play className="w-12 h-12 text-white ml-1" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2">Interactive Demo</h3>
-                    <p className="text-neutral-400">Click to start the AI analysis demonstration</p>
-                  </div>
+              
+              {/* Simple YouTube Video Section */}
+              {/* <div className="bg-neutral-900/50 rounded-2xl p-8 mb-8 text-center">
+                <div className="relative w-full h-0 pb-[56.25%] rounded-xl overflow-hidden mb-6">
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full"
+                    src="https://www.youtube.com/embed/NpJ0JUy4VV0?rel=0&modestbranding=1&controls=1&showinfo=0"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="YoForex AI Trading Demo"
+                  ></iframe>
                 </div>
                 
                 <motion.button
@@ -158,7 +131,9 @@ const LiveDemoPage: React.FC = () => {
                   <span>Start Demo Analysis</span>
                 </motion.button>
               </div>
+                 */}
 
+                 <DemoVideo />
               {/* Demo Results Preview */}
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-neutral-900/30 rounded-xl p-6">
@@ -191,7 +166,7 @@ const LiveDemoPage: React.FC = () => {
             </motion.div>
           </div>
         </div>
-
+        
         {/* What You'll See Section */}
         <div className="py-16 bg-neutral-900/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -203,7 +178,6 @@ const LiveDemoPage: React.FC = () => {
                 Our demo showcases real AI analysis capabilities with authentic market data
               </p>
             </div>
-
             <div className="grid md:grid-cols-2 gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -247,7 +221,6 @@ const LiveDemoPage: React.FC = () => {
                   </div>
                 </div>
               </motion.div>
-
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -296,7 +269,7 @@ const LiveDemoPage: React.FC = () => {
             </div>
           </div>
         </div>
-
+        
         {/* CTA Section */}
         <div className="py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -314,7 +287,6 @@ const LiveDemoPage: React.FC = () => {
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 />
               </div>
-
               <div className="relative z-10">
                 <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
                   Ready to <span className="bg-gradient-primary bg-clip-text text-transparent">Trade Smarter?</span>
@@ -325,7 +297,7 @@ const LiveDemoPage: React.FC = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    onClick={() => setLocation('/signup')}
+                    onClick={() => navigate("/welcome")}
                     className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

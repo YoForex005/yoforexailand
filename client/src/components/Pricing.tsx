@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Star, Zap, Users, TrendingUp, Shield, Crown, Target, Brain } from 'lucide-react';
+import { navigate } from 'wouter/use-browser-location';
 
 interface PricingProps {
   onNavigateToSignup: () => void;
@@ -223,7 +224,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                 )}
 
                 <button
-                  onClick={onNavigateToSignup}
+                  onClick={()=>(navigate('/welcome'))}
                   className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 ${
                     plan.popular
                       ? 'bg-gradient-primary text-white hover:shadow-lg hover:shadow-blue-500/25'

@@ -144,11 +144,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4EVQMQ9EJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G4EVQMQ9EJ');
+    </script>
+    
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://replit.com; img-src 'self' data: https:; connect-src 'self' https://api.yoforexai.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" />
+    <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://jumpshare.com;" />
     
     <!-- Apple Specific Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="frame-src 'self' https://jumpshare.com;" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="YoForex AI" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

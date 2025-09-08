@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Zap, Globe, BarChart3 } from 'lucide-react';
 import { Link } from 'wouter';
+import { navigate } from 'wouter/use-browser-location';
 
 interface HeaderProps {
   onNavigateToDashboard: () => void;
@@ -115,7 +116,7 @@ const Header: React.FC<HeaderProps> = ({
             </motion.button>
             */}
             <motion.button
-              onClick={onNavigateToSignup}
+              onClick={()=>(navigate("/welcome"))}
               className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -184,7 +185,7 @@ const Header: React.FC<HeaderProps> = ({
                 */}
                 <button
                   onClick={() => {
-                    onNavigateToSignup();
+                    // onNavigateToSignup();
                     setIsMobileMenuOpen(false);
                   }}
                   className="w-full bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
