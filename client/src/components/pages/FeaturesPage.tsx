@@ -335,7 +335,7 @@ const FeaturesPage: React.FC = () => {
 
                 {/* CTA Button */}
                 <motion.button
-                  onClick={() => setLocation('/signup')}
+                  onClick={() => setLocation('/welcome')}
                   className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center space-x-2 hover:scale-105 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
