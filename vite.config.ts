@@ -46,7 +46,21 @@ export default defineConfig(async () => {
     build: {
       outDir: path.resolve(import.meta.dirname, "dist/public"),
       emptyOutDir: true,
+      // Raise the warning limit slightly to avoid noisy warnings while still catching truly large chunks
+      chunkSizeWarningLimit: 1200,
       rollupOptions: {
+        output: {
+          // Group common large dependencies into their own chunks for better caching and smaller initial loads
+          manualChunks(id: string) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react')) return 'react';
+              if (id.includes('wouter')) return 'wouter';
+              if (id.includes('@emotion')) return 'emotion';
+              if (id.includes('@tanstack')) return 'tanstack';
+              if (id.includes('react-helmet-async')) return 'helmet';
+            }
+          },
+        },
         // For Netlify, we'll create a _redirects file
         plugins: [{
           name: 'netlify-redirects',
