@@ -4,14 +4,14 @@ import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 // Use async config to properly handle dynamic imports
-export default defineConfig(async () => {
+export default defineConfig(async ({ command }) => {
   const plugins = [
     react(),
     runtimeErrorOverlay(),
   ];
 
   // Conditionally add cartographer plugin
-  if (process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined) {
+  if (command !== 'build' && process.env.REPL_ID !== undefined) {
     const cartographer = await import("@replit/vite-plugin-cartographer");
     plugins.push(cartographer.cartographer());
   }
