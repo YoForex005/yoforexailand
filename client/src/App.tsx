@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import AppRouter from './components/Router';
-import GoogleAnalytics from './components/GoogleAnalytics';
+const GoogleAnalytics = React.lazy(() => import('./components/GoogleAnalytics'));
 
 function App() {
   return (
     <>
-      <GoogleAnalytics />
+      <Suspense fallback={null}>
+        <GoogleAnalytics />
+      </Suspense>
       <AppRouter />
     </>
   );

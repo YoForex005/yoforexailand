@@ -55,9 +55,19 @@ export default defineConfig(async () => {
             if (id.includes('node_modules')) {
               if (id.includes('react')) return 'react';
               if (id.includes('wouter')) return 'wouter';
-              if (id.includes('@emotion')) return 'emotion';
+              // Emotion relies on specific module init order; keep it with React to avoid TDZ errors
+              if (id.includes('@emotion')) return 'react';
               if (id.includes('@tanstack')) return 'tanstack';
               if (id.includes('react-helmet-async')) return 'helmet';
+              if (id.includes('framer-motion')) return 'framer-motion';
+              if (id.includes('recharts')) return 'recharts';
+              if (id.includes('react-youtube')) return 'react-youtube';
+              if (id.includes('react-player')) return 'react-player';
+              if (id.includes('@mui')) return 'mui';
+              if (id.includes('@radix-ui')) return 'radix';
+              if (id.includes('lucide-react')) return 'icons';
+              if (id.includes('date-fns')) return 'date-fns';
+              if (id.includes('zod')) return 'zod';
             }
           },
         },
