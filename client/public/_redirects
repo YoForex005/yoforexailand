@@ -4,6 +4,13 @@
 /index            / 301
 /index.html       / 301
 
+# Canonicalization: force HTTPS and non-www for yoforexai.com
+# Force HTTPS (both root and www)
+http://yoforexai.com/*      https://yoforexai.com/:splat 301!
+http://www.yoforexai.com/*  https://yoforexai.com/:splat 301!
+# Force non-www on HTTPS
+https://www.yoforexai.com/* https://yoforexai.com/:splat 301!
+
 # Common URL variations
 /features         /features 301
 /Features         /features 301

@@ -62,7 +62,7 @@ const Redirect: React.FC<{ to: string }> = ({ to }) => {
 };
 
 const AppRouter: React.FC = () => {
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const handleNavigateToSignup = () => setLocation('/signup');
   const handleNavigateToLogin = () => setLocation('/login');
@@ -125,8 +125,8 @@ const AppRouter: React.FC = () => {
         title="YoForex AI - Revolutionizing Forex Trading"
         description="Revolutionize your forex trading with YoForex AI's cutting-edge signals, strategy backtesting, and risk analytics."
         keywords="forex trading, AI forex, trading platform, YoForex AI, AI trading signals, forex analysis, automated trading"
-        h1={undefined} // Removed H1 heading
-        h2={undefined} // Removed H2 headings
+        h1={location === '/' ? 'YoForex AI — Advanced AI Forex Trading Platform' : undefined}
+        h2={undefined}
       />
       <Router>
         {/* <Header /> */}

@@ -27,7 +27,30 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   // Prefer explicit canonicalUrl prop, otherwise use client URL when available, else fallback to site root.
   const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://yoforexai.com/');
   const fullTitle = title.includes('YoForex AI') ? title : `${title} | YoForex AI`;
-  
+
+  // Build a canonical href when not explicitly provided: force https, non-www host, strip common tracking params
+  const computedCanonicalHref = React.useMemo(() => {
+    try {
+      const url = new URL(currentUrl);
+      // Force https
+      url.protocol = 'https:';
+      // Force non-www for yoforexai.com
+      const baseHost = url.hostname.replace(/^www\./i, '');
+      // Only enforce for the intended base domain to avoid breaking preview hosts
+      const targetBase = 'yoforexai.com';
+      if (baseHost.toLowerCase() === targetBase) {
+        url.hostname = targetBase;
+        url.port = '';
+      }
+      // Strip common tracking params
+      const paramsToRemove = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'];
+      paramsToRemove.forEach(p => url.searchParams.delete(p));
+      return url.toString();
+    } catch {
+      return canonicalUrl || 'https://yoforexai.com/';
+    }
+  }, [currentUrl, canonicalUrl]);
+
   return (
     <>
       {h1 && <h1>{h1}</h1>} {/* Render H1 tag outside Helmet */}
@@ -37,7 +60,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
         {keywords && <meta name="keywords" content={keywords} />}
-        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        <link rel="canonical" href={canonicalUrl || computedCanonicalHref} />
         
         {/* Robots */}
         {noindex && <meta name="robots" content="noindex, nofollow" />}
