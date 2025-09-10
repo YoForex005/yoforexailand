@@ -7,7 +7,6 @@ import Features from '../Features';
 import WhyChooseUs from '../WhyChooseUs';
 import StartTrading from '../StartTrading';
 import Pricing from '../Pricing';
-import Footer from '../Footer';
 import SEOHead from '../SEOHead';
 import StructuredData from '../StructuredData';
 
@@ -85,37 +84,6 @@ const LandingPage: React.FC = () => {
           <StartTrading onNavigateToSignup={handleNavigateToSignup} />
           <Pricing onNavigateToSignup={handleNavigateToSignup} />
         </main>
-  <Footer 
-          onNavigateToResources={handleNavigateToResources}
-          onNavigateToUserManual={handleNavigateToUserManual}
-          onNavigateToBlog={handleNavigateToBlog}
-          onNavigateToCommunity={handleNavigateToCommunity}
-          onNavigateToSupport={handleNavigateToSupport}
-          onNavigateToPrivacyPolicy={handleNavigateToPrivacyPolicy}
-          onNavigateToTermsConditions={handleNavigateToTermsConditions}
-          onNavigateToReturnPolicy={handleNavigateToReturnPolicy}
-          onNavigateToAPIDocumentation={handleNavigateToAPIDocumentation}
-          onNavigateToIntegrations={handleNavigateToIntegrations}
-          onNavigateToCaseStudies={handleNavigateToCaseStudies}
-          onNavigateToWhitepapers={handleNavigateToWhitepapers}
-          onNavigateToWebinars={handleNavigateToWebinars}
-          onNavigateToHelpCenter={handleNavigateToHelpCenter}
-          onNavigateToCommunityForum={handleNavigateToCommunityForum}
-          onNavigateToContactSupport={handleNavigateToContactSupport}
-          onNavigateToStatusPage={handleNavigateToStatusPage}
-          onNavigateToAboutUs={handleNavigateToAboutUs}
-          onNavigateToCareers={handleNavigateToCareers}
-          onNavigateToPressKit={handleNavigateToPressKit}
-          onNavigateToPartners={handleNavigateToPartners}
-          onNavigateToPricing={handleNavigateToPricing}
-          onNavigateToFeatures={handleNavigateToFeatures}
-          onNavigateToStrategyBuilder={handleNavigateToStrategyBuilder}
-          onNavigateToBacktestingTools={handleNavigateToBacktestingTools}
-          onNavigateToRiskCalculator={handleNavigateToRiskCalculator}
-          onNavigateToMarketScanner={handleNavigateToMarketScanner}
-          onNavigateToIntegrationGuide={handleNavigateToIntegrationGuide}
-          onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
-        />
       </div>
     </>
   );
