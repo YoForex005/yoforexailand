@@ -1,16 +1,18 @@
 import React from "react";
 
-
 const DemoVideo = () => {
   return (
-    <div style={{ position: "relative", paddingBottom: "56.25%", height: "0" }}>
-      <iframe
-        id="js_video_iframe"
-        src="https://jumpshare.com/embed/86mqZ8zjykZo2OK86YkJ"
-        frameBorder="0"
-        allowFullScreen
-        style={{ position: "absolute", top: "0", left: "0", width: "100%", height: "100%" }}
-      ></iframe>
+    <div className="video-wrapper">
+      <div className="relative pb-[56.25%] h-0">
+        <iframe
+          id="js_video_iframe"
+          src="https://www.youtube.com/embed/NpJ0JUy4VV0?si=KyJMy8lQBsbPVX7_"
+          // frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute top-0 left-0 w-full h-full"
+        ></iframe>
+      </div>
     </div>
   );
 };
