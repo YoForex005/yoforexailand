@@ -13,10 +13,7 @@ import {
 } from 'lucide-react';
 import SEOHead from '../SEOHead';
 import DemoVideo from '../DemoVideo';
-<<<<<<< HEAD
-=======
 import { navigate } from 'wouter/use-browser-location';
->>>>>>> a2aef7dd5e3a7d92696e14fcbc5191e247fdc0af
 
 const LiveDemoPage: React.FC = () => {
   const [, setLocation] = useLocation();
