@@ -89,15 +89,6 @@ const Footer: React.FC<FooterProps> = ({
       ]
     },
     {
-      title: 'Tools',
-      links: [
-        { name: 'Strategy Builder', onClick: onNavigateToStrategyBuilder },
-        { name: 'Backtesting Tools', onClick: onNavigateToBacktestingTools },
-        { name: 'Risk Calculator', onClick: onNavigateToRiskCalculator },
-        { name: 'Market Scanner', onClick: onNavigateToMarketScanner }
-      ]
-    },
-    {
       title: 'Support',
       links: [
         { name: 'Help Center', onClick: onNavigateToHelpCenter },

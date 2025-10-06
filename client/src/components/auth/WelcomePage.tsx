@@ -45,7 +45,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
   const features = [
     {
       icon: TrendingUp,
-      title: '5 Free Daily Analyses',
+      title: 'Free Daily Analyses',
       description: 'Start with AI-powered trade analysis using top free models'
     },
     {

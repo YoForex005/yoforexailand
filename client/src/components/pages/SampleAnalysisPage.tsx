@@ -385,10 +385,10 @@ const SampleAnalysisPage: React.FC = () => {
                 Ready to Get <span className="bg-gradient-primary bg-clip-text text-transparent">Your Own Analysis?</span>
               </h3>
               <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
-                Start with 5 free daily analyses using top AI models. No credit card required—see the power of AI trading analysis for yourself.
+                Start with a free trial using top AI models. No credit card required—see the power of AI trading analysis for yourself.
               </p>
               <motion.button
-                onClick={() => setLocation('/signup')}
+                onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                 className="bg-gradient-primary text-white px-12 py-6 rounded-2xl font-bold text-xl relative overflow-hidden group inline-flex items-center space-x-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

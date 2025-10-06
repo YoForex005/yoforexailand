@@ -224,7 +224,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
                 )}
 
                 <button
-                  onClick={()=>(navigate('/welcome'))}
+                  onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                   className={`w-full py-4 px-6 rounded-xl font-semibold transition-all duration-300 ${
                     plan.popular
                       ? 'bg-gradient-primary text-white hover:shadow-lg hover:shadow-blue-500/25'

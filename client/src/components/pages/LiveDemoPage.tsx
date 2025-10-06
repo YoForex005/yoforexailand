@@ -292,12 +292,12 @@ const LiveDemoPage: React.FC = () => {
                   Ready to <span className="bg-gradient-primary bg-clip-text text-transparent">Trade Smarter?</span>
                 </h2>
                 <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
-                  Experience the full power of AI trading analysis. Start with 5 free daily analyses and see the difference professional AI makes.
+                  Experience the full power of AI trading analysis. Start with a free trial and see the difference professional AI makes.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    onClick={() => navigate("/welcome")}
+                    onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                     className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -307,7 +307,7 @@ const LiveDemoPage: React.FC = () => {
                   </motion.button>
                   
                   <motion.button
-                    onClick={() => setLocation('/demo/sample-analysis')}
+                    onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                     className="bg-gradient-glass backdrop-blur-sm border border-neutral-700 text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

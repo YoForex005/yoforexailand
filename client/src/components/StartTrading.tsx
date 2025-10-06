@@ -56,7 +56,7 @@ const StartTrading: React.FC<StartTradingProps> = ({ onNavigateToSignup }) => {
             Start Trading in <span className="bg-gradient-primary bg-clip-text text-transparent">Minutes</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            Get up and running with YoForex AI in just four simple steps. Start with 5 free daily analyses and upgrade as needed.
+            Get up and running with YoForex AI in just four simple steps. Start with a free trial and upgrade as needed.
           </p>
         </motion.div>
 

@@ -335,7 +335,7 @@ const FeaturesPage: React.FC = () => {
 
                 {/* CTA Button */}
                 <motion.button
-                  onClick={() => setLocation('/welcome')}
+                  onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                   className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center space-x-2 hover:scale-105 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -463,12 +463,12 @@ const FeaturesPage: React.FC = () => {
                   Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">Professional AI Trading?</span>
                 </h2>
                 <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
-                  Start with 5 free daily analyses using our advanced AI models. No credit card required.
+                  Start with a free trial using our advanced AI models. No credit card required.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    onClick={() => navigate('/welcome')}
+                    onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                     className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

@@ -320,12 +320,12 @@ const ResourcesPage: React.FC = () => {
                   Ready to Start <span className="bg-gradient-primary bg-clip-text text-transparent">Trading?</span>
                 </h2>
                 <p className="text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
-                  Now that you know what's available, start your AI trading journey with 5 free daily analyses.
+                  Now that you know what's available, start your AI trading journey with a free trial.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    onClick={() => navigate("/welcome")}
+                    onClick={() => window.location.href = 'https://app.yoforexai.com/auth'}
                     className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
