@@ -174,7 +174,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
                   <Button
                     component="a"
-                    href="https://t.me/YoForexLLC"
+                    href="https://t.me/YoForexFunds"
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="contained"
@@ -254,7 +254,7 @@ const WelcomePage: React.FC<WelcomePageProps> = ({
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
               <Button
                 component="a"
-                href="https://t.me/YoForexLLC"
+                href="https://t.me/YoForexFunds"
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="contained"

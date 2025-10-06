@@ -16,6 +16,7 @@ import {
   Brain
 } from 'lucide-react';
 import SEOHead from '../SEOHead';
+import { navigate } from 'wouter/use-browser-location';
 
 const ResourcesPage: React.FC = () => {
   const [, setLocation] = useLocation();
@@ -324,7 +325,7 @@ const ResourcesPage: React.FC = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
-                    onClick={() => setLocation('/signup')}
+                    onClick={() => navigate("/welcome")}
                     className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -334,7 +335,7 @@ const ResourcesPage: React.FC = () => {
                   </motion.button>
                   
                   <motion.button
-                    onClick={() => setLocation('/live-demo')}
+                    onClick={() => navigate('/live-demo')}
                     className="bg-gradient-glass backdrop-blur-sm border border-neutral-700 text-white px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 hover:scale-105 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

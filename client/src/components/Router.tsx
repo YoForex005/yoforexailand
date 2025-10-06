@@ -4,52 +4,52 @@ import { HelmetProvider } from 'react-helmet-async';
 
 // Main Pages
 import LandingPage from './pages/LandingPage';
-import Dashboard from './Dashboard';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import OTPVerificationPage from './auth/OTPVerificationPage';
-import WelcomePage from './auth/WelcomePage';
+const Dashboard = React.lazy(() => import('./Dashboard'));
+const LoginPage = React.lazy(() => import('./pages/LoginPage'));
+const SignupPage = React.lazy(() => import('./pages/SignupPage'));
+const OTPVerificationPage = React.lazy(() => import('./auth/OTPVerificationPage'));
+const WelcomePage = React.lazy(() => import('./auth/WelcomePage'));
 
 // Feature Pages
-import FeaturesPage from './pages/FeaturesPage';
-import LiveDemoPage from './pages/LiveDemoPage';
+const FeaturesPage = React.lazy(() => import('./pages/FeaturesPage'));
+const LiveDemoPage = React.lazy(() => import('./pages/LiveDemoPage'));
 
 
 // Resource Pages
-import ResourcesPage from './pages/ResourcesPage';
-import BlogPage from './pages/BlogPage';
+const ResourcesPage = React.lazy(() => import('./pages/ResourcesPage'));
+const BlogPage = React.lazy(() => import('./pages/BlogPage'));
 
 // 404 Page
-import NotFoundPage from './pages/NotFoundPage';
+const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
 import Header from './Header';
 import Footer from './Footer';
-import Pricing from './Pricing';
+const Pricing = React.lazy(() => import('./Pricing'));
 import GoToTop from './GoToTop';
-import APIDocumentationPage from './pages/APIDocumentationPage';
-import IntegrationsPage from './pages/IntegrationsPage';
-import StatusPage from './pages/StatusPage';
-import UserManualPage from './pages/UserManualPage';
-import CaseStudiesPage from './pages/CaseStudiesPage';
-import WhitepapersPage from './pages/WhitepapersPage';
-import WebinarsPage from './pages/WebinarsPage';
-import IntegrationGuidePage from './pages/IntegrationGuidePage';
-import TroubleshootingPage from './pages/TroubleshootingPage';
-import StrategyBuilderPage from './pages/StrategyBuilderPage';
-import BacktestingToolsPage from './pages/BacktestingToolsPage';
-import RiskCalculatorPage from './pages/RiskCalculatorPage';
-import MarketScannerPage from './pages/MarketScannerPage';
-import HelpCenterPage from './pages/HelpCenterPage';
-import CommunityForumPage from './pages/CommunityForumPage';
-import ContactSupportPage from './pages/ContactSupportPage';
-import CommunityPage from './pages/CommunityPage';
-import AboutUsPage from './pages/AboutUsPage';
-import CareersPage from './pages/CareersPage';
-import PressKitPage from './pages/PressKitPage';
-import PartnersPage from './pages/PartnersPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsConditionsPage from './pages/TermsConditionsPage';
-import ReturnPolicyPage from './pages/ReturnPolicyPage';
-import SupportPage from './pages/SupportPage';
+const APIDocumentationPage = React.lazy(() => import('./pages/APIDocumentationPage'));
+const IntegrationsPage = React.lazy(() => import('./pages/IntegrationsPage'));
+const StatusPage = React.lazy(() => import('./pages/StatusPage'));
+const UserManualPage = React.lazy(() => import('./pages/UserManualPage'));
+const CaseStudiesPage = React.lazy(() => import('./pages/CaseStudiesPage'));
+const WhitepapersPage = React.lazy(() => import('./pages/WhitepapersPage'));
+const WebinarsPage = React.lazy(() => import('./pages/WebinarsPage'));
+const IntegrationGuidePage = React.lazy(() => import('./pages/IntegrationGuidePage'));
+const TroubleshootingPage = React.lazy(() => import('./pages/TroubleshootingPage'));
+const StrategyBuilderPage = React.lazy(() => import('./pages/StrategyBuilderPage'));
+const BacktestingToolsPage = React.lazy(() => import('./pages/BacktestingToolsPage'));
+const RiskCalculatorPage = React.lazy(() => import('./pages/RiskCalculatorPage'));
+const MarketScannerPage = React.lazy(() => import('./pages/MarketScannerPage'));
+const HelpCenterPage = React.lazy(() => import('./pages/HelpCenterPage'));
+const CommunityForumPage = React.lazy(() => import('./pages/CommunityForumPage'));
+const ContactSupportPage = React.lazy(() => import('./pages/ContactSupportPage'));
+const CommunityPage = React.lazy(() => import('./pages/CommunityPage'));
+const AboutUsPage = React.lazy(() => import('./pages/AboutUsPage'));
+const CareersPage = React.lazy(() => import('./pages/CareersPage'));
+const PressKitPage = React.lazy(() => import('./pages/PressKitPage'));
+const PartnersPage = React.lazy(() => import('./pages/PartnersPage'));
+const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsConditionsPage = React.lazy(() => import('./pages/TermsConditionsPage'));
+const ReturnPolicyPage = React.lazy(() => import('./pages/ReturnPolicyPage'));
+const SupportPage = React.lazy(() => import('./pages/SupportPage'));
 import SEOHead from './SEOHead'; // Importing the SEOHead component
 
 // Redirect component helper
@@ -62,7 +62,7 @@ const Redirect: React.FC<{ to: string }> = ({ to }) => {
 };
 
 const AppRouter: React.FC = () => {
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const handleNavigateToSignup = () => setLocation('/signup');
   const handleNavigateToLogin = () => setLocation('/login');
@@ -98,6 +98,15 @@ const AppRouter: React.FC = () => {
   const handleNavigateToIntegrationGuide = () => setLocation('/docs/integration-guide');
   const handleNavigateToTroubleshooting = () => setLocation('/docs/troubleshooting');
 
+  // Common back navigation handler for detail pages
+  const handleNavigateBack = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      setLocation('/');
+    }
+  };
+
   // Wrapper for routes that need WelcomePage with navigation callbacks
   const WelcomeDemoRoute: React.FC = () => (
     <WelcomePage
@@ -107,7 +116,7 @@ const AppRouter: React.FC = () => {
   );
 
   // Adapted version of the Dashboard component
-  const AdaptedDashboard: React.FC = () => <Dashboard onNavigateToLanding={() => { }} />;
+  const AdaptedDashboard: React.FC = () => <Dashboard onNavigateToLanding={() => {}} />;
 
   return (
     <HelmetProvider>
@@ -125,63 +134,65 @@ const AppRouter: React.FC = () => {
         title="YoForex AI - Revolutionizing Forex Trading"
         description="Revolutionize your forex trading with YoForex AI's cutting-edge signals, strategy backtesting, and risk analytics."
         keywords="forex trading, AI forex, trading platform, YoForex AI, AI trading signals, forex analysis, automated trading"
-        h1={undefined} // Removed H1 heading
-        h2={undefined} // Removed H2 headings
       />
       <Router>
         {/* <Header /> */}
-        <Switch>
-          {/* Main Routes */}
-          <Route path="/" component={LandingPage} />
-          <Route path="/dashboard" component={AdaptedDashboard} />
+        <React.Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+          <Switch>
+            {/* Main Routes */}
+            <Route path="/">{() => <LandingPage />}</Route>
+            <Route path="/dashboard">{() => <AdaptedDashboard />}</Route>
 
-          {/* Authentication Routes */}
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignupPage} />
-          <Route path="/auth/verify" component={OTPVerificationPage} />
-          <Route path="/welcome" component={WelcomePage} />
+            {/* Authentication Routes */}
+            <Route path="/login">{() => <LoginPage />}</Route>
+            <Route path="/signup">{() => <SignupPage />}</Route>
+            <Route path="/auth/verify">{() => (
+              <OTPVerificationPage
+                onNavigateToDashboard={handleNavigateToDashboard}
+                onNavigateBack={handleNavigateBack}
+              />
+            )}</Route>
+            <Route path="/welcome">{() => (
+              <WelcomePage
+                onNavigateToDashboard={handleNavigateToDashboard}
+                onNavigateToFeatures={handleNavigateToFeatures}
+              />
+            )}</Route>
 
-          {/* Feature Routes */}
-          <Route path="/features" component={FeaturesPage} />
-          <Route path="/live-demo" component={LiveDemoPage} />
-          <Route path="/pricing" component={Pricing} />
-          <Route path="/demo/sample-analysis" component={WelcomeDemoRoute} />
+            {/* Feature Routes */}
+            <Route path="/features">{() => <FeaturesPage />}</Route>
+            <Route path="/live-demo">{() => <LiveDemoPage />}</Route>
+            <Route path="/pricing">{() => <Pricing onNavigateToSignup={handleNavigateToSignup} />}</Route>
+            <Route path="/demo/sample-analysis" component={WelcomeDemoRoute} />
 
-          {/* Resource Routes */}
-          <Route path="/resources" component={ResourcesPage} />
-          <Route path="/blog" component={BlogPage} />
-          <Route path="/docs/api" component={APIDocumentationPage} />
-          <Route path="/integrations" component={IntegrationsPage} />
-          <Route path="/status" component={StatusPage} />
-          <Route path="/docs/user-manual" component={UserManualPage} />
-
-          <Route path="/resources/case-studies" component={CaseStudiesPage} />
-          <Route path="/resources/whitepapers" component={WhitepapersPage} />
-          <Route path="/resources/webinars" component={WebinarsPage} />
-          <Route path="/docs/integration-guide" component={IntegrationGuidePage} />
-          <Route path="/docs/troubleshooting" component={TroubleshootingPage} />
-          <Route path="/tools/strategy-builder" component={StrategyBuilderPage} />
-          <Route path="/tools/backtesting" component={BacktestingToolsPage} />
-          <Route path="/tools/risk-calculator" component={RiskCalculatorPage} />
-          <Route path="/tools/market-scanner" component={MarketScannerPage} />
-          <Route path="/help" component={HelpCenterPage} />
-          <Route path="/community/forum" component={CommunityForumPage} />
-          <Route path="/contact" component={ContactSupportPage} />
-          <Route path="/community" component={CommunityPage} />
-          <Route path="/about" component={AboutUsPage} />
-          <Route path="/careers" component={CareersPage} />
-          <Route path="/press" component={PressKitPage} />
-          <Route path="/partners" component={PartnersPage} />
-
-          {/* Legal & Support Pages */}
-          <Route path="/legal/privacy" component={PrivacyPolicyPage} />
-          <Route path="/legal/terms" component={TermsConditionsPage} />
-          <Route path="/legal/returns" component={ReturnPolicyPage} />
-          <Route path="/support" component={SupportPage} />
-
-
-          <Route component={NotFoundPage} />
-        </Switch>
+            {/* Resource Routes */}
+            <Route path="/resources">{() => <ResourcesPage />}</Route>
+            <Route path="/blog">{() => <BlogPage />}</Route>
+            <Route path="/docs/api">{() => <APIDocumentationPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/integrations">{() => <IntegrationsPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/status">{() => <StatusPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/docs/user-manual">{() => <UserManualPage onNavigateBack={handleNavigateBack} />}</Route>
+            
+            <Route path="/resources/case-studies">{() => <CaseStudiesPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/resources/whitepapers">{() => <WhitepapersPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/resources/webinars">{() => <WebinarsPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/docs/integration-guide">{() => <IntegrationGuidePage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/docs/troubleshooting">{() => <TroubleshootingPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/tools/strategy-builder">{() => <StrategyBuilderPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/tools/backtesting">{() => <BacktestingToolsPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/tools/risk-calculator">{() => <RiskCalculatorPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/tools/market-scanner">{() => <MarketScannerPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/help">{() => <HelpCenterPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/community/forum">{() => <CommunityForumPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/contact">{() => <ContactSupportPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/community">{() => <CommunityPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/about">{() => <AboutUsPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/careers">{() => <CareersPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/press">{() => <PressKitPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route path="/partners">{() => <PartnersPage onNavigateBack={handleNavigateBack} />}</Route>
+            <Route>{() => <NotFoundPage />}</Route>
+          </Switch>
+        </React.Suspense>
       </Router>
       {/* <Footer /> */}
       <Footer
