@@ -13,7 +13,7 @@ import WelcomePage from './auth/WelcomePage';
 // Feature Pages
 import FeaturesPage from './pages/FeaturesPage';
 import LiveDemoPage from './pages/LiveDemoPage';
-import SampleAnalysisPage from './pages/SampleAnalysisPage';
+
 
 // Resource Pages
 import ResourcesPage from './pages/ResourcesPage';
@@ -50,6 +50,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsConditionsPage from './pages/TermsConditionsPage';
 import ReturnPolicyPage from './pages/ReturnPolicyPage';
 import SupportPage from './pages/SupportPage';
+import SEOHead from './SEOHead'; // Importing the SEOHead component
 
 // Redirect component helper
 const Redirect: React.FC<{ to: string }> = ({ to }) => {
@@ -61,7 +62,6 @@ const Redirect: React.FC<{ to: string }> = ({ to }) => {
 };
 
 const AppRouter: React.FC = () => {
-
   const [, setLocation] = useLocation();
 
   const handleNavigateToSignup = () => setLocation('/signup');
@@ -98,6 +98,17 @@ const AppRouter: React.FC = () => {
   const handleNavigateToIntegrationGuide = () => setLocation('/docs/integration-guide');
   const handleNavigateToTroubleshooting = () => setLocation('/docs/troubleshooting');
 
+  // Wrapper for routes that need WelcomePage with navigation callbacks
+  const WelcomeDemoRoute: React.FC = () => (
+    <WelcomePage
+      onNavigateToDashboard={handleNavigateToDashboard}
+      onNavigateToFeatures={handleNavigateToFeatures}
+    />
+  );
+
+  // Adapted version of the Dashboard component
+  const AdaptedDashboard: React.FC = () => <Dashboard onNavigateToLanding={() => { }} />;
+
   return (
     <HelmetProvider>
       <GoToTop />
@@ -110,12 +121,19 @@ const AppRouter: React.FC = () => {
         onNavigateToLiveDemo={handleNavigateToLiveDemo}
         onNavigateToPricing={handleNavigateToPricing}
       />
+      <SEOHead
+        title="YoForex AI - Revolutionizing Forex Trading"
+        description="Revolutionize your forex trading with YoForex AI's cutting-edge signals, strategy backtesting, and risk analytics."
+        keywords="forex trading, AI forex, trading platform, YoForex AI, AI trading signals, forex analysis, automated trading"
+        h1={undefined} // Removed H1 heading
+        h2={undefined} // Removed H2 headings
+      />
       <Router>
         {/* <Header /> */}
         <Switch>
           {/* Main Routes */}
           <Route path="/" component={LandingPage} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={AdaptedDashboard} />
 
           {/* Authentication Routes */}
           <Route path="/login" component={LoginPage} />
@@ -127,7 +145,7 @@ const AppRouter: React.FC = () => {
           <Route path="/features" component={FeaturesPage} />
           <Route path="/live-demo" component={LiveDemoPage} />
           <Route path="/pricing" component={Pricing} />
-          <Route path="/demo/sample-analysis" component={SampleAnalysisPage} />
+          <Route path="/demo/sample-analysis" component={WelcomeDemoRoute} />
 
           {/* Resource Routes */}
           <Route path="/resources" component={ResourcesPage} />
@@ -136,7 +154,7 @@ const AppRouter: React.FC = () => {
           <Route path="/integrations" component={IntegrationsPage} />
           <Route path="/status" component={StatusPage} />
           <Route path="/docs/user-manual" component={UserManualPage} />
-          
+
           <Route path="/resources/case-studies" component={CaseStudiesPage} />
           <Route path="/resources/whitepapers" component={WhitepapersPage} />
           <Route path="/resources/webinars" component={WebinarsPage} />
@@ -154,42 +172,14 @@ const AppRouter: React.FC = () => {
           <Route path="/careers" component={CareersPage} />
           <Route path="/press" component={PressKitPage} />
           <Route path="/partners" component={PartnersPage} />
+
+          {/* Legal & Support Pages */}
           <Route path="/legal/privacy" component={PrivacyPolicyPage} />
           <Route path="/legal/terms" component={TermsConditionsPage} />
           <Route path="/legal/returns" component={ReturnPolicyPage} />
           <Route path="/support" component={SupportPage} />
 
-          {/* Redirect routes - will redirect to relevant pages */}
-          {/* <Route path="/docs/user-manual" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/community" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/support" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/tools/strategy-builder" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/tools/backtesting" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/tools/risk-calculator" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/tools/market-scanner" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/docs/api" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/integrations" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/docs/integration-guide" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/docs/troubleshooting" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/about" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/careers" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/press" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/partners" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/legal/privacy" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/legal/terms" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/legal/returns" component={() => <Redirect to="/" />} /> */}
-          {/* <Route path="/resources/case-studies" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/resources/whitepapers" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/resources/webinars" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/help" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/community/forum" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/contact" component={() => <Redirect to="/resources" />} /> */}
-          {/* <Route path="/status" component={() => <Redirect to="/" />} /> */}
 
-          {/* Blog Post Routes */}
-          {/* <Route path="/blog/:id" component={() => <Redirect to="/blog" />} /> */}
-
-          {/* 404 - Must be last */}
           <Route component={NotFoundPage} />
         </Switch>
       </Router>
@@ -224,6 +214,9 @@ const AppRouter: React.FC = () => {
         onNavigateToTroubleshooting={handleNavigateToTroubleshooting}
         onNavigateToPricing={handleNavigateToPricing}
         onNavigateToFeatures={handleNavigateToFeatures}
+
+
+
       />
     </HelmetProvider>
   );

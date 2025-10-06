@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Zap, Globe, BarChart3 } from 'lucide-react';
+import { Menu, X, Zap } from 'lucide-react';
 import { Link } from 'wouter';
 
 interface HeaderProps {
@@ -10,7 +10,7 @@ interface HeaderProps {
   onNavigateToFeatures: () => void;
   onNavigateToResources: () => void;
   onNavigateToLiveDemo: () => void;
-  onNavigateToPricing: () => void
+  onNavigateToPricing: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
   onNavigateToFeatures,
   onNavigateToResources,
   onNavigateToLiveDemo,
-  onNavigateToPricing
+  onNavigateToPricing,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,15 +44,16 @@ const Header: React.FC<HeaderProps> = ({
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800/50'
-        : 'bg-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800/50'
+          : 'bg-transparent'
+      }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to='/'>
+          <Link to="/">
             <motion.div
               className="flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}
@@ -80,20 +81,10 @@ const Header: React.FC<HeaderProps> = ({
                 className="text-neutral-300 hover:text-primary-400 transition-colors duration-200"
                 onClick={(e) => {
                   e.preventDefault();
-                  if (item.name === 'Features') {
-                    onNavigateToFeatures();
-                  } else if (item.name === 'Live Demo') {
-                    onNavigateToLiveDemo();
-                  } else if (item.name === 'Pricing') {
-                    onNavigateToPricing();
-                    // Scroll to pricing section
-                    // const pricingSection = document.getElementById('pricing');
-                    // if (pricingSection) {
-                    //   pricingSection.scrollIntoView({ behavior: 'smooth' });
-                    // }
-                  } else if (item.name === 'Resources') {
-                    onNavigateToResources();
-                  }
+                  if (item.name === 'Features') onNavigateToFeatures();
+                  else if (item.name === 'Live Demo') onNavigateToLiveDemo();
+                  else if (item.name === 'Pricing') onNavigateToPricing();
+                  else if (item.name === 'Resources') onNavigateToResources();
                 }}
               >
                 {item.name}
@@ -103,26 +94,28 @@ const Header: React.FC<HeaderProps> = ({
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            {/** Sign In temporarily disabled during beta testing */}
-            {/**
-            <motion.button
-              onClick={onNavigateToLogin}
+            <motion.a
+              href="https://app.yoforexai.com/auth"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-neutral-300 hover:text-white transition-colors duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Sign In
-            </motion.button>
-            */}
-            <motion.button
-              onClick={onNavigateToSignup}
+            </motion.a>
+
+            <motion.a
+              href="https://app.yoforexai.com/auth"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10">Start Free Trial</span>
               <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-            </motion.button>
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,7 +124,11 @@ const Header: React.FC<HeaderProps> = ({
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </motion.button>
         </div>
 
@@ -152,45 +149,33 @@ const Header: React.FC<HeaderProps> = ({
                   onClick={(e) => {
                     e.preventDefault();
                     setIsMobileMenuOpen(false);
-                    if (item.name === 'Features') {
-                      onNavigateToFeatures();
-                    } else if (item.name === 'Live Demo') {
-                      onNavigateToLiveDemo();
-                    } else if (item.name === 'Pricing') {
-                      const pricingSection = document.getElementById('pricing');
-                      if (pricingSection) {
-                        pricingSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    } else if (item.name === 'Resources') {
-                      onNavigateToResources();
-                    }
+                    if (item.name === 'Features') onNavigateToFeatures();
+                    else if (item.name === 'Live Demo') onNavigateToLiveDemo();
+                    else if (item.name === 'Pricing') onNavigateToPricing();
+                    else if (item.name === 'Resources') onNavigateToResources();
                   }}
                 >
                   {item.name}
                 </a>
               ))}
               <div className="pt-4 space-y-2">
-                {/** Sign In temporarily disabled during beta testing */}
-                {/**
-                <button
-                  onClick={() => {
-                    onNavigateToLogin();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full text-left text-neutral-300 hover:text-white transition-colors duration-200"
+                <a
+                  href="https://app.yoforexai.com/auth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full block text-left text-neutral-300 hover:text-white transition-colors duration-200"
                 >
                   Sign In
-                </button>
-                */}
-                <button
-                  onClick={() => {
-                    onNavigateToSignup();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
+                </a>
+
+                <a
+                  href="https://app.yoforexai.com/auth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full block bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
                 >
                   Start Free Trial
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
