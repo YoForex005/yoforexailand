@@ -212,7 +212,7 @@ const WhyChooseUs: React.FC = () => {
                       ))}
                     </div>
                     <div className="mt-3 pt-3 border-t border-neutral-700/50">
-                      <p className="text-primary-400 text-xs">support@yoforexai.com</p>
+                      <p className="text-primary-400 text-xs">support@yoforex.net</p>
                     </div>
                     
                     {/* Mobile tap indicator */}

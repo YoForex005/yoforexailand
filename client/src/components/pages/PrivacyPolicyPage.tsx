@@ -140,7 +140,7 @@ const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigateBack })
               If you have any questions about this Privacy Policy or our data practices, please contact us.
             </p>
             <div className="text-primary-400 font-medium">
-              Email: support@yoforexai.com
+              Email: support@yoforex.net
             </div>
             <div className="text-neutral-400 text-sm mt-2">
               Address: B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE

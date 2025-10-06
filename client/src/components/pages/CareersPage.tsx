@@ -249,7 +249,7 @@ const CareersPage: React.FC<CareersPageProps> = ({ onNavigateBack }) => {
                           <p className="text-sm text-neutral-300">• Collaboration with leading AI research institutions</p>
                         </div>
                         <p className="text-primary-400 text-sm">
-                          Join our innovation-driven team at support@yoforexai.com
+                          Join our innovation-driven team at support@yoforex.net
                         </p>
                       </div>
                     )}

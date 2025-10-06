@@ -341,7 +341,7 @@ X-RateLimit-Reset: 1642694400
               </motion.button>
             </div>
             <div className="mt-6 text-sm text-neutral-500">
-              Email: support@yoforexai.com | Response time: 2-4 hours
+              Email: support@yoforex.net | Response time: 2-4 hours
             </div>
           </div>
         </motion.div>

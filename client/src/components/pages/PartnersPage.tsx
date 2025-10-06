@@ -403,7 +403,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-primary-400 text-sm">
-                          Technology partnerships: support@yoforexai.com
+                          Technology partnerships: support@yoforex.net
                         </p>
                       </div>
                     )}
@@ -431,7 +431,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                           </div>
                         </div>
                         <p className="text-success-400 text-sm">
-                          Solution partner inquiries: support@yoforexai.com
+                          Solution partner inquiries: support@yoforex.net
                         </p>
                       </div>
                     )}
@@ -550,7 +550,7 @@ const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigateBack }) => {
                 </motion.button>
               </div>
               <div className="mt-6 text-sm text-neutral-500">
-                Email: support@yoforexai.com | Partnership response within 48 hours
+                Email: support@yoforex.net | Partnership response within 48 hours
               </div>
             </div>
           </div>

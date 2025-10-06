@@ -510,7 +510,7 @@ const AboutUsPage: React.FC<AboutUsPageProps> = ({ onNavigateBack }) => {
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div className="flex items-center justify-center space-x-3">
                 <Mail className="w-6 h-6 text-primary-400" />
-                <span className="text-neutral-300">support@yoforexai.com</span>
+                <span className="text-neutral-300">support@yoforex.net</span>
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <MapPin className="w-6 h-6 text-success-400" />

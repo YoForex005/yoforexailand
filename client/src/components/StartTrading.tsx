@@ -150,7 +150,7 @@ const StartTrading: React.FC<StartTradingProps> = ({ onNavigateToSignup }) => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <CheckCircle className="w-5 h-5" />
-                  <span>Try Free - 5 Daily Analyses</span>
+                  <span>Try Free </span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </motion.button>

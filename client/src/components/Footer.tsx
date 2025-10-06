@@ -164,7 +164,7 @@ const Footer: React.FC<FooterProps> = ({
               {/* Additional Contact Methods */}
               <div className="flex items-center space-x-3 text-neutral-400">
                 <Mail className="w-4 h-4 text-primary-400" />
-                <span>support@yoforexai.com</span>
+                <span>support@yoforex.net</span>
               </div>
               <div className="flex items-center space-x-3 text-neutral-400">
                 <Phone className="w-4 h-4 text-accent-400" />

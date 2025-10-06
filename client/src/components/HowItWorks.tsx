@@ -164,7 +164,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ onNavigateToSignup }) => {
                       ))}
                     </div>
                     <div className="mt-3 pt-3 border-t border-neutral-700/50">
-                      <p className="text-primary-400 text-xs">support@yoforexai.com</p>
+                      <p className="text-primary-400 text-xs">support@yoforex.net</p>
                     </div>
                     
                     {/* Mobile tap indicator */}
@@ -198,7 +198,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ onNavigateToSignup }) => {
             whileTap={{ scale: 0.95 }}
           >
             <Zap className="w-5 h-5" />
-            <span>Start Free - Get 5 Daily AI Analyses</span>
+            <span>Start Free Trial</span>
             <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
           </motion.button>
         </motion.div>

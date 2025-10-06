@@ -352,7 +352,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
                 <h4 className="font-semibold text-white mb-2">Email Support</h4>
                 <p className="text-neutral-400 text-sm mb-3">Get detailed help via email</p>
                 <div className="text-primary-400 text-sm">support@yoforex.co.in</div>
-                <div className="text-primary-400 text-sm">support@yoforexai.com</div>
+                <div className="text-primary-400 text-sm">support@yoforex.net</div>
               </div>
 
               <div className="bg-neutral-800/30 rounded-lg p-4">
@@ -373,7 +373,7 @@ const TroubleshootingPage: React.FC<TroubleshootingPageProps> = ({ onNavigateBac
             <motion.button
               onClick={() => {
                 // Open contact support modal or navigate to support page
-                window.location.href = 'mailto:support@yoforexai.com?subject=Technical Support Request';
+                window.location.href = 'mailto:support@yoforex.net?subject=Technical Support Request';
               }}
               className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center space-x-2"
               whileHover={{ scale: 1.05 }}

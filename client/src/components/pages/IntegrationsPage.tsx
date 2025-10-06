@@ -407,7 +407,7 @@ const IntegrationsPage: React.FC<IntegrationsPageProps> = ({ onNavigateBack }) =
                 </motion.button>
               </div>
               <div className="mt-6 text-sm text-neutral-500">
-                Email: support@yoforexai.com | Custom integration timeline: 2-4 weeks
+                Email: support@yoforex.net | Custom integration timeline: 2-4 weeks
               </div>
             </div>
           </div>

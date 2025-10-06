@@ -57,24 +57,6 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
       color: 'from-success-500 to-success-600',
       action: 'Send Email',
       id: 'email-support'
-    },
-    {
-      icon: Phone,
-      title: 'Phone Support',
-      description: 'Speak directly with our experts',
-      availability: 'Mon-Fri 9AM-6PM EST',
-      color: 'from-warning-500 to-warning-600',
-      action: 'Call Now',
-      id: 'phone-support'
-    },
-    {
-      icon: Video,
-      title: 'Screen Share',
-      description: 'Get personalized setup assistance',
-      availability: 'By appointment',
-      color: 'from-accent-500 to-violet-600',
-      action: 'Schedule',
-      id: 'screen-share'
     }
   ];
 
@@ -235,7 +217,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => {
                 // Open contact support functionality
-                window.location.href = 'mailto:support@yoforexai.com?subject=Support Request';
+                window.location.href = 'mailto:support@yoforex.net?subject=Support Request';
               }}
               className="bg-gradient-glass backdrop-blur-sm border border-neutral-800/50 rounded-2xl p-6 text-center hover:border-neutral-700/50 transition-all duration-300 group cursor-pointer"
               whileHover={{ scale: 1.05 }}
@@ -256,6 +238,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
                 className={`w-full py-2 rounded-lg font-medium text-white bg-gradient-to-r ${option.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = 'http://wa.me/+443300272265'}
               >
                 {option.action}
               </motion.button>
@@ -516,7 +499,7 @@ const SupportPage: React.FC<SupportPageProps> = ({ onNavigateBack }) => {
               </form>
               <div className="mt-6 pt-6 border-t border-neutral-800/50">
                 <div className="space-y-2 text-sm text-neutral-300">
-                  <p>📧 support@yoforexai.com</p>
+                  <p>📧 support@yoforex.net</p>
                   <p>📞 +44 330 027 2265</p>
                   <p>💬 WhatsApp support available</p>
                   <p>📍 B2007-127, 33rd floor, Latifa Tower, Dubai-UAE</p>

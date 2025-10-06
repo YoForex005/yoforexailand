@@ -149,7 +149,7 @@ const ReturnPolicyPage: React.FC<ReturnPolicyPageProps> = ({ onNavigateBack }) =
               Our support team is here to help with any billing questions or return requests.
             </p>
             <div className="text-primary-400 font-medium">
-              Email: support@yoforexai.com
+              Email: support@yoforex.net
             </div>
             <div className="text-neutral-400 text-sm mt-2">
               Address: B2007-127, 33rd floor, Latifa Tower, Trade Center first, Sheikh Zayed Road, Dubai-UAE

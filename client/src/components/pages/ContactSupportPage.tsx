@@ -33,22 +33,6 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
       availability: 'Available 24/7',
       action: 'Start Chat',
       color: 'from-success-500 to-success-600'
-    },
-    {
-      icon: Phone,
-      title: 'Phone Support',
-      description: 'Speak with our experts',
-      availability: 'Mon-Fri 9AM-6PM IST',
-      action: 'Schedule Call',
-      color: 'from-warning-500 to-warning-600'
-    },
-    {
-      icon: Video,
-      title: 'Screen Share',
-      description: 'Get personalized assistance',
-      availability: 'By appointment',
-      action: 'Book Session',
-      color: 'from-accent-500 to-violet-600'
     }
   ];
 
@@ -118,7 +102,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto"
         >
           {supportChannels.map((channel, index) => (
             <motion.div
@@ -145,6 +129,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                 className={`w-full py-2 rounded-lg font-medium text-white bg-gradient-to-r ${channel.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = 'http://wa.me/+443300272265'}
               >
                 {channel.action}
               </motion.button>
@@ -280,7 +265,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                   </div>
                   <div>
                     <h4 className="font-semibold text-white mb-1">Email</h4>
-                    <p className="text-neutral-400 text-sm">support@yoforexai.com</p>
+                    <p className="text-neutral-400 text-sm">support@yoforex.net</p>
                     <p className="text-neutral-500 text-xs mt-1">Response within 2-4 hours</p>
                   </div>
                 </div>
