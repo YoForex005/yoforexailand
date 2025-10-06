@@ -7,17 +7,10 @@ const DemoVideo = () => {
         <iframe
           id="js_video_iframe"
           src="https://www.youtube.com/embed/NpJ0JUy4VV0?si=KyJMy8lQBsbPVX7_"
-<<<<<<< HEAD
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="absolute top-0 left-0 w-full h-full"
           style={{ border: "none" }}
-=======
-          // frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="absolute top-0 left-0 w-full h-full"
->>>>>>> a2aef7dd5e3a7d92696e14fcbc5191e247fdc0af
         ></iframe>
       </div>
     </div>
