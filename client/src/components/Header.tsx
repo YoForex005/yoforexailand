@@ -104,19 +104,12 @@ const Header: React.FC<HeaderProps> = ({
               whileTap={{ scale: 0.95 }}
             >
               Sign In
-<<<<<<< HEAD
             </motion.a>
 
             <motion.a
               href="https://app.yoforexai.com/auth"
               target="_blank"
               rel="noopener noreferrer"
-=======
-            </motion.button>
-            */}
-            <motion.button
-              onClick={()=>(navigate("/welcome"))}
->>>>>>> a2aef7dd5e3a7d92696e14fcbc5191e247fdc0af
               className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -174,7 +167,6 @@ const Header: React.FC<HeaderProps> = ({
                   className="w-full block text-left text-neutral-300 hover:text-white transition-colors duration-200"
                 >
                   Sign In
-<<<<<<< HEAD
                 </a>
 
                 <a
@@ -182,16 +174,6 @@ const Header: React.FC<HeaderProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full block bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
-=======
-                </button>
-                */}
-                <button
-                  onClick={() => {
-                    // onNavigateToSignup();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium"
->>>>>>> a2aef7dd5e3a7d92696e14fcbc5191e247fdc0af
                 >
                   Start Free Trial
                 </a>

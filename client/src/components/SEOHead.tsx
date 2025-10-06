@@ -60,11 +60,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
         {keywords && <meta name="keywords" content={keywords} />}
-<<<<<<< HEAD
         {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-=======
-        <link rel="canonical" href={canonicalUrl || computedCanonicalHref} />
->>>>>>> a2aef7dd5e3a7d92696e14fcbc5191e247fdc0af
         
         {/* Robots */}
         {noindex && <meta name="robots" content="noindex, nofollow" />}

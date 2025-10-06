@@ -190,6 +190,11 @@ const AppRouter: React.FC = () => {
             <Route path="/careers">{() => <CareersPage onNavigateBack={handleNavigateBack} />}</Route>
             <Route path="/press">{() => <PressKitPage onNavigateBack={handleNavigateBack} />}</Route>
             <Route path="/partners">{() => <PartnersPage onNavigateBack={handleNavigateBack} />}</Route>
+
+            {/* Legal Routes */}
+            <Route path={"/legal/privacy"}>{() => <PrivacyPolicyPage onNavigateBack={handleNavigateBack}/>}</Route>
+            <Route path={"/legal/terms"}>{() => <TermsConditionsPage onNavigateBack={handleNavigateBack}/>}</Route>
+            <Route path={"/legal/returns"}>{()=> <ReturnPolicyPage onNavigateBack={handleNavigateBack}/>}</Route>
             <Route>{() => <NotFoundPage />}</Route>
           </Switch>
         </React.Suspense>
