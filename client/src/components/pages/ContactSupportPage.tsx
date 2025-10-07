@@ -129,7 +129,7 @@ const ContactSupportPage: React.FC<ContactSupportPageProps> = ({ onNavigateBack 
                 className={`w-full py-2 rounded-lg font-medium text-white bg-gradient-to-r ${channel.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = 'http://wa.me/+443300272265'}
+                onClick={() => (channel.action === 'Start Chat' ? window.location.href = 'http://wa.me/+443300272265' : window.location.href = 'mailto:info@yoforex.net')}
               >
                 {channel.action}
               </motion.button>
