@@ -91,10 +91,7 @@ const Footer: React.FC<FooterProps> = ({
     {
       title: 'Support',
       links: [
-        { name: 'Help Center', onClick: onNavigateToHelpCenter },
-        { name: 'Community Forum', onClick: onNavigateToCommunityForum },
-        { name: 'Contact Support', onClick: onNavigateToContactSupport },
-        { name: 'Community', onClick: onNavigateToCommunity }
+        { name: 'Contact Support', onClick: onNavigateToContactSupport }
       ]
     },
     {
