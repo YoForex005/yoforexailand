@@ -142,9 +142,9 @@ const Features: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Advanced AI Forex Trading <span className="bg-gradient-primary bg-clip-text text-transparent">Features</span>
-          </h1>
+          </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
             Advanced AI forex trading analysis features powered by 392+ AI models and multi-timeframe technical analysis for professional currency trading.
           </p>
