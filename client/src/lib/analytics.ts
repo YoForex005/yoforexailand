@@ -1,5 +1,5 @@
 // Replace 'G-XXXXXXXXXX' with your actual GA4 Measurement ID
-export const GA_TRACKING_ID = 'G-G4EVQMQ9EJ';
+export const GA_TRACKING_ID = 'G-E0XL4GJHBW';
 
 // Check if the script is running in the browser (not during server-side rendering)
 export const isBrowser = typeof window !== 'undefined';
