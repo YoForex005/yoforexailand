@@ -55,22 +55,7 @@ const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/">
-            <motion.div
-              className="flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="relative">
-                <Zap className="w-8 h-8 text-primary-400" />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 blur-sm"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </div>
-              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                YoForex AI
-              </span>
-            </motion.div>
+            <img src='/logo.png' alt='YoForex logo' className='w-[190px]'/>
           </Link>
 
           {/* Desktop Navigation */}
