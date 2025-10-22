@@ -144,7 +144,7 @@ const StartTrading: React.FC<StartTradingProps> = ({ onNavigateToSignup }) => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <motion.button
-                  onClick={onNavigateToSignup}
+                  onClick={() => window.location.href = 'https://app.yoforexai.com/signup'}
                   className="bg-gradient-primary text-white px-8 py-4 rounded-xl font-semibold text-lg relative overflow-hidden group inline-flex items-center space-x-2"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

@@ -113,7 +113,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <button
-              onClick={onNavigateToSignup}
+              onClick={() => window.location.href = "https://app.yoforexai.com/auth"}
               className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <span>Try Free - 5 Daily Analyses</span>
