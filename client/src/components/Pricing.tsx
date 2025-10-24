@@ -136,7 +136,7 @@ const Pricing: React.FC<PricingProps> = ({ onNavigateToSignup }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">AI Forex Trading</span> Plan
+            Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">AI Forex Signals</span> Plan
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
             From free AI forex analysis to unlimited professional forex trading intelligence. 
