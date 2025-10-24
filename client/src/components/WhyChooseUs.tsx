@@ -137,7 +137,7 @@ const WhyChooseUs: React.FC = () => {
             Why Choose <span className="text-transparent bg-gradient-primary bg-clip-text">YoForex AI</span>
           </h2>
           <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-            Experience the future of trading with our comprehensive AI-powered platform
+            Experience the future of trading with our comprehensive AI powered platform
           </p>
         </motion.div>
 

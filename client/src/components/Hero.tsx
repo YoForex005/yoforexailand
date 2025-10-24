@@ -67,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold text-white leading-tight"
           >
-            AI Forex Trading Platform - Trade Smarter with{' '}
+            AI Forex Signals Platform - Trade Smarter with{' '}
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
               YoForex AI Intelligence
             </span>
@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateToDashboard, onNavigateToSignup, 
             className="text-xl md:text-2xl text-neutral-300 max-w-4xl mx-auto leading-relaxed"
           >
             Access 392+ AI models for forex market intelligence, AI trading chart analysis, and professional trading course strategies.
-            Get AI-powered forex signals with precise SL/TP levels and multi-timeframe consensus for currency trading success.
+            Get AI forex signals with precise SL/TP levels and multi-timeframe consensus for currency trading success.
           </motion.p>
 
           {/* Stats */}

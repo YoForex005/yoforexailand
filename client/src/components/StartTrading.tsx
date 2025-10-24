@@ -136,7 +136,7 @@ const StartTrading: React.FC<StartTradingProps> = ({ onNavigateToSignup }) => {
 
             <div className="relative z-10">
               <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI Trading Analysis?</span>
+                Ready to Experience <span className="bg-gradient-primary bg-clip-text text-transparent">AI Forex Signals?</span>
               </h3>
               <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto">
                 Join thousands of traders already using YoForex AI. Start free with 5 daily analyses and upgrade for more features.
